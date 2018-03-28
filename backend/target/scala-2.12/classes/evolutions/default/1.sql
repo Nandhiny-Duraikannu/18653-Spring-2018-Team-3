@@ -11,8 +11,20 @@ create table task (
   constraint pk_task primary key (id)
 );
 
+create table user (
+  id                            bigint auto_increment not null,
+  username                      varchar(255),
+  passwordhash                  varchar(255),
+  securityquestion              varchar(255),
+  answer                        varchar(255),
+  usertype                      varchar(255),
+  constraint pk_user primary key (id)
+);
+
 
 # --- !Downs
 
 drop table if exists task;
+
+drop table if exists user;
 

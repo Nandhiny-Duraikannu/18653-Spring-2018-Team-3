@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/backend/conf/routes
-// @DATE:Tue Mar 27 14:17:09 PDT 2018
+// @DATE:Wed Mar 28 01:18:26 PDT 2018
 
 package router
 
@@ -14,24 +14,28 @@ import _root_.play.libs.F
 
 class Routes(
   override val errorHandler: play.api.http.HttpErrorHandler, 
+  // @LINE:5
+  LoginController_2: controllers.LoginController,
   // @LINE:6
-  HomeController_0: controllers.HomeController,
-  // @LINE:9
+  UserController_0: controllers.UserController,
+  // @LINE:8
   Assets_1: controllers.Assets,
   val prefix: String
 ) extends GeneratedRouter {
 
    @javax.inject.Inject()
    def this(errorHandler: play.api.http.HttpErrorHandler,
+    // @LINE:5
+    LoginController_2: controllers.LoginController,
     // @LINE:6
-    HomeController_0: controllers.HomeController,
-    // @LINE:9
+    UserController_0: controllers.UserController,
+    // @LINE:8
     Assets_1: controllers.Assets
-  ) = this(errorHandler, HomeController_0, Assets_1, "/")
+  ) = this(errorHandler, LoginController_2, UserController_0, Assets_1, "/")
 
   def withPrefix(prefix: String): Routes = {
     router.RoutesPrefix.setPrefix(prefix)
-    new Routes(errorHandler, HomeController_0, Assets_1, prefix)
+    new Routes(errorHandler, LoginController_2, UserController_0, Assets_1, prefix)
   }
 
   private[this] val defaultPrefix: String = {
@@ -39,7 +43,8 @@ class Routes(
   }
 
   def documentation = List(
-    ("""GET""", this.prefix, """controllers.HomeController.index"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """signup""", """controllers.LoginController.signup()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """users""", """controllers.UserController.getAllUsers()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
@@ -48,29 +53,47 @@ class Routes(
   }}
 
 
-  // @LINE:6
-  private[this] lazy val controllers_HomeController_index0_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix)))
+  // @LINE:5
+  private[this] lazy val controllers_LoginController_signup0_route = Route("POST",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("signup")))
   )
-  private[this] lazy val controllers_HomeController_index0_invoker = createInvoker(
-    HomeController_0.index,
+  private[this] lazy val controllers_LoginController_signup0_invoker = createInvoker(
+    LoginController_2.signup(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
-      "controllers.HomeController",
-      "index",
+      "controllers.LoginController",
+      "signup",
       Nil,
-      "GET",
-      this.prefix + """""",
-      """ An example controller showing a sample home page""",
+      "POST",
+      this.prefix + """signup""",
+      """""",
       Seq()
     )
   )
 
-  // @LINE:9
-  private[this] lazy val controllers_Assets_versioned1_route = Route("GET",
+  // @LINE:6
+  private[this] lazy val controllers_UserController_getAllUsers1_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("users")))
+  )
+  private[this] lazy val controllers_UserController_getAllUsers1_invoker = createInvoker(
+    UserController_0.getAllUsers(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.UserController",
+      "getAllUsers",
+      Nil,
+      "GET",
+      this.prefix + """users""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:8
+  private[this] lazy val controllers_Assets_versioned2_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("assets/"), DynamicPart("file", """.+""",false)))
   )
-  private[this] lazy val controllers_Assets_versioned1_invoker = createInvoker(
+  private[this] lazy val controllers_Assets_versioned2_invoker = createInvoker(
     Assets_1.versioned(fakeValue[String], fakeValue[Asset]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -87,16 +110,22 @@ class Routes(
 
   def routes: PartialFunction[RequestHeader, Handler] = {
   
-    // @LINE:6
-    case controllers_HomeController_index0_route(params@_) =>
+    // @LINE:5
+    case controllers_LoginController_signup0_route(params@_) =>
       call { 
-        controllers_HomeController_index0_invoker.call(HomeController_0.index)
+        controllers_LoginController_signup0_invoker.call(LoginController_2.signup())
       }
   
-    // @LINE:9
-    case controllers_Assets_versioned1_route(params@_) =>
+    // @LINE:6
+    case controllers_UserController_getAllUsers1_route(params@_) =>
+      call { 
+        controllers_UserController_getAllUsers1_invoker.call(UserController_0.getAllUsers())
+      }
+  
+    // @LINE:8
+    case controllers_Assets_versioned2_route(params@_) =>
       call(Param[String]("path", Right("/public")), params.fromPath[Asset]("file", None)) { (path, file) =>
-        controllers_Assets_versioned1_invoker.call(Assets_1.versioned(path, file))
+        controllers_Assets_versioned2_invoker.call(Assets_1.versioned(path, file))
       }
   }
 }
