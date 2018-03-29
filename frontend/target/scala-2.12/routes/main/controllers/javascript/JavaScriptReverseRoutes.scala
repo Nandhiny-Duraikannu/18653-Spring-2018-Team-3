@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/frontend/conf/routes
-// @DATE:Tue Mar 27 20:56:58 PDT 2018
+// @DATE:Thu Mar 29 10:11:51 PDT 2018
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -29,6 +29,16 @@ package controllers.javascript {
       """
     )
   
+    // @LINE:9
+    def signup: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.LoginController.signup",
+      """
+        function() {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "signup"})
+        }
+      """
+    )
+  
     // @LINE:7
     def signupView: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.LoginController.signupView",
@@ -41,7 +51,7 @@ package controllers.javascript {
   
   }
 
-  // @LINE:10
+  // @LINE:12
   class ReverseAssets(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -49,7 +59,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:10
+    // @LINE:12
     def versioned: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.Assets.versioned",
       """

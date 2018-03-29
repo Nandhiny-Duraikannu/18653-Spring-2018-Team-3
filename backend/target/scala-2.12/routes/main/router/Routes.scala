@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/backend/conf/routes
-// @DATE:Wed Mar 28 01:18:26 PDT 2018
+// @DATE:Thu Mar 29 09:24:50 PDT 2018
 
 package router
 
@@ -14,22 +14,22 @@ import _root_.play.libs.F
 
 class Routes(
   override val errorHandler: play.api.http.HttpErrorHandler, 
-  // @LINE:5
-  LoginController_2: controllers.LoginController,
   // @LINE:6
+  LoginController_2: controllers.LoginController,
+  // @LINE:9
   UserController_0: controllers.UserController,
-  // @LINE:8
+  // @LINE:12
   Assets_1: controllers.Assets,
   val prefix: String
 ) extends GeneratedRouter {
 
    @javax.inject.Inject()
    def this(errorHandler: play.api.http.HttpErrorHandler,
-    // @LINE:5
-    LoginController_2: controllers.LoginController,
     // @LINE:6
+    LoginController_2: controllers.LoginController,
+    // @LINE:9
     UserController_0: controllers.UserController,
-    // @LINE:8
+    // @LINE:12
     Assets_1: controllers.Assets
   ) = this(errorHandler, LoginController_2, UserController_0, Assets_1, "/")
 
@@ -53,7 +53,7 @@ class Routes(
   }}
 
 
-  // @LINE:5
+  // @LINE:6
   private[this] lazy val controllers_LoginController_signup0_route = Route("POST",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("signup")))
   )
@@ -66,12 +66,12 @@ class Routes(
       Nil,
       "POST",
       this.prefix + """signup""",
-      """""",
+      """ Signup, login, reset password, ...""",
       Seq()
     )
   )
 
-  // @LINE:6
+  // @LINE:9
   private[this] lazy val controllers_UserController_getAllUsers1_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("users")))
   )
@@ -89,7 +89,7 @@ class Routes(
     )
   )
 
-  // @LINE:8
+  // @LINE:12
   private[this] lazy val controllers_Assets_versioned2_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("assets/"), DynamicPart("file", """.+""",false)))
   )
@@ -110,19 +110,19 @@ class Routes(
 
   def routes: PartialFunction[RequestHeader, Handler] = {
   
-    // @LINE:5
+    // @LINE:6
     case controllers_LoginController_signup0_route(params@_) =>
       call { 
         controllers_LoginController_signup0_invoker.call(LoginController_2.signup())
       }
   
-    // @LINE:6
+    // @LINE:9
     case controllers_UserController_getAllUsers1_route(params@_) =>
       call { 
         controllers_UserController_getAllUsers1_invoker.call(UserController_0.getAllUsers())
       }
   
-    // @LINE:8
+    // @LINE:12
     case controllers_Assets_versioned2_route(params@_) =>
       call(Param[String]("path", Right("/public")), params.fromPath[Asset]("file", None)) { (path, file) =>
         controllers_Assets_versioned2_invoker.call(Assets_1.versioned(path, file))

@@ -9,3 +9,5 @@ scalaVersion := "2.12.4"
 
 libraryDependencies += guice
 libraryDependencies += ws
+
+PlayKeys.devSettings := Seq("play.server.http.port" -> "9001")

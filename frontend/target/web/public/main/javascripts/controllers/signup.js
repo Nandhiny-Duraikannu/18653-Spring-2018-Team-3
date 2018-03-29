@@ -38,7 +38,18 @@ $(document).ready(function() {
   hideAllErrorMessages();
 
   function registerUser(user) {
-    console.log(user);
+    $.ajax({
+      url: "/signup",
+      type: "POST",
+      data: JSON.stringify(user),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      dataType: 'json',
+      success: (data) => {
+        console.info(data);
+      }
+    });
   }
 
   function allFieldsAreFilled () {
