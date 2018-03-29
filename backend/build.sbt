@@ -11,4 +11,4 @@ libraryDependencies += guice
 libraryDependencies += jdbc
 libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.41"
 
-PlayKeys.devSettings := Seq("play.server.http.port" -> "8081")
+PlayKeys.devSettings := Seq("play.server.http.port" -> "9000")

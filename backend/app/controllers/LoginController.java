@@ -24,17 +24,11 @@ public class LoginController extends Controller {
 
     public Result signup() {
         DynamicForm form = formFactory.form().bindFromRequest();
-        System.out.println(form);
         String username = form.get("username");
-        System.out.println(username);
         String password = form.get("password");
-        System.out.println(password);
         String securityQuestion = form.get("securityQuestion");
-        System.out.println(securityQuestion);
         String answer = form.get("answer");
-        System.out.println(answer);
         User user = userDAO.createNewUser(username, password, securityQuestion, answer);
         return ok(user.toJSON());
     }
-
 }

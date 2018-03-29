@@ -15,3 +15,5 @@ D
 app/models/User.java,9/7/976dd6642ea369980871d0ad70e57b69d4a5f0bd
 T
 $app/controllers/LoginController.java,b/4/b42c50f57b8e46ed3db0821a2ce3d046d351c352
+S
+#app/controllers/UserController.java,9/b/9b36b49a595efbc3a4cc0855d47fcb5728563d17

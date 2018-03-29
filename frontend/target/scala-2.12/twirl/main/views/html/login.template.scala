@@ -79,7 +79,7 @@ Seq[Any](_display_(/*2.2*/main("Login | Service Repository")/*2.36*/ {_display_(
 
               /*
                   -- GENERATED --
-                  DATE: Tue Mar 27 22:43:23 PDT 2018
+                  DATE: Thu Mar 29 09:58:26 PDT 2018
                   SOURCE: /Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/frontend/app/views/login.scala.html
                   HASH: 0e77bdc447713c35ef8f9715d77d7b819c56907d
                   MATRIX: 1030->2|1072->36|1111->38|1143->44|2362->1233

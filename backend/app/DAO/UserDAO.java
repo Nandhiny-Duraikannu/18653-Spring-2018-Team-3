@@ -10,7 +10,6 @@ public class UserDAO {
 
     public User createNewUser(String username, String password, String securityQuestion, String answer) {
         User user = userFactory.getUser("normal_user");
-        System.out.println(user);
         user.setParameters(username, password, securityQuestion, answer);
         user.save();
         return user;

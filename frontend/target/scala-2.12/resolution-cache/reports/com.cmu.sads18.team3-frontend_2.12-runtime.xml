@@ -7,7 +7,7 @@
 		revision="1.0-SNAPSHOT"
 		conf="runtime"
 		confs="compile, runtime, test, provided, optional, universal, universal-docs, universal-src, windows, docker, linux, rpm, debian, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool, docs"
-		date="20180327143202"/>
+		date="20180329094300"/>
 	<dependencies>
 		<module organisation="com.typesafe.play" name="play-akka-http-server_2.12">
 			<revision name="2.6.12" status="release" pubdate="20180302095148" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://playframework.com" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="57">
@@ -70,12 +70,12 @@
 			</revision>
 		</module>
 		<module organisation="com.typesafe.play" name="play-ahc-ws_2.12">
-			<revision name="2.6.12" status="release" pubdate="20180302095250" resolver="public" artresolver="public" homepage="https://playframework.com" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="64">
+			<revision name="2.6.12" status="release" pubdate="20180302095250" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://playframework.com" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="64">
 				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
-				<metadata-artifact status="successful" details="" size="3278" time="35" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ahc-ws_2.12/ivy-2.6.12.xml" searched="true" original-local-location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ahc-ws_2.12/ivy-2.6.12.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-ahc-ws_2.12/2.6.12/play-ahc-ws_2.12-2.6.12.pom"/>
+				<metadata-artifact status="no" details="" size="3934" time="0" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ahc-ws_2.12/ivy-2.6.12.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-ahc-ws_2.12/2.6.12/play-ahc-ws_2.12-2.6.12.pom"/>
 				<caller organisation="com.cmu.sads18.team3" name="frontend_2.12" conf="compile, runtime" rev="2.6.12" rev-constraint-default="2.6.12" rev-constraint-dynamic="2.6.12" callerrev="1.0-SNAPSHOT"/>
 				<artifacts>
-					<artifact name="play-ahc-ws_2.12" type="jar" ext="jar" status="successful" details="" size="74403" time="162" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ahc-ws_2.12/jars/play-ahc-ws_2.12-2.6.12.jar">
+					<artifact name="play-ahc-ws_2.12" type="jar" ext="jar" status="no" details="" size="74403" time="0" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ahc-ws_2.12/jars/play-ahc-ws_2.12-2.6.12.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/play/play-ahc-ws_2.12/2.6.12/play-ahc-ws_2.12-2.6.12.jar"/>
 					</artifact>
 				</artifacts>
@@ -94,38 +94,38 @@
 			</revision>
 		</module>
 		<module organisation="com.typesafe.play" name="play-ahc-ws-standalone_2.12">
-			<revision name="1.1.6" status="release" pubdate="20180301134230" resolver="public" artresolver="public" homepage="https://github.com/playframework/play-ws" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="69">
+			<revision name="1.1.6" status="release" pubdate="20180301134230" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/playframework/play-ws" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="69">
 				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
-				<metadata-artifact status="successful" details="" size="4436" time="23" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ahc-ws-standalone_2.12/ivy-1.1.6.xml" searched="true" original-local-location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ahc-ws-standalone_2.12/ivy-1.1.6.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-ahc-ws-standalone_2.12/1.1.6/play-ahc-ws-standalone_2.12-1.1.6.pom"/>
+				<metadata-artifact status="no" details="" size="4760" time="0" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ahc-ws-standalone_2.12/ivy-1.1.6.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-ahc-ws-standalone_2.12/1.1.6/play-ahc-ws-standalone_2.12-1.1.6.pom"/>
 				<caller organisation="com.typesafe.play" name="play-ahc-ws_2.12" conf="default, compile, runtime, master" rev="1.1.6" rev-constraint-default="1.1.6" rev-constraint-dynamic="1.1.6" callerrev="2.6.12"/>
 				<artifacts>
-					<artifact name="play-ahc-ws-standalone_2.12" type="jar" ext="jar" status="successful" details="" size="257975" time="72" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ahc-ws-standalone_2.12/jars/play-ahc-ws-standalone_2.12-1.1.6.jar">
+					<artifact name="play-ahc-ws-standalone_2.12" type="jar" ext="jar" status="no" details="" size="257975" time="0" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ahc-ws-standalone_2.12/jars/play-ahc-ws-standalone_2.12-1.1.6.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/play/play-ahc-ws-standalone_2.12/1.1.6/play-ahc-ws-standalone_2.12-1.1.6.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="com.typesafe.play" name="shaded-oauth">
-			<revision name="1.1.6" status="release" pubdate="20180301134003" resolver="public" artresolver="public" homepage="https://github.com/playframework/play-ws" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="73">
+			<revision name="1.1.6" status="release" pubdate="20180301134003" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/playframework/play-ws" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="73">
 				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
-				<metadata-artifact status="successful" details="" size="1235" time="26" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/shaded-oauth/ivy-1.1.6.xml" searched="true" original-local-location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/shaded-oauth/ivy-1.1.6.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/shaded-oauth/1.1.6/shaded-oauth-1.1.6.pom"/>
+				<metadata-artifact status="no" details="" size="2496" time="0" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/shaded-oauth/ivy-1.1.6.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/shaded-oauth/1.1.6/shaded-oauth-1.1.6.pom"/>
 				<caller organisation="com.typesafe.play" name="play-ahc-ws_2.12" conf="default, compile, runtime, master" rev="1.1.6" rev-constraint-default="1.1.6" rev-constraint-dynamic="1.1.6" callerrev="2.6.12"/>
 				<caller organisation="com.typesafe.play" name="play-ahc-ws-standalone_2.12" conf="compile, runtime" rev="1.1.6" rev-constraint-default="1.1.6" rev-constraint-dynamic="1.1.6" callerrev="1.1.6"/>
 				<artifacts>
-					<artifact name="shaded-oauth" type="jar" ext="jar" status="successful" details="" size="95376" time="30" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/shaded-oauth/jars/shaded-oauth-1.1.6.jar">
+					<artifact name="shaded-oauth" type="jar" ext="jar" status="no" details="" size="95376" time="0" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/shaded-oauth/jars/shaded-oauth-1.1.6.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/play/shaded-oauth/1.1.6/shaded-oauth-1.1.6.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="com.typesafe.play" name="shaded-asynchttpclient">
-			<revision name="1.1.6" status="release" pubdate="20180301134246" resolver="public" artresolver="public" homepage="https://github.com/playframework/play-ws" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="72">
+			<revision name="1.1.6" status="release" pubdate="20180301134246" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/playframework/play-ws" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="72">
 				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
-				<metadata-artifact status="successful" details="" size="1265" time="21" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/shaded-asynchttpclient/ivy-1.1.6.xml" searched="true" original-local-location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/shaded-asynchttpclient/ivy-1.1.6.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/shaded-asynchttpclient/1.1.6/shaded-asynchttpclient-1.1.6.pom"/>
+				<metadata-artifact status="no" details="" size="2526" time="0" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/shaded-asynchttpclient/ivy-1.1.6.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/shaded-asynchttpclient/1.1.6/shaded-asynchttpclient-1.1.6.pom"/>
 				<caller organisation="com.typesafe.play" name="play-ahc-ws_2.12" conf="default, compile, runtime, master" rev="1.1.6" rev-constraint-default="1.1.6" rev-constraint-dynamic="1.1.6" callerrev="2.6.12"/>
 				<caller organisation="com.typesafe.play" name="play-ahc-ws-standalone_2.12" conf="compile, runtime" rev="1.1.6" rev-constraint-default="1.1.6" rev-constraint-dynamic="1.1.6" callerrev="1.1.6"/>
 				<artifacts>
-					<artifact name="shaded-asynchttpclient" type="jar" ext="jar" status="successful" details="" size="2838950" time="443" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/shaded-asynchttpclient/jars/shaded-asynchttpclient-1.1.6.jar">
+					<artifact name="shaded-asynchttpclient" type="jar" ext="jar" status="no" details="" size="2838950" time="0" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/shaded-asynchttpclient/jars/shaded-asynchttpclient-1.1.6.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/play/shaded-asynchttpclient/1.1.6/shaded-asynchttpclient-1.1.6.jar"/>
 					</artifact>
 				</artifacts>
@@ -156,51 +156,51 @@
 			</revision>
 		</module>
 		<module organisation="com.typesafe.play" name="play-ws_2.12">
-			<revision name="2.6.12" status="release" pubdate="20180302095154" resolver="public" artresolver="public" homepage="https://playframework.com" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="65">
+			<revision name="2.6.12" status="release" pubdate="20180302095154" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://playframework.com" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="65">
 				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
-				<metadata-artifact status="successful" details="" size="3719" time="24" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ws_2.12/ivy-2.6.12.xml" searched="true" original-local-location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ws_2.12/ivy-2.6.12.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-ws_2.12/2.6.12/play-ws_2.12-2.6.12.pom"/>
+				<metadata-artifact status="no" details="" size="4148" time="0" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ws_2.12/ivy-2.6.12.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-ws_2.12/2.6.12/play-ws_2.12-2.6.12.pom"/>
 				<caller organisation="com.typesafe.play" name="play-ahc-ws_2.12" conf="default, compile, runtime, master" rev="2.6.12" rev-constraint-default="2.6.12" rev-constraint-dynamic="2.6.12" callerrev="2.6.12"/>
 				<artifacts>
-					<artifact name="play-ws_2.12" type="jar" ext="jar" status="successful" details="" size="24218" time="51" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ws_2.12/jars/play-ws_2.12-2.6.12.jar">
+					<artifact name="play-ws_2.12" type="jar" ext="jar" status="no" details="" size="24218" time="0" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ws_2.12/jars/play-ws_2.12-2.6.12.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/play/play-ws_2.12/2.6.12/play-ws_2.12-2.6.12.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="com.typesafe.play" name="play-ws-standalone-json_2.12">
-			<revision name="1.1.6" status="release" pubdate="20180301134256" resolver="public" artresolver="public" homepage="https://github.com/playframework/play-ws" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="68">
+			<revision name="1.1.6" status="release" pubdate="20180301134256" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/playframework/play-ws" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="68">
 				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
-				<metadata-artifact status="successful" details="" size="3519" time="27" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ws-standalone-json_2.12/ivy-1.1.6.xml" searched="true" original-local-location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ws-standalone-json_2.12/ivy-1.1.6.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-ws-standalone-json_2.12/1.1.6/play-ws-standalone-json_2.12-1.1.6.pom"/>
+				<metadata-artifact status="no" details="" size="3998" time="0" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ws-standalone-json_2.12/ivy-1.1.6.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-ws-standalone-json_2.12/1.1.6/play-ws-standalone-json_2.12-1.1.6.pom"/>
 				<caller organisation="com.typesafe.play" name="play-ws_2.12" conf="compile, runtime" rev="1.1.6" rev-constraint-default="1.1.6" rev-constraint-dynamic="1.1.6" callerrev="2.6.12"/>
 				<artifacts>
-					<artifact name="play-ws-standalone-json_2.12" type="jar" ext="jar" status="successful" details="" size="9556" time="115" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ws-standalone-json_2.12/jars/play-ws-standalone-json_2.12-1.1.6.jar">
+					<artifact name="play-ws-standalone-json_2.12" type="jar" ext="jar" status="no" details="" size="9556" time="0" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ws-standalone-json_2.12/jars/play-ws-standalone-json_2.12-1.1.6.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/play/play-ws-standalone-json_2.12/1.1.6/play-ws-standalone-json_2.12-1.1.6.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="com.typesafe.play" name="play-ws-standalone-xml_2.12">
-			<revision name="1.1.6" status="release" pubdate="20180301134257" resolver="public" artresolver="public" homepage="https://github.com/playframework/play-ws" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="67">
+			<revision name="1.1.6" status="release" pubdate="20180301134257" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/playframework/play-ws" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="67">
 				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
-				<metadata-artifact status="successful" details="" size="3521" time="23" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ws-standalone-xml_2.12/ivy-1.1.6.xml" searched="true" original-local-location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ws-standalone-xml_2.12/ivy-1.1.6.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-ws-standalone-xml_2.12/1.1.6/play-ws-standalone-xml_2.12-1.1.6.pom"/>
+				<metadata-artifact status="no" details="" size="4000" time="0" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ws-standalone-xml_2.12/ivy-1.1.6.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-ws-standalone-xml_2.12/1.1.6/play-ws-standalone-xml_2.12-1.1.6.pom"/>
 				<caller organisation="com.typesafe.play" name="play-ws_2.12" conf="compile, runtime" rev="1.1.6" rev-constraint-default="1.1.6" rev-constraint-dynamic="1.1.6" callerrev="2.6.12"/>
 				<artifacts>
-					<artifact name="play-ws-standalone-xml_2.12" type="jar" ext="jar" status="successful" details="" size="11070" time="35" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ws-standalone-xml_2.12/jars/play-ws-standalone-xml_2.12-1.1.6.jar">
+					<artifact name="play-ws-standalone-xml_2.12" type="jar" ext="jar" status="no" details="" size="11070" time="0" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ws-standalone-xml_2.12/jars/play-ws-standalone-xml_2.12-1.1.6.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/play/play-ws-standalone-xml_2.12/1.1.6/play-ws-standalone-xml_2.12-1.1.6.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="com.typesafe.play" name="play-ws-standalone_2.12">
-			<revision name="1.1.6" status="release" pubdate="20180301134239" resolver="public" artresolver="public" homepage="https://github.com/playframework/play-ws" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="66">
+			<revision name="1.1.6" status="release" pubdate="20180301134239" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/playframework/play-ws" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="66">
 				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
-				<metadata-artifact status="successful" details="" size="3668" time="25" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ws-standalone_2.12/ivy-1.1.6.xml" searched="true" original-local-location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ws-standalone_2.12/ivy-1.1.6.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-ws-standalone_2.12/1.1.6/play-ws-standalone_2.12-1.1.6.pom"/>
+				<metadata-artifact status="no" details="" size="4116" time="0" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ws-standalone_2.12/ivy-1.1.6.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-ws-standalone_2.12/1.1.6/play-ws-standalone_2.12-1.1.6.pom"/>
 				<caller organisation="com.typesafe.play" name="play-ws-standalone-xml_2.12" conf="compile, runtime" rev="1.1.6" rev-constraint-default="1.1.6" rev-constraint-dynamic="1.1.6" callerrev="1.1.6"/>
 				<caller organisation="com.typesafe.play" name="play-ws_2.12" conf="compile, runtime" rev="1.1.6" rev-constraint-default="1.1.6" rev-constraint-dynamic="1.1.6" callerrev="2.6.12"/>
 				<caller organisation="com.typesafe.play" name="play-ws-standalone-json_2.12" conf="compile, runtime" rev="1.1.6" rev-constraint-default="1.1.6" rev-constraint-dynamic="1.1.6" callerrev="1.1.6"/>
 				<caller organisation="com.typesafe.play" name="play-ahc-ws-standalone_2.12" conf="compile, runtime" rev="1.1.6" rev-constraint-default="1.1.6" rev-constraint-dynamic="1.1.6" callerrev="1.1.6"/>
 				<artifacts>
-					<artifact name="play-ws-standalone_2.12" type="jar" ext="jar" status="successful" details="" size="88620" time="139" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ws-standalone_2.12/jars/play-ws-standalone_2.12-1.1.6.jar">
+					<artifact name="play-ws-standalone_2.12" type="jar" ext="jar" status="no" details="" size="88620" time="0" location="/Users/JeromeKimbrough/.ivy2/cache/com.typesafe.play/play-ws-standalone_2.12/jars/play-ws-standalone_2.12-1.1.6.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/play/play-ws-standalone_2.12/1.1.6/play-ws-standalone_2.12-1.1.6.jar"/>
 					</artifact>
 				</artifacts>

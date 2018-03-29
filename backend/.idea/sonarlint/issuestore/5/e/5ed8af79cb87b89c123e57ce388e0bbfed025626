@@ -1,2 +1,6 @@
 
-msquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(Ä”òª
+T
+squid:S106"9Replace this use of System.out or System.err by a logger.(Ø¼¢ƒ8·À¨ï¦,
+Vsquid:S2209"5Change this instance-reference to a static reference.(¥î¯Žüÿÿÿÿ8·À¨ï¦,
+tsquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(Ä”òª8·À¨ï¦,
+€squid:S1149"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(ì­ŠÜúÿÿÿÿ8·À¨ï¦,

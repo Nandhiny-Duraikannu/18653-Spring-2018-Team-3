@@ -2,9 +2,11 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# An example controller showing a sample home page
+# Signup, login, password reset, ...
 GET     /                           controllers.LoginController.loginView
 GET     /signup                     controllers.LoginController.signupView
++ nocsrf
+POST    /signup                     controllers.LoginController.signup
 
-# Map static resources from the /public folder to the /assets URL path
+# For front end static files
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

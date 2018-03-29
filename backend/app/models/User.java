@@ -108,15 +108,9 @@ public class User extends Model {
     public String toJSON() {
         StringBuffer json = new StringBuffer();
         json.append("{");
-        json.append("\"id\":");
-        json.append(this.getId());
-        json.append(",");
-        json.append("\"username\":");
-        json.append(this.getUsername());
-        json.append(",");
-        json.append("\"type\":");
-        json.append(this.getUserType());
-        json.append("}");
+        json.append("\"id\": \"").append(this.getId()).append("\", ");
+        json.append("\"username\": \"").append(this.getUsername()).append("\", ");
+        json.append("\"type\": \"").append(this.getUserType()).append("\"}");
         return json.toString();
     }
 }
