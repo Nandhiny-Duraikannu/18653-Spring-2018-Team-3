@@ -33,7 +33,7 @@ public class User extends Model {
     @Constraints.Required
     public String userType;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     public List<Mashup> mashups = new ArrayList<>();
 
 

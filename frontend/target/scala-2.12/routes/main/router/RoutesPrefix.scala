@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/tomzhou94/Documents/CMU/SAD/18653-Spring-2018-Team-3/frontend/conf/routes
-// @DATE:Thu Mar 29 12:45:14 PDT 2018
+// @DATE:Thu Mar 29 23:54:03 PDT 2018
 
 
 package router {

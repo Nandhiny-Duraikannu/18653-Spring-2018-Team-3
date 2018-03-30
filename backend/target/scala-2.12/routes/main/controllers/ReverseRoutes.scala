@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/tomzhou94/Documents/CMU/SAD/18653-Spring-2018-Team-3/backend/conf/routes
-// @DATE:Thu Mar 29 17:00:19 PDT 2018
+// @DATE:Thu Mar 29 22:39:31 PDT 2018
 
 import play.api.mvc.Call
 
@@ -18,16 +18,22 @@ package controllers {
     }
 
   
-    // @LINE:13
+    // @LINE:14
     def searchMashup(): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "search/mashup")
     }
   
-    // @LINE:12
+    // @LINE:13
     def submitMashup(): Call = {
       
       Call("POST", _prefix + { _defaultPrefix } + "mashup")
+    }
+  
+    // @LINE:12
+    def getAllMashups(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "mashups")
     }
   
   }
@@ -47,14 +53,14 @@ package controllers {
   
   }
 
-  // @LINE:16
+  // @LINE:18
   class ReverseAssets(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:16
+    // @LINE:18
     def versioned(file:Asset): Call = {
       implicit lazy val _rrc = new play.core.routing.ReverseRouteContext(Map(("path", "/public"))); _rrc
       Call("GET", _prefix + { _defaultPrefix } + "assets/" + implicitly[play.api.mvc.PathBindable[Asset]].unbind("file", file))

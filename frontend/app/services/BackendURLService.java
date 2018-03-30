@@ -8,4 +8,10 @@ public class BackendURLService {
 
     public String signupURL () { return baseURL + "signup"; }
 
+    public String getAllMashupsURL() { return baseURL + "mashups"; }
+
+    public String searchMashupsURL(String query) { return baseURL + "search/mashup?query="+query; }
+
+    public String submitMashupURL() { return baseURL + "mashup"; }
+
 }
