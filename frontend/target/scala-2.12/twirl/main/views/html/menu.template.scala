@@ -46,8 +46,8 @@ Seq[Any]()
 
               /*
                   -- GENERATED --
-                  DATE: Thu Mar 29 11:28:35 PDT 2018
-                  SOURCE: /Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/frontend/app/views/menu.scala.html
+                  DATE: Thu Mar 29 12:45:15 PDT 2018
+                  SOURCE: /Users/tomzhou94/Documents/CMU/SAD/18653-Spring-2018-Team-3/frontend/app/views/menu.scala.html
                   HASH: 282da6d6fc3be5f18bafd4f3e6904d0c508db341
                   MATRIX: 
                   LINES: 

@@ -30,4 +30,8 @@ public class UserDAO {
         stringBuffer.append("]");
         return stringBuffer.toString();
     }
+
+    public User findUserByUsername(String username) {
+        return User.find.query().where().eq("username", username).findOne();
+    }
 }

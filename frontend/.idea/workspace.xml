@@ -2,35 +2,46 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4b384eb-898c-465b-b08a-f2b4d4fb8ed7" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_cachecontrol_2_12_1_1_2_jar.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_ahc_ws_2_12_2_6_12_jar.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_ahc_ws_standalone_2_12_1_1_6_jar.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_ws_2_12_2_6_12_jar.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_ws_standalone_2_12_1_1_6_jar.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_ws_standalone_json_2_12_1_1_6_jar.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_ws_standalone_xml_2_12_1_1_6_jar.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_shaded_asynchttpclient_1_1_6_jar.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_shaded_oauth_1_1_6_jar.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__javax_cache_cache_api_1_0_0_jar.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_joda_joda_convert_1_7_jar.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/services/BackendURLService.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/views/homeUser.scala.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/views/menu.scala.html" />
-      <change beforePath="$PROJECT_DIR$/../backend/.idea/sonarlint/issuestore/5/e/5ed8af79cb87b89c123e57ce388e0bbfed025626" afterPath="$PROJECT_DIR$/../backend/.idea/sonarlint/issuestore/5/e/5ed8af79cb87b89c123e57ce388e0bbfed025626" />
-      <change beforePath="$PROJECT_DIR$/../backend/.idea/sonarlint/issuestore/9/7/976dd6642ea369980871d0ad70e57b69d4a5f0bd" afterPath="$PROJECT_DIR$/../backend/.idea/sonarlint/issuestore/9/7/976dd6642ea369980871d0ad70e57b69d4a5f0bd" />
-      <change beforePath="$PROJECT_DIR$/../backend/.idea/sonarlint/issuestore/b/4/b42c50f57b8e46ed3db0821a2ce3d046d351c352" afterPath="$PROJECT_DIR$/../backend/.idea/sonarlint/issuestore/b/4/b42c50f57b8e46ed3db0821a2ce3d046d351c352" />
-      <change beforePath="$PROJECT_DIR$/../backend/.idea/sonarlint/issuestore/index.pb" afterPath="$PROJECT_DIR$/../backend/.idea/sonarlint/issuestore/index.pb" />
       <change beforePath="$PROJECT_DIR$/../backend/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../backend/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/../backend/app/controllers/LoginController.java" afterPath="$PROJECT_DIR$/../backend/app/controllers/LoginController.java" />
+      <change beforePath="$PROJECT_DIR$/../backend/app/DAO/UserDAO.java" afterPath="$PROJECT_DIR$/../backend/app/DAO/UserDAO.java" />
       <change beforePath="$PROJECT_DIR$/../backend/app/models/User.java" afterPath="$PROJECT_DIR$/../backend/app/models/User.java" />
-      <change beforePath="$PROJECT_DIR$/../backend/build.sbt" afterPath="$PROJECT_DIR$/../backend/build.sbt" />
+      <change beforePath="$PROJECT_DIR$/../backend/conf/application.conf" afterPath="$PROJECT_DIR$/../backend/conf/application.conf" />
       <change beforePath="$PROJECT_DIR$/../backend/conf/evolutions/default/1.sql" afterPath="$PROJECT_DIR$/../backend/conf/evolutions/default/1.sql" />
       <change beforePath="$PROJECT_DIR$/../backend/conf/routes" afterPath="$PROJECT_DIR$/../backend/conf/routes" />
       <change beforePath="$PROJECT_DIR$/../backend/logs/application.log" afterPath="$PROJECT_DIR$/../backend/logs/application.log" />
-      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$fe3c1b2bd92f62d4f6fd$.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$fe3c1b2bd92f62d4f6fd.cache" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$fe3c1b2bd92f62d4f6fd.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/project/target/config-classes/$af63d9019bcf315dcdc0$.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/project/target/config-classes/$af63d9019bcf315dcdc0.cache" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/project/target/config-classes/$af63d9019bcf315dcdc0.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/project/target/config-classes/$c5d16a0692917e470251$.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/project/target/config-classes/$c5d16a0692917e470251.cache" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/project/target/config-classes/$c5d16a0692917e470251.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$0b9f16d637ee2e516bae$.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$0b9f16d637ee2e516bae.cache" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$0b9f16d637ee2e516bae.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$0f5c45ddaf2ad333cbce$.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$0f5c45ddaf2ad333cbce.cache" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$0f5c45ddaf2ad333cbce.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$4e70d631d649fb8ed1d1$.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$4e70d631d649fb8ed1d1.cache" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$4e70d631d649fb8ed1d1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$9136e5afd0d12fa9621b$.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$9136e5afd0d12fa9621b.cache" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$9136e5afd0d12fa9621b.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$920a14550c55e1d3d81a$.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$920a14550c55e1d3d81a.cache" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$920a14550c55e1d3d81a.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$98c2e7dc44d59d226c0a$.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$98c2e7dc44d59d226c0a.cache" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$98c2e7dc44d59d226c0a.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$ae98b0506e023b0064ed$.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$ae98b0506e023b0064ed.cache" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$ae98b0506e023b0064ed.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$ee89ceee65161e512610$.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$ee89ceee65161e512610.cache" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$ee89ceee65161e512610.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$f3db356db7d7c673d829$.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$f3db356db7d7c673d829.cache" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/config-classes/$f3db356db7d7c673d829.class" afterPath="" />
       <change beforePath="$PROJECT_DIR$/../backend/project/target/scala-2.12/sbt-1.0/resolution-cache/default/backend-build/scala_2.12/sbt_1.0/0.1-SNAPSHOT/resolved.xml.properties" afterPath="$PROJECT_DIR$/../backend/project/target/scala-2.12/sbt-1.0/resolution-cache/default/backend-build/scala_2.12/sbt_1.0/0.1-SNAPSHOT/resolved.xml.properties" />
       <change beforePath="$PROJECT_DIR$/../backend/project/target/scala-2.12/sbt-1.0/resolution-cache/default/backend-build/scala_2.12/sbt_1.0/0.1-SNAPSHOT/resolved.xml.xml" afterPath="$PROJECT_DIR$/../backend/project/target/scala-2.12/sbt-1.0/resolution-cache/default/backend-build/scala_2.12/sbt_1.0/0.1-SNAPSHOT/resolved.xml.xml" />
       <change beforePath="$PROJECT_DIR$/../backend/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-backend-build-compile-internal.xml" afterPath="$PROJECT_DIR$/../backend/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-backend-build-compile-internal.xml" />
@@ -44,16 +55,43 @@
       <change beforePath="$PROJECT_DIR$/../backend/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-backend-build-scala-tool.xml" afterPath="$PROJECT_DIR$/../backend/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-backend-build-scala-tool.xml" />
       <change beforePath="$PROJECT_DIR$/../backend/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-backend-build-test-internal.xml" afterPath="$PROJECT_DIR$/../backend/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-backend-build-test-internal.xml" />
       <change beforePath="$PROJECT_DIR$/../backend/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-backend-build-test.xml" afterPath="$PROJECT_DIR$/../backend/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-backend-build-test.xml" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.12/output_dsp" afterPath="$PROJECT_DIR$/../backend/project/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.12/output_dsp" />
       <change beforePath="$PROJECT_DIR$/../backend/project/target/streams/$global/ivyConfiguration/$global/streams/out" afterPath="$PROJECT_DIR$/../backend/project/target/streams/$global/ivyConfiguration/$global/streams/out" />
       <change beforePath="$PROJECT_DIR$/../backend/project/target/streams/$global/update/$global/streams/out" afterPath="$PROJECT_DIR$/../backend/project/target/streams/$global/update/$global/streams/out" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/streams/$global/update/$global/streams/update_cache_2.12/inputs" afterPath="$PROJECT_DIR$/../backend/project/target/streams/$global/update/$global/streams/update_cache_2.12/inputs" />
       <change beforePath="$PROJECT_DIR$/../backend/project/target/streams/$global/update/$global/streams/update_cache_2.12/output" afterPath="$PROJECT_DIR$/../backend/project/target/streams/$global/update/$global/streams/update_cache_2.12/output" />
       <change beforePath="$PROJECT_DIR$/../backend/project/target/streams/compile/compileIncremental/$global/streams/out" afterPath="$PROJECT_DIR$/../backend/project/target/streams/compile/compileIncremental/$global/streams/out" />
       <change beforePath="$PROJECT_DIR$/../backend/project/target/streams/compile/copyResources/$global/streams/out" afterPath="$PROJECT_DIR$/../backend/project/target/streams/compile/copyResources/$global/streams/out" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/streams/compile/dependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/../backend/project/target/streams/compile/dependencyClasspath/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/streams/compile/exportedProducts/$global/streams/export" afterPath="$PROJECT_DIR$/../backend/project/target/streams/compile/exportedProducts/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/streams/compile/externalDependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/../backend/project/target/streams/compile/externalDependencyClasspath/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/streams/compile/managedClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/../backend/project/target/streams/compile/managedClasspath/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/streams/runtime/dependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/../backend/project/target/streams/runtime/dependencyClasspath/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/streams/runtime/exportedProducts/$global/streams/export" afterPath="$PROJECT_DIR$/../backend/project/target/streams/runtime/exportedProducts/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/streams/runtime/externalDependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/../backend/project/target/streams/runtime/externalDependencyClasspath/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/streams/runtime/fullClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/../backend/project/target/streams/runtime/fullClasspath/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/streams/runtime/internalDependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/../backend/project/target/streams/runtime/internalDependencyClasspath/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/../backend/project/target/streams/runtime/managedClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/../backend/project/target/streams/runtime/managedClasspath/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/DAO/UserDAO.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/DAO/UserDAO.class" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/application.conf" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/application.conf" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/HomeController.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/HomeController.class" />
       <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/LoginController.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/LoginController.class" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/ReverseAssets.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/ReverseAssets.class" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/ReverseLoginController.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/ReverseLoginController.class" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/ReverseUserController.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/ReverseUserController.class" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/UserController.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/UserController.class" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/javascript/ReverseAssets.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/javascript/ReverseAssets.class" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/javascript/ReverseLoginController.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/javascript/ReverseLoginController.class" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/javascript/ReverseUserController.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/javascript/ReverseUserController.class" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/routes$javascript.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/routes$javascript.class" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/routes.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/routes.class" />
       <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/evolutions/default/1.sql" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/evolutions/default/1.sql" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/models/Task.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/models/Task.class" />
       <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/models/User.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/models/User.class" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/router/Routes$$anonfun$routes$1.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/router/Routes$$anonfun$routes$1.class" />
       <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/router/Routes.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/router/Routes.class" />
       <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/routes" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/routes" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/services/UserFactory.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/services/UserFactory.class" />
       <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/resolution-cache/com.cmu.sads18.team3/backend_2.12/1.0-SNAPSHOT/resolved.xml.properties" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/resolution-cache/com.cmu.sads18.team3/backend_2.12/1.0-SNAPSHOT/resolved.xml.properties" />
       <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/resolution-cache/com.cmu.sads18.team3/backend_2.12/1.0-SNAPSHOT/resolved.xml.xml" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/resolution-cache/com.cmu.sads18.team3/backend_2.12/1.0-SNAPSHOT/resolved.xml.xml" />
       <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-backend_2.12-compile-internal.xml" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-backend_2.12-compile-internal.xml" />
@@ -81,6 +119,8 @@
       <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/routes/main/controllers/routes.java" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/routes/main/controllers/routes.java" />
       <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/routes/main/router/Routes.scala" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/routes/main/router/Routes.scala" />
       <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/routes/main/router/RoutesPrefix.scala" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/routes/main/router/RoutesPrefix.scala" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/streams/$global/$global/$global/streams/sync-exported-assets-web-assets" afterPath="$PROJECT_DIR$/../backend/target/streams/$global/$global/$global/streams/sync-exported-assets-web-assets" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.12/output_dsp" afterPath="$PROJECT_DIR$/../backend/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.12/output_dsp" />
       <change beforePath="$PROJECT_DIR$/../backend/target/streams/$global/ivyConfiguration/$global/streams/out" afterPath="$PROJECT_DIR$/../backend/target/streams/$global/ivyConfiguration/$global/streams/out" />
       <change beforePath="$PROJECT_DIR$/../backend/target/streams/$global/playCommonClassloader/$global/streams/out" afterPath="$PROJECT_DIR$/../backend/target/streams/$global/playCommonClassloader/$global/streams/out" />
       <change beforePath="$PROJECT_DIR$/../backend/target/streams/$global/update/$global/streams/out" afterPath="$PROJECT_DIR$/../backend/target/streams/$global/update/$global/streams/out" />
@@ -90,126 +130,47 @@
       <change beforePath="$PROJECT_DIR$/../backend/target/streams/compile/compileIncremental/$global/streams/out" afterPath="$PROJECT_DIR$/../backend/target/streams/compile/compileIncremental/$global/streams/out" />
       <change beforePath="$PROJECT_DIR$/../backend/target/streams/compile/copyResources/$global/streams/copy-resources" afterPath="$PROJECT_DIR$/../backend/target/streams/compile/copyResources/$global/streams/copy-resources" />
       <change beforePath="$PROJECT_DIR$/../backend/target/streams/compile/copyResources/$global/streams/out" afterPath="$PROJECT_DIR$/../backend/target/streams/compile/copyResources/$global/streams/out" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/streams/compile/dependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/../backend/target/streams/compile/dependencyClasspath/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/streams/compile/exportedProducts/$global/streams/export" afterPath="$PROJECT_DIR$/../backend/target/streams/compile/exportedProducts/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/streams/compile/externalDependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/../backend/target/streams/compile/externalDependencyClasspath/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/streams/compile/managedClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/../backend/target/streams/compile/managedClasspath/$global/streams/export" />
       <change beforePath="$PROJECT_DIR$/../backend/target/streams/compile/playEnhancerGenerateAccessors/$global/streams/play_instrumentation_2.12" afterPath="$PROJECT_DIR$/../backend/target/streams/compile/playEnhancerGenerateAccessors/$global/streams/play_instrumentation_2.12" />
       <change beforePath="$PROJECT_DIR$/../backend/target/streams/compile/playEnhancerRewriteAccessors/$global/streams/play_instrumentation_2.12" afterPath="$PROJECT_DIR$/../backend/target/streams/compile/playEnhancerRewriteAccessors/$global/streams/play_instrumentation_2.12" />
       <change beforePath="$PROJECT_DIR$/../backend/target/streams/compile/playRoutes/$global/streams/op-cache" afterPath="$PROJECT_DIR$/../backend/target/streams/compile/playRoutes/$global/streams/op-cache" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__aopalliance_aopalliance_1_0_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__aopalliance_aopalliance_1_0_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__cglib_cglib_nodep_3_2_4_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__cglib_cglib_nodep_3_2_4_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__ch_qos_logback_logback_classic_1_2_3_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__ch_qos_logback_logback_classic_1_2_3_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__ch_qos_logback_logback_core_1_2_3_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__ch_qos_logback_logback_core_1_2_3_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_fasterxml_classmate_1_3_1_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_fasterxml_classmate_1_3_1_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_fasterxml_jackson_core_jackson_annotations_2_8_11_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_fasterxml_jackson_core_jackson_annotations_2_8_11_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_fasterxml_jackson_core_jackson_core_2_8_11_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_fasterxml_jackson_core_jackson_core_2_8_11_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_fasterxml_jackson_core_jackson_databind_2_8_11_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_fasterxml_jackson_core_jackson_databind_2_8_11_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_8_11_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_8_11_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_8_11_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_8_11_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_google_code_findbugs_jsr305_3_0_2_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_google_code_findbugs_jsr305_3_0_2_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_google_code_gson_gson_2_8_0_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_google_code_gson_gson_2_8_0_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_google_errorprone_error_prone_annotations_2_0_18_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_google_errorprone_error_prone_annotations_2_0_18_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_google_guava_guava_22_0_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_google_guava_guava_22_0_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_google_inject_extensions_guice_assistedinject_4_1_0_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_google_inject_extensions_guice_assistedinject_4_1_0_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_google_inject_guice_4_1_0_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_google_inject_guice_4_1_0_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_google_j2objc_j2objc_annotations_1_1_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_google_j2objc_j2objc_annotations_1_1_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_novocode_junit_interface_0_11_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_novocode_junit_interface_0_11_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_akka_akka_actor_2_12_2_5_11_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_akka_akka_actor_2_12_2_5_11_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_akka_akka_http_core_2_12_10_0_11_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_akka_akka_http_core_2_12_10_0_11_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_akka_akka_parsing_2_12_10_0_11_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_akka_akka_parsing_2_12_10_0_11_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_akka_akka_protobuf_2_12_2_5_11_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_akka_akka_protobuf_2_12_2_5_11_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_akka_akka_slf4j_2_12_2_5_11_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_akka_akka_slf4j_2_12_2_5_11_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_akka_akka_stream_2_12_2_5_11_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_akka_akka_stream_2_12_2_5_11_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_config_1_3_2_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_config_1_3_2_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_build_link_2_6_12_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_build_link_2_6_12_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_filters_helpers_2_12_2_6_12_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_filters_helpers_2_12_2_6_12_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_2_12_2_6_12_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_2_12_2_6_12_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_akka_http_server_2_12_2_6_12_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_akka_http_server_2_12_2_6_12_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_exceptions_2_6_12_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_exceptions_2_6_12_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_functional_2_12_2_6_8_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_functional_2_12_2_6_8_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_guice_2_12_2_6_12_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_guice_2_12_2_6_12_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_java_2_12_2_6_12_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_java_2_12_2_6_12_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_java_forms_2_12_2_6_12_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_java_forms_2_12_2_6_12_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_json_2_12_2_6_8_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_json_2_12_2_6_8_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_logback_2_12_2_6_12_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_logback_2_12_2_6_12_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_netty_utils_2_6_12_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_netty_utils_2_6_12_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_server_2_12_2_6_12_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_server_2_12_2_6_12_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_streams_2_12_2_6_12_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_streams_2_12_2_6_12_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_test_2_12_2_6_12_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_play_test_2_12_2_6_12_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_twirl_api_2_12_1_3_14_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_play_twirl_api_2_12_1_3_14_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_ssl_config_core_2_12_0_2_2_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_ssl_config_core_2_12_0_2_2_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__commons_codec_commons_codec_1_10_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__commons_codec_commons_codec_1_10_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__commons_io_commons_io_2_5_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__commons_io_commons_io_2_5_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__commons_logging_commons_logging_1_2_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__commons_logging_commons_logging_1_2_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__io_jsonwebtoken_jjwt_0_7_0_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__io_jsonwebtoken_jjwt_0_7_0_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__javax_inject_javax_inject_1_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__javax_inject_javax_inject_1_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__javax_transaction_jta_1_1_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__javax_transaction_jta_1_1_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__javax_validation_validation_api_1_1_0_Final_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__javax_validation_validation_api_1_1_0_Final_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__joda_time_joda_time_2_9_9_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__joda_time_joda_time_2_9_9_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__junit_junit_4_12_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__junit_junit_4_12_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__net_java_dev_jna_jna_4_1_0_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__net_java_dev_jna_jna_4_1_0_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__net_java_dev_jna_jna_platform_4_1_0_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__net_java_dev_jna_jna_platform_4_1_0_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__net_jodah_typetools_0_5_0_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__net_jodah_typetools_0_5_0_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__net_sourceforge_cssparser_cssparser_0_9_23_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__net_sourceforge_cssparser_cssparser_0_9_23_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__net_sourceforge_htmlunit_htmlunit_2_27_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__net_sourceforge_htmlunit_htmlunit_2_27_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__net_sourceforge_htmlunit_htmlunit_core_js_2_27_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__net_sourceforge_htmlunit_htmlunit_core_js_2_27_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__net_sourceforge_htmlunit_neko_htmlunit_2_27_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__net_sourceforge_htmlunit_neko_htmlunit_2_27_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_commons_commons_exec_1_3_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_commons_commons_exec_1_3_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_commons_commons_lang3_3_6_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_commons_commons_lang3_3_6_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_httpcomponents_httpclient_4_5_3_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_httpcomponents_httpclient_4_5_3_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_httpcomponents_httpcore_4_4_6_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_httpcomponents_httpcore_4_4_6_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_httpcomponents_httpmime_4_5_3_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_httpcomponents_httpmime_4_5_3_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_atteo_classindex_classindex_3_4_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_atteo_classindex_classindex_3_4_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_codehaus_mojo_animal_sniffer_annotations_1_14_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_codehaus_mojo_animal_sniffer_annotations_1_14_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_eclipse_jetty_jetty_client_9_4_5_v20170502_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_eclipse_jetty_jetty_client_9_4_5_v20170502_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_eclipse_jetty_jetty_http_9_4_5_v20170502_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_eclipse_jetty_jetty_http_9_4_5_v20170502_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_eclipse_jetty_jetty_io_9_4_5_v20170502_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_eclipse_jetty_jetty_io_9_4_5_v20170502_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_eclipse_jetty_jetty_util_9_4_5_v20170502_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_eclipse_jetty_jetty_util_9_4_5_v20170502_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_eclipse_jetty_websocket_websocket_api_9_4_5_v20170502_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_eclipse_jetty_websocket_websocket_api_9_4_5_v20170502_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_eclipse_jetty_websocket_websocket_client_9_4_5_v20170502_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_eclipse_jetty_websocket_websocket_client_9_4_5_v20170502_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_eclipse_jetty_websocket_websocket_common_9_4_5_v20170502_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_eclipse_jetty_websocket_websocket_common_9_4_5_v20170502_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_fluentlenium_fluentlenium_core_3_3_0_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_fluentlenium_fluentlenium_core_3_3_0_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_hamcrest_hamcrest_core_1_3_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_hamcrest_hamcrest_core_1_3_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_hibernate_hibernate_validator_5_4_1_Final_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_hibernate_hibernate_validator_5_4_1_Final_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_javassist_javassist_3_21_0_GA_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_javassist_javassist_3_21_0_GA_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_jboss_logging_jboss_logging_3_3_0_Final_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_jboss_logging_jboss_logging_3_3_0_Final_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_reactivestreams_reactive_streams_1_0_1_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_reactivestreams_reactive_streams_1_0_1_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_reflections_reflections_0_9_11_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_reflections_reflections_0_9_11_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_scala_lang_modules_scala_java8_compat_2_12_0_8_0_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_scala_lang_modules_scala_java8_compat_2_12_0_8_0_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_scala_lang_modules_scala_parser_combinators_2_12_1_0_6_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_scala_lang_modules_scala_parser_combinators_2_12_1_0_6_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_scala_lang_modules_scala_xml_2_12_1_0_6_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_scala_lang_modules_scala_xml_2_12_1_0_6_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_scala_lang_scala_library_2_12_4_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_scala_lang_scala_library_2_12_4_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_scala_lang_scala_reflect_2_12_4_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_scala_lang_scala_reflect_2_12_4_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_scala_sbt_test_interface_1_0_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_scala_sbt_test_interface_1_0_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_seleniumhq_selenium_htmlunit_driver_2_27_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_seleniumhq_selenium_htmlunit_driver_2_27_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_seleniumhq_selenium_selenium_api_3_5_3_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_seleniumhq_selenium_selenium_api_3_5_3_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_seleniumhq_selenium_selenium_firefox_driver_3_5_3_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_seleniumhq_selenium_selenium_firefox_driver_3_5_3_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_seleniumhq_selenium_selenium_remote_driver_3_5_3_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_seleniumhq_selenium_selenium_remote_driver_3_5_3_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_seleniumhq_selenium_selenium_support_3_5_3_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_seleniumhq_selenium_selenium_support_3_5_3_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_slf4j_jcl_over_slf4j_1_7_25_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_slf4j_jcl_over_slf4j_1_7_25_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_slf4j_jul_to_slf4j_1_7_25_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_slf4j_jul_to_slf4j_1_7_25_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_slf4j_slf4j_api_1_7_25_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_slf4j_slf4j_api_1_7_25_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_springframework_spring_beans_4_3_11_RELEASE_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_springframework_spring_beans_4_3_11_RELEASE_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_springframework_spring_context_4_3_11_RELEASE_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_springframework_spring_context_4_3_11_RELEASE_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_springframework_spring_core_4_3_11_RELEASE_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_springframework_spring_core_4_3_11_RELEASE_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_typelevel_macro_compat_2_12_1_1_1_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_typelevel_macro_compat_2_12_1_1_1_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_w3c_css_sac_1_3_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_w3c_css_sac_1_3_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__xalan_serializer_2_7_2_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__xalan_serializer_2_7_2_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__xalan_xalan_2_7_2_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__xalan_xalan_2_7_2_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__xerces_xercesImpl_2_11_0_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__xerces_xercesImpl_2_11_0_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__xml_apis_xml_apis_1_4_01_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__xml_apis_xml_apis_1_4_01_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/root.iml" afterPath="$PROJECT_DIR$/.idea/modules/root.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/play2_settings.xml" afterPath="$PROJECT_DIR$/.idea/play2_settings.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/sbt.xml" afterPath="$PROJECT_DIR$/.idea/sbt.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/4/249ca1445dc3a955d0a2030d8a71f2bdf6222f8a" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/c/3cfbb8bcc4edb14a0a8614858725eee9094de35e" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/4/74b95601c3a6d9d565cd312fac64094ec0f9d847" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/c/9cf5efcf3c13ef71ab365a5ecf1e4ff42d294be4" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/4/f42c25577a4c66653928d76c7519c0d46aa2b4e7" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/streams/runtime/exportedProducts/$global/streams/export" afterPath="$PROJECT_DIR$/../backend/target/streams/runtime/exportedProducts/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/streams/runtime/externalDependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/../backend/target/streams/runtime/externalDependencyClasspath/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/streams/runtime/internalDependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/../backend/target/streams/runtime/internalDependencyClasspath/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/streams/runtime/managedClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/../backend/target/streams/runtime/managedClasspath/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/streams/web-assets/assets/$global/streams/sync-assets-web-assets" afterPath="$PROJECT_DIR$/../backend/target/streams/web-assets/assets/$global/streams/sync-assets-web-assets" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/LoginController.java" afterPath="$PROJECT_DIR$/app/controllers/LoginController.java" />
-      <change beforePath="$PROJECT_DIR$/build.sbt" afterPath="$PROJECT_DIR$/build.sbt" />
-      <change beforePath="$PROJECT_DIR$/conf/routes" afterPath="$PROJECT_DIR$/conf/routes" />
       <change beforePath="$PROJECT_DIR$/logs/application.log" afterPath="$PROJECT_DIR$/logs/application.log" />
+      <change beforePath="$PROJECT_DIR$/project/project/target/config-classes/$6c0d8a73497ebe443d3c$.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/project/project/target/config-classes/$6c0d8a73497ebe443d3c.cache" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/project/project/target/config-classes/$6c0d8a73497ebe443d3c.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$0e7e655bedd3f5b87a91$.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$0e7e655bedd3f5b87a91.cache" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$0e7e655bedd3f5b87a91.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$25b54b2f36704f95f4ad$.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$25b54b2f36704f95f4ad.cache" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$25b54b2f36704f95f4ad.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$90db469d08a93317748b$.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$90db469d08a93317748b.cache" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$90db469d08a93317748b.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$93a38147bb745b0d0523$.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$93a38147bb745b0d0523.cache" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$93a38147bb745b0d0523.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$9ce8873f139d8994e6c2$.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$9ce8873f139d8994e6c2.cache" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$9ce8873f139d8994e6c2.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$e88f93c3079fc45182a3$.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$e88f93c3079fc45182a3.cache" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$e88f93c3079fc45182a3.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$e8a3c5f279077494424f$.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$e8a3c5f279077494424f.cache" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$e8a3c5f279077494424f.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$f5ae7b30ec385f7bed3d$.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$f5ae7b30ec385f7bed3d.cache" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/project/target/config-classes/$f5ae7b30ec385f7bed3d.class" afterPath="" />
       <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/default/frontend-build/scala_2.12/sbt_1.0/0.1-SNAPSHOT/resolved.xml.properties" afterPath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/default/frontend-build/scala_2.12/sbt_1.0/0.1-SNAPSHOT/resolved.xml.properties" />
       <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/default/frontend-build/scala_2.12/sbt_1.0/0.1-SNAPSHOT/resolved.xml.xml" afterPath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/default/frontend-build/scala_2.12/sbt_1.0/0.1-SNAPSHOT/resolved.xml.xml" />
       <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-frontend-build-compile-internal.xml" afterPath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-frontend-build-compile-internal.xml" />
@@ -223,20 +184,21 @@
       <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-frontend-build-scala-tool.xml" afterPath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-frontend-build-scala-tool.xml" />
       <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-frontend-build-test-internal.xml" afterPath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-frontend-build-test-internal.xml" />
       <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-frontend-build-test.xml" afterPath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-frontend-build-test.xml" />
-      <change beforePath="$PROJECT_DIR$/project/target/streams/$global/ivyConfiguration/$global/streams/out" afterPath="$PROJECT_DIR$/project/target/streams/$global/ivyConfiguration/$global/streams/out" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.12/output_dsp" afterPath="$PROJECT_DIR$/project/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.12/output_dsp" />
       <change beforePath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/out" afterPath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/out" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/update_cache_2.12/inputs" afterPath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/update_cache_2.12/inputs" />
       <change beforePath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/update_cache_2.12/output" afterPath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/update_cache_2.12/output" />
-      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/compileIncremental/$global/streams/out" afterPath="$PROJECT_DIR$/project/target/streams/compile/compileIncremental/$global/streams/out" />
-      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/copyResources/$global/streams/out" afterPath="$PROJECT_DIR$/project/target/streams/compile/copyResources/$global/streams/out" />
-      <change beforePath="$PROJECT_DIR$/public/javascripts/controllers/signup.js" afterPath="$PROJECT_DIR$/public/javascripts/controllers/signup.js" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/dependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/compile/dependencyClasspath/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/exportedProducts/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/compile/exportedProducts/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/externalDependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/compile/externalDependencyClasspath/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/managedClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/compile/managedClasspath/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/dependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/runtime/dependencyClasspath/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/exportedProducts/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/runtime/exportedProducts/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/externalDependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/runtime/externalDependencyClasspath/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/fullClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/runtime/fullClasspath/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/internalDependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/runtime/internalDependencyClasspath/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/managedClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/runtime/managedClasspath/$global/streams/export" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/LoginController.class" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/LoginController.class" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/ReverseAssets.class" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/ReverseAssets.class" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/ReverseLoginController.class" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/ReverseLoginController.class" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/javascript/ReverseAssets.class" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/javascript/ReverseAssets.class" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/javascript/ReverseLoginController.class" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/javascript/ReverseLoginController.class" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/router/Routes$$anonfun$routes$1.class" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/router/Routes$$anonfun$routes$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/router/Routes.class" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/router/Routes.class" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/routes" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/routes" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/com.cmu.sads18.team3/frontend_2.12/1.0-SNAPSHOT/resolved.xml.properties" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/com.cmu.sads18.team3/frontend_2.12/1.0-SNAPSHOT/resolved.xml.properties" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/com.cmu.sads18.team3/frontend_2.12/1.0-SNAPSHOT/resolved.xml.xml" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/com.cmu.sads18.team3/frontend_2.12/1.0-SNAPSHOT/resolved.xml.xml" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-frontend_2.12-compile-internal.xml" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-frontend_2.12-compile-internal.xml" />
@@ -265,27 +227,32 @@
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/routes/main/router/Routes.scala" afterPath="$PROJECT_DIR$/target/scala-2.12/routes/main/router/Routes.scala" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/routes/main/router/RoutesPrefix.scala" afterPath="$PROJECT_DIR$/target/scala-2.12/routes/main/router/RoutesPrefix.scala" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/twirl/main/views/html/footer.template.scala" afterPath="$PROJECT_DIR$/target/scala-2.12/twirl/main/views/html/footer.template.scala" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/twirl/main/views/html/homeUser.template.scala" afterPath="$PROJECT_DIR$/target/scala-2.12/twirl/main/views/html/homeUser.template.scala" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/twirl/main/views/html/index.template.scala" afterPath="$PROJECT_DIR$/target/scala-2.12/twirl/main/views/html/index.template.scala" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/twirl/main/views/html/login.template.scala" afterPath="$PROJECT_DIR$/target/scala-2.12/twirl/main/views/html/login.template.scala" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/twirl/main/views/html/main.template.scala" afterPath="$PROJECT_DIR$/target/scala-2.12/twirl/main/views/html/main.template.scala" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/twirl/main/views/html/menu.template.scala" afterPath="$PROJECT_DIR$/target/scala-2.12/twirl/main/views/html/menu.template.scala" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/twirl/main/views/html/signup.template.scala" afterPath="$PROJECT_DIR$/target/scala-2.12/twirl/main/views/html/signup.template.scala" />
       <change beforePath="$PROJECT_DIR$/target/streams/$global/$global/$global/streams/sync-exported-assets-web-assets" afterPath="$PROJECT_DIR$/target/streams/$global/$global/$global/streams/sync-exported-assets-web-assets" />
+      <change beforePath="$PROJECT_DIR$/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.12/output_dsp" afterPath="$PROJECT_DIR$/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.12/output_dsp" />
       <change beforePath="$PROJECT_DIR$/target/streams/$global/ivyConfiguration/$global/streams/out" afterPath="$PROJECT_DIR$/target/streams/$global/ivyConfiguration/$global/streams/out" />
       <change beforePath="$PROJECT_DIR$/target/streams/$global/playCommonClassloader/$global/streams/out" afterPath="$PROJECT_DIR$/target/streams/$global/playCommonClassloader/$global/streams/out" />
       <change beforePath="$PROJECT_DIR$/target/streams/$global/update/$global/streams/out" afterPath="$PROJECT_DIR$/target/streams/$global/update/$global/streams/out" />
       <change beforePath="$PROJECT_DIR$/target/streams/$global/update/$global/streams/update_cache_2.12/output" afterPath="$PROJECT_DIR$/target/streams/$global/update/$global/streams/update_cache_2.12/output" />
       <change beforePath="$PROJECT_DIR$/target/streams/compile/compileIncSetup/$global/streams/inc_compile_2.12.zip" afterPath="$PROJECT_DIR$/target/streams/compile/compileIncSetup/$global/streams/inc_compile_2.12.zip" />
       <change beforePath="$PROJECT_DIR$/target/streams/compile/compileIncremental/$global/streams/export" afterPath="$PROJECT_DIR$/target/streams/compile/compileIncremental/$global/streams/export" />
-      <change beforePath="$PROJECT_DIR$/target/streams/compile/compileIncremental/$global/streams/out" afterPath="$PROJECT_DIR$/target/streams/compile/compileIncremental/$global/streams/out" />
       <change beforePath="$PROJECT_DIR$/target/streams/compile/copyResources/$global/streams/copy-resources" afterPath="$PROJECT_DIR$/target/streams/compile/copyResources/$global/streams/copy-resources" />
       <change beforePath="$PROJECT_DIR$/target/streams/compile/copyResources/$global/streams/out" afterPath="$PROJECT_DIR$/target/streams/compile/copyResources/$global/streams/out" />
+      <change beforePath="$PROJECT_DIR$/target/streams/compile/dependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/target/streams/compile/dependencyClasspath/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/target/streams/compile/exportedProducts/$global/streams/export" afterPath="$PROJECT_DIR$/target/streams/compile/exportedProducts/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/target/streams/compile/externalDependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/target/streams/compile/externalDependencyClasspath/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/target/streams/compile/managedClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/target/streams/compile/managedClasspath/$global/streams/export" />
       <change beforePath="$PROJECT_DIR$/target/streams/compile/playRoutes/$global/streams/op-cache" afterPath="$PROJECT_DIR$/target/streams/compile/playRoutes/$global/streams/op-cache" />
-      <change beforePath="$PROJECT_DIR$/target/streams/compile/run/$global/streams/out" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/streams/test/externalDependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/target/streams/test/externalDependencyClasspath/$global/streams/export" />
-      <change beforePath="$PROJECT_DIR$/target/streams/test/managedClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/target/streams/test/managedClasspath/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/target/streams/runtime/exportedProducts/$global/streams/export" afterPath="$PROJECT_DIR$/target/streams/runtime/exportedProducts/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/target/streams/runtime/externalDependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/target/streams/runtime/externalDependencyClasspath/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/target/streams/runtime/internalDependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/target/streams/runtime/internalDependencyClasspath/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/target/streams/runtime/managedClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/target/streams/runtime/managedClasspath/$global/streams/export" />
       <change beforePath="$PROJECT_DIR$/target/streams/web-assets/assets/$global/streams/sync-assets-web-assets" afterPath="$PROJECT_DIR$/target/streams/web-assets/assets/$global/streams/sync-assets-web-assets" />
-      <change beforePath="$PROJECT_DIR$/target/web/classes/main/META-INF/resources/webjars/frontend/1.0-SNAPSHOT/javascripts/controllers/signup.js" afterPath="$PROJECT_DIR$/target/web/classes/main/META-INF/resources/webjars/frontend/1.0-SNAPSHOT/javascripts/controllers/signup.js" />
-      <change beforePath="$PROJECT_DIR$/target/web/public/main/javascripts/controllers/signup.js" afterPath="$PROJECT_DIR$/target/web/public/main/javascripts/controllers/signup.js" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/project/project/target/" />
@@ -310,12 +277,12 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/LoginController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="62" column="1" lean-forward="true" selection-start-line="62" selection-start-column="1" selection-end-line="62" selection-end-column="1" />
+            <state relative-caret-position="217">
+              <caret line="33" column="9" lean-forward="false" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -326,7 +293,7 @@
       <file leaf-file-name="signup.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/javascripts/controllers/signup.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
+            <state relative-caret-position="675">
               <caret line="45" column="41" lean-forward="false" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="41" />
               <folding />
             </state>
@@ -336,7 +303,7 @@
       <file leaf-file-name="routes" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/conf/routes">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
+            <state relative-caret-position="105">
               <caret line="7" column="8" lean-forward="false" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
               <folding />
             </state>
@@ -356,7 +323,7 @@
       <file leaf-file-name="BackendURLService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/services/BackendURLService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
+            <state relative-caret-position="120">
               <caret line="8" column="60" lean-forward="false" selection-start-line="8" selection-start-column="60" selection-end-line="8" selection-end-column="60" />
               <folding />
             </state>
@@ -428,9 +395,10 @@
       </array>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1280" />
+    <option name="height" value="712" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -448,9 +416,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -496,6 +462,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -563,6 +531,17 @@
       </option>
       <envs />
       <patterns />
+    </configuration>
+    <configuration name="Unnamed" type="Play2FrameworkRunConfigurations" factoryName="Play 2 App">
+      <module name="root" />
+      <setting name="play2JpdaPort" value="9999" />
+      <setting name="play2JvmOptions" value="-Xms512M -Xmx1024M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M" />
+      <setting name="play2NeedOpenInBrowser" value="true" />
+      <setting name="play2OpenUrl" value="http://localhost:9001" />
+      <setting name="play2EnvVariables" value="" />
+      <setting name="play2IsNonDefaultInstallDirUsed" value="false" />
+      <setting name="play2NonDefaultInstallDir" value="" />
+      <setting name="play2isAutoReloadEnabled" value="false" />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
@@ -643,6 +622,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="d4b384eb-898c-465b-b08a-f2b4d4fb8ed7" name="Default" comment="" />
@@ -651,53 +633,55 @@
       <option name="presentableId" value="Default" />
       <updated>1522341740136</updated>
       <workItem from="1522341744427" duration="5456000" />
+      <workItem from="1522352645139" duration="2073000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5456000" />
+    <option name="totallyTimeSpent" value="7529000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="877" extended-state="6" />
+    <frame x="0" y="23" width="1280" height="712" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="sbt" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="JSON Utils" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992327" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="sbt" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32992327" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="SonarLint" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2921875" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24921875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="sbt-shell-toolwindow" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="JSON Utils" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992327" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32992327" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="SonarLint" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -707,13 +691,57 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/controllers/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/controllers/signup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="45" column="41" lean-forward="false" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/routes">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="8" lean-forward="false" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.sbt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/services/BackendURLService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
+        <state relative-caret-position="120">
+          <caret line="8" column="60" lean-forward="false" selection-start-line="8" selection-start-column="60" selection-end-line="8" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/services/BackendURLService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
           <caret line="8" column="60" lean-forward="false" selection-start-line="8" selection-start-column="60" selection-end-line="8" selection-end-column="60" />
           <folding />
         </state>
@@ -731,13 +759,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/conf/routes">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
+        <state relative-caret-position="105">
           <caret line="7" column="8" lean-forward="false" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
           <folding />
         </state>
@@ -745,7 +772,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/controllers/signup.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
+        <state relative-caret-position="675">
           <caret line="45" column="41" lean-forward="false" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="41" />
           <folding />
         </state>
@@ -755,7 +782,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -771,7 +797,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -779,7 +804,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
           <caret line="6" column="15" lean-forward="false" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -793,8 +817,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="62" column="1" lean-forward="true" selection-start-line="62" selection-start-column="1" selection-end-line="62" selection-end-column="1" />
+        <state relative-caret-position="217">
+          <caret line="33" column="9" lean-forward="false" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

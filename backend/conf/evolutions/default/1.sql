@@ -3,6 +3,15 @@
 
 # --- !Ups
 
+create table mashups (
+  id                            bigint auto_increment not null,
+  name                          varchar(255),
+  url                           varchar(255),
+  description                   varchar(255),
+  user_id                       bigint,
+  constraint pk_mashups primary key (id)
+);
+
 create table task (
   id                            bigint auto_increment not null,
   name                          varchar(255),
@@ -21,8 +30,16 @@ create table users (
   constraint pk_users primary key (id)
 );
 
+alter table mashups add constraint fk_mashups_user_id foreign key (user_id) references users (id) on delete restrict on update restrict;
+create index ix_mashups_user_id on mashups (user_id);
+
 
 # --- !Downs
+
+alter table mashups drop foreign key fk_mashups_user_id;
+drop index ix_mashups_user_id on mashups;
+
+drop table if exists mashups;
 
 drop table if exists task;
 

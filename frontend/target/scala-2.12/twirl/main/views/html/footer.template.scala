@@ -56,8 +56,8 @@ Seq[Any](format.raw/*1.1*/("""<footer class="page-footer">
 
               /*
                   -- GENERATED --
-                  DATE: Thu Mar 29 09:58:26 PDT 2018
-                  SOURCE: /Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/frontend/app/views/footer.scala.html
+                  DATE: Thu Mar 29 12:45:15 PDT 2018
+                  SOURCE: /Users/tomzhou94/Documents/CMU/SAD/18653-Spring-2018-Team-3/frontend/app/views/footer.scala.html
                   HASH: 1eb1ffa60ea96b31ac0fbb6080d3e36f368ef102
                   MATRIX: 1031->0
                   LINES: 33->1

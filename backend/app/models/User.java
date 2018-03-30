@@ -4,6 +4,8 @@ import javax.persistence.*;
 
 import io.ebean.*;
 import play.data.validation.*;
+import java.util.List;
+import java.util.ArrayList;
 // import org.mindrot.jbcrypt.BCrypt;
 
 @Entity
@@ -30,6 +32,9 @@ public class User extends Model {
     @Column(name = "userType")
     @Constraints.Required
     public String userType;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Mashup> mashups = new ArrayList<>();
 
 
     public static final Finder<Long, User> find = new Finder<>(User.class);
