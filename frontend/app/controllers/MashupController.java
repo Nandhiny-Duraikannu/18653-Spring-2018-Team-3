@@ -57,7 +57,6 @@ public class MashupController extends Controller implements WSBodyReadables, WSB
     public CompletionStage<Result> submitMashup () {
         DynamicForm form = formFactory.form().bindFromRequest();
 
-        // TODO: Change username
         JsonNode mashupJson = Json.newObject()
                 .put("username", session().get("username"))
                 .put("name", form.get("name"))
