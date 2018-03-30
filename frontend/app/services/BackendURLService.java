@@ -18,4 +18,8 @@ public class BackendURLService {
 
     //SUBMIT API
     public String submitApiURL () { return baseURL + "submitapi"; }
+
+    // Search API
+    public String searchAPIURL () { return baseURL + "searchAPI"; }
+
 }

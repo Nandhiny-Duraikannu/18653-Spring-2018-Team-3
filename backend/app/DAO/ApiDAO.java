@@ -1,7 +1,10 @@
 package DAO;
 
+import io.ebean.ExpressionList;
 import models.*;
 import java.util.List;
+
+import play.api.libs.json.Json;
 import services.*;
 
 public class ApiDAO {
@@ -32,5 +35,9 @@ public class ApiDAO {
         }
         stringBuffer.append("]");
         return stringBuffer.toString();
+    }
+
+    public List<Api> searchAPIs (String searchParam) {
+        return Api.find.query().fetch("user").where().like("apiname", "%" + searchParam + "%").findList();
     }
 }

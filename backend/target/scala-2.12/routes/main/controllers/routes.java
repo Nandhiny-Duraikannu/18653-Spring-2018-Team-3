@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/backend/conf/routes
-// @DATE:Fri Mar 30 12:19:26 PDT 2018
+// @DATE:Fri Mar 30 13:57:25 PDT 2018
 
 package controllers;
 

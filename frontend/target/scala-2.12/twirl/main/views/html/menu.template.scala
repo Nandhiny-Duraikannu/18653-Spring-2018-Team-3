@@ -42,10 +42,11 @@ Seq[Any](format.raw/*2.1*/("""
         <div class="nav-content">
             <ul class="tabs tabs-transparent">
                 <li class="tab"><a href=""""),_display_(/*13.43*/routes/*13.49*/.SubmitApiController.apiFormView()),format.raw/*13.83*/("""">Add an API</a></li>
-                """),format.raw/*14.84*/("""
+                <li class="tab"><a href=""""),_display_(/*14.43*/routes/*14.49*/.SubmitApiController.searchApiView()),format.raw/*14.85*/("""">Search APIs</a></li>
                 """),format.raw/*15.84*/("""
-                """),format.raw/*16.69*/("""
-            """),format.raw/*17.13*/("""</ul>
+                """),format.raw/*16.84*/("""
+                """),format.raw/*17.69*/("""
+            """),format.raw/*18.13*/("""</ul>
         </div>
     </div>
 </nav>
@@ -66,11 +67,11 @@ Seq[Any](format.raw/*2.1*/("""
 
               /*
                   -- GENERATED --
-                  DATE: Fri Mar 30 12:54:04 PDT 2018
+                  DATE: Fri Mar 30 13:42:14 PDT 2018
                   SOURCE: /Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/frontend/app/views/menu.scala.html
-                  HASH: 6f9be81889605c2a3ce773810affd4109da73d65
-                  MATRIX: 947->1|1059->20|1086->21|1351->260|1365->266|1408->289|1609->463|1624->469|1679->503|1745->608|1790->692|1835->761|1876->774
-                  LINES: 28->1|33->2|34->3|39->8|39->8|39->8|44->13|44->13|44->13|45->14|46->15|47->16|48->17
+                  HASH: 8b7c72c7c566b0dcea55c1b4bbb3c60de29aa109
+                  MATRIX: 947->1|1059->20|1086->21|1351->260|1365->266|1408->289|1609->463|1624->469|1679->503|1770->567|1785->573|1842->609|1909->715|1954->799|1999->868|2040->881
+                  LINES: 28->1|33->2|34->3|39->8|39->8|39->8|44->13|44->13|44->13|45->14|45->14|45->14|46->15|47->16|48->17|49->18
                   -- GENERATED --
               */
           

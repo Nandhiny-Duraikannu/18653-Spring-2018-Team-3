@@ -8,7 +8,6 @@ import services.BackendURLService;
 
 import javax.inject.Inject;
 import java.util.concurrent.CompletionStage;
-import com.fasterxml.jackson.databind.JsonNode;
 
 /**
  * This controller contains an action to handle HTTP requests
@@ -30,6 +29,7 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
         return ok(views.html.submitApi.render(session().get("username")));
     }
 
+    public Result searchApiView () { return ok(views.html.searchApis.render(session().get("username"))); }
 
     public CompletionStage<Result> submitApi () {
         DynamicForm form = formFactory.form().bindFromRequest();
@@ -59,5 +59,25 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
                 return badRequest("Error while submitting API");
             }
         });
-}
+    }
+
+    public CompletionStage<Result> searchApis () {
+        DynamicForm form = formFactory.form().bindFromRequest();
+        String url = urlService.searchAPIURL() + "?searchParam=" + form.get("searchParam");
+        // Post the json to create the user in the backend
+        WSRequest request = ws.url(url);
+        return request
+        .addHeader("Content-Type", "application/json")
+        .get()
+        .thenApply((WSResponse r) -> {
+            if (r.getStatus() == 200) {
+                System.out.println("-------" + r.getBody());
+
+                return ok(r.getBody());
+            } else {
+                System.out.println("test error" + r.getStatus());
+                return badRequest("Error while searching for an API");
+            }
+        });
+    }
 }

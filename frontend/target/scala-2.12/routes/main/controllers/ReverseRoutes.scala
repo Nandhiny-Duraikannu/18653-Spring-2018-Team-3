@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/frontend/conf/routes
-// @DATE:Fri Mar 30 13:00:19 PDT 2018
+// @DATE:Fri Mar 30 13:42:13 PDT 2018
 
 import play.api.mvc.Call
 
@@ -111,6 +111,12 @@ package controllers {
     }
 
   
+    // @LINE:28
+    def searchApiView(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "searchApis")
+    }
+  
     // @LINE:26
     def submitApi(): Call = {
       
@@ -121,6 +127,12 @@ package controllers {
     def apiFormView(): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "createapi")
+    }
+  
+    // @LINE:29
+    def searchApis(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "search")
     }
   
   }

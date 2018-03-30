@@ -43,3 +43,13 @@ S
 #app/services/BackendURLService.java,e/d/eddd7a7d9f898e7c29157768b919cb4f0d3a95c2
 [
 +public/javascripts/controllers/forgotPwd.js,9/d/9d33642da0bb53daaf26faf20f5fdf2d9ac172a1
+N
+app/views/submitApi.scala.html,4/8/4873628d46a63f21420a7d89aaea828ac78ee8ee
+O
+app/views/searchApis.scala.html,7/f/7f29402ed635547e795d80e81a088db4089b859e
+[
++public/javascripts/controllers/searchapi.js,e/6/e60343b533e71f426d34041a1228fb2ea927180a
+X
+(app/controllers/SubmitApiController.java,6/1/61c7281a3d5917978010993ce8d595ab9934a5c9
+[
++public/javascripts/controllers/submitapi.js,f/7/f7ce1f0812b6673da7a2ffc463a078cad62827ef

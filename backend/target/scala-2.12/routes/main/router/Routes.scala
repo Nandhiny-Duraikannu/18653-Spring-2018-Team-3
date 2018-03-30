@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/backend/conf/routes
-// @DATE:Fri Mar 30 12:19:26 PDT 2018
+// @DATE:Fri Mar 30 13:57:25 PDT 2018
 
 package router
 
@@ -54,6 +54,7 @@ class Routes(
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """submitapi""", """controllers.ApiController.submitApi()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """getapi""", """controllers.ApiController.getApi()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """searchAPI""", """controllers.ApiController.searchApi()"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
     case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
@@ -187,6 +188,24 @@ class Routes(
     )
   )
 
+  // @LINE:23
+  private[this] lazy val controllers_ApiController_searchApi7_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("searchAPI")))
+  )
+  private[this] lazy val controllers_ApiController_searchApi7_invoker = createInvoker(
+    ApiController_0.searchApi(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.ApiController",
+      "searchApi",
+      Nil,
+      "GET",
+      this.prefix + """searchAPI""",
+      """""",
+      Seq()
+    )
+  )
+
 
   def routes: PartialFunction[RequestHeader, Handler] = {
   
@@ -230,6 +249,12 @@ class Routes(
     case controllers_ApiController_getApi6_route(params@_) =>
       call { 
         controllers_ApiController_getApi6_invoker.call(ApiController_0.getApi())
+      }
+  
+    // @LINE:23
+    case controllers_ApiController_searchApi7_route(params@_) =>
+      call { 
+        controllers_ApiController_searchApi7_invoker.call(ApiController_0.searchApi())
       }
   }
 }

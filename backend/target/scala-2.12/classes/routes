@@ -20,3 +20,4 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 POST    /submitapi                     controllers.ApiController.submitApi()
 
 GET    /getapi                         controllers.ApiController.getApi()
+GET    /searchAPI                      controllers.ApiController.searchApi()

@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/frontend/conf/routes
-// @DATE:Fri Mar 30 13:00:19 PDT 2018
+// @DATE:Fri Mar 30 13:42:13 PDT 2018
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -159,6 +159,16 @@ package controllers.javascript {
     }
 
   
+    // @LINE:28
+    def searchApiView: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.SubmitApiController.searchApiView",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "searchApis"})
+        }
+      """
+    )
+  
     // @LINE:26
     def submitApi: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.SubmitApiController.submitApi",
@@ -175,6 +185,16 @@ package controllers.javascript {
       """
         function() {
           return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "createapi"})
+        }
+      """
+    )
+  
+    // @LINE:29
+    def searchApis: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.SubmitApiController.searchApis",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "search"})
         }
       """
     )

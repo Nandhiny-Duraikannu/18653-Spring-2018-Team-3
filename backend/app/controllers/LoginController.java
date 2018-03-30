@@ -61,7 +61,6 @@ public class LoginController extends Controller {
             user.updatePassword("temp");
             return ok("{\"reset\":true}");
         } else {
-            System.out.println("nope");
             return ok("{\"reset\":false}");
         }
     }

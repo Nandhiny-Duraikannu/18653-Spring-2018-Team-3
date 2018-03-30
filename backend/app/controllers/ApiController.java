@@ -4,9 +4,11 @@ import DAO.*;
 import models.*;
 import play.data.DynamicForm;
 import play.data.FormFactory;
+import play.libs.Json;
 import play.mvc.*;
 
 import javax.inject.Inject;
+import java.util.List;
 
 /**
  * This controller contains an action to handle HTTP requests
@@ -44,5 +46,14 @@ public class ApiController extends Controller {
     public Result getApi () {
         String allapi = apiDAO.getApi();
         return ok(allapi);
+    }
+
+    public Result searchApi () {
+        DynamicForm form = formFactory.form().bindFromRequest();
+        String searchParam = form.get("searchParam");
+    
+        List<Api> apis = apiDAO.searchAPIs(searchParam);
+
+        return ok(Json.toJson(apis));
     }
 }

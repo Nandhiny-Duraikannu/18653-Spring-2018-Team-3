@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/frontend/conf/routes
-// @DATE:Fri Mar 30 13:00:19 PDT 2018
+// @DATE:Fri Mar 30 13:42:13 PDT 2018
 
 package router
 
@@ -60,6 +60,8 @@ class Routes(
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """submitapi""", """controllers.SubmitApiController.submitApi()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """createapi""", """controllers.SubmitApiController.apiFormView()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """searchApis""", """controllers.SubmitApiController.searchApiView()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """search""", """controllers.SubmitApiController.searchApis()"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
     case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
@@ -301,6 +303,42 @@ class Routes(
     )
   )
 
+  // @LINE:28
+  private[this] lazy val controllers_SubmitApiController_searchApiView13_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("searchApis")))
+  )
+  private[this] lazy val controllers_SubmitApiController_searchApiView13_invoker = createInvoker(
+    SubmitApiController_3.searchApiView(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.SubmitApiController",
+      "searchApiView",
+      Nil,
+      "GET",
+      this.prefix + """searchApis""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:29
+  private[this] lazy val controllers_SubmitApiController_searchApis14_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("search")))
+  )
+  private[this] lazy val controllers_SubmitApiController_searchApis14_invoker = createInvoker(
+    SubmitApiController_3.searchApis(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.SubmitApiController",
+      "searchApis",
+      Nil,
+      "GET",
+      this.prefix + """search""",
+      """""",
+      Seq()
+    )
+  )
+
 
   def routes: PartialFunction[RequestHeader, Handler] = {
   
@@ -380,6 +418,18 @@ class Routes(
     case controllers_SubmitApiController_apiFormView12_route(params@_) =>
       call { 
         controllers_SubmitApiController_apiFormView12_invoker.call(SubmitApiController_3.apiFormView())
+      }
+  
+    // @LINE:28
+    case controllers_SubmitApiController_searchApiView13_route(params@_) =>
+      call { 
+        controllers_SubmitApiController_searchApiView13_invoker.call(SubmitApiController_3.searchApiView())
+      }
+  
+    // @LINE:29
+    case controllers_SubmitApiController_searchApis14_route(params@_) =>
+      call { 
+        controllers_SubmitApiController_searchApis14_invoker.call(SubmitApiController_3.searchApis())
       }
   }
 }
