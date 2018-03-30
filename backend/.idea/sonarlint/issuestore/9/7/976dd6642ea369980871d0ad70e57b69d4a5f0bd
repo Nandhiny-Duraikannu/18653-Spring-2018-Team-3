@@ -1,7 +1,4 @@
 
-lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(¨Èñ·ÿÿÿÿÿ8ß¿¨ï¦,
-gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(—ÅÛ©8ß¿¨ï¦,
-gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(÷‡Ö8ß¿¨ï¦,
-lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ò±¹•ýÿÿÿÿ8ß¿¨ï¦,
-Ssquid:S1135"2Complete the task associated to this TODO comment.(€áßþÿÿÿÿ8ß¿¨ï¦,
-€squid:S1149"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(šù†»ÿÿÿÿÿ8ß¿¨ï¦,
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(¨Èñ·ÿÿÿÿÿ8œ Ô²§,
+€squid:S1149"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(šù†»ÿÿÿÿÿ8œ Ô²§,
+]squid:S1126"AReplace this if-then-else statement by a single return statement.(Ÿ†ô»8ÊéØ²§,

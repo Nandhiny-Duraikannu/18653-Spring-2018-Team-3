@@ -26,6 +26,6 @@ brew install sbt@1
 ```
 
 ## Starting the project
-Open the `frontend` folder in a terminal and run `sbt run -Dhttp.port=8080`. The front end will be served on port `9000`.
+Open the `frontend` folder in a terminal and run `sbt run -Dhttp.port=8080`. The front end will be served on port `9001`.
 
-Open the `backend` folder in a terminal and run `sbt run -Dhttp.port=8081`. The front end will be served on port `9001`.
+Open the `backend` folder in a terminal and run `sbt run -Dhttp.port=8081`. The front end will be served on port `9000`.

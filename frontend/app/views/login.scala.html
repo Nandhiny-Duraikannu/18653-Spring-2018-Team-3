@@ -1,4 +1,3 @@
-
 @main("Login | Service Repository") {
 
     <div class="header red darken-3">
@@ -14,21 +13,34 @@
 
     <div class="container">
         <div class="row">
-            <form class="col s8 offset-s2" id="loginForm">
+            <div class="col s8 offset-s2">
+            @helper.form(action = routes.LoginController.login) {
                 <div class="input-field col s12">
-                    <input placeholder="Username" id="username" type="text" required>
+                    <input placeholder="Username" type="text" name="username">
                     <label for="username">Username</label>
                 </div>
+                @*<div class="col s12" id="usernameRequiredBadge">*@
+                    @*<span class="new badge" data-badge-caption="USERNAME IS REQUIRED"></span>*@
+                @*</div>*@
+
 
                 <div class="input-field col s12">
-                    <input placeholder="Password" id="password" type="password" required>
+                    <input placeholder="Password" id="password" type="password" name="password">
                     <label for="password">Password</label>
                 </div>
-                <a href="/signup" class="btn-flat left">Create an account</a>
-                <button class="btn right" type="submit" name="action">Login
+
+                @*<div class="col s6" id="passwordRequiredBadge">*@
+                    @*<span class="new badge" data-badge-caption="PASSWORD IS REQUIRED"></span>*@
+                @*</div>*@
+
+                <a href="@routes.LoginController.signup" class="btn-flat left">Create an account</a>
+                <a href="@routes.LoginController.forgotPwdView" class="btn-flat left">Forgot Password</a>
+                <button id="loginButton" class="btn right" type="submit">Login
                     <i class="material-icons right">chevron_right</i>
                 </button>
-            </form>
+
+            }
+            </div>
         </div>
     </div>
 }

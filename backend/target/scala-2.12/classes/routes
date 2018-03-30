@@ -3,8 +3,12 @@
 # ~~~~
 
 # Signup, login, reset password, ...
+
+POST    /login                      controllers.LoginController.login()
+
 POST    /signup                     controllers.LoginController.signup()
 
+POST    /forgotpassword             controllers.LoginController.forgotPwd()
 
 GET     /users                      controllers.UserController.getAllUsers()
 
