@@ -3,6 +3,19 @@
 
 # --- !Ups
 
+create table api (
+  id                            bigint auto_increment not null,
+  apiname                       varchar(255),
+  apihomepage                   varchar(255),
+  apiendpoint                   varchar(255),
+  version                       varchar(255),
+  scope                         varchar(255),
+  apidescription                varchar(255),
+  emailaddress                  varchar(255),
+  object_type                   varchar(255),
+  constraint pk_api primary key (id)
+);
+
 create table task (
   id                            bigint auto_increment not null,
   name                          varchar(255),
@@ -23,6 +36,8 @@ create table users (
 
 
 # --- !Downs
+
+drop table if exists api;
 
 drop table if exists task;
 
