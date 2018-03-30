@@ -8,4 +8,8 @@ public class BackendURLService {
 
     public String signupURL () { return baseURL + "signup"; }
 
+    //SUBMIT API
+    public String submitApiURL () { return baseURL + "submitapi"; }
+
+
 }

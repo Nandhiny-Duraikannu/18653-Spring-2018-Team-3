@@ -12,3 +12,7 @@ GET     /users                      controllers.UserController.getAllUsers()
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 
 
+#Submit API
+POST    /submitapi                     controllers.ApiController.submitApi()
+
+GET    /getapi                         controllers.ApiController.getApi()
