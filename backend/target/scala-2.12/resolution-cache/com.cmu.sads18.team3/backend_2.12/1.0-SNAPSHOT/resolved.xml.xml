@@ -4,7 +4,11 @@
 		module="backend_2.12"
 		revision="1.0-SNAPSHOT"
 		status="integration"
+<<<<<<< HEAD
 		publication="20180330121648"
+=======
+		publication="20180329124329"
+>>>>>>> Add backend functionalities for submitting and searching a Mashup
 	>
 		<description>
 		backend
@@ -54,7 +58,5 @@
 		<dependency org="com.typesafe.play" name="play-guice_2.12" rev="2.6.12" conf="compile->default(compile)"/>
 		<dependency org="com.typesafe.play" name="play-jdbc_2.12" rev="2.6.12" conf="compile->default(compile)"/>
 		<dependency org="mysql" name="mysql-connector-java" rev="5.1.41" conf="compile->default(compile)"/>
-		<dependency org="org.avaje" name="ebean" rev="2.7.3" conf="compile->default(compile)"/>
-		<dependency org="javax.persistence" name="persistence-api" rev="1.0.2" conf="compile->default(compile)"/>
 	</dependencies>
 </ivy-module>

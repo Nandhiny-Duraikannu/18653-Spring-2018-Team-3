@@ -22,14 +22,15 @@ import play.mvc.Http.Context.Implicit._
 import play.data._
 import play.core.j.PlayFormsMagicForJava._
 
-object menu extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template1[String,play.twirl.api.HtmlFormat.Appendable] {
+object menu extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template0[play.twirl.api.HtmlFormat.Appendable] {
 
   /**/
-  def apply/*1.2*/(username: String):play.twirl.api.HtmlFormat.Appendable = {
+  def apply():play.twirl.api.HtmlFormat.Appendable = {
     _display_ {
       {
 
 
+<<<<<<< HEAD
 Seq[Any](format.raw/*2.1*/("""
 """),format.raw/*3.1*/("""<nav class="nav-extended">
     <div class="container">
@@ -51,13 +52,16 @@ Seq[Any](format.raw/*2.1*/("""
 </nav>
 
 """))
+=======
+Seq[Any]()
+>>>>>>> Add backend functionalities for submitting and searching a Mashup
       }
     }
   }
 
-  def render(username:String): play.twirl.api.HtmlFormat.Appendable = apply(username)
+  def render(): play.twirl.api.HtmlFormat.Appendable = apply()
 
-  def f:((String) => play.twirl.api.HtmlFormat.Appendable) = (username) => apply(username)
+  def f:(() => play.twirl.api.HtmlFormat.Appendable) = () => apply()
 
   def ref: this.type = this
 
@@ -66,11 +70,19 @@ Seq[Any](format.raw/*2.1*/("""
 
               /*
                   -- GENERATED --
+<<<<<<< HEAD
                   DATE: Fri Mar 30 12:54:04 PDT 2018
                   SOURCE: /Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/frontend/app/views/menu.scala.html
                   HASH: 6f9be81889605c2a3ce773810affd4109da73d65
                   MATRIX: 947->1|1059->20|1086->21|1351->260|1365->266|1408->289|1609->463|1624->469|1679->503|1745->608|1790->692|1835->761|1876->774
                   LINES: 28->1|33->2|34->3|39->8|39->8|39->8|44->13|44->13|44->13|45->14|46->15|47->16|48->17
+=======
+                  DATE: Thu Mar 29 12:45:15 PDT 2018
+                  SOURCE: /Users/tomzhou94/Documents/CMU/SAD/18653-Spring-2018-Team-3/frontend/app/views/menu.scala.html
+                  HASH: 282da6d6fc3be5f18bafd4f3e6904d0c508db341
+                  MATRIX: 
+                  LINES: 
+>>>>>>> Add backend functionalities for submitting and searching a Mashup
                   -- GENERATED --
               */
           

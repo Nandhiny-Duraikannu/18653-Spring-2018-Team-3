@@ -1,4 +1,4 @@
 [debug] Copy resource mappings: 
-[debug] 	(/Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/frontend/conf/logback.xml,/Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/frontend/target/scala-2.12/classes/logback.xml)
-[debug] 	(/Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/frontend/conf/application.conf,/Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/frontend/target/scala-2.12/classes/application.conf)
-[debug] 	(/Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/frontend/conf/routes,/Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/frontend/target/scala-2.12/classes/routes)
+[debug] 	(/Users/tomzhou94/Documents/CMU/SAD/18653-Spring-2018-Team-3/frontend/conf/logback.xml,/Users/tomzhou94/Documents/CMU/SAD/18653-Spring-2018-Team-3/frontend/target/scala-2.12/classes/logback.xml)
+[debug] 	(/Users/tomzhou94/Documents/CMU/SAD/18653-Spring-2018-Team-3/frontend/conf/application.conf,/Users/tomzhou94/Documents/CMU/SAD/18653-Spring-2018-Team-3/frontend/target/scala-2.12/classes/application.conf)
+[debug] 	(/Users/tomzhou94/Documents/CMU/SAD/18653-Spring-2018-Team-3/frontend/conf/routes,/Users/tomzhou94/Documents/CMU/SAD/18653-Spring-2018-Team-3/frontend/target/scala-2.12/classes/routes)

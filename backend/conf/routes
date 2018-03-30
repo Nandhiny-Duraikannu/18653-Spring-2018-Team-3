@@ -12,6 +12,10 @@ POST    /forgotpassword             controllers.LoginController.forgotPwd()
 
 GET     /users                      controllers.UserController.getAllUsers()
 
+# Mashup
+POST    /mashup                     controllers.MashupController.submitMashup()
+GET     /search/mashup              controllers.MashupController.searchMashup()
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 

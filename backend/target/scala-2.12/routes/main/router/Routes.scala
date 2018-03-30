@@ -1,6 +1,11 @@
 // @GENERATOR:play-routes-compiler
+<<<<<<< HEAD
 // @SOURCE:/Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/backend/conf/routes
 // @DATE:Fri Mar 30 12:19:26 PDT 2018
+=======
+// @SOURCE:/Users/tomzhou94/Documents/CMU/SAD/18653-Spring-2018-Team-3/backend/conf/routes
+// @DATE:Thu Mar 29 17:00:19 PDT 2018
+>>>>>>> Add backend functionalities for submitting and searching a Mashup
 
 package router
 
@@ -14,10 +19,19 @@ import _root_.play.libs.F
 
 class Routes(
   override val errorHandler: play.api.http.HttpErrorHandler, 
+<<<<<<< HEAD
   // @LINE:7
   LoginController_3: controllers.LoginController,
   // @LINE:13
   UserController_1: controllers.UserController,
+=======
+  // @LINE:6
+  LoginController_3: controllers.LoginController,
+  // @LINE:9
+  UserController_0: controllers.UserController,
+  // @LINE:12
+  MashupController_2: controllers.MashupController,
+>>>>>>> Add backend functionalities for submitting and searching a Mashup
   // @LINE:16
   Assets_2: controllers.Assets,
   // @LINE:20
@@ -27,6 +41,7 @@ class Routes(
 
    @javax.inject.Inject()
    def this(errorHandler: play.api.http.HttpErrorHandler,
+<<<<<<< HEAD
     // @LINE:7
     LoginController_3: controllers.LoginController,
     // @LINE:13
@@ -40,6 +55,21 @@ class Routes(
   def withPrefix(prefix: String): Routes = {
     router.RoutesPrefix.setPrefix(prefix)
     new Routes(errorHandler, LoginController_3, UserController_1, Assets_2, ApiController_0, prefix)
+=======
+    // @LINE:6
+    LoginController_3: controllers.LoginController,
+    // @LINE:9
+    UserController_0: controllers.UserController,
+    // @LINE:12
+    MashupController_2: controllers.MashupController,
+    // @LINE:16
+    Assets_1: controllers.Assets
+  ) = this(errorHandler, LoginController_3, UserController_0, MashupController_2, Assets_1, "/")
+
+  def withPrefix(prefix: String): Routes = {
+    router.RoutesPrefix.setPrefix(prefix)
+    new Routes(errorHandler, LoginController_3, UserController_0, MashupController_2, Assets_1, prefix)
+>>>>>>> Add backend functionalities for submitting and searching a Mashup
   }
 
   private[this] val defaultPrefix: String = {
@@ -47,10 +77,10 @@ class Routes(
   }
 
   def documentation = List(
-    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """login""", """controllers.LoginController.login()"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """signup""", """controllers.LoginController.signup()"""),
-    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """forgotpassword""", """controllers.LoginController.forgotPwd()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """users""", """controllers.UserController.getAllUsers()"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """mashup""", """controllers.MashupController.submitMashup()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """search/mashup""", """controllers.MashupController.searchMashup()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """submitapi""", """controllers.ApiController.submitApi()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """getapi""", """controllers.ApiController.getApi()"""),
@@ -61,30 +91,17 @@ class Routes(
   }}
 
 
-  // @LINE:7
-  private[this] lazy val controllers_LoginController_login0_route = Route("POST",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("login")))
-  )
-  private[this] lazy val controllers_LoginController_login0_invoker = createInvoker(
-    LoginController_3.login(),
-    play.api.routing.HandlerDef(this.getClass.getClassLoader,
-      "router",
-      "controllers.LoginController",
-      "login",
-      Nil,
-      "POST",
-      this.prefix + """login""",
-      """""",
-      Seq()
-    )
-  )
-
-  // @LINE:9
-  private[this] lazy val controllers_LoginController_signup1_route = Route("POST",
+  // @LINE:6
+  private[this] lazy val controllers_LoginController_signup0_route = Route("POST",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("signup")))
   )
-  private[this] lazy val controllers_LoginController_signup1_invoker = createInvoker(
+<<<<<<< HEAD
+  private[this] lazy val controllers_LoginController_login0_invoker = createInvoker(
+    LoginController_3.login(),
+=======
+  private[this] lazy val controllers_LoginController_signup0_invoker = createInvoker(
     LoginController_3.signup(),
+>>>>>>> Add backend functionalities for submitting and searching a Mashup
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.LoginController",
@@ -92,35 +109,22 @@ class Routes(
       Nil,
       "POST",
       this.prefix + """signup""",
-      """""",
+      """ Signup, login, reset password, ...""",
       Seq()
     )
   )
 
-  // @LINE:11
-  private[this] lazy val controllers_LoginController_forgotPwd2_route = Route("POST",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("forgotpassword")))
-  )
-  private[this] lazy val controllers_LoginController_forgotPwd2_invoker = createInvoker(
-    LoginController_3.forgotPwd(),
-    play.api.routing.HandlerDef(this.getClass.getClassLoader,
-      "router",
-      "controllers.LoginController",
-      "forgotPwd",
-      Nil,
-      "POST",
-      this.prefix + """forgotpassword""",
-      """""",
-      Seq()
-    )
-  )
-
-  // @LINE:13
-  private[this] lazy val controllers_UserController_getAllUsers3_route = Route("GET",
+  // @LINE:9
+  private[this] lazy val controllers_UserController_getAllUsers1_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("users")))
   )
-  private[this] lazy val controllers_UserController_getAllUsers3_invoker = createInvoker(
-    UserController_1.getAllUsers(),
+<<<<<<< HEAD
+  private[this] lazy val controllers_LoginController_signup1_invoker = createInvoker(
+    LoginController_3.signup(),
+=======
+  private[this] lazy val controllers_UserController_getAllUsers1_invoker = createInvoker(
+    UserController_0.getAllUsers(),
+>>>>>>> Add backend functionalities for submitting and searching a Mashup
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.UserController",
@@ -128,6 +132,52 @@ class Routes(
       Nil,
       "GET",
       this.prefix + """users""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:12
+  private[this] lazy val controllers_MashupController_submitMashup2_route = Route("POST",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("mashup")))
+  )
+<<<<<<< HEAD
+  private[this] lazy val controllers_LoginController_forgotPwd2_invoker = createInvoker(
+    LoginController_3.forgotPwd(),
+=======
+  private[this] lazy val controllers_MashupController_submitMashup2_invoker = createInvoker(
+    MashupController_2.submitMashup(),
+>>>>>>> Add backend functionalities for submitting and searching a Mashup
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.MashupController",
+      "submitMashup",
+      Nil,
+      "POST",
+      this.prefix + """mashup""",
+      """ Mashup""",
+      Seq()
+    )
+  )
+
+  // @LINE:13
+  private[this] lazy val controllers_MashupController_searchMashup3_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("search/mashup")))
+  )
+<<<<<<< HEAD
+  private[this] lazy val controllers_UserController_getAllUsers3_invoker = createInvoker(
+    UserController_1.getAllUsers(),
+=======
+  private[this] lazy val controllers_MashupController_searchMashup3_invoker = createInvoker(
+    MashupController_2.searchMashup(),
+>>>>>>> Add backend functionalities for submitting and searching a Mashup
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.MashupController",
+      "searchMashup",
+      Nil,
+      "GET",
+      this.prefix + """search/mashup""",
       """""",
       Seq()
     )
@@ -190,28 +240,44 @@ class Routes(
 
   def routes: PartialFunction[RequestHeader, Handler] = {
   
-    // @LINE:7
-    case controllers_LoginController_login0_route(params@_) =>
+    // @LINE:6
+    case controllers_LoginController_signup0_route(params@_) =>
       call { 
+<<<<<<< HEAD
         controllers_LoginController_login0_invoker.call(LoginController_3.login())
+=======
+        controllers_LoginController_signup0_invoker.call(LoginController_3.signup())
+>>>>>>> Add backend functionalities for submitting and searching a Mashup
       }
   
     // @LINE:9
-    case controllers_LoginController_signup1_route(params@_) =>
+    case controllers_UserController_getAllUsers1_route(params@_) =>
       call { 
+<<<<<<< HEAD
         controllers_LoginController_signup1_invoker.call(LoginController_3.signup())
+=======
+        controllers_UserController_getAllUsers1_invoker.call(UserController_0.getAllUsers())
+>>>>>>> Add backend functionalities for submitting and searching a Mashup
       }
   
-    // @LINE:11
-    case controllers_LoginController_forgotPwd2_route(params@_) =>
+    // @LINE:12
+    case controllers_MashupController_submitMashup2_route(params@_) =>
       call { 
+<<<<<<< HEAD
         controllers_LoginController_forgotPwd2_invoker.call(LoginController_3.forgotPwd())
+=======
+        controllers_MashupController_submitMashup2_invoker.call(MashupController_2.submitMashup())
+>>>>>>> Add backend functionalities for submitting and searching a Mashup
       }
   
     // @LINE:13
-    case controllers_UserController_getAllUsers3_route(params@_) =>
+    case controllers_MashupController_searchMashup3_route(params@_) =>
       call { 
+<<<<<<< HEAD
         controllers_UserController_getAllUsers3_invoker.call(UserController_1.getAllUsers())
+=======
+        controllers_MashupController_searchMashup3_invoker.call(MashupController_2.searchMashup())
+>>>>>>> Add backend functionalities for submitting and searching a Mashup
       }
   
     // @LINE:16

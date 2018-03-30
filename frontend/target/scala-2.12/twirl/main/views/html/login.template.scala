@@ -30,9 +30,9 @@ object login extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.Html
       {
 
 
-Seq[Any](_display_(/*1.2*/main("Login | Service Repository")/*1.36*/ {_display_(Seq[Any](format.raw/*1.38*/("""
+Seq[Any](_display_(/*2.2*/main("Login | Service Repository")/*2.36*/ {_display_(Seq[Any](format.raw/*2.38*/("""
 
-    """),format.raw/*3.5*/("""<div class="header red darken-3">
+    """),format.raw/*4.5*/("""<div class="header red darken-3">
         <div class="container">
             <div class="row">
                 <div class="col s12">
@@ -45,37 +45,25 @@ Seq[Any](_display_(/*1.2*/main("Login | Service Repository")/*1.36*/ {_display_(
 
     <div class="container">
         <div class="row">
-            <div class="col s8 offset-s2">
-            """),_display_(/*17.14*/helper/*17.20*/.form(action = routes.LoginController.login)/*17.64*/ {_display_(Seq[Any](format.raw/*17.66*/("""
-                """),format.raw/*18.17*/("""<div class="input-field col s12">
-                    <input placeholder="Username" type="text" name="username">
+            <form class="col s8 offset-s2" id="loginForm">
+                <div class="input-field col s12">
+                    <input placeholder="Username" id="username" type="text" required>
                     <label for="username">Username</label>
                 </div>
-                """),format.raw/*22.69*/("""
-                    """),format.raw/*23.98*/("""
-                """),format.raw/*24.27*/("""
 
-
-                """),format.raw/*27.17*/("""<div class="input-field col s12">
-                    <input placeholder="Password" id="password" type="password" name="password">
+                <div class="input-field col s12">
+                    <input placeholder="Password" id="password" type="password" required>
                     <label for="password">Password</label>
                 </div>
-
-                """),format.raw/*32.68*/("""
-                    """),format.raw/*33.98*/("""
-                """),format.raw/*34.27*/("""
-
-                """),format.raw/*36.17*/("""<a href=""""),_display_(/*36.27*/routes/*36.33*/.LoginController.signup),format.raw/*36.56*/("""" class="btn-flat left">Create an account</a>
-                <a href=""""),_display_(/*37.27*/routes/*37.33*/.LoginController.forgotPwdView),format.raw/*37.63*/("""" class="btn-flat left">Forgot Password</a>
-                <button id="loginButton" class="btn right" type="submit">Login
+                <a href="/signup" class="btn-flat left">Create an account</a>
+                <button class="btn right" type="submit" name="action">Login
                     <i class="material-icons right">chevron_right</i>
                 </button>
-
-            """)))}),format.raw/*42.14*/("""
-            """),format.raw/*43.13*/("""</div>
+            </form>
         </div>
     </div>
-""")))}))
+""")))}),format.raw/*34.2*/("""
+"""))
       }
     }
   }
@@ -91,11 +79,11 @@ Seq[Any](_display_(/*1.2*/main("Login | Service Repository")/*1.36*/ {_display_(
 
               /*
                   -- GENERATED --
-                  DATE: Fri Mar 30 03:46:47 PDT 2018
-                  SOURCE: /Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/frontend/app/views/login.scala.html
-                  HASH: eb4eea27451c3609693aa5b9dbb92dcf62e49ad9
-                  MATRIX: 1030->1|1072->35|1111->37|1143->43|1618->491|1633->497|1686->541|1726->543|1771->560|2010->823|2059->921|2104->948|2151->967|2409->1248|2458->1346|2503->1373|2549->1391|2586->1401|2601->1407|2645->1430|2744->1502|2759->1508|2810->1538|3074->1771|3115->1784
-                  LINES: 33->1|33->1|33->1|35->3|49->17|49->17|49->17|49->17|50->18|54->22|55->23|56->24|59->27|64->32|65->33|66->34|68->36|68->36|68->36|68->36|69->37|69->37|69->37|74->42|75->43
+                  DATE: Thu Mar 29 12:45:15 PDT 2018
+                  SOURCE: /Users/tomzhou94/Documents/CMU/SAD/18653-Spring-2018-Team-3/frontend/app/views/login.scala.html
+                  HASH: 0e77bdc447713c35ef8f9715d77d7b819c56907d
+                  MATRIX: 1030->2|1072->36|1111->38|1143->44|2362->1233
+                  LINES: 33->2|33->2|33->2|35->4|65->34
                   -- GENERATED --
               */
           

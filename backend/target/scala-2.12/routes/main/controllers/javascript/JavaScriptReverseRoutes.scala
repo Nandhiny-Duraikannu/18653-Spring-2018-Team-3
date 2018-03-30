@@ -1,6 +1,11 @@
 // @GENERATOR:play-routes-compiler
+<<<<<<< HEAD
 // @SOURCE:/Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/backend/conf/routes
 // @DATE:Fri Mar 30 12:19:26 PDT 2018
+=======
+// @SOURCE:/Users/tomzhou94/Documents/CMU/SAD/18653-Spring-2018-Team-3/backend/conf/routes
+// @DATE:Thu Mar 29 17:00:19 PDT 2018
+>>>>>>> Add backend functionalities for submitting and searching a Mashup
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -8,10 +13,40 @@ import play.api.routing.JavaScriptReverseRoute
 import _root_.controllers.Assets.Asset
 import _root_.play.libs.F
 
-// @LINE:7
+// @LINE:6
 package controllers.javascript {
 
-  // @LINE:7
+  // @LINE:12
+  class ReverseMashupController(_prefix: => String) {
+
+    def _defaultPrefix: String = {
+      if (_prefix.endsWith("/")) "" else "/"
+    }
+
+  
+    // @LINE:13
+    def searchMashup: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.MashupController.searchMashup",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "search/mashup"})
+        }
+      """
+    )
+  
+    // @LINE:12
+    def submitMashup: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.MashupController.submitMashup",
+      """
+        function() {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "mashup"})
+        }
+      """
+    )
+  
+  }
+
+  // @LINE:6
   class ReverseLoginController(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -19,32 +54,12 @@ package controllers.javascript {
     }
 
   
-    // @LINE:9
+    // @LINE:6
     def signup: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.LoginController.signup",
       """
         function() {
           return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "signup"})
-        }
-      """
-    )
-  
-    // @LINE:11
-    def forgotPwd: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.LoginController.forgotPwd",
-      """
-        function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "forgotpassword"})
-        }
-      """
-    )
-  
-    // @LINE:7
-    def login: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.LoginController.login",
-      """
-        function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "login"})
         }
       """
     )
@@ -71,7 +86,7 @@ package controllers.javascript {
   
   }
 
-  // @LINE:13
+  // @LINE:9
   class ReverseUserController(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -79,7 +94,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:13
+    // @LINE:9
     def getAllUsers: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.UserController.getAllUsers",
       """

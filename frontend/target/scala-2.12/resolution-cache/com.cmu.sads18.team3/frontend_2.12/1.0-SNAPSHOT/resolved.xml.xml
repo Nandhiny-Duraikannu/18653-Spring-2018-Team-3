@@ -4,7 +4,11 @@
 		module="frontend_2.12"
 		revision="1.0-SNAPSHOT"
 		status="integration"
+<<<<<<< HEAD
 		publication="20180330121706"
+=======
+		publication="20180329124507"
+>>>>>>> Add backend functionalities for submitting and searching a Mashup
 	>
 		<description>
 		frontend

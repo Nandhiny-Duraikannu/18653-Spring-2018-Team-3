@@ -3,6 +3,7 @@
 
 # --- !Ups
 
+<<<<<<< HEAD
 create table api (
   id                            bigint auto_increment not null,
   apiname                       varchar(255),
@@ -15,6 +16,15 @@ create table api (
   user_id                       bigint,
   object_type                   varchar(255),
   constraint pk_api primary key (id)
+=======
+create table mashups (
+  id                            bigint auto_increment not null,
+  name                          varchar(255),
+  url                           varchar(255),
+  description                   varchar(255),
+  user_id                       bigint,
+  constraint pk_mashups primary key (id)
+>>>>>>> Add backend functionalities for submitting and searching a Mashup
 );
 
 create table task (
@@ -35,16 +45,28 @@ create table users (
   constraint pk_users primary key (id)
 );
 
+<<<<<<< HEAD
 alter table api add constraint fk_api_user_id foreign key (user_id) references users (id) on delete restrict on update restrict;
 create index ix_api_user_id on api (user_id);
+=======
+alter table mashups add constraint fk_mashups_user_id foreign key (user_id) references users (id) on delete restrict on update restrict;
+create index ix_mashups_user_id on mashups (user_id);
+>>>>>>> Add backend functionalities for submitting and searching a Mashup
 
 
 # --- !Downs
 
+<<<<<<< HEAD
 alter table api drop foreign key fk_api_user_id;
 drop index ix_api_user_id on api;
 
 drop table if exists api;
+=======
+alter table mashups drop foreign key fk_mashups_user_id;
+drop index ix_mashups_user_id on mashups;
+
+drop table if exists mashups;
+>>>>>>> Add backend functionalities for submitting and searching a Mashup
 
 drop table if exists task;
 

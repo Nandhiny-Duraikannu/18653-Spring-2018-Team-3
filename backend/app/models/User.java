@@ -5,7 +5,9 @@ import java.util.*;
 import io.ebean.*;
 import org.mindrot.jbcrypt.BCrypt;
 import play.data.validation.*;
-
+import java.util.List;
+import java.util.ArrayList;
+// import org.mindrot.jbcrypt.BCrypt;
 
 @Entity
 @Table(name="users")
@@ -32,8 +34,14 @@ public class User extends Model {
     @Constraints.Required
     public String userType;
 
+<<<<<<< HEAD
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     public List<Api> apis = new ArrayList<>();
+=======
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Mashup> mashups = new ArrayList<>();
+
+>>>>>>> Add backend functionalities for submitting and searching a Mashup
 
     public static final Finder<Long, User> find = new Finder<>(User.class);
 

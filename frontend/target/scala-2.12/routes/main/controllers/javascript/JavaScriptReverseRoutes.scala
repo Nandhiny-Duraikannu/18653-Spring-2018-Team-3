@@ -1,6 +1,11 @@
 // @GENERATOR:play-routes-compiler
+<<<<<<< HEAD
 // @SOURCE:/Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/frontend/conf/routes
 // @DATE:Fri Mar 30 13:00:19 PDT 2018
+=======
+// @SOURCE:/Users/tomzhou94/Documents/CMU/SAD/18653-Spring-2018-Team-3/frontend/conf/routes
+// @DATE:Thu Mar 29 12:45:14 PDT 2018
+>>>>>>> Add backend functionalities for submitting and searching a Mashup
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -11,6 +16,7 @@ import _root_.play.libs.F
 // @LINE:6
 package controllers.javascript {
 
+<<<<<<< HEAD
   // @LINE:12
   class ReverseHomeController(_prefix: => String) {
 
@@ -31,6 +37,8 @@ package controllers.javascript {
   
   }
 
+=======
+>>>>>>> Add backend functionalities for submitting and searching a Mashup
   // @LINE:6
   class ReverseLoginController(_prefix: => String) {
 
@@ -39,6 +47,7 @@ package controllers.javascript {
     }
 
   
+<<<<<<< HEAD
     // @LINE:8
     def forgotPwdView: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.LoginController.forgotPwdView",
@@ -59,6 +68,8 @@ package controllers.javascript {
       """
     )
   
+=======
+>>>>>>> Add backend functionalities for submitting and searching a Mashup
     // @LINE:6
     def loginView: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.LoginController.loginView",
@@ -70,6 +81,7 @@ package controllers.javascript {
     )
   
     // @LINE:9
+<<<<<<< HEAD
     def resetPasswordView: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.LoginController.resetPasswordView",
       """
@@ -80,6 +92,8 @@ package controllers.javascript {
     )
   
     // @LINE:15
+=======
+>>>>>>> Add backend functionalities for submitting and searching a Mashup
     def signup: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.LoginController.signup",
       """
@@ -99,6 +113,7 @@ package controllers.javascript {
       """
     )
   
+<<<<<<< HEAD
     // @LINE:11
     def logout: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.LoginController.logout",
@@ -132,6 +147,11 @@ package controllers.javascript {
   }
 
   // @LINE:22
+=======
+  }
+
+  // @LINE:12
+>>>>>>> Add backend functionalities for submitting and searching a Mashup
   class ReverseAssets(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -139,7 +159,11 @@ package controllers.javascript {
     }
 
   
+<<<<<<< HEAD
     // @LINE:22
+=======
+    // @LINE:12
+>>>>>>> Add backend functionalities for submitting and searching a Mashup
     def versioned: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.Assets.versioned",
       """

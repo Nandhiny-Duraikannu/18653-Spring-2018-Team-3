@@ -1,6 +1,11 @@
 // @GENERATOR:play-routes-compiler
+<<<<<<< HEAD
 // @SOURCE:/Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/backend/conf/routes
 // @DATE:Fri Mar 30 12:19:26 PDT 2018
+=======
+// @SOURCE:/Users/tomzhou94/Documents/CMU/SAD/18653-Spring-2018-Team-3/backend/conf/routes
+// @DATE:Thu Mar 29 17:00:19 PDT 2018
+>>>>>>> Add backend functionalities for submitting and searching a Mashup
 
 import play.api.mvc.Call
 
@@ -8,32 +13,41 @@ import play.api.mvc.Call
 import _root_.controllers.Assets.Asset
 import _root_.play.libs.F
 
-// @LINE:7
+// @LINE:6
 package controllers {
 
-  // @LINE:7
+  // @LINE:12
+  class ReverseMashupController(_prefix: => String) {
+    def _defaultPrefix: String = {
+      if (_prefix.endsWith("/")) "" else "/"
+    }
+
+  
+    // @LINE:13
+    def searchMashup(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "search/mashup")
+    }
+  
+    // @LINE:12
+    def submitMashup(): Call = {
+      
+      Call("POST", _prefix + { _defaultPrefix } + "mashup")
+    }
+  
+  }
+
+  // @LINE:6
   class ReverseLoginController(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:9
+    // @LINE:6
     def signup(): Call = {
       
       Call("POST", _prefix + { _defaultPrefix } + "signup")
-    }
-  
-    // @LINE:11
-    def forgotPwd(): Call = {
-      
-      Call("POST", _prefix + { _defaultPrefix } + "forgotpassword")
-    }
-  
-    // @LINE:7
-    def login(): Call = {
-      
-      Call("POST", _prefix + { _defaultPrefix } + "login")
     }
   
   }
@@ -53,14 +67,14 @@ package controllers {
   
   }
 
-  // @LINE:13
+  // @LINE:9
   class ReverseUserController(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:13
+    // @LINE:9
     def getAllUsers(): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "users")
