@@ -4,11 +4,7 @@
 		module="backend-build"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-<<<<<<< HEAD
-		publication="20180330121639"
-=======
-		publication="20180329124311"
->>>>>>> Add backend functionalities for submitting and searching a Mashup
+		publication="20180330132221"
 		e:sbtVersion="1.0" e:scalaVersion="2.12"
 	>
 		<description>

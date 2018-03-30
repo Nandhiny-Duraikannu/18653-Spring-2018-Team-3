@@ -33,7 +33,7 @@ public class User extends Model {
     @Column(name = "userType")
     @Constraints.Required
     public String userType;
-    
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     public List<Api> apis = new ArrayList<>();
 

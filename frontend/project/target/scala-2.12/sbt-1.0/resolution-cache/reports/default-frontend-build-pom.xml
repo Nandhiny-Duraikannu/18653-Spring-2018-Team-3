@@ -9,11 +9,7 @@
 		extra-sbtVersion="1.0"
 		conf="pom"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool"
-<<<<<<< HEAD
-		date="20180330121655"/>
-=======
-		date="20180329124450"/>
->>>>>>> Add backend functionalities for submitting and searching a Mashup
+		date="20180330133134"/>
 	<dependencies>
 	</dependencies>
 </ivy-report>

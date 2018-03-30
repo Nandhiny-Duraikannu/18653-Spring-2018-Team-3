@@ -1,17 +1,9 @@
 @main("Submit a Mashup") {
 
-    <div class="header red darken-3">
-        <div class="container">
-            <div class="row">
-                <div class="col s12">
-                    <h2>Welcome to this Service Repository</h2>
-                    <p>Submit a Mashup</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    @menu("")
 
     <div class="container">
+        <h2>Submit a Mashup</h2>
         <div class="row">
             @helper.form(routes.MashupController.submitMashup()) {
                 <div class="input-field col s12">

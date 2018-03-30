@@ -59,7 +59,7 @@ public class MashupController extends Controller implements WSBodyReadables, WSB
 
         // TODO: Change username
         JsonNode mashupJson = Json.newObject()
-                .put("username", "tom")
+                .put("username", session().get("username"))
                 .put("name", form.get("name"))
                 .put("url", form.get("url"))
                 .put("description", form.get("description"));
@@ -71,7 +71,7 @@ public class MashupController extends Controller implements WSBodyReadables, WSB
         .post(mashupJson)
         .thenApply((WSResponse r) -> {
             if (r.getStatus() == 200) {
-                return ok();
+                return redirect(routes.MashupController.mashupListView());
             } else {
                 return badRequest("Error while trying to submit mashup");
             }
