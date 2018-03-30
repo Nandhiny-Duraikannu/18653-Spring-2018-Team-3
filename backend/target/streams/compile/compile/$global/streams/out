@@ -1,7 +1,0 @@
-[error] /Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/backend/conf/routes:23:1: type ApiConrtoller is not a member of package controllers
-[error] GET    /searchAPI                      controllers.ApiConrtoller.searchApi()
-[error] /Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/backend/conf/routes:23:1: type ApiConrtoller is not a member of package controllers
-[error] GET    /searchAPI                      controllers.ApiConrtoller.searchApi()
-[error] /Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/backend/conf/routes:23:1: type ApiConrtoller is not a member of package controllers
-[error] GET    /searchAPI                      controllers.ApiConrtoller.searchApi()
-[error] three errors found

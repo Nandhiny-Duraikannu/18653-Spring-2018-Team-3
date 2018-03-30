@@ -5,7 +5,9 @@ import java.util.*;
 import io.ebean.*;
 import org.mindrot.jbcrypt.BCrypt;
 import play.data.validation.*;
-
+import java.util.List;
+import java.util.ArrayList;
+// import org.mindrot.jbcrypt.BCrypt;
 
 @Entity
 @Table(name="users")
@@ -34,6 +36,9 @@ public class User extends Model {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     public List<Api> apis = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    public List<Mashup> mashups = new ArrayList<>();
 
     public static final Finder<Long, User> find = new Finder<>(User.class);
 

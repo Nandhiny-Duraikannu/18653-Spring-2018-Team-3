@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/frontend/conf/routes
-// @DATE:Fri Mar 30 13:42:13 PDT 2018
+// @DATE:Fri Mar 30 14:37:45 PDT 2018
 
 package router
 
@@ -15,31 +15,35 @@ import _root_.play.libs.F
 class Routes(
   override val errorHandler: play.api.http.HttpErrorHandler, 
   // @LINE:6
-  LoginController_2: controllers.LoginController,
+  LoginController_4: controllers.LoginController,
   // @LINE:12
-  HomeController_0: controllers.HomeController,
-  // @LINE:22
-  Assets_1: controllers.Assets,
-  // @LINE:26
-  SubmitApiController_3: controllers.SubmitApiController,
+  HomeController_1: controllers.HomeController,
+  // @LINE:21
+  MashupController_0: controllers.MashupController,
+  // @LINE:36
+  Assets_3: controllers.Assets,
+  // @LINE:40
+  SubmitApiController_2: controllers.SubmitApiController,
   val prefix: String
 ) extends GeneratedRouter {
 
    @javax.inject.Inject()
    def this(errorHandler: play.api.http.HttpErrorHandler,
     // @LINE:6
-    LoginController_2: controllers.LoginController,
+    LoginController_4: controllers.LoginController,
     // @LINE:12
-    HomeController_0: controllers.HomeController,
-    // @LINE:22
-    Assets_1: controllers.Assets,
-    // @LINE:26
-    SubmitApiController_3: controllers.SubmitApiController
-  ) = this(errorHandler, LoginController_2, HomeController_0, Assets_1, SubmitApiController_3, "/")
+    HomeController_1: controllers.HomeController,
+    // @LINE:21
+    MashupController_0: controllers.MashupController,
+    // @LINE:36
+    Assets_3: controllers.Assets,
+    // @LINE:40
+    SubmitApiController_2: controllers.SubmitApiController
+  ) = this(errorHandler, LoginController_4, HomeController_1, MashupController_0, Assets_3, SubmitApiController_2, "/")
 
   def withPrefix(prefix: String): Routes = {
     router.RoutesPrefix.setPrefix(prefix)
-    new Routes(errorHandler, LoginController_2, HomeController_0, Assets_1, SubmitApiController_3, prefix)
+    new Routes(errorHandler, LoginController_4, HomeController_1, MashupController_0, Assets_3, SubmitApiController_2, prefix)
   }
 
   private[this] val defaultPrefix: String = {
@@ -57,6 +61,16 @@ class Routes(
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """signup""", """controllers.LoginController.signup()"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """forgotpassword""", """controllers.LoginController.forgotPwd()"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """resetPassword""", """controllers.LoginController.resetPassword()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """mashups""", """controllers.MashupController.mashupListView()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """mashups/all""", """controllers.MashupController.getAllMashups()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """mashups/search""", """controllers.MashupController.searchMashups()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """mashup/submit""", """controllers.MashupController.submitMashupView()"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """mashup""", """controllers.MashupController.submitMashup()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """mashups""", """controllers.MashupController.mashupListView()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """mashups/all""", """controllers.MashupController.getAllMashups()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """mashups/search""", """controllers.MashupController.searchMashups()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """mashup/submit""", """controllers.MashupController.submitMashupView()"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """mashup""", """controllers.MashupController.submitMashup()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """submitapi""", """controllers.SubmitApiController.submitApi()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """createapi""", """controllers.SubmitApiController.apiFormView()"""),
@@ -74,7 +88,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix)))
   )
   private[this] lazy val controllers_LoginController_loginView0_invoker = createInvoker(
-    LoginController_2.loginView(),
+    LoginController_4.loginView(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.LoginController",
@@ -92,7 +106,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("signup")))
   )
   private[this] lazy val controllers_LoginController_signupView1_invoker = createInvoker(
-    LoginController_2.signupView(),
+    LoginController_4.signupView(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.LoginController",
@@ -110,7 +124,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("forgotpassword")))
   )
   private[this] lazy val controllers_LoginController_forgotPwdView2_invoker = createInvoker(
-    LoginController_2.forgotPwdView(),
+    LoginController_4.forgotPwdView(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.LoginController",
@@ -128,7 +142,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("resetPassword")))
   )
   private[this] lazy val controllers_LoginController_resetPasswordView3_invoker = createInvoker(
-    LoginController_2.resetPasswordView(),
+    LoginController_4.resetPasswordView(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.LoginController",
@@ -146,7 +160,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("logout")))
   )
   private[this] lazy val controllers_LoginController_logout4_invoker = createInvoker(
-    LoginController_2.logout(),
+    LoginController_4.logout(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.LoginController",
@@ -164,7 +178,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("home")))
   )
   private[this] lazy val controllers_HomeController_homeView5_invoker = createInvoker(
-    HomeController_0.homeView(),
+    HomeController_1.homeView(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.HomeController",
@@ -182,7 +196,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("login")))
   )
   private[this] lazy val controllers_LoginController_login6_invoker = createInvoker(
-    LoginController_2.login(),
+    LoginController_4.login(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.LoginController",
@@ -200,7 +214,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("signup")))
   )
   private[this] lazy val controllers_LoginController_signup7_invoker = createInvoker(
-    LoginController_2.signup(),
+    LoginController_4.signup(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.LoginController",
@@ -218,7 +232,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("forgotpassword")))
   )
   private[this] lazy val controllers_LoginController_forgotPwd8_invoker = createInvoker(
-    LoginController_2.forgotPwd(),
+    LoginController_4.forgotPwd(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.LoginController",
@@ -236,7 +250,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("resetPassword")))
   )
   private[this] lazy val controllers_LoginController_resetPassword9_invoker = createInvoker(
-    LoginController_2.resetPassword(),
+    LoginController_4.resetPassword(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.LoginController",
@@ -249,12 +263,192 @@ class Routes(
     )
   )
 
+  // @LINE:21
+  private[this] lazy val controllers_MashupController_mashupListView10_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("mashups")))
+  )
+  private[this] lazy val controllers_MashupController_mashupListView10_invoker = createInvoker(
+    MashupController_0.mashupListView(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.MashupController",
+      "mashupListView",
+      Nil,
+      "GET",
+      this.prefix + """mashups""",
+      """ Mashup""",
+      Seq()
+    )
+  )
+
   // @LINE:22
-  private[this] lazy val controllers_Assets_versioned10_route = Route("GET",
+  private[this] lazy val controllers_MashupController_getAllMashups11_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("mashups/all")))
+  )
+  private[this] lazy val controllers_MashupController_getAllMashups11_invoker = createInvoker(
+    MashupController_0.getAllMashups(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.MashupController",
+      "getAllMashups",
+      Nil,
+      "GET",
+      this.prefix + """mashups/all""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:23
+  private[this] lazy val controllers_MashupController_searchMashups12_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("mashups/search")))
+  )
+  private[this] lazy val controllers_MashupController_searchMashups12_invoker = createInvoker(
+    MashupController_0.searchMashups(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.MashupController",
+      "searchMashups",
+      Nil,
+      "GET",
+      this.prefix + """mashups/search""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:24
+  private[this] lazy val controllers_MashupController_submitMashupView13_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("mashup/submit")))
+  )
+  private[this] lazy val controllers_MashupController_submitMashupView13_invoker = createInvoker(
+    MashupController_0.submitMashupView(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.MashupController",
+      "submitMashupView",
+      Nil,
+      "GET",
+      this.prefix + """mashup/submit""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:25
+  private[this] lazy val controllers_MashupController_submitMashup14_route = Route("POST",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("mashup")))
+  )
+  private[this] lazy val controllers_MashupController_submitMashup14_invoker = createInvoker(
+    MashupController_0.submitMashup(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.MashupController",
+      "submitMashup",
+      Nil,
+      "POST",
+      this.prefix + """mashup""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:28
+  private[this] lazy val controllers_MashupController_mashupListView15_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("mashups")))
+  )
+  private[this] lazy val controllers_MashupController_mashupListView15_invoker = createInvoker(
+    MashupController_0.mashupListView(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.MashupController",
+      "mashupListView",
+      Nil,
+      "GET",
+      this.prefix + """mashups""",
+      """ Mashup""",
+      Seq()
+    )
+  )
+
+  // @LINE:29
+  private[this] lazy val controllers_MashupController_getAllMashups16_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("mashups/all")))
+  )
+  private[this] lazy val controllers_MashupController_getAllMashups16_invoker = createInvoker(
+    MashupController_0.getAllMashups(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.MashupController",
+      "getAllMashups",
+      Nil,
+      "GET",
+      this.prefix + """mashups/all""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:30
+  private[this] lazy val controllers_MashupController_searchMashups17_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("mashups/search")))
+  )
+  private[this] lazy val controllers_MashupController_searchMashups17_invoker = createInvoker(
+    MashupController_0.searchMashups(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.MashupController",
+      "searchMashups",
+      Nil,
+      "GET",
+      this.prefix + """mashups/search""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:31
+  private[this] lazy val controllers_MashupController_submitMashupView18_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("mashup/submit")))
+  )
+  private[this] lazy val controllers_MashupController_submitMashupView18_invoker = createInvoker(
+    MashupController_0.submitMashupView(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.MashupController",
+      "submitMashupView",
+      Nil,
+      "GET",
+      this.prefix + """mashup/submit""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:32
+  private[this] lazy val controllers_MashupController_submitMashup19_route = Route("POST",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("mashup")))
+  )
+  private[this] lazy val controllers_MashupController_submitMashup19_invoker = createInvoker(
+    MashupController_0.submitMashup(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.MashupController",
+      "submitMashup",
+      Nil,
+      "POST",
+      this.prefix + """mashup""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:36
+  private[this] lazy val controllers_Assets_versioned20_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("assets/"), DynamicPart("file", """.+""",false)))
   )
-  private[this] lazy val controllers_Assets_versioned10_invoker = createInvoker(
-    Assets_1.versioned(fakeValue[String], fakeValue[Asset]),
+  private[this] lazy val controllers_Assets_versioned20_invoker = createInvoker(
+    Assets_3.versioned(fakeValue[String], fakeValue[Asset]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.Assets",
@@ -262,17 +456,18 @@ class Routes(
       Seq(classOf[String], classOf[Asset]),
       "GET",
       this.prefix + """assets/""" + "$" + """file<.+>""",
-      """ LEAVE --- For front end static files""",
+      """ For front end static files
+ LEAVE --- For front end static files""",
       Seq()
     )
   )
 
-  // @LINE:26
-  private[this] lazy val controllers_SubmitApiController_submitApi11_route = Route("POST",
+  // @LINE:40
+  private[this] lazy val controllers_SubmitApiController_submitApi21_route = Route("POST",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("submitapi")))
   )
-  private[this] lazy val controllers_SubmitApiController_submitApi11_invoker = createInvoker(
-    SubmitApiController_3.submitApi(),
+  private[this] lazy val controllers_SubmitApiController_submitApi21_invoker = createInvoker(
+    SubmitApiController_2.submitApi(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.SubmitApiController",
@@ -285,12 +480,12 @@ class Routes(
     )
   )
 
-  // @LINE:27
-  private[this] lazy val controllers_SubmitApiController_apiFormView12_route = Route("GET",
+  // @LINE:41
+  private[this] lazy val controllers_SubmitApiController_apiFormView22_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("createapi")))
   )
-  private[this] lazy val controllers_SubmitApiController_apiFormView12_invoker = createInvoker(
-    SubmitApiController_3.apiFormView(),
+  private[this] lazy val controllers_SubmitApiController_apiFormView22_invoker = createInvoker(
+    SubmitApiController_2.apiFormView(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.SubmitApiController",
@@ -303,12 +498,12 @@ class Routes(
     )
   )
 
-  // @LINE:28
-  private[this] lazy val controllers_SubmitApiController_searchApiView13_route = Route("GET",
+  // @LINE:42
+  private[this] lazy val controllers_SubmitApiController_searchApiView23_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("searchApis")))
   )
-  private[this] lazy val controllers_SubmitApiController_searchApiView13_invoker = createInvoker(
-    SubmitApiController_3.searchApiView(),
+  private[this] lazy val controllers_SubmitApiController_searchApiView23_invoker = createInvoker(
+    SubmitApiController_2.searchApiView(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.SubmitApiController",
@@ -321,12 +516,12 @@ class Routes(
     )
   )
 
-  // @LINE:29
-  private[this] lazy val controllers_SubmitApiController_searchApis14_route = Route("GET",
+  // @LINE:43
+  private[this] lazy val controllers_SubmitApiController_searchApis24_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("search")))
   )
-  private[this] lazy val controllers_SubmitApiController_searchApis14_invoker = createInvoker(
-    SubmitApiController_3.searchApis(),
+  private[this] lazy val controllers_SubmitApiController_searchApis24_invoker = createInvoker(
+    SubmitApiController_2.searchApis(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.SubmitApiController",
@@ -345,91 +540,151 @@ class Routes(
     // @LINE:6
     case controllers_LoginController_loginView0_route(params@_) =>
       call { 
-        controllers_LoginController_loginView0_invoker.call(LoginController_2.loginView())
+        controllers_LoginController_loginView0_invoker.call(LoginController_4.loginView())
       }
   
     // @LINE:7
     case controllers_LoginController_signupView1_route(params@_) =>
       call { 
-        controllers_LoginController_signupView1_invoker.call(LoginController_2.signupView())
+        controllers_LoginController_signupView1_invoker.call(LoginController_4.signupView())
       }
   
     // @LINE:8
     case controllers_LoginController_forgotPwdView2_route(params@_) =>
       call { 
-        controllers_LoginController_forgotPwdView2_invoker.call(LoginController_2.forgotPwdView())
+        controllers_LoginController_forgotPwdView2_invoker.call(LoginController_4.forgotPwdView())
       }
   
     // @LINE:9
     case controllers_LoginController_resetPasswordView3_route(params@_) =>
       call { 
-        controllers_LoginController_resetPasswordView3_invoker.call(LoginController_2.resetPasswordView())
+        controllers_LoginController_resetPasswordView3_invoker.call(LoginController_4.resetPasswordView())
       }
   
     // @LINE:11
     case controllers_LoginController_logout4_route(params@_) =>
       call { 
-        controllers_LoginController_logout4_invoker.call(LoginController_2.logout())
+        controllers_LoginController_logout4_invoker.call(LoginController_4.logout())
       }
   
     // @LINE:12
     case controllers_HomeController_homeView5_route(params@_) =>
       call { 
-        controllers_HomeController_homeView5_invoker.call(HomeController_0.homeView())
+        controllers_HomeController_homeView5_invoker.call(HomeController_1.homeView())
       }
   
     // @LINE:14
     case controllers_LoginController_login6_route(params@_) =>
       call { 
-        controllers_LoginController_login6_invoker.call(LoginController_2.login())
+        controllers_LoginController_login6_invoker.call(LoginController_4.login())
       }
   
     // @LINE:15
     case controllers_LoginController_signup7_route(params@_) =>
       call { 
-        controllers_LoginController_signup7_invoker.call(LoginController_2.signup())
+        controllers_LoginController_signup7_invoker.call(LoginController_4.signup())
       }
   
     // @LINE:16
     case controllers_LoginController_forgotPwd8_route(params@_) =>
       call { 
-        controllers_LoginController_forgotPwd8_invoker.call(LoginController_2.forgotPwd())
+        controllers_LoginController_forgotPwd8_invoker.call(LoginController_4.forgotPwd())
       }
   
     // @LINE:17
     case controllers_LoginController_resetPassword9_route(params@_) =>
       call { 
-        controllers_LoginController_resetPassword9_invoker.call(LoginController_2.resetPassword())
+        controllers_LoginController_resetPassword9_invoker.call(LoginController_4.resetPassword())
+      }
+  
+    // @LINE:21
+    case controllers_MashupController_mashupListView10_route(params@_) =>
+      call { 
+        controllers_MashupController_mashupListView10_invoker.call(MashupController_0.mashupListView())
       }
   
     // @LINE:22
-    case controllers_Assets_versioned10_route(params@_) =>
-      call(Param[String]("path", Right("/public")), params.fromPath[Asset]("file", None)) { (path, file) =>
-        controllers_Assets_versioned10_invoker.call(Assets_1.versioned(path, file))
+    case controllers_MashupController_getAllMashups11_route(params@_) =>
+      call { 
+        controllers_MashupController_getAllMashups11_invoker.call(MashupController_0.getAllMashups())
       }
   
-    // @LINE:26
-    case controllers_SubmitApiController_submitApi11_route(params@_) =>
+    // @LINE:23
+    case controllers_MashupController_searchMashups12_route(params@_) =>
       call { 
-        controllers_SubmitApiController_submitApi11_invoker.call(SubmitApiController_3.submitApi())
+        controllers_MashupController_searchMashups12_invoker.call(MashupController_0.searchMashups())
       }
   
-    // @LINE:27
-    case controllers_SubmitApiController_apiFormView12_route(params@_) =>
+    // @LINE:24
+    case controllers_MashupController_submitMashupView13_route(params@_) =>
       call { 
-        controllers_SubmitApiController_apiFormView12_invoker.call(SubmitApiController_3.apiFormView())
+        controllers_MashupController_submitMashupView13_invoker.call(MashupController_0.submitMashupView())
+      }
+  
+    // @LINE:25
+    case controllers_MashupController_submitMashup14_route(params@_) =>
+      call { 
+        controllers_MashupController_submitMashup14_invoker.call(MashupController_0.submitMashup())
       }
   
     // @LINE:28
-    case controllers_SubmitApiController_searchApiView13_route(params@_) =>
+    case controllers_MashupController_mashupListView15_route(params@_) =>
       call { 
-        controllers_SubmitApiController_searchApiView13_invoker.call(SubmitApiController_3.searchApiView())
+        controllers_MashupController_mashupListView15_invoker.call(MashupController_0.mashupListView())
       }
   
     // @LINE:29
-    case controllers_SubmitApiController_searchApis14_route(params@_) =>
+    case controllers_MashupController_getAllMashups16_route(params@_) =>
       call { 
-        controllers_SubmitApiController_searchApis14_invoker.call(SubmitApiController_3.searchApis())
+        controllers_MashupController_getAllMashups16_invoker.call(MashupController_0.getAllMashups())
+      }
+  
+    // @LINE:30
+    case controllers_MashupController_searchMashups17_route(params@_) =>
+      call { 
+        controllers_MashupController_searchMashups17_invoker.call(MashupController_0.searchMashups())
+      }
+  
+    // @LINE:31
+    case controllers_MashupController_submitMashupView18_route(params@_) =>
+      call { 
+        controllers_MashupController_submitMashupView18_invoker.call(MashupController_0.submitMashupView())
+      }
+  
+    // @LINE:32
+    case controllers_MashupController_submitMashup19_route(params@_) =>
+      call { 
+        controllers_MashupController_submitMashup19_invoker.call(MashupController_0.submitMashup())
+      }
+  
+    // @LINE:36
+    case controllers_Assets_versioned20_route(params@_) =>
+      call(Param[String]("path", Right("/public")), params.fromPath[Asset]("file", None)) { (path, file) =>
+        controllers_Assets_versioned20_invoker.call(Assets_3.versioned(path, file))
+      }
+  
+    // @LINE:40
+    case controllers_SubmitApiController_submitApi21_route(params@_) =>
+      call { 
+        controllers_SubmitApiController_submitApi21_invoker.call(SubmitApiController_2.submitApi())
+      }
+  
+    // @LINE:41
+    case controllers_SubmitApiController_apiFormView22_route(params@_) =>
+      call { 
+        controllers_SubmitApiController_apiFormView22_invoker.call(SubmitApiController_2.apiFormView())
+      }
+  
+    // @LINE:42
+    case controllers_SubmitApiController_searchApiView23_route(params@_) =>
+      call { 
+        controllers_SubmitApiController_searchApiView23_invoker.call(SubmitApiController_2.searchApiView())
+      }
+  
+    // @LINE:43
+    case controllers_SubmitApiController_searchApis24_route(params@_) =>
+      call { 
+        controllers_SubmitApiController_searchApis24_invoker.call(SubmitApiController_2.searchApis())
       }
   }
 }

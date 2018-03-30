@@ -1,6 +1,7 @@
 package controllers;
 
 import DAO.*;
+import com.fasterxml.jackson.databind.JsonNode;
 import models.*;
 import play.data.DynamicForm;
 import play.data.FormFactory;
@@ -8,6 +9,7 @@ import play.libs.Json;
 import play.mvc.*;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -54,6 +56,10 @@ public class ApiController extends Controller {
     
         List<Api> apis = apiDAO.searchAPIs(searchParam);
 
-        return ok(Json.toJson(apis));
+        List<JsonNode> apisJson = new ArrayList<>();
+        for (Api api: apis) {
+            apisJson.add(api.toJSONObj());
+        }
+        return ok(Json.toJson(apisJson));
     }
 }

@@ -1,0 +1,32 @@
+@main("Submit a Mashup") {
+
+    @menu("")
+
+    <div class="container">
+        <h2>Submit a Mashup</h2>
+        <div class="row">
+            @helper.form(routes.MashupController.submitMashup()) {
+                <div class="input-field col s12">
+                    <input placeholder="Name" id="name" name="name" type="text" required>
+                    <label for="name">Name</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <input placeholder="URL" id="url" name="url" type="text" required>
+                    <label for="url">URL</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <textarea placeholder="Description" id="description" name="description" class="materialize-textarea"></textarea>
+                    <label for="description">Description</label>
+                </div>
+
+                <button class="btn right" type="submit" name="action">Submit
+                    <i class="material-icons right">chevron_right</i>
+                </button>
+            }
+        </div>
+    </div>
+
+    <script src="@routes.Assets.versioned("javascripts/controllers/submitMashup.js")" type="text/javascript"></script>
+}

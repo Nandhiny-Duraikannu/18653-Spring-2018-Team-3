@@ -1,2 +1,7 @@
-[error] /Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/frontend/app/controllers/SubmitApiController.java:32:1: ';' expected
-[error]     public Result searchApiView () { return ok(views.html.searchApis.render(session().get("username")))); }
+[0m[[0m[31merror[0m] [0m[0m/Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/frontend/app/services/BackendURLService.java:20:1: illegal start of type[0m
+[0m[[0m[31merror[0m] [0m[0m<<<<<<< HEAD[0m
+[0m[[0m[31merror[0m] [0m[0m^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/frontend/app/services/BackendURLService.java:31:1: identifier expected but `}' found.[0m
+[0m[[0m[31merror[0m] [0m[0m}[0m
+[0m[[0m[31merror[0m] [0m[0m^[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m

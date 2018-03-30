@@ -43,10 +43,9 @@ Seq[Any](format.raw/*2.1*/("""
             <ul class="tabs tabs-transparent">
                 <li class="tab"><a href=""""),_display_(/*13.43*/routes/*13.49*/.SubmitApiController.apiFormView()),format.raw/*13.83*/("""">Add an API</a></li>
                 <li class="tab"><a href=""""),_display_(/*14.43*/routes/*14.49*/.SubmitApiController.searchApiView()),format.raw/*14.85*/("""">Search APIs</a></li>
-                """),format.raw/*15.84*/("""
-                """),format.raw/*16.84*/("""
-                """),format.raw/*17.69*/("""
-            """),format.raw/*18.13*/("""</ul>
+                <li class="tab"><a href=""""),_display_(/*15.43*/routes/*15.49*/.MashupController.submitMashupView()),format.raw/*15.85*/("""">Add a Mashup</a></li>
+                <li class="tab"><a href=""""),_display_(/*16.43*/routes/*16.49*/.MashupController.mashupListView()),format.raw/*16.83*/("""">Mashup List</a></li>
+            </ul>
         </div>
     </div>
 </nav>
@@ -67,11 +66,11 @@ Seq[Any](format.raw/*2.1*/("""
 
               /*
                   -- GENERATED --
-                  DATE: Fri Mar 30 13:42:14 PDT 2018
+                  DATE: Fri Mar 30 14:39:57 PDT 2018
                   SOURCE: /Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/frontend/app/views/menu.scala.html
-                  HASH: 8b7c72c7c566b0dcea55c1b4bbb3c60de29aa109
-                  MATRIX: 947->1|1059->20|1086->21|1351->260|1365->266|1408->289|1609->463|1624->469|1679->503|1770->567|1785->573|1842->609|1909->715|1954->799|1999->868|2040->881
-                  LINES: 28->1|33->2|34->3|39->8|39->8|39->8|44->13|44->13|44->13|45->14|45->14|45->14|46->15|47->16|48->17|49->18
+                  HASH: 226deebbaa42df0cd9ae82ebf3511b69a80d0c38
+                  MATRIX: 947->1|1059->20|1086->21|1351->260|1365->266|1408->289|1609->463|1624->469|1679->503|1770->567|1785->573|1842->609|1934->674|1949->680|2006->716|2099->782|2114->788|2169->822
+                  LINES: 28->1|33->2|34->3|39->8|39->8|39->8|44->13|44->13|44->13|45->14|45->14|45->14|46->15|46->15|46->15|47->16|47->16|47->16
                   -- GENERATED --
               */
           

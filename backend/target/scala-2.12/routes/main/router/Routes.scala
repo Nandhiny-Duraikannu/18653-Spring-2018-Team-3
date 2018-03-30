@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/backend/conf/routes
-// @DATE:Fri Mar 30 13:57:25 PDT 2018
+// @DATE:Fri Mar 30 14:40:59 PDT 2018
 
 package router
 
@@ -19,9 +19,11 @@ class Routes(
   // @LINE:13
   UserController_1: controllers.UserController,
   // @LINE:16
+  MashupController_0: controllers.MashupController,
+  // @LINE:22
   Assets_2: controllers.Assets,
-  // @LINE:20
-  ApiController_0: controllers.ApiController,
+  // @LINE:26
+  ApiController_4: controllers.ApiController,
   val prefix: String
 ) extends GeneratedRouter {
 
@@ -32,14 +34,16 @@ class Routes(
     // @LINE:13
     UserController_1: controllers.UserController,
     // @LINE:16
+    MashupController_0: controllers.MashupController,
+    // @LINE:22
     Assets_2: controllers.Assets,
-    // @LINE:20
-    ApiController_0: controllers.ApiController
-  ) = this(errorHandler, LoginController_3, UserController_1, Assets_2, ApiController_0, "/")
+    // @LINE:26
+    ApiController_4: controllers.ApiController
+  ) = this(errorHandler, LoginController_3, UserController_1, MashupController_0, Assets_2, ApiController_4, "/")
 
   def withPrefix(prefix: String): Routes = {
     router.RoutesPrefix.setPrefix(prefix)
-    new Routes(errorHandler, LoginController_3, UserController_1, Assets_2, ApiController_0, prefix)
+    new Routes(errorHandler, LoginController_3, UserController_1, MashupController_0, Assets_2, ApiController_4, prefix)
   }
 
   private[this] val defaultPrefix: String = {
@@ -51,6 +55,9 @@ class Routes(
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """signup""", """controllers.LoginController.signup()"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """forgotpassword""", """controllers.LoginController.forgotPwd()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """users""", """controllers.UserController.getAllUsers()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """mashups""", """controllers.MashupController.getAllMashups()"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """mashup""", """controllers.MashupController.submitMashup()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """search/mashup""", """controllers.MashupController.searchMashup()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """submitapi""", """controllers.ApiController.submitApi()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """getapi""", """controllers.ApiController.getApi()"""),
@@ -135,10 +142,64 @@ class Routes(
   )
 
   // @LINE:16
-  private[this] lazy val controllers_Assets_versioned4_route = Route("GET",
+  private[this] lazy val controllers_MashupController_getAllMashups4_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("mashups")))
+  )
+  private[this] lazy val controllers_MashupController_getAllMashups4_invoker = createInvoker(
+    MashupController_0.getAllMashups(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.MashupController",
+      "getAllMashups",
+      Nil,
+      "GET",
+      this.prefix + """mashups""",
+      """ Mashup""",
+      Seq()
+    )
+  )
+
+  // @LINE:17
+  private[this] lazy val controllers_MashupController_submitMashup5_route = Route("POST",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("mashup")))
+  )
+  private[this] lazy val controllers_MashupController_submitMashup5_invoker = createInvoker(
+    MashupController_0.submitMashup(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.MashupController",
+      "submitMashup",
+      Nil,
+      "POST",
+      this.prefix + """mashup""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:18
+  private[this] lazy val controllers_MashupController_searchMashup6_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("search/mashup")))
+  )
+  private[this] lazy val controllers_MashupController_searchMashup6_invoker = createInvoker(
+    MashupController_0.searchMashup(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.MashupController",
+      "searchMashup",
+      Nil,
+      "GET",
+      this.prefix + """search/mashup""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:22
+  private[this] lazy val controllers_Assets_versioned7_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("assets/"), DynamicPart("file", """.+""",false)))
   )
-  private[this] lazy val controllers_Assets_versioned4_invoker = createInvoker(
+  private[this] lazy val controllers_Assets_versioned7_invoker = createInvoker(
     Assets_2.versioned(fakeValue[String], fakeValue[Asset]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -152,12 +213,12 @@ class Routes(
     )
   )
 
-  // @LINE:20
-  private[this] lazy val controllers_ApiController_submitApi5_route = Route("POST",
+  // @LINE:26
+  private[this] lazy val controllers_ApiController_submitApi8_route = Route("POST",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("submitapi")))
   )
-  private[this] lazy val controllers_ApiController_submitApi5_invoker = createInvoker(
-    ApiController_0.submitApi(),
+  private[this] lazy val controllers_ApiController_submitApi8_invoker = createInvoker(
+    ApiController_4.submitApi(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.ApiController",
@@ -170,12 +231,12 @@ class Routes(
     )
   )
 
-  // @LINE:22
-  private[this] lazy val controllers_ApiController_getApi6_route = Route("GET",
+  // @LINE:28
+  private[this] lazy val controllers_ApiController_getApi9_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("getapi")))
   )
-  private[this] lazy val controllers_ApiController_getApi6_invoker = createInvoker(
-    ApiController_0.getApi(),
+  private[this] lazy val controllers_ApiController_getApi9_invoker = createInvoker(
+    ApiController_4.getApi(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.ApiController",
@@ -188,12 +249,12 @@ class Routes(
     )
   )
 
-  // @LINE:23
-  private[this] lazy val controllers_ApiController_searchApi7_route = Route("GET",
+  // @LINE:29
+  private[this] lazy val controllers_ApiController_searchApi10_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("searchAPI")))
   )
-  private[this] lazy val controllers_ApiController_searchApi7_invoker = createInvoker(
-    ApiController_0.searchApi(),
+  private[this] lazy val controllers_ApiController_searchApi10_invoker = createInvoker(
+    ApiController_4.searchApi(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.ApiController",
@@ -234,27 +295,45 @@ class Routes(
       }
   
     // @LINE:16
-    case controllers_Assets_versioned4_route(params@_) =>
-      call(Param[String]("path", Right("/public")), params.fromPath[Asset]("file", None)) { (path, file) =>
-        controllers_Assets_versioned4_invoker.call(Assets_2.versioned(path, file))
+    case controllers_MashupController_getAllMashups4_route(params@_) =>
+      call { 
+        controllers_MashupController_getAllMashups4_invoker.call(MashupController_0.getAllMashups())
       }
   
-    // @LINE:20
-    case controllers_ApiController_submitApi5_route(params@_) =>
+    // @LINE:17
+    case controllers_MashupController_submitMashup5_route(params@_) =>
       call { 
-        controllers_ApiController_submitApi5_invoker.call(ApiController_0.submitApi())
+        controllers_MashupController_submitMashup5_invoker.call(MashupController_0.submitMashup())
+      }
+  
+    // @LINE:18
+    case controllers_MashupController_searchMashup6_route(params@_) =>
+      call { 
+        controllers_MashupController_searchMashup6_invoker.call(MashupController_0.searchMashup())
       }
   
     // @LINE:22
-    case controllers_ApiController_getApi6_route(params@_) =>
-      call { 
-        controllers_ApiController_getApi6_invoker.call(ApiController_0.getApi())
+    case controllers_Assets_versioned7_route(params@_) =>
+      call(Param[String]("path", Right("/public")), params.fromPath[Asset]("file", None)) { (path, file) =>
+        controllers_Assets_versioned7_invoker.call(Assets_2.versioned(path, file))
       }
   
-    // @LINE:23
-    case controllers_ApiController_searchApi7_route(params@_) =>
+    // @LINE:26
+    case controllers_ApiController_submitApi8_route(params@_) =>
       call { 
-        controllers_ApiController_searchApi7_invoker.call(ApiController_0.searchApi())
+        controllers_ApiController_submitApi8_invoker.call(ApiController_4.submitApi())
+      }
+  
+    // @LINE:28
+    case controllers_ApiController_getApi9_route(params@_) =>
+      call { 
+        controllers_ApiController_getApi9_invoker.call(ApiController_4.getApi())
+      }
+  
+    // @LINE:29
+    case controllers_ApiController_searchApi10_route(params@_) =>
+      call { 
+        controllers_ApiController_searchApi10_invoker.call(ApiController_4.searchApi())
       }
   }
 }

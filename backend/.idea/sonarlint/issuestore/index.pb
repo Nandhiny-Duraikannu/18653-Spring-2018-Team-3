@@ -21,3 +21,9 @@ H
 app/forms/LoginForm.java,e/2/e2e647b3f19641b9943e8d913bd5be2f1526b768
 P
  app/forms/ResetPasswordForm.java,f/6/f6f46ecd8bbd695b0101c38e9e4ba5afb243d895
+C
+app/models/Api.java,8/2/8241ebe4de72cb954ac6b50f597471390b314056
+C
+app/DAO/ApiDAO.java,9/c/9cc993d9a60a052ce3dc7b95a2c9279455641048
+R
+"app/controllers/ApiController.java,a/1/a148f1902cb36718b10caf280f341a00cffc5482

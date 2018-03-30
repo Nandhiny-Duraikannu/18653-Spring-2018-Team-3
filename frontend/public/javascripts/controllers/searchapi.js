@@ -1,5 +1,14 @@
 $(document).ready(function() {
 
+  function renderApis(mashups) {
+      var tbody = $('#apiTable tbody');
+      tbody.html('');
+
+      mashups.map(mashup => {
+          tbody.append('<tr><td>'+mashup.name+'</td><td>'+mashup.user+'</td><td>'+mashup.url+'</td></tr>');
+      });
+  }
+
   let resultArea = $("#resultArea");
   let noresult = $("#noresult");
   resultArea.hide();
@@ -15,12 +24,7 @@ $(document).ready(function() {
       },
       dataType: 'json',
       success: (data) => {
-        let list = $("#searchResults");
-        list.html("<ul class='collection'>");
-        data.map(api => {
-          list.append("<li class='collection-item'>" + api.apiname + "</li>");
-        });
-        list.append("</ul>");
+        renderApis(data);
         if (data.length) {
           resultArea.show();          
         } else {

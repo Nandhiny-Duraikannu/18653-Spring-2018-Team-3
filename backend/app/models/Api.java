@@ -2,8 +2,11 @@ package models;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.ebean.*;
 import play.data.validation.*;
+import play.libs.Json;
 
 @Entity
 @Table(name="api")
@@ -140,5 +143,14 @@ public class Api extends Model {
         json.append("\"emailaddress\": \"").append(this.emailaddress()).append("\"}");
         return json.toString();
 
+    }
+
+    public JsonNode toJSONObj () {
+        ObjectNode result = Json.newObject();
+        result.put("name", apiname);
+        result.put("url", apiendpoint);
+        result.put("description", apidescription);
+        result.put("user", user.username);
+        return Json.toJson(result);
     }
 }

@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/frontend/conf/routes
-// @DATE:Fri Mar 30 13:42:13 PDT 2018
+// @DATE:Fri Mar 30 14:37:45 PDT 2018
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -10,6 +10,26 @@ import _root_.play.libs.F
 
 // @LINE:6
 package controllers.javascript {
+
+  // @LINE:36
+  class ReverseAssets(_prefix: => String) {
+
+    def _defaultPrefix: String = {
+      if (_prefix.endsWith("/")) "" else "/"
+    }
+
+  
+    // @LINE:36
+    def versioned: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.Assets.versioned",
+      """
+        function(file1) {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "assets/" + (""" + implicitly[play.api.mvc.PathBindable[Asset]].javascriptUnbind + """)("file", file1)})
+        }
+      """
+    )
+  
+  }
 
   // @LINE:12
   class ReverseHomeController(_prefix: => String) {
@@ -131,27 +151,7 @@ package controllers.javascript {
   
   }
 
-  // @LINE:22
-  class ReverseAssets(_prefix: => String) {
-
-    def _defaultPrefix: String = {
-      if (_prefix.endsWith("/")) "" else "/"
-    }
-
-  
-    // @LINE:22
-    def versioned: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.Assets.versioned",
-      """
-        function(file1) {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "assets/" + (""" + implicitly[play.api.mvc.PathBindable[Asset]].javascriptUnbind + """)("file", file1)})
-        }
-      """
-    )
-  
-  }
-
-  // @LINE:26
+  // @LINE:40
   class ReverseSubmitApiController(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -159,7 +159,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:28
+    // @LINE:42
     def searchApiView: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.SubmitApiController.searchApiView",
       """
@@ -169,7 +169,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:26
+    // @LINE:40
     def submitApi: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.SubmitApiController.submitApi",
       """
@@ -179,7 +179,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:27
+    // @LINE:41
     def apiFormView: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.SubmitApiController.apiFormView",
       """
@@ -189,12 +189,92 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:29
+    // @LINE:43
     def searchApis: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.SubmitApiController.searchApis",
       """
         function() {
           return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "search"})
+        }
+      """
+    )
+  
+  }
+
+  // @LINE:21
+  class ReverseMashupController(_prefix: => String) {
+
+    def _defaultPrefix: String = {
+      if (_prefix.endsWith("/")) "" else "/"
+    }
+
+  
+    // @LINE:25
+    def submitMashup: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.MashupController.submitMashup",
+      """
+        function() {
+        
+          if (true) {
+            return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "mashup"})
+          }
+        
+        }
+      """
+    )
+  
+    // @LINE:24
+    def submitMashupView: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.MashupController.submitMashupView",
+      """
+        function() {
+        
+          if (true) {
+            return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "mashup/submit"})
+          }
+        
+        }
+      """
+    )
+  
+    // @LINE:21
+    def mashupListView: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.MashupController.mashupListView",
+      """
+        function() {
+        
+          if (true) {
+            return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "mashups"})
+          }
+        
+        }
+      """
+    )
+  
+    // @LINE:22
+    def getAllMashups: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.MashupController.getAllMashups",
+      """
+        function() {
+        
+          if (true) {
+            return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "mashups/all"})
+          }
+        
+        }
+      """
+    )
+  
+    // @LINE:23
+    def searchMashups: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.MashupController.searchMashups",
+      """
+        function() {
+        
+          if (true) {
+            return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "mashups/search"})
+          }
+        
         }
       """
     )
