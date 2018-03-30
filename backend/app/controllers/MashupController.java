@@ -33,8 +33,16 @@ public class MashupController extends Controller {
 
         User user = userDAO.findUserByUsername(username);
         Mashup mashup = mashupDAO.createMashup(user, name, url, description);
-        // System.out.println(mashup.toJson());
+        System.out.println(mashup.toJson());
         return ok(mashup.toJson());
+    }
+
+    public Result getAllMashups() {
+        List<JsonNode> mashups = new ArrayList<>();
+        for (Mashup mashup: mashupDAO.getAll()) {
+            mashups.add(mashup.toJson());
+        }
+        return ok(Json.toJson(mashups));
     }
 
     // Search for Mashup

@@ -4,8 +4,12 @@
 // @DATE:Fri Mar 30 13:00:19 PDT 2018
 =======
 // @SOURCE:/Users/tomzhou94/Documents/CMU/SAD/18653-Spring-2018-Team-3/frontend/conf/routes
+<<<<<<< HEAD
 // @DATE:Thu Mar 29 12:45:14 PDT 2018
 >>>>>>> Add backend functionalities for submitting and searching a Mashup
+=======
+// @DATE:Thu Mar 29 23:54:03 PDT 2018
+>>>>>>> Add frontend for submitting and searching Mashups
 
 package router
 
@@ -21,6 +25,7 @@ class Routes(
   override val errorHandler: play.api.http.HttpErrorHandler, 
   // @LINE:6
 <<<<<<< HEAD
+<<<<<<< HEAD
   LoginController_2: controllers.LoginController,
   // @LINE:12
   HomeController_0: controllers.HomeController,
@@ -30,7 +35,12 @@ class Routes(
   SubmitApiController_3: controllers.SubmitApiController,
 =======
   LoginController_1: controllers.LoginController,
+=======
+  LoginController_2: controllers.LoginController,
+>>>>>>> Add frontend for submitting and searching Mashups
   // @LINE:12
+  MashupController_1: controllers.MashupController,
+  // @LINE:19
   Assets_0: controllers.Assets,
 >>>>>>> Add backend functionalities for submitting and searching a Mashup
   val prefix: String
@@ -39,6 +49,7 @@ class Routes(
    @javax.inject.Inject()
    def this(errorHandler: play.api.http.HttpErrorHandler,
     // @LINE:6
+<<<<<<< HEAD
 <<<<<<< HEAD
     LoginController_2: controllers.LoginController,
     // @LINE:12
@@ -54,14 +65,23 @@ class Routes(
     new Routes(errorHandler, LoginController_2, HomeController_0, Assets_1, SubmitApiController_3, prefix)
 =======
     LoginController_1: controllers.LoginController,
+=======
+    LoginController_2: controllers.LoginController,
+>>>>>>> Add frontend for submitting and searching Mashups
     // @LINE:12
+    MashupController_1: controllers.MashupController,
+    // @LINE:19
     Assets_0: controllers.Assets
-  ) = this(errorHandler, LoginController_1, Assets_0, "/")
+  ) = this(errorHandler, LoginController_2, MashupController_1, Assets_0, "/")
 
   def withPrefix(prefix: String): Routes = {
     router.RoutesPrefix.setPrefix(prefix)
+<<<<<<< HEAD
     new Routes(errorHandler, LoginController_1, Assets_0, prefix)
 >>>>>>> Add backend functionalities for submitting and searching a Mashup
+=======
+    new Routes(errorHandler, LoginController_2, MashupController_1, Assets_0, prefix)
+>>>>>>> Add frontend for submitting and searching Mashups
   }
 
   private[this] val defaultPrefix: String = {
@@ -84,7 +104,15 @@ class Routes(
     ("""GET""", this.prefix, """controllers.LoginController.loginView"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """signup""", """controllers.LoginController.signupView"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """signup""", """controllers.LoginController.signup"""),
+<<<<<<< HEAD
 >>>>>>> Add backend functionalities for submitting and searching a Mashup
+=======
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """mashups""", """controllers.MashupController.mashupListView()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """mashups/all""", """controllers.MashupController.getAllMashups()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """mashups/search""", """controllers.MashupController.searchMashups()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """mashup/submit""", """controllers.MashupController.submitMashupView()"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """mashup""", """controllers.MashupController.submitMashup()"""),
+>>>>>>> Add frontend for submitting and searching Mashups
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """submitapi""", """controllers.SubmitApiController.submitApi()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """createapi""", """controllers.SubmitApiController.apiFormView()"""),
@@ -100,7 +128,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix)))
   )
   private[this] lazy val controllers_LoginController_loginView0_invoker = createInvoker(
-    LoginController_1.loginView,
+    LoginController_2.loginView,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.LoginController",
@@ -118,7 +146,7 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("signup")))
   )
   private[this] lazy val controllers_LoginController_signupView1_invoker = createInvoker(
-    LoginController_1.signupView,
+    LoginController_2.signupView,
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.LoginController",
@@ -215,8 +243,12 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("signup")))
   )
   private[this] lazy val controllers_LoginController_signup2_invoker = createInvoker(
+<<<<<<< HEAD
     LoginController_1.signup,
 >>>>>>> Add backend functionalities for submitting and searching a Mashup
+=======
+    LoginController_2.signup,
+>>>>>>> Add frontend for submitting and searching Mashups
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.LoginController",
@@ -270,11 +302,105 @@ class Routes(
   private[this] lazy val controllers_Assets_versioned10_route = Route("GET",
 =======
   // @LINE:12
+<<<<<<< HEAD
   private[this] lazy val controllers_Assets_versioned3_route = Route("GET",
 >>>>>>> Add backend functionalities for submitting and searching a Mashup
+=======
+  private[this] lazy val controllers_MashupController_mashupListView3_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("mashups")))
+  )
+  private[this] lazy val controllers_MashupController_mashupListView3_invoker = createInvoker(
+    MashupController_1.mashupListView(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.MashupController",
+      "mashupListView",
+      Nil,
+      "GET",
+      this.prefix + """mashups""",
+      """ Mashup""",
+      Seq()
+    )
+  )
+
+  // @LINE:13
+  private[this] lazy val controllers_MashupController_getAllMashups4_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("mashups/all")))
+  )
+  private[this] lazy val controllers_MashupController_getAllMashups4_invoker = createInvoker(
+    MashupController_1.getAllMashups(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.MashupController",
+      "getAllMashups",
+      Nil,
+      "GET",
+      this.prefix + """mashups/all""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:14
+  private[this] lazy val controllers_MashupController_searchMashups5_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("mashups/search")))
+  )
+  private[this] lazy val controllers_MashupController_searchMashups5_invoker = createInvoker(
+    MashupController_1.searchMashups(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.MashupController",
+      "searchMashups",
+      Nil,
+      "GET",
+      this.prefix + """mashups/search""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:15
+  private[this] lazy val controllers_MashupController_submitMashupView6_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("mashup/submit")))
+  )
+  private[this] lazy val controllers_MashupController_submitMashupView6_invoker = createInvoker(
+    MashupController_1.submitMashupView(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.MashupController",
+      "submitMashupView",
+      Nil,
+      "GET",
+      this.prefix + """mashup/submit""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:16
+  private[this] lazy val controllers_MashupController_submitMashup7_route = Route("POST",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("mashup")))
+  )
+  private[this] lazy val controllers_MashupController_submitMashup7_invoker = createInvoker(
+    MashupController_1.submitMashup(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.MashupController",
+      "submitMashup",
+      Nil,
+      "POST",
+      this.prefix + """mashup""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:19
+  private[this] lazy val controllers_Assets_versioned8_route = Route("GET",
+>>>>>>> Add frontend for submitting and searching Mashups
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("assets/"), DynamicPart("file", """.+""",false)))
   )
-  private[this] lazy val controllers_Assets_versioned3_invoker = createInvoker(
+  private[this] lazy val controllers_Assets_versioned8_invoker = createInvoker(
     Assets_0.versioned(fakeValue[String], fakeValue[Asset]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -330,13 +456,13 @@ class Routes(
     // @LINE:6
     case controllers_LoginController_loginView0_route(params@_) =>
       call { 
-        controllers_LoginController_loginView0_invoker.call(LoginController_1.loginView)
+        controllers_LoginController_loginView0_invoker.call(LoginController_2.loginView)
       }
   
     // @LINE:7
     case controllers_LoginController_signupView1_route(params@_) =>
       call { 
-        controllers_LoginController_signupView1_invoker.call(LoginController_1.signupView)
+        controllers_LoginController_signupView1_invoker.call(LoginController_2.signupView)
       }
   
     // @LINE:9
@@ -387,14 +513,48 @@ class Routes(
 =======
     case controllers_LoginController_signup2_route(params@_) =>
       call { 
-        controllers_LoginController_signup2_invoker.call(LoginController_1.signup)
+        controllers_LoginController_signup2_invoker.call(LoginController_2.signup)
       }
   
     // @LINE:12
+<<<<<<< HEAD
     case controllers_Assets_versioned3_route(params@_) =>
 >>>>>>> Add backend functionalities for submitting and searching a Mashup
+=======
+    case controllers_MashupController_mashupListView3_route(params@_) =>
+      call { 
+        controllers_MashupController_mashupListView3_invoker.call(MashupController_1.mashupListView())
+      }
+  
+    // @LINE:13
+    case controllers_MashupController_getAllMashups4_route(params@_) =>
+      call { 
+        controllers_MashupController_getAllMashups4_invoker.call(MashupController_1.getAllMashups())
+      }
+  
+    // @LINE:14
+    case controllers_MashupController_searchMashups5_route(params@_) =>
+      call { 
+        controllers_MashupController_searchMashups5_invoker.call(MashupController_1.searchMashups())
+      }
+  
+    // @LINE:15
+    case controllers_MashupController_submitMashupView6_route(params@_) =>
+      call { 
+        controllers_MashupController_submitMashupView6_invoker.call(MashupController_1.submitMashupView())
+      }
+  
+    // @LINE:16
+    case controllers_MashupController_submitMashup7_route(params@_) =>
+      call { 
+        controllers_MashupController_submitMashup7_invoker.call(MashupController_1.submitMashup())
+      }
+  
+    // @LINE:19
+    case controllers_Assets_versioned8_route(params@_) =>
+>>>>>>> Add frontend for submitting and searching Mashups
       call(Param[String]("path", Right("/public")), params.fromPath[Asset]("file", None)) { (path, file) =>
-        controllers_Assets_versioned3_invoker.call(Assets_0.versioned(path, file))
+        controllers_Assets_versioned8_invoker.call(Assets_0.versioned(path, file))
       }
   
     // @LINE:26

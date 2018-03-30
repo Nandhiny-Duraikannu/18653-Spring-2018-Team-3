@@ -33,15 +33,12 @@ public class User extends Model {
     @Column(name = "userType")
     @Constraints.Required
     public String userType;
-
-<<<<<<< HEAD
+    
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     public List<Api> apis = new ArrayList<>();
-=======
-    @OneToMany(cascade = CascadeType.ALL)
-    public List<Mashup> mashups = new ArrayList<>();
 
->>>>>>> Add backend functionalities for submitting and searching a Mashup
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    public List<Mashup> mashups = new ArrayList<>();
 
     public static final Finder<Long, User> find = new Finder<>(User.class);
 

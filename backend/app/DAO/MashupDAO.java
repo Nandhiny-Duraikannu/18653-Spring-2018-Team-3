@@ -16,7 +16,11 @@ public class MashupDAO {
         return mashup;
     }
 
+    public List<Mashup> getAll() {
+        return Mashup.find.query().fetch("user").findList();
+    }
+
     public List<Mashup> searchByName(String query) {
-        return Mashup.find.query().where().like("name", "%"+query+"%").findList();
+        return Mashup.find.query().fetch("user").where().like("name", "%"+query+"%").findList();
     }
 }

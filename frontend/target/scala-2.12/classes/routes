@@ -18,10 +18,25 @@ POST    /resetPassword              controllers.LoginController.resetPassword()
 
 
 
+<<<<<<< HEAD
 # LEAVE --- For front end static files
+<<<<<<< HEAD
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 
 
 #api
 POST    /submitapi                  controllers.SubmitApiController.submitApi()
 GET     /createapi                  controllers.SubmitApiController.apiFormView()
+=======
+=======
+# Mashup
+GET     /mashups                    controllers.MashupController.mashupListView()
+GET     /mashups/all                controllers.MashupController.getAllMashups()
+GET     /mashups/search             controllers.MashupController.searchMashups()
+GET     /mashup/submit              controllers.MashupController.submitMashupView()
+POST    /mashup                     controllers.MashupController.submitMashup()
+
+# For front end static files
+>>>>>>> Add frontend for submitting and searching Mashups
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+>>>>>>> Add frontend for submitting and searching Mashups

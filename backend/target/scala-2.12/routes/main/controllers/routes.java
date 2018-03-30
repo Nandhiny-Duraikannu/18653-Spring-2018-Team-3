@@ -4,8 +4,12 @@
 // @DATE:Fri Mar 30 12:19:26 PDT 2018
 =======
 // @SOURCE:/Users/tomzhou94/Documents/CMU/SAD/18653-Spring-2018-Team-3/backend/conf/routes
+<<<<<<< HEAD
 // @DATE:Thu Mar 29 17:00:19 PDT 2018
 >>>>>>> Add backend functionalities for submitting and searching a Mashup
+=======
+// @DATE:Thu Mar 29 22:39:31 PDT 2018
+>>>>>>> Add frontend for submitting and searching Mashups
 
 package controllers;
 

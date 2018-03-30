@@ -4,8 +4,12 @@
 // @DATE:Fri Mar 30 13:00:19 PDT 2018
 =======
 // @SOURCE:/Users/tomzhou94/Documents/CMU/SAD/18653-Spring-2018-Team-3/frontend/conf/routes
+<<<<<<< HEAD
 // @DATE:Thu Mar 29 12:45:14 PDT 2018
 >>>>>>> Add backend functionalities for submitting and searching a Mashup
+=======
+// @DATE:Thu Mar 29 23:54:03 PDT 2018
+>>>>>>> Add frontend for submitting and searching Mashups
 
 import play.api.mvc.Call
 
@@ -17,23 +21,62 @@ import _root_.play.libs.F
 package controllers {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   // @LINE:12
   class ReverseHomeController(_prefix: => String) {
+=======
+  // @LINE:12
+  class ReverseMashupController(_prefix: => String) {
+>>>>>>> Add frontend for submitting and searching Mashups
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
+<<<<<<< HEAD
     // @LINE:12
     def homeView(): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "home")
+=======
+    // @LINE:16
+    def submitMashup(): Call = {
+      
+      Call("POST", _prefix + { _defaultPrefix } + "mashup")
+    }
+  
+    // @LINE:15
+    def submitMashupView(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "mashup/submit")
+    }
+  
+    // @LINE:12
+    def mashupListView(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "mashups")
+    }
+  
+    // @LINE:13
+    def getAllMashups(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "mashups/all")
+    }
+  
+    // @LINE:14
+    def searchMashups(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "mashups/search")
+>>>>>>> Add frontend for submitting and searching Mashups
     }
   
   }
 
+<<<<<<< HEAD
 =======
 >>>>>>> Add backend functionalities for submitting and searching a Mashup
+=======
+>>>>>>> Add frontend for submitting and searching Mashups
   // @LINE:6
   class ReverseLoginController(_prefix: => String) {
     def _defaultPrefix: String = {
@@ -108,8 +151,12 @@ package controllers {
 =======
   }
 
+<<<<<<< HEAD
   // @LINE:12
 >>>>>>> Add backend functionalities for submitting and searching a Mashup
+=======
+  // @LINE:19
+>>>>>>> Add frontend for submitting and searching Mashups
   class ReverseAssets(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
@@ -117,10 +164,14 @@ package controllers {
 
   
 <<<<<<< HEAD
+<<<<<<< HEAD
     // @LINE:22
 =======
     // @LINE:12
 >>>>>>> Add backend functionalities for submitting and searching a Mashup
+=======
+    // @LINE:19
+>>>>>>> Add frontend for submitting and searching Mashups
     def versioned(file:Asset): Call = {
       implicit lazy val _rrc = new play.core.routing.ReverseRouteContext(Map(("path", "/public"))); _rrc
       Call("GET", _prefix + { _defaultPrefix } + "assets/" + implicitly[play.api.mvc.PathBindable[Asset]].unbind("file", file))
