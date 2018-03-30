@@ -1,4 +1,4 @@
-[error] /Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/backend/app/DAO/UserDAO.java:11:1: cannot find symbol
-[error]   symbol:   variable console
-[error]   location: class DAO.UserDAO
-[error]         console.log(user);
+[0m[[0m[31merror[0m] [0m[0m/Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/backend/app/controllers/LoginController.java:61:1: cannot find symbol[0m
+[0m[[0m[31merror[0m] [0m[0m  symbol:   method setPassword(java.lang.String)[0m
+[0m[[0m[31merror[0m] [0m[0m  location: variable user of type models.User[0m
+[0m[[0m[31merror[0m] [0m[0m            user.setPassword("temp");[0m

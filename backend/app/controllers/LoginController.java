@@ -1,8 +1,11 @@
 package controllers;
 
 import DAO.UserDAO;
+import forms.LoginForm;
+import forms.ResetPasswordForm;
 import models.User;
 import play.data.DynamicForm;
+import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.*;
 
@@ -33,45 +36,33 @@ public class LoginController extends Controller {
     }
 
     public Result login() {
-        DynamicForm form = formFactory.form().bindFromRequest();
-
-            if (form.data().size() != 2) {
-                System.out.println("Why I am here??");
-                return badRequest("Bad Login Request");
-            } else {
-            String username = form.get("username");
-            String password = form.get("password");
-            //System.out.println("User name is : ", username);
-            User user = userDAO.getPassword(username);
-            String dbPassword = user.passwordHash;
-            if (password.equals(dbPassword)) {
-                return ok(user.toJSON());
-            } else {
-                return notFound("Invalid Login");
-            }
+        Form<LoginForm> form = formFactory.form(LoginForm.class).bindFromRequest();
+        LoginForm loginData = form.get();
+        User user = userDAO.getUserByUsername(loginData.getUsername());
+        if (user != null && user.authenticate(loginData.getPassword())) {
+            return ok(user.toJSON());
+        } else {
+            return notFound("Invalid Login");
         }
     }
 
     public Result forgotPwd() {
-        DynamicForm form = formFactory.form().bindFromRequest();
+        Form<ResetPasswordForm> form = formFactory.form(ResetPasswordForm.class).bindFromRequest();
+        ResetPasswordForm passwordForm = form.get();
 
-            if (form.data().size() != 3) {
-                return badRequest("Bad Reset Password Request");
-            } else {
-            String username = form.get("username");
-            String securityQuestion = form.get("securityQuestion");
-            String answer = form.get("answer");
-            //System.out.println("User name is : ", username);
-            User user = userDAO.getPassword(username);
-            String dbusername = user.username;
-            String dbsecurityQuestion = user.securityQuestion;
-            String dbanswer = user.answer;
-            System.out.println(user.toJSON());
-            if (username.equals(dbusername)&&securityQuestion.equals(dbsecurityQuestion)&&answer.equals(dbanswer)) {
-                return ok(user.toJSON());
-            } else {
-                return notFound("Invalid Credentials");
-            }
+        String username = passwordForm.getUsername();
+        String securityQuestion = passwordForm.getSecurityQuestion();
+        String answer = passwordForm.getAnswer();
+        User user = userDAO.getUserByUsername(username);
+        if (
+            username.equals(user.getUsername()) &&
+            securityQuestion.equals(user.getSecurityQuestion()) &&
+            answer.equals(user.getAnswer())) {
+            user.updatePassword("temp");
+            return ok("{\"reset\":true}");
+        } else {
+            System.out.println("nope");
+            return ok("{\"reset\":false}");
         }
     }
 }

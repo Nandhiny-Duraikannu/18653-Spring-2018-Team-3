@@ -16,25 +16,28 @@ import services.UserFactory;
 import java.util.List;
 
 public class UserDAO {
-    private UserFactory userFactory = new UserFactory();
 
     public User createNewUser(String username, String password, String securityQuestion, String answer) {
+        UserFactory userFactory = new UserFactory();
         User user = userFactory.getUser("normal_user");
         user.setParameters(username, password, securityQuestion, answer);
         user.save();
         return user;
     }
 
-    public User getPassword(String username) {
+    public User getUserByUsername(String username) {
         User userDB = new User();
         try {
             User user = userDB.find.query().where().eq("username", username).findUnique();
-            if (user == null) return null;
-            return user;
+            if (user == null) {
+                return null;
+            } else {
+                return user;
+            }
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
-        return null;
     }
 
     public String getAllUsers () {

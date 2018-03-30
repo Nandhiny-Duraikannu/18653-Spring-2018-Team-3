@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/backend/conf/routes
-// @DATE:Thu Mar 29 09:24:50 PDT 2018
+// @DATE:Fri Mar 30 04:18:33 PDT 2018
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -8,10 +8,10 @@ import play.api.routing.JavaScriptReverseRoute
 import _root_.controllers.Assets.Asset
 import _root_.play.libs.F
 
-// @LINE:6
+// @LINE:7
 package controllers.javascript {
 
-  // @LINE:6
+  // @LINE:7
   class ReverseLoginController(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -19,7 +19,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:6
+    // @LINE:9
     def signup: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.LoginController.signup",
       """
@@ -29,9 +29,29 @@ package controllers.javascript {
       """
     )
   
+    // @LINE:11
+    def forgotPwd: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.LoginController.forgotPwd",
+      """
+        function() {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "forgotpassword"})
+        }
+      """
+    )
+  
+    // @LINE:7
+    def login: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.LoginController.login",
+      """
+        function() {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "login"})
+        }
+      """
+    )
+  
   }
 
-  // @LINE:12
+  // @LINE:16
   class ReverseAssets(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -39,7 +59,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:12
+    // @LINE:16
     def versioned: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.Assets.versioned",
       """
@@ -51,7 +71,7 @@ package controllers.javascript {
   
   }
 
-  // @LINE:9
+  // @LINE:13
   class ReverseUserController(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -59,7 +79,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:9
+    // @LINE:13
     def getAllUsers: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.UserController.getAllUsers",
       """

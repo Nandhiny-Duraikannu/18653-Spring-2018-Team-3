@@ -3,17 +3,23 @@
 # ~~~~
 
 # Signup, login, password reset, ...
-GET     /                           controllers.LoginController.loginView
-+ nocsrf
-POST    /login                      controllers.LoginController.login
+GET     /                           controllers.LoginController.loginView()
+GET     /signup                     controllers.LoginController.signupView()
+GET     /forgotpassword             controllers.LoginController.forgotPwdView()
+GET     /resetPassword              controllers.LoginController.resetPasswordView()
 
-GET     /signup                     controllers.LoginController.signupView
-+ nocsrf
-POST    /signup                     controllers.LoginController.signup
+GET     /home/:id                   controllers.HomeController.homeView(id: Int)
 
-GET     /forgotpassword                     controllers.LoginController.forgotPwdView
 + nocsrf
-POST    /forgotpassword                     controllers.LoginController.forgotPwd
+POST    /login                      controllers.LoginController.login()
++ nocsrf
+POST    /signup                     controllers.LoginController.signup()
++ nocsrf
+POST    /forgotpassword             controllers.LoginController.forgotPwd()
++ nocsrf
+POST    /resetPassword              controllers.LoginController.resetPassword()
++ nocsrf
+POST    /logout                     controllers.LoginController.logout()
 
-# For front end static files
+# LEAVE --- For front end static files
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

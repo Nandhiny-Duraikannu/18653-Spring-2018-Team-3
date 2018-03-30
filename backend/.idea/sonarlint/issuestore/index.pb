@@ -17,3 +17,7 @@ T
 $app/controllers/LoginController.java,b/4/b42c50f57b8e46ed3db0821a2ce3d046d351c352
 S
 #app/controllers/UserController.java,9/b/9b36b49a595efbc3a4cc0855d47fcb5728563d17
+H
+app/forms/LoginForm.java,e/2/e2e647b3f19641b9943e8d913bd5be2f1526b768
+P
+ app/forms/ResetPasswordForm.java,f/6/f6f46ecd8bbd695b0101c38e9e4ba5afb243d895

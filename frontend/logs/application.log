@@ -1,28 +1,305 @@
-2018-03-29 09:58:43,092 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-2 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
-2018-03-29 09:58:43,296 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-2 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+2018-03-30 03:47:10,071 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-7 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
+2018-03-30 03:47:10,154 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-7 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
 
     play.filters.csrf.CSRFFilter
     play.filters.headers.SecurityHeadersFilter
     play.filters.hosts.AllowedHostsFilter
 
-2018-03-29 09:58:43,304 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-2 - Application started (Dev)
-2018-03-29 09:59:20,072 [WARN] from play.filters.CSRF in play-dev-mode-akka.actor.default-dispatcher-3 - [CSRF] Check failed because no or invalid token found in body for /signup
-2018-03-29 09:59:20,074 [WARN] from play.filters.CSRF in play-dev-mode-akka.actor.default-dispatcher-3 - [CSRF] Check failed with NoTokenInBody for /signup
-2018-03-29 10:05:09,565 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-71 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
-2018-03-29 10:05:09,575 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-71 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+2018-03-30 03:47:10,158 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-7 - Application started (Dev)
+2018-03-30 03:49:13,452 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-43 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
+2018-03-30 03:49:13,459 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-43 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
 
     play.filters.csrf.CSRFFilter
     play.filters.headers.SecurityHeadersFilter
     play.filters.hosts.AllowedHostsFilter
 
-2018-03-29 10:05:09,575 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-71 - Application started (Dev)
-2018-03-29 10:07:21,662 [WARN] from play.filters.CSRF in play-dev-mode-akka.actor.default-dispatcher-92 - [CSRF] Check failed because no or invalid token found in body for /signup
-2018-03-29 10:07:21,662 [WARN] from play.filters.CSRF in play-dev-mode-akka.actor.default-dispatcher-92 - [CSRF] Check failed with NoTokenInBody for /signup
-2018-03-29 10:09:56,697 [ERROR] from application in play-dev-mode-akka.actor.default-dispatcher-113 - 
+2018-03-30 03:49:13,460 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-43 - Application started (Dev)
+2018-03-30 03:52:32,180 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-98 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
+2018-03-30 03:52:32,188 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-98 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
 
-! @77e0e321l - Internal server error, for (GET) [/signup] ->
+    play.filters.csrf.CSRFFilter
+    play.filters.headers.SecurityHeadersFilter
+    play.filters.hosts.AllowedHostsFilter
+
+2018-03-30 03:52:32,188 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-98 - Application started (Dev)
+2018-03-30 03:52:47,517 [ERROR] from application in application-akka.actor.default-dispatcher-5 - 
+
+! @77e5nhajd - Internal server error, for (POST) [/forgotpassword] ->
  
-play.sbt.routes.RoutesCompilationException: Compilation error[HTTP Verb (GET, POST, ...), include (->), comment (#), or modifier line (+) expected]
+play.api.http.HttpErrorHandlerExceptions$$anon$1: Execution exception[[CompletionException: java.lang.RuntimeException: Error parsing JSON from WS response wsBody]]
+	at play.api.http.HttpErrorHandlerExceptions$.throwableToUsefulException(HttpErrorHandler.scala:255)
+	at play.api.http.DefaultHttpErrorHandler.onServerError(HttpErrorHandler.scala:182)
+	at play.core.server.AkkaHttpServer$$anonfun$2.applyOrElse(AkkaHttpServer.scala:320)
+	at play.core.server.AkkaHttpServer$$anonfun$2.applyOrElse(AkkaHttpServer.scala:318)
+	at scala.concurrent.Future.$anonfun$recoverWith$1(Future.scala:414)
+	at scala.concurrent.impl.Promise.$anonfun$transformWith$1(Promise.scala:37)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:60)
+	at akka.dispatch.BatchingExecutor$AbstractBatch.processBatch(BatchingExecutor.scala:55)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.$anonfun$run$1(BatchingExecutor.scala:91)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:12)
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:81)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.run(BatchingExecutor.scala:91)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:40)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(ForkJoinExecutorConfigurator.scala:43)
+	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+Caused by: java.util.concurrent.CompletionException: java.lang.RuntimeException: Error parsing JSON from WS response wsBody
+	at java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:273)
+	at java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:280)
+	at java.util.concurrent.CompletableFuture.uniApply(CompletableFuture.java:604)
+	at java.util.concurrent.CompletableFuture$UniApply.tryFire(CompletableFuture.java:577)
+	at java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:474)
+	at java.util.concurrent.CompletableFuture.postFire(CompletableFuture.java:561)
+	at java.util.concurrent.CompletableFuture$UniApply.tryFire(CompletableFuture.java:580)
+	at java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:443)
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289)
+	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1056)
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1692)
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:157)
+Caused by: java.lang.RuntimeException: Error parsing JSON from WS response wsBody
+	at play.libs.ws.JsonBodyReadables.lambda$json$0(JsonBodyReadables.java:31)
+	at play.libs.ws.ahc.StandaloneAhcWSResponse.getBody(StandaloneAhcWSResponse.java:116)
+	at play.libs.ws.ahc.AhcWSResponse.asJson(AhcWSResponse.java:120)
+	at controllers.LoginController.lambda$forgotPwd$2(LoginController.java:105)
+	at java.util.concurrent.CompletableFuture.uniApply(CompletableFuture.java:602)
+	... 9 common frames omitted
+Caused by: com.fasterxml.jackson.core.JsonParseException: Unexpected character (''' (code 39)): was expecting double-quote to start field name
+ at [Source: [B@72a3e7d0; line: 1, column: 3]
+	at com.fasterxml.jackson.core.JsonParser._constructError(JsonParser.java:1702)
+	at com.fasterxml.jackson.core.base.ParserMinimalBase._reportError(ParserMinimalBase.java:558)
+	at com.fasterxml.jackson.core.base.ParserMinimalBase._reportUnexpectedChar(ParserMinimalBase.java:456)
+	at com.fasterxml.jackson.core.json.UTF8StreamJsonParser._handleOddName(UTF8StreamJsonParser.java:2054)
+	at com.fasterxml.jackson.core.json.UTF8StreamJsonParser._parseName(UTF8StreamJsonParser.java:1701)
+	at com.fasterxml.jackson.core.json.UTF8StreamJsonParser.nextFieldName(UTF8StreamJsonParser.java:1053)
+	at com.fasterxml.jackson.databind.deser.std.BaseNodeDeserializer.deserializeObject(JsonNodeDeserializer.java:210)
+	at com.fasterxml.jackson.databind.deser.std.JsonNodeDeserializer.deserialize(JsonNodeDeserializer.java:69)
+	at com.fasterxml.jackson.databind.deser.std.JsonNodeDeserializer.deserialize(JsonNodeDeserializer.java:15)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:3814)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:2945)
+	at play.libs.ws.JsonBodyReadables.lambda$json$0(JsonBodyReadables.java:29)
+	... 13 common frames omitted
+2018-03-30 03:54:18,920 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-115 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
+2018-03-30 03:54:18,925 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-115 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+
+    play.filters.csrf.CSRFFilter
+    play.filters.headers.SecurityHeadersFilter
+    play.filters.hosts.AllowedHostsFilter
+
+2018-03-30 03:54:18,926 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-115 - Application started (Dev)
+2018-03-30 03:56:06,748 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-170 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
+2018-03-30 03:56:06,756 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-170 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+
+    play.filters.csrf.CSRFFilter
+    play.filters.headers.SecurityHeadersFilter
+    play.filters.hosts.AllowedHostsFilter
+
+2018-03-30 03:56:06,757 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-170 - Application started (Dev)
+2018-03-30 03:57:26,111 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-220 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
+2018-03-30 03:57:26,116 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-220 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+
+    play.filters.csrf.CSRFFilter
+    play.filters.headers.SecurityHeadersFilter
+    play.filters.hosts.AllowedHostsFilter
+
+2018-03-30 03:57:26,117 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-220 - Application started (Dev)
+2018-03-30 03:58:17,925 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-245 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
+2018-03-30 03:58:17,930 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-245 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+
+    play.filters.csrf.CSRFFilter
+    play.filters.headers.SecurityHeadersFilter
+    play.filters.hosts.AllowedHostsFilter
+
+2018-03-30 03:58:17,930 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-245 - Application started (Dev)
+2018-03-30 03:58:39,433 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-267 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
+2018-03-30 03:58:39,440 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-267 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+
+    play.filters.csrf.CSRFFilter
+    play.filters.headers.SecurityHeadersFilter
+    play.filters.hosts.AllowedHostsFilter
+
+2018-03-30 03:58:39,440 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-267 - Application started (Dev)
+2018-03-30 03:59:10,953 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-288 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
+2018-03-30 03:59:10,957 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-288 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+
+    play.filters.csrf.CSRFFilter
+    play.filters.headers.SecurityHeadersFilter
+    play.filters.hosts.AllowedHostsFilter
+
+2018-03-30 03:59:10,958 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-288 - Application started (Dev)
+2018-03-30 04:01:49,134 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-400 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
+2018-03-30 04:01:49,139 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-400 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+
+    play.filters.csrf.CSRFFilter
+    play.filters.headers.SecurityHeadersFilter
+    play.filters.hosts.AllowedHostsFilter
+
+2018-03-30 04:01:49,139 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-400 - Application started (Dev)
+2018-03-30 04:03:35,008 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-422 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
+2018-03-30 04:03:35,014 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-422 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+
+    play.filters.csrf.CSRFFilter
+    play.filters.headers.SecurityHeadersFilter
+    play.filters.hosts.AllowedHostsFilter
+
+2018-03-30 04:03:35,014 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-422 - Application started (Dev)
+2018-03-30 04:06:35,577 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-511 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
+2018-03-30 04:06:35,587 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-511 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+
+    play.filters.csrf.CSRFFilter
+    play.filters.headers.SecurityHeadersFilter
+    play.filters.hosts.AllowedHostsFilter
+
+2018-03-30 04:06:35,587 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-511 - Application started (Dev)
+2018-03-30 04:07:17,333 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-554 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
+2018-03-30 04:07:17,337 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-554 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+
+    play.filters.csrf.CSRFFilter
+    play.filters.headers.SecurityHeadersFilter
+    play.filters.hosts.AllowedHostsFilter
+
+2018-03-30 04:07:17,337 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-554 - Application started (Dev)
+2018-03-30 04:16:29,959 [ERROR] from application in play-dev-mode-akka.actor.default-dispatcher-612 - 
+
+! @77e60k8m2 - Internal server error, for (GET) [/resetPassword] ->
+ 
+play.sbt.PlayExceptions$CompilationException: Compilation error[value resetPassword is not a member of controllers.LoginController]
+	at play.sbt.PlayExceptions$CompilationException$.apply(PlayExceptions.scala:34)
+	at play.sbt.PlayExceptions$CompilationException$.apply(PlayExceptions.scala:34)
+	at scala.Option.map(Option.scala:146)
+	at play.sbt.run.PlayReload$.$anonfun$taskFailureHandler$1(PlayReload.scala:33)
+	at scala.Option.map(Option.scala:146)
+	at play.sbt.run.PlayReload$.taskFailureHandler(PlayReload.scala:28)
+	at play.sbt.run.PlayReload$.compileFailure(PlayReload.scala:24)
+	at play.sbt.run.PlayReload$.$anonfun$compile$3(PlayReload.scala:51)
+	at scala.util.Either$LeftProjection.map(Either.scala:573)
+	at play.sbt.run.PlayReload$.compile(PlayReload.scala:51)
+	at play.sbt.run.PlayRun$.$anonfun$playRunTask$4(PlayRun.scala:76)
+	at play.runsupport.Reloader.$anonfun$reload$1(Reloader.scala:413)
+	at play.runsupport.Reloader$$anon$5.run(Reloader.scala:51)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at play.runsupport.Reloader$.play$runsupport$Reloader$$withReloaderContextClassLoader(Reloader.scala:56)
+	at play.runsupport.Reloader.reload(Reloader.scala:413)
+	at play.core.server.DevServerStart$$anon$1.get(DevServerStart.scala:123)
+	at play.core.server.AkkaHttpServer.handleRequest(AkkaHttpServer.scala:189)
+	at play.core.server.AkkaHttpServer.$anonfun$createServerBinding$1(AkkaHttpServer.scala:106)
+	at akka.stream.impl.fusing.MapAsync$$anon$25.onPush(Ops.scala:1194)
+	at akka.stream.impl.fusing.GraphInterpreter.processPush(GraphInterpreter.scala:519)
+	at akka.stream.impl.fusing.GraphInterpreter.processEvent(GraphInterpreter.scala:482)
+	at akka.stream.impl.fusing.GraphInterpreter.execute(GraphInterpreter.scala:378)
+	at akka.stream.impl.fusing.GraphInterpreterShell.runBatch(ActorGraphInterpreter.scala:585)
+	at akka.stream.impl.fusing.GraphInterpreterShell$AsyncInput.execute(ActorGraphInterpreter.scala:469)
+	at akka.stream.impl.fusing.GraphInterpreterShell.processEvent(ActorGraphInterpreter.scala:560)
+	at akka.stream.impl.fusing.ActorGraphInterpreter.akka$stream$impl$fusing$ActorGraphInterpreter$$processEvent(ActorGraphInterpreter.scala:742)
+	at akka.stream.impl.fusing.ActorGraphInterpreter$$anonfun$receive$1.applyOrElse(ActorGraphInterpreter.scala:757)
+	at akka.actor.Actor.aroundReceive(Actor.scala:517)
+	at akka.actor.Actor.aroundReceive$(Actor.scala:515)
+	at akka.stream.impl.fusing.ActorGraphInterpreter.aroundReceive(ActorGraphInterpreter.scala:667)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:590)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:559)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:257)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:224)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:234)
+	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+2018-03-30 04:16:31,044 [ERROR] from application in play-dev-mode-akka.actor.default-dispatcher-602 - 
+
+! @77e60kaeh - Internal server error, for (GET) [/] ->
+ 
+play.sbt.PlayExceptions$CompilationException: Compilation error[value resetPassword is not a member of controllers.LoginController]
+	at play.sbt.PlayExceptions$CompilationException$.apply(PlayExceptions.scala:34)
+	at play.sbt.PlayExceptions$CompilationException$.apply(PlayExceptions.scala:34)
+	at scala.Option.map(Option.scala:146)
+	at play.sbt.run.PlayReload$.$anonfun$taskFailureHandler$1(PlayReload.scala:33)
+	at scala.Option.map(Option.scala:146)
+	at play.sbt.run.PlayReload$.taskFailureHandler(PlayReload.scala:28)
+	at play.sbt.run.PlayReload$.compileFailure(PlayReload.scala:24)
+	at play.sbt.run.PlayReload$.$anonfun$compile$3(PlayReload.scala:51)
+	at scala.util.Either$LeftProjection.map(Either.scala:573)
+	at play.sbt.run.PlayReload$.compile(PlayReload.scala:51)
+	at play.sbt.run.PlayRun$.$anonfun$playRunTask$4(PlayRun.scala:76)
+	at play.runsupport.Reloader.$anonfun$reload$1(Reloader.scala:413)
+	at play.runsupport.Reloader$$anon$5.run(Reloader.scala:51)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at play.runsupport.Reloader$.play$runsupport$Reloader$$withReloaderContextClassLoader(Reloader.scala:56)
+	at play.runsupport.Reloader.reload(Reloader.scala:413)
+	at play.core.server.DevServerStart$$anon$1.get(DevServerStart.scala:123)
+	at play.core.server.AkkaHttpServer.handleRequest(AkkaHttpServer.scala:189)
+	at play.core.server.AkkaHttpServer.$anonfun$createServerBinding$1(AkkaHttpServer.scala:106)
+	at akka.stream.impl.fusing.MapAsync$$anon$25.onPush(Ops.scala:1194)
+	at akka.stream.impl.fusing.GraphInterpreter.processPush(GraphInterpreter.scala:519)
+	at akka.stream.impl.fusing.GraphInterpreter.processEvent(GraphInterpreter.scala:482)
+	at akka.stream.impl.fusing.GraphInterpreter.execute(GraphInterpreter.scala:378)
+	at akka.stream.impl.fusing.GraphInterpreterShell.runBatch(ActorGraphInterpreter.scala:585)
+	at akka.stream.impl.fusing.GraphInterpreterShell$AsyncInput.execute(ActorGraphInterpreter.scala:469)
+	at akka.stream.impl.fusing.GraphInterpreterShell.processEvent(ActorGraphInterpreter.scala:560)
+	at akka.stream.impl.fusing.ActorGraphInterpreter.akka$stream$impl$fusing$ActorGraphInterpreter$$processEvent(ActorGraphInterpreter.scala:742)
+	at akka.stream.impl.fusing.ActorGraphInterpreter$$anonfun$receive$1.applyOrElse(ActorGraphInterpreter.scala:757)
+	at akka.actor.Actor.aroundReceive(Actor.scala:517)
+	at akka.actor.Actor.aroundReceive$(Actor.scala:515)
+	at akka.stream.impl.fusing.ActorGraphInterpreter.aroundReceive(ActorGraphInterpreter.scala:667)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:590)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:559)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:257)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:224)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:234)
+	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+2018-03-30 04:16:31,954 [ERROR] from application in play-dev-mode-akka.actor.default-dispatcher-614 - 
+
+! @77e60kbng - Internal server error, for (GET) [/] ->
+ 
+play.sbt.PlayExceptions$CompilationException: Compilation error[value resetPassword is not a member of controllers.LoginController]
+	at play.sbt.PlayExceptions$CompilationException$.apply(PlayExceptions.scala:34)
+	at play.sbt.PlayExceptions$CompilationException$.apply(PlayExceptions.scala:34)
+	at scala.Option.map(Option.scala:146)
+	at play.sbt.run.PlayReload$.$anonfun$taskFailureHandler$1(PlayReload.scala:33)
+	at scala.Option.map(Option.scala:146)
+	at play.sbt.run.PlayReload$.taskFailureHandler(PlayReload.scala:28)
+	at play.sbt.run.PlayReload$.compileFailure(PlayReload.scala:24)
+	at play.sbt.run.PlayReload$.$anonfun$compile$3(PlayReload.scala:51)
+	at scala.util.Either$LeftProjection.map(Either.scala:573)
+	at play.sbt.run.PlayReload$.compile(PlayReload.scala:51)
+	at play.sbt.run.PlayRun$.$anonfun$playRunTask$4(PlayRun.scala:76)
+	at play.runsupport.Reloader.$anonfun$reload$1(Reloader.scala:413)
+	at play.runsupport.Reloader$$anon$5.run(Reloader.scala:51)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at play.runsupport.Reloader$.play$runsupport$Reloader$$withReloaderContextClassLoader(Reloader.scala:56)
+	at play.runsupport.Reloader.reload(Reloader.scala:413)
+	at play.core.server.DevServerStart$$anon$1.get(DevServerStart.scala:123)
+	at play.core.server.AkkaHttpServer.handleRequest(AkkaHttpServer.scala:189)
+	at play.core.server.AkkaHttpServer.$anonfun$createServerBinding$1(AkkaHttpServer.scala:106)
+	at akka.stream.impl.fusing.MapAsync$$anon$25.onPush(Ops.scala:1194)
+	at akka.stream.impl.fusing.GraphInterpreter.processPush(GraphInterpreter.scala:519)
+	at akka.stream.impl.fusing.GraphInterpreter.processEvent(GraphInterpreter.scala:482)
+	at akka.stream.impl.fusing.GraphInterpreter.execute(GraphInterpreter.scala:378)
+	at akka.stream.impl.fusing.GraphInterpreterShell.runBatch(ActorGraphInterpreter.scala:585)
+	at akka.stream.impl.fusing.GraphInterpreterShell$AsyncInput.execute(ActorGraphInterpreter.scala:469)
+	at akka.stream.impl.fusing.GraphInterpreterShell.processEvent(ActorGraphInterpreter.scala:560)
+	at akka.stream.impl.fusing.ActorGraphInterpreter.akka$stream$impl$fusing$ActorGraphInterpreter$$processEvent(ActorGraphInterpreter.scala:742)
+	at akka.stream.impl.fusing.ActorGraphInterpreter$$anonfun$receive$1.applyOrElse(ActorGraphInterpreter.scala:757)
+	at akka.actor.Actor.aroundReceive(Actor.scala:517)
+	at akka.actor.Actor.aroundReceive$(Actor.scala:515)
+	at akka.stream.impl.fusing.ActorGraphInterpreter.aroundReceive(ActorGraphInterpreter.scala:667)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:590)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:559)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:257)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:224)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:234)
+	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+2018-03-30 04:16:43,928 [ERROR] from application in play-dev-mode-akka.actor.default-dispatcher-619 - 
+
+! @77e60l3ak - Internal server error, for (GET) [/] ->
+ 
+play.sbt.routes.RoutesCompilationException: Compilation error[string matching regex `\z' expected but `+' found]
 	at play.sbt.routes.RoutesCompiler$.$anonfun$compileRoutes$5(RoutesCompiler.scala:165)
 	at scala.collection.TraversableLike.$anonfun$map$1(TraversableLike.scala:234)
 	at scala.collection.immutable.List.foreach(List.scala:389)
@@ -46,101 +323,57 @@ play.sbt.routes.RoutesCompilationException: Compilation error[HTTP Verb (GET, PO
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at java.lang.Thread.run(Thread.java:748)
-2018-03-29 10:10:09,443 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-116 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
-2018-03-29 10:10:09,451 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-116 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+2018-03-30 04:16:52,414 [ERROR] from application in play-dev-mode-akka.actor.default-dispatcher-611 - 
+
+! @77e60lg4f - Internal server error, for (GET) [/] ->
+ 
+play.sbt.PlayExceptions$CompilationException: Compilation error[value resetPassword is not a member of controllers.ReverseLoginController]
+	at play.sbt.PlayExceptions$CompilationException$.apply(PlayExceptions.scala:34)
+	at play.sbt.PlayExceptions$CompilationException$.apply(PlayExceptions.scala:34)
+	at scala.Option.map(Option.scala:146)
+	at play.sbt.run.PlayReload$.$anonfun$taskFailureHandler$1(PlayReload.scala:33)
+	at scala.Option.map(Option.scala:146)
+	at play.sbt.run.PlayReload$.taskFailureHandler(PlayReload.scala:28)
+	at play.sbt.run.PlayReload$.compileFailure(PlayReload.scala:24)
+	at play.sbt.run.PlayReload$.$anonfun$compile$3(PlayReload.scala:51)
+	at scala.util.Either$LeftProjection.map(Either.scala:573)
+	at play.sbt.run.PlayReload$.compile(PlayReload.scala:51)
+	at play.sbt.run.PlayRun$.$anonfun$playRunTask$4(PlayRun.scala:76)
+	at play.runsupport.Reloader.$anonfun$reload$1(Reloader.scala:413)
+	at play.runsupport.Reloader$$anon$5.run(Reloader.scala:51)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at play.runsupport.Reloader$.play$runsupport$Reloader$$withReloaderContextClassLoader(Reloader.scala:56)
+	at play.runsupport.Reloader.reload(Reloader.scala:413)
+	at play.core.server.DevServerStart$$anon$1.get(DevServerStart.scala:123)
+	at play.core.server.AkkaHttpServer.handleRequest(AkkaHttpServer.scala:189)
+	at play.core.server.AkkaHttpServer.$anonfun$createServerBinding$1(AkkaHttpServer.scala:106)
+	at akka.stream.impl.fusing.MapAsync$$anon$25.onPush(Ops.scala:1194)
+	at akka.stream.impl.fusing.GraphInterpreter.processPush(GraphInterpreter.scala:519)
+	at akka.stream.impl.fusing.GraphInterpreter.processEvent(GraphInterpreter.scala:482)
+	at akka.stream.impl.fusing.GraphInterpreter.execute(GraphInterpreter.scala:378)
+	at akka.stream.impl.fusing.GraphInterpreterShell.runBatch(ActorGraphInterpreter.scala:585)
+	at akka.stream.impl.fusing.GraphInterpreterShell$AsyncInput.execute(ActorGraphInterpreter.scala:469)
+	at akka.stream.impl.fusing.GraphInterpreterShell.processEvent(ActorGraphInterpreter.scala:560)
+	at akka.stream.impl.fusing.ActorGraphInterpreter.akka$stream$impl$fusing$ActorGraphInterpreter$$processEvent(ActorGraphInterpreter.scala:742)
+	at akka.stream.impl.fusing.ActorGraphInterpreter$$anonfun$receive$1.applyOrElse(ActorGraphInterpreter.scala:757)
+	at akka.actor.Actor.aroundReceive(Actor.scala:517)
+	at akka.actor.Actor.aroundReceive$(Actor.scala:515)
+	at akka.stream.impl.fusing.ActorGraphInterpreter.aroundReceive(ActorGraphInterpreter.scala:667)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:590)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:559)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:257)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:224)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:234)
+	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+2018-03-30 04:17:28,908 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-624 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
+2018-03-30 04:17:28,913 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-624 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
 
     play.filters.csrf.CSRFFilter
     play.filters.headers.SecurityHeadersFilter
     play.filters.hosts.AllowedHostsFilter
 
-2018-03-29 10:10:09,451 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-116 - Application started (Dev)
-2018-03-29 10:10:20,899 [WARN] from play.filters.CSRF in play-dev-mode-akka.actor.default-dispatcher-112 - [CSRF] Check failed because no or invalid token found in body for /signup
-2018-03-29 10:10:20,899 [WARN] from play.filters.CSRF in play-dev-mode-akka.actor.default-dispatcher-112 - [CSRF] Check failed with NoTokenInBody for /signup
-2018-03-29 10:11:53,819 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-130 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
-2018-03-29 10:11:53,826 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-130 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
-
-    play.filters.csrf.CSRFFilter
-    play.filters.headers.SecurityHeadersFilter
-    play.filters.hosts.AllowedHostsFilter
-
-2018-03-29 10:11:53,826 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-130 - Application started (Dev)
-2018-03-29 10:15:08,678 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-150 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
-2018-03-29 10:15:08,685 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-150 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
-
-    play.filters.csrf.CSRFFilter
-    play.filters.headers.SecurityHeadersFilter
-    play.filters.hosts.AllowedHostsFilter
-
-2018-03-29 10:15:08,685 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-150 - Application started (Dev)
-2018-03-29 10:17:40,690 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-174 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
-2018-03-29 10:17:40,698 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-174 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
-
-    play.filters.csrf.CSRFFilter
-    play.filters.headers.SecurityHeadersFilter
-    play.filters.hosts.AllowedHostsFilter
-
-2018-03-29 10:17:40,698 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-174 - Application started (Dev)
-2018-03-29 10:23:00,583 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-195 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
-2018-03-29 10:23:00,593 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-195 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
-
-    play.filters.csrf.CSRFFilter
-    play.filters.headers.SecurityHeadersFilter
-    play.filters.hosts.AllowedHostsFilter
-
-2018-03-29 10:23:00,593 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-195 - Application started (Dev)
-2018-03-29 11:00:40,223 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-242 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
-2018-03-29 11:00:40,232 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-242 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
-
-    play.filters.csrf.CSRFFilter
-    play.filters.headers.SecurityHeadersFilter
-    play.filters.hosts.AllowedHostsFilter
-
-2018-03-29 11:00:40,232 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-242 - Application started (Dev)
-2018-03-29 11:06:48,779 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-262 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
-2018-03-29 11:06:48,784 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-262 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
-
-    play.filters.csrf.CSRFFilter
-    play.filters.headers.SecurityHeadersFilter
-    play.filters.hosts.AllowedHostsFilter
-
-2018-03-29 11:06:48,784 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-262 - Application started (Dev)
-2018-03-29 11:08:37,384 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-266 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
-2018-03-29 11:08:37,388 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-266 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
-
-    play.filters.csrf.CSRFFilter
-    play.filters.headers.SecurityHeadersFilter
-    play.filters.hosts.AllowedHostsFilter
-
-2018-03-29 11:08:37,388 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-266 - Application started (Dev)
-2018-03-29 11:09:53,359 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-289 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
-2018-03-29 11:09:53,368 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-289 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
-
-    play.filters.csrf.CSRFFilter
-    play.filters.headers.SecurityHeadersFilter
-    play.filters.hosts.AllowedHostsFilter
-
-2018-03-29 11:09:53,371 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-289 - Application started (Dev)
-2018-03-29 11:11:07,971 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-293 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
-2018-03-29 11:11:07,977 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-293 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
-
-    play.filters.csrf.CSRFFilter
-    play.filters.headers.SecurityHeadersFilter
-    play.filters.hosts.AllowedHostsFilter
-
-2018-03-29 11:11:07,977 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-293 - Application started (Dev)
-2018-03-29 11:13:56,986 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-316 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
-2018-03-29 11:13:56,992 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-316 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
-
-    play.filters.csrf.CSRFFilter
-    play.filters.headers.SecurityHeadersFilter
-    play.filters.hosts.AllowedHostsFilter
-
-2018-03-29 11:13:56,992 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-316 - Application started (Dev)
-2018-03-29 11:28:38,082 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-355 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
-2018-03-29 11:28:38,089 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-355 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
-
-    play.filters.csrf.CSRFFilter
-    play.filters.headers.SecurityHeadersFilter
-    play.filters.hosts.AllowedHostsFilter
-
-2018-03-29 11:28:38,089 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-355 - Application started (Dev)
+2018-03-30 04:17:28,913 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-624 - Application started (Dev)
+2018-03-30 04:21:40,271 [INFO] from play.core.server.AkkaHttpServer in pool-10-thread-3 - Stopping server...
