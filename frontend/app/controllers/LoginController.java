@@ -60,4 +60,35 @@ public class LoginController extends Controller implements WSBodyReadables, WSBo
             }
         });
     }
+
+    // Login logic
+    public CompletionStage<Result> login () {
+
+        DynamicForm form = formFactory.form().bindFromRequest();
+
+        StringBuilder userJSON = new StringBuilder();
+        userJSON.append("{");
+        userJSON.append("\"username\": \"").append(form.get("username")).append("\", ");
+        userJSON.append("\"password\": \"").append(form.get("password")).append("\"} ");
+        //userJSON.append("\"password\": \"").append(form.get("password")).append("\", ");
+        System.out.println(userJSON.toString());
+       
+        // Post the json to create the user in the backend
+        WSRequest request = ws.url(urlService.loginURL());
+        System.out.println(urlService.loginURL());
+        return request
+        .addHeader("Content-Type", "application/json")
+        .post(userJSON.toString())
+        .thenApply((WSResponse r) -> {
+            System.out.println(r.getStatus());
+            if (r.getStatus() == 200) {
+                int userId = r.asJson().get("id").asInt();
+                String username = r.asJson().get("username").asText();
+                System.out.println("Login Sucess");
+                return ok(views.html.homeUser.render(username, userId));
+            } else {
+                return badRequest("Error while trying to login user");
+            }
+        });
+    }
 }

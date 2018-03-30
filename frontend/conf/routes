@@ -4,6 +4,9 @@
 
 # Signup, login, password reset, ...
 GET     /                           controllers.LoginController.loginView
++ nocsrf
+POST    /login                      controllers.LoginController.login
+
 GET     /signup                     controllers.LoginController.signupView
 + nocsrf
 POST    /signup                     controllers.LoginController.signup

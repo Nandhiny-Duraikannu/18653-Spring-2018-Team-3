@@ -3,6 +3,9 @@
 # ~~~~
 
 # Signup, login, reset password, ...
+
+POST    /login                      controllers.LoginController.login()
+
 POST    /signup                     controllers.LoginController.signup()
 
 

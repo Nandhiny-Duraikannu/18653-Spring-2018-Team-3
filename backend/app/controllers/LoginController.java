@@ -31,4 +31,25 @@ public class LoginController extends Controller {
         User user = userDAO.createNewUser(username, password, securityQuestion, answer);
         return ok(user.toJSON());
     }
+
+    public Result login() {
+        DynamicForm form = formFactory.form().bindFromRequest();
+
+            if (form.data().size() != 2) {
+                System.out.println("Why I am here??");
+                return badRequest("Bad Login Request");
+            } else {
+            String username = form.get("username");
+            String password = form.get("password");
+            //System.out.println("User name is : ", username);
+            User user = userDAO.getPassword(username);
+            String dbPassword = user.passwordHash;
+            if (password.equals(dbPassword)) {
+                return ok(user.toJSON());
+            } else {
+                return notFound("Invalid Login");
+            }
+        }
+    }
 }
+

@@ -8,4 +8,6 @@ public class BackendURLService {
 
     public String signupURL () { return baseURL + "signup"; }
 
+    public String loginURL () { return baseURL + "login"; }
+
 }
