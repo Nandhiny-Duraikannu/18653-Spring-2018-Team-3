@@ -51,5 +51,28 @@ public class LoginController extends Controller {
             }
         }
     }
+
+    public Result forgotPwd() {
+        DynamicForm form = formFactory.form().bindFromRequest();
+
+            if (form.data().size() != 3) {
+                return badRequest("Bad Reset Password Request");
+            } else {
+            String username = form.get("username");
+            String securityQuestion = form.get("securityQuestion");
+            String answer = form.get("answer");
+            //System.out.println("User name is : ", username);
+            User user = userDAO.getPassword(username);
+            String dbusername = user.username;
+            String dbsecurityQuestion = user.securityQuestion;
+            String dbanswer = user.answer;
+            System.out.println(user.toJSON());
+            if (username.equals(dbusername)&&securityQuestion.equals(dbsecurityQuestion)&&answer.equals(dbanswer)) {
+                return ok(user.toJSON());
+            } else {
+                return notFound("Invalid Credentials");
+            }
+        }
+    }
 }
 

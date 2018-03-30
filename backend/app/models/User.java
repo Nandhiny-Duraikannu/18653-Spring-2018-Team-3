@@ -110,7 +110,9 @@ public class User extends Model {
         json.append("{");
         json.append("\"id\": \"").append(this.getId()).append("\", ");
         json.append("\"username\": \"").append(this.getUsername()).append("\", ");
-        json.append("\"type\": \"").append(this.getUserType()).append("\"}");
+        json.append("\"type\": \"").append(this.getUserType()).append("\", ");
+        json.append("\"securityQuestion\": \"").append(this.getSecurityQuestion()).append("\", ");
+        json.append("\"answer\": \"").append(this.getAnswer()).append("\"}");
         return json.toString();
     }
 }

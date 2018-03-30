@@ -11,5 +11,9 @@ GET     /signup                     controllers.LoginController.signupView
 + nocsrf
 POST    /signup                     controllers.LoginController.signup
 
+GET     /forgotpassword                     controllers.LoginController.forgotPwdView
++ nocsrf
+POST    /forgotpassword                     controllers.LoginController.forgotPwd
+
 # For front end static files
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
