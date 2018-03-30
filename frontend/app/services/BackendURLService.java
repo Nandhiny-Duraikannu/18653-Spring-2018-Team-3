@@ -8,14 +8,18 @@ public class BackendURLService {
 
     public String signupURL () { return baseURL + "signup"; }
 
-
     public String loginURL () { return baseURL + "login"; }
 
     public String resetPasswordURL() { return baseURL + "forgotpassword"; }
 
     public String newPasswordURL () { return baseURL + "confirmReset"; }
 
-
     //SUBMIT API
     public String submitApiURL () { return baseURL + "submitapi"; }
+
+    public String getAllMashupsURL() { return baseURL + "mashups"; }
+
+    public String searchMashupsURL(String query) { return baseURL + "search/mashup?query="+query; }
+
+    public String submitMashupURL() { return baseURL + "mashup"; }
 }

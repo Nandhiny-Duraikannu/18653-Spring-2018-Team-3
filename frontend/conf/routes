@@ -17,7 +17,21 @@ POST    /forgotpassword             controllers.LoginController.forgotPwd()
 POST    /resetPassword              controllers.LoginController.resetPassword()
 
 
+# Mashup
+GET     /mashups                    controllers.MashupController.mashupListView()
+GET     /mashups/all                controllers.MashupController.getAllMashups()
+GET     /mashups/search             controllers.MashupController.searchMashups()
+GET     /mashup/submit              controllers.MashupController.submitMashupView()
+POST    /mashup                     controllers.MashupController.submitMashup()
 
+# Mashup
+GET     /mashups                    controllers.MashupController.mashupListView()
+GET     /mashups/all                controllers.MashupController.getAllMashups()
+GET     /mashups/search             controllers.MashupController.searchMashups()
+GET     /mashup/submit              controllers.MashupController.submitMashupView()
+POST    /mashup                     controllers.MashupController.submitMashup()
+
+# For front end static files
 # LEAVE --- For front end static files
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 
