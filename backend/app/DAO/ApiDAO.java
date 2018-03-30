@@ -1,18 +1,20 @@
 package DAO;
 
-import models.Api;
-import services.ApiMashupFactory;
-
+import models.*;
 import java.util.List;
+import services.*;
 
 public class ApiDAO {
     private ApiMashupFactory apiFactory = new ApiMashupFactory();
     
 
-    public Api addApi(String apiname, String apihomepage, String apiendpoint, String version, String scope, String apidescription, String emailaddress) {
+    public Api addApi(User user, String apiname, String apihomepage, String apiendpoint, String version, String scope, String apidescription, String emailaddress) {
         Api api = apiFactory.createObject("api");
         api.setParameters(apiname, apihomepage,apiendpoint,version,scope,apidescription,emailaddress);
-        api.save();
+        
+        user.apis.add(api);
+        user.save();
+        // api.save();
         return api;
     }
 

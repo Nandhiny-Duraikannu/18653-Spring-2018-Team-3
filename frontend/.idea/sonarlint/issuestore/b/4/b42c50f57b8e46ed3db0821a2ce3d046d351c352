@@ -1,14 +1,9 @@
 
-esquid:S1192"IDefine a constant instead of duplicating this literal "username" 3 times.(³Φο8υχ›²§,
-msquid:S1192"QDefine a constant instead of duplicating this literal "application/json" 3 times.(Ϋ—Ι8υχ›²§,
-isquid:S1192"MDefine a constant instead of duplicating this literal "Content-Type" 3 times.(Ϋ—Ι8υχ›²§,
+msquid:S1192"QDefine a constant instead of duplicating this literal "application/json" 4 times.(Ϋ—Ι8ΰΓµ§,
+isquid:S1192"MDefine a constant instead of duplicating this literal "Content-Type" 4 times.(Ϋ—Ι8ΰΓµ§,
 T
-squid:S106"9Replace this use of System.out or System.err by a logger.(ύσζ8υχ›²§,
+squid:S106"9Replace this use of System.out or System.err by a logger.(ύσζ8ΰΓµ§,
 T
-squid:S106"9Replace this use of System.out or System.err by a logger.(½φτ™8υχ›²§,
-Y
-squid:S106"9Replace this use of System.out or System.err by a logger.(οΉώÿÿÿÿ8υχ›²§,
+squid:S106"9Replace this use of System.out or System.err by a logger.(½φτ™8ΰΓµ§,
 T
-squid:S106"9Replace this use of System.out or System.err by a logger.(½φτ™8υχ›²§,
-Y
-squid:S106"9Replace this use of System.out or System.err by a logger.(ιΥαΖψÿÿÿÿ8υχ›²§,
+squid:S106"9Replace this use of System.out or System.err by a logger.(Ό…γΔ8ΰΓµ§,

@@ -1,7 +1,7 @@
 package controllers;
 
-import DAO.ApiDAO;
-import models.Api;
+import DAO.*;
+import models.*;
 import play.data.DynamicForm;
 import play.data.FormFactory;
 import play.mvc.*;
@@ -16,6 +16,7 @@ public class ApiController extends Controller {
     private final FormFactory formFactory;
 
     private ApiDAO apiDAO = new ApiDAO();
+    private UserDAO userDAO = new UserDAO();
 
     @Inject
     public ApiController(FormFactory formFactory) {
@@ -24,6 +25,7 @@ public class ApiController extends Controller {
 
     public Result submitApi() {
         DynamicForm form = formFactory.form().bindFromRequest();
+        String userId = form.get("user_id");
         String apiname = form.get("apiname");
         String apihomepage = form.get("apihomepage");
         String apiendpoint = form.get("apiendpoint");
@@ -32,8 +34,9 @@ public class ApiController extends Controller {
         String apidescription = form.get("apidescription");
         String emailaddress = form.get("emailaddress");
 
+        User user = userDAO.getUserByUserId(Integer.valueOf(userId));
 
-        Api api = apiDAO.addApi(apiname,apihomepage,apiendpoint,version,scope,apidescription,emailaddress);
+        Api api = apiDAO.addApi(user, apiname, apihomepage, apiendpoint, version, scope, apidescription, emailaddress);
         return ok(api.toJSON());
     }
 

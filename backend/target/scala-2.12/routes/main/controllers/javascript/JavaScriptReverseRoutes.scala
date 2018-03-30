@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/backend/conf/routes
-// @DATE:Fri Mar 30 04:18:33 PDT 2018
+// @DATE:Fri Mar 30 12:19:26 PDT 2018
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -85,6 +85,36 @@ package controllers.javascript {
       """
         function() {
           return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "users"})
+        }
+      """
+    )
+  
+  }
+
+  // @LINE:20
+  class ReverseApiController(_prefix: => String) {
+
+    def _defaultPrefix: String = {
+      if (_prefix.endsWith("/")) "" else "/"
+    }
+
+  
+    // @LINE:20
+    def submitApi: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ApiController.submitApi",
+      """
+        function() {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "submitapi"})
+        }
+      """
+    )
+  
+    // @LINE:22
+    def getApi: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ApiController.getApi",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "getapi"})
         }
       """
     )

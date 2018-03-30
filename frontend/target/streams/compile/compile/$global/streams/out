@@ -1,4 +1,3 @@
-[error] /Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/frontend/app/views/resetPassword.scala.html:18:58: value resetPassword is not a member of controllers.ReverseLoginController
-[error]             @helper.form(action = routes.LoginController.resetPassword()) {
-[error]                                                          ^
+[error] /Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/frontend/conf/routes:26:1: value submitapi is not a member of controllers.SubmitApiController
+[error] POST     /submitapi                           controllers.SubmitApiController.submitapi
 [error] one error found

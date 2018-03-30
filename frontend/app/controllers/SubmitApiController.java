@@ -27,15 +27,16 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
     }
 
     public Result apiFormView () {
-        return ok(views.html.submitApi.render());
+        return ok(views.html.submitApi.render(session().get("username")));
     }
 
 
-    public CompletionStage<Result> submitapi () {
+    public CompletionStage<Result> submitApi () {
         DynamicForm form = formFactory.form().bindFromRequest();
 
         StringBuilder apiJSON = new StringBuilder();
         apiJSON.append("{");
+        apiJSON.append("\"user_id\": \"").append(session().get("id")).append("\", ");
         apiJSON.append("\"apiname\": \"").append(form.get("apiname")).append("\", ");
         apiJSON.append("\"apihomepage\": \"").append(form.get("apihomepage")).append("\", ");
         apiJSON.append("\"apiendpoint\": \"").append(form.get("apiendpoint")).append("\", ");
@@ -49,14 +50,14 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
         // Post the json to create the user in the backend
         WSRequest request = ws.url(urlService.submitApiURL());
         return request
-                .addHeader("Content-Type", "application/json")
-                .post(apiJSON.toString())
-                .thenApply((WSResponse r) -> {
-                    if (r.getStatus() == 200) {
-                        return ok("submitted successfully");
-                    } else {
-                        return badRequest("Error while submitting API");
-                    }
-                });
-    }
+        .addHeader("Content-Type", "application/json")
+        .post(apiJSON.toString())
+        .thenApply((WSResponse r) -> {
+            if (r.getStatus() == 200) {
+                return redirect(routes.HomeController.homeView());
+            } else {
+                return badRequest("Error while submitting API");
+            }
+        });
+}
 }

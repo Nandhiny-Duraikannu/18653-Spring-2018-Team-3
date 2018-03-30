@@ -2,21 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4b384eb-898c-465b-b08a-f2b4d4fb8ed7" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/UIForm/LoginForm.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/UIForm/ResetPasswordForm.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/UIForm/SignupForm.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/controllers/HomeController.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/views/resetPassword.scala.html" />
-      <change beforePath="$PROJECT_DIR$/../backend/.idea/libraries/sbt__aopalliance_aopalliance_1_0_jar.xml" afterPath="$PROJECT_DIR$/../backend/.idea/libraries/sbt__aopalliance_aopalliance_1_0_jar.xml" />
-      <change beforePath="$PROJECT_DIR$/../backend/.idea/sonarlint/issuestore/5/e/5ed8af79cb87b89c123e57ce388e0bbfed025626" afterPath="$PROJECT_DIR$/../backend/.idea/sonarlint/issuestore/5/e/5ed8af79cb87b89c123e57ce388e0bbfed025626" />
-      <change beforePath="$PROJECT_DIR$/../backend/.idea/sonarlint/issuestore/9/7/976dd6642ea369980871d0ad70e57b69d4a5f0bd" afterPath="$PROJECT_DIR$/../backend/.idea/sonarlint/issuestore/9/7/976dd6642ea369980871d0ad70e57b69d4a5f0bd" />
-      <change beforePath="$PROJECT_DIR$/../backend/.idea/sonarlint/issuestore/b/4/b42c50f57b8e46ed3db0821a2ce3d046d351c352" afterPath="$PROJECT_DIR$/../backend/.idea/sonarlint/issuestore/b/4/b42c50f57b8e46ed3db0821a2ce3d046d351c352" />
-      <change beforePath="$PROJECT_DIR$/../backend/.idea/sonarlint/issuestore/index.pb" afterPath="$PROJECT_DIR$/../backend/.idea/sonarlint/issuestore/index.pb" />
       <change beforePath="$PROJECT_DIR$/../backend/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../backend/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/../backend/app/DAO/ApiDAO.java" afterPath="$PROJECT_DIR$/../backend/app/DAO/ApiDAO.java" />
       <change beforePath="$PROJECT_DIR$/../backend/app/DAO/UserDAO.java" afterPath="$PROJECT_DIR$/../backend/app/DAO/UserDAO.java" />
-      <change beforePath="$PROJECT_DIR$/../backend/app/controllers/LoginController.java" afterPath="$PROJECT_DIR$/../backend/app/controllers/LoginController.java" />
+      <change beforePath="$PROJECT_DIR$/../backend/app/controllers/ApiController.java" afterPath="$PROJECT_DIR$/../backend/app/controllers/ApiController.java" />
+      <change beforePath="$PROJECT_DIR$/../backend/app/models/Api.java" afterPath="$PROJECT_DIR$/../backend/app/models/Api.java" />
       <change beforePath="$PROJECT_DIR$/../backend/app/models/User.java" afterPath="$PROJECT_DIR$/../backend/app/models/User.java" />
-      <change beforePath="$PROJECT_DIR$/../backend/lib/org/mindrot/jbcrypt/BCrypt.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../backend/conf/evolutions/default/1.sql" afterPath="$PROJECT_DIR$/../backend/conf/evolutions/default/1.sql" />
       <change beforePath="$PROJECT_DIR$/../backend/logs/application.log" afterPath="$PROJECT_DIR$/../backend/logs/application.log" />
       <change beforePath="$PROJECT_DIR$/../backend/project/target/scala-2.12/sbt-1.0/resolution-cache/default/backend-build/scala_2.12/sbt_1.0/0.1-SNAPSHOT/resolved.xml.properties" afterPath="$PROJECT_DIR$/../backend/project/target/scala-2.12/sbt-1.0/resolution-cache/default/backend-build/scala_2.12/sbt_1.0/0.1-SNAPSHOT/resolved.xml.properties" />
       <change beforePath="$PROJECT_DIR$/../backend/project/target/scala-2.12/sbt-1.0/resolution-cache/default/backend-build/scala_2.12/sbt_1.0/0.1-SNAPSHOT/resolved.xml.xml" afterPath="$PROJECT_DIR$/../backend/project/target/scala-2.12/sbt-1.0/resolution-cache/default/backend-build/scala_2.12/sbt_1.0/0.1-SNAPSHOT/resolved.xml.xml" />
@@ -33,14 +25,9 @@
       <change beforePath="$PROJECT_DIR$/../backend/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-backend-build-test.xml" afterPath="$PROJECT_DIR$/../backend/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-backend-build-test.xml" />
       <change beforePath="$PROJECT_DIR$/../backend/project/target/streams/$global/update/$global/streams/out" afterPath="$PROJECT_DIR$/../backend/project/target/streams/$global/update/$global/streams/out" />
       <change beforePath="$PROJECT_DIR$/../backend/project/target/streams/$global/update/$global/streams/update_cache_2.12/output" afterPath="$PROJECT_DIR$/../backend/project/target/streams/$global/update/$global/streams/update_cache_2.12/output" />
-      <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/DAO/UserDAO.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/DAO/UserDAO.class" />
-      <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/LoginController.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/LoginController.class" />
-      <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/ReverseAssets.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/ReverseAssets.class" />
-      <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/ReverseLoginController.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/ReverseLoginController.class" />
-      <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/ReverseUserController.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/ReverseUserController.class" />
-      <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/javascript/ReverseAssets.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/javascript/ReverseAssets.class" />
-      <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/javascript/ReverseLoginController.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/javascript/ReverseLoginController.class" />
-      <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/javascript/ReverseUserController.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/javascript/ReverseUserController.class" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/routes$javascript.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/routes$javascript.class" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/routes.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/controllers/routes.class" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/evolutions/default/1.sql" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/evolutions/default/1.sql" />
       <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/models/User.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/models/User.class" />
       <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/router/Routes$$anonfun$routes$1.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/router/Routes$$anonfun$routes$1.class" />
       <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/router/Routes.class" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/classes/router/Routes.class" />
@@ -72,38 +59,26 @@
       <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/routes/main/controllers/routes.java" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/routes/main/controllers/routes.java" />
       <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/routes/main/router/Routes.scala" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/routes/main/router/Routes.scala" />
       <change beforePath="$PROJECT_DIR$/../backend/target/scala-2.12/routes/main/router/RoutesPrefix.scala" afterPath="$PROJECT_DIR$/../backend/target/scala-2.12/routes/main/router/RoutesPrefix.scala" />
-      <change beforePath="$PROJECT_DIR$/../backend/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.12/input_dsp" afterPath="$PROJECT_DIR$/../backend/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.12/input_dsp" />
-      <change beforePath="$PROJECT_DIR$/../backend/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.12/output_dsp" afterPath="$PROJECT_DIR$/../backend/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.12/output_dsp" />
       <change beforePath="$PROJECT_DIR$/../backend/target/streams/$global/ivyConfiguration/$global/streams/out" afterPath="$PROJECT_DIR$/../backend/target/streams/$global/ivyConfiguration/$global/streams/out" />
       <change beforePath="$PROJECT_DIR$/../backend/target/streams/$global/update/$global/streams/out" afterPath="$PROJECT_DIR$/../backend/target/streams/$global/update/$global/streams/out" />
-      <change beforePath="$PROJECT_DIR$/../backend/target/streams/$global/update/$global/streams/update_cache_2.12/inputs" afterPath="$PROJECT_DIR$/../backend/target/streams/$global/update/$global/streams/update_cache_2.12/inputs" />
       <change beforePath="$PROJECT_DIR$/../backend/target/streams/$global/update/$global/streams/update_cache_2.12/output" afterPath="$PROJECT_DIR$/../backend/target/streams/$global/update/$global/streams/update_cache_2.12/output" />
       <change beforePath="$PROJECT_DIR$/../backend/target/streams/compile/compile/$global/streams/out" afterPath="$PROJECT_DIR$/../backend/target/streams/compile/compile/$global/streams/out" />
       <change beforePath="$PROJECT_DIR$/../backend/target/streams/compile/compileIncSetup/$global/streams/inc_compile_2.12.zip" afterPath="$PROJECT_DIR$/../backend/target/streams/compile/compileIncSetup/$global/streams/inc_compile_2.12.zip" />
       <change beforePath="$PROJECT_DIR$/../backend/target/streams/compile/compileIncremental/$global/streams/export" afterPath="$PROJECT_DIR$/../backend/target/streams/compile/compileIncremental/$global/streams/export" />
+      <change beforePath="$PROJECT_DIR$/../backend/target/streams/compile/compileIncremental/$global/streams/out" afterPath="$PROJECT_DIR$/../backend/target/streams/compile/compileIncremental/$global/streams/out" />
       <change beforePath="$PROJECT_DIR$/../backend/target/streams/compile/copyResources/$global/streams/copy-resources" afterPath="$PROJECT_DIR$/../backend/target/streams/compile/copyResources/$global/streams/copy-resources" />
-      <change beforePath="$PROJECT_DIR$/../backend/target/streams/compile/dependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/../backend/target/streams/compile/dependencyClasspath/$global/streams/export" />
-      <change beforePath="$PROJECT_DIR$/../backend/target/streams/compile/externalDependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/../backend/target/streams/compile/externalDependencyClasspath/$global/streams/export" />
-      <change beforePath="$PROJECT_DIR$/../backend/target/streams/compile/managedClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/../backend/target/streams/compile/managedClasspath/$global/streams/export" />
       <change beforePath="$PROJECT_DIR$/../backend/target/streams/compile/playEnhancerGenerateAccessors/$global/streams/play_instrumentation_2.12" afterPath="$PROJECT_DIR$/../backend/target/streams/compile/playEnhancerGenerateAccessors/$global/streams/play_instrumentation_2.12" />
       <change beforePath="$PROJECT_DIR$/../backend/target/streams/compile/playEnhancerRewriteAccessors/$global/streams/play_instrumentation_2.12" afterPath="$PROJECT_DIR$/../backend/target/streams/compile/playEnhancerRewriteAccessors/$global/streams/play_instrumentation_2.12" />
       <change beforePath="$PROJECT_DIR$/../backend/target/streams/compile/playRoutes/$global/streams/op-cache" afterPath="$PROJECT_DIR$/../backend/target/streams/compile/playRoutes/$global/streams/op-cache" />
-      <change beforePath="$PROJECT_DIR$/../backend/target/streams/compile/unmanagedClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/../backend/target/streams/compile/unmanagedClasspath/$global/streams/export" />
-      <change beforePath="$PROJECT_DIR$/../backend/target/streams/compile/unmanagedJars/$global/streams/export" afterPath="$PROJECT_DIR$/../backend/target/streams/compile/unmanagedJars/$global/streams/export" />
-      <change beforePath="$PROJECT_DIR$/../backend/target/streams/runtime/externalDependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/../backend/target/streams/runtime/externalDependencyClasspath/$global/streams/export" />
-      <change beforePath="$PROJECT_DIR$/../backend/target/streams/runtime/managedClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/../backend/target/streams/runtime/managedClasspath/$global/streams/export" />
-      <change beforePath="$PROJECT_DIR$/../backend/target/streams/runtime/unmanagedClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/../backend/target/streams/runtime/unmanagedClasspath/$global/streams/export" />
-      <change beforePath="$PROJECT_DIR$/../backend/target/streams/runtime/unmanagedJars/$global/streams/export" afterPath="$PROJECT_DIR$/../backend/target/streams/runtime/unmanagedJars/$global/streams/export" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__aopalliance_aopalliance_1_0_jar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/sbt__aopalliance_aopalliance_1_0_jar.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/4/b42c50f57b8e46ed3db0821a2ce3d046d351c352" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/4/b42c50f57b8e46ed3db0821a2ce3d046d351c352" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/HomeController.java" afterPath="$PROJECT_DIR$/app/controllers/HomeController.java" />
       <change beforePath="$PROJECT_DIR$/app/controllers/LoginController.java" afterPath="$PROJECT_DIR$/app/controllers/LoginController.java" />
-      <change beforePath="$PROJECT_DIR$/app/services/BackendURLService.java" afterPath="$PROJECT_DIR$/app/services/BackendURLService.java" />
-      <change beforePath="$PROJECT_DIR$/app/views/forgotPwd.scala.html" afterPath="$PROJECT_DIR$/app/views/forgotPwd.scala.html" />
-      <change beforePath="$PROJECT_DIR$/app/views/homeUser.scala.html" afterPath="$PROJECT_DIR$/app/views/homeUser.scala.html" />
-      <change beforePath="$PROJECT_DIR$/app/views/login.scala.html" afterPath="$PROJECT_DIR$/app/views/login.scala.html" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/SubmitApiController.java" afterPath="$PROJECT_DIR$/app/controllers/SubmitApiController.java" />
       <change beforePath="$PROJECT_DIR$/app/views/menu.scala.html" afterPath="$PROJECT_DIR$/app/views/menu.scala.html" />
-      <change beforePath="$PROJECT_DIR$/app/views/signup.scala.html" afterPath="$PROJECT_DIR$/app/views/signup.scala.html" />
-      <change beforePath="$PROJECT_DIR$/build.sbt" afterPath="$PROJECT_DIR$/build.sbt" />
+      <change beforePath="$PROJECT_DIR$/app/views/submitApi.scala.html" afterPath="$PROJECT_DIR$/app/views/submitApi.scala.html" />
+      <change beforePath="$PROJECT_DIR$/conf/application.conf" afterPath="$PROJECT_DIR$/conf/application.conf" />
       <change beforePath="$PROJECT_DIR$/conf/routes" afterPath="$PROJECT_DIR$/conf/routes" />
       <change beforePath="$PROJECT_DIR$/logs/application.log" afterPath="$PROJECT_DIR$/logs/application.log" />
       <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/default/frontend-build/scala_2.12/sbt_1.0/0.1-SNAPSHOT/resolved.xml.properties" afterPath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/default/frontend-build/scala_2.12/sbt_1.0/0.1-SNAPSHOT/resolved.xml.properties" />
@@ -121,13 +96,12 @@
       <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-frontend-build-test.xml" afterPath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/resolution-cache/reports/default-frontend-build-test.xml" />
       <change beforePath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/out" afterPath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/out" />
       <change beforePath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/update_cache_2.12/output" afterPath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/update_cache_2.12/output" />
-      <change beforePath="$PROJECT_DIR$/public/javascripts/controllers/forgotPwd.js" afterPath="$PROJECT_DIR$/public/javascripts/controllers/forgotPwd.js" />
-      <change beforePath="$PROJECT_DIR$/public/javascripts/controllers/login.js" afterPath="$PROJECT_DIR$/public/javascripts/controllers/login.js" />
-      <change beforePath="$PROJECT_DIR$/public/javascripts/controllers/signup.js" afterPath="$PROJECT_DIR$/public/javascripts/controllers/signup.js" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/application.conf" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/application.conf" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/HomeController.class" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/HomeController.class" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/LoginController.class" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/LoginController.class" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/ReverseAssets.class" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/ReverseAssets.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/ReverseHomeController.class" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/ReverseHomeController.class" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/ReverseLoginController.class" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/ReverseLoginController.class" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/javascript/ReverseAssets.class" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/javascript/ReverseAssets.class" />
+      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/javascript/ReverseHomeController.class" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/javascript/ReverseHomeController.class" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/javascript/ReverseLoginController.class" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/javascript/ReverseLoginController.class" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/routes$javascript.class" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/routes$javascript.class" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/routes.class" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/controllers/routes.class" />
@@ -135,36 +109,9 @@
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/router/Routes.class" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/router/Routes.class" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/routes" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/routes" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/services/BackendURLService.class" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/services/BackendURLService.class" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/views/html/homeUser$.class" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/views/html/homeUser$.class" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/views/html/homeUser.class" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/views/html/homeUser.class" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/views/html/login$.class" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/views/html/login$.class" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/views/html/menu$.class" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/views/html/menu$.class" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/views/html/menu.class" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/views/html/menu.class" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/classes/views/html/signup$.class" afterPath="$PROJECT_DIR$/target/scala-2.12/classes/views/html/signup$.class" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/com.cmu.sads18.team3/frontend$sources/1.0-SNAPSHOT/resolved.xml.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/com.cmu.sads18.team3/frontend$sources/1.0-SNAPSHOT/resolved.xml.xml" afterPath="" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/com.cmu.sads18.team3/frontend_2.12/1.0-SNAPSHOT/resolved.xml.properties" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/com.cmu.sads18.team3/frontend_2.12/1.0-SNAPSHOT/resolved.xml.properties" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/com.cmu.sads18.team3/frontend_2.12/1.0-SNAPSHOT/resolved.xml.xml" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/com.cmu.sads18.team3/frontend_2.12/1.0-SNAPSHOT/resolved.xml.xml" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-frontend$sources-compile-internal.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-frontend$sources-compile.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-frontend$sources-debian.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-frontend$sources-docker.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-frontend$sources-docs.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-frontend$sources-linux.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-frontend$sources-optional.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-frontend$sources-plugin.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-frontend$sources-pom.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-frontend$sources-provided.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-frontend$sources-rpm.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-frontend$sources-runtime-internal.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-frontend$sources-runtime.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-frontend$sources-scala-tool.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-frontend$sources-test-internal.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-frontend$sources-test.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-frontend$sources-universal-docs.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-frontend$sources-universal-src.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-frontend$sources-universal.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-frontend$sources-windows.xml" afterPath="" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-frontend_2.12-compile-internal.xml" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-frontend_2.12-compile-internal.xml" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-frontend_2.12-compile.xml" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-frontend_2.12-compile.xml" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-frontend_2.12-debian.xml" afterPath="$PROJECT_DIR$/target/scala-2.12/resolution-cache/reports/com.cmu.sads18.team3-frontend_2.12-debian.xml" />
@@ -190,34 +137,18 @@
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/routes/main/controllers/routes.java" afterPath="$PROJECT_DIR$/target/scala-2.12/routes/main/controllers/routes.java" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/routes/main/router/Routes.scala" afterPath="$PROJECT_DIR$/target/scala-2.12/routes/main/router/Routes.scala" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/routes/main/router/RoutesPrefix.scala" afterPath="$PROJECT_DIR$/target/scala-2.12/routes/main/router/RoutesPrefix.scala" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/twirl/main/views/html/footer.template.scala" afterPath="$PROJECT_DIR$/target/scala-2.12/twirl/main/views/html/footer.template.scala" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/twirl/main/views/html/homeUser.template.scala" afterPath="$PROJECT_DIR$/target/scala-2.12/twirl/main/views/html/homeUser.template.scala" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/twirl/main/views/html/index.template.scala" afterPath="$PROJECT_DIR$/target/scala-2.12/twirl/main/views/html/index.template.scala" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/twirl/main/views/html/login.template.scala" afterPath="$PROJECT_DIR$/target/scala-2.12/twirl/main/views/html/login.template.scala" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/twirl/main/views/html/main.template.scala" afterPath="$PROJECT_DIR$/target/scala-2.12/twirl/main/views/html/main.template.scala" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.12/twirl/main/views/html/menu.template.scala" afterPath="$PROJECT_DIR$/target/scala-2.12/twirl/main/views/html/menu.template.scala" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.12/twirl/main/views/html/signup.template.scala" afterPath="$PROJECT_DIR$/target/scala-2.12/twirl/main/views/html/signup.template.scala" />
       <change beforePath="$PROJECT_DIR$/target/streams/$global/$global/$global/streams/sync-exported-assets-web-assets" afterPath="$PROJECT_DIR$/target/streams/$global/$global/$global/streams/sync-exported-assets-web-assets" />
-      <change beforePath="$PROJECT_DIR$/target/streams/$global/$global/dumpStructure/$global/streams/out" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.12/input_dsp" afterPath="$PROJECT_DIR$/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.12/input_dsp" />
-      <change beforePath="$PROJECT_DIR$/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.12/output_dsp" afterPath="$PROJECT_DIR$/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.12/output_dsp" />
-      <change beforePath="$PROJECT_DIR$/target/streams/$global/ivyConfiguration/$global/streams/out" afterPath="$PROJECT_DIR$/target/streams/$global/ivyConfiguration/$global/streams/out" />
       <change beforePath="$PROJECT_DIR$/target/streams/$global/update/$global/streams/out" afterPath="$PROJECT_DIR$/target/streams/$global/update/$global/streams/out" />
-      <change beforePath="$PROJECT_DIR$/target/streams/$global/update/$global/streams/update_cache_2.12/inputs" afterPath="$PROJECT_DIR$/target/streams/$global/update/$global/streams/update_cache_2.12/inputs" />
       <change beforePath="$PROJECT_DIR$/target/streams/$global/update/$global/streams/update_cache_2.12/output" afterPath="$PROJECT_DIR$/target/streams/$global/update/$global/streams/update_cache_2.12/output" />
-      <change beforePath="$PROJECT_DIR$/target/streams/$global/updateClassifiers/$global/streams/out" afterPath="" />
       <change beforePath="$PROJECT_DIR$/target/streams/compile/compile/$global/streams/out" afterPath="$PROJECT_DIR$/target/streams/compile/compile/$global/streams/out" />
       <change beforePath="$PROJECT_DIR$/target/streams/compile/compileIncSetup/$global/streams/inc_compile_2.12.zip" afterPath="$PROJECT_DIR$/target/streams/compile/compileIncSetup/$global/streams/inc_compile_2.12.zip" />
       <change beforePath="$PROJECT_DIR$/target/streams/compile/compileIncremental/$global/streams/export" afterPath="$PROJECT_DIR$/target/streams/compile/compileIncremental/$global/streams/export" />
       <change beforePath="$PROJECT_DIR$/target/streams/compile/copyResources/$global/streams/copy-resources" afterPath="$PROJECT_DIR$/target/streams/compile/copyResources/$global/streams/copy-resources" />
       <change beforePath="$PROJECT_DIR$/target/streams/compile/playRoutes/$global/streams/op-cache" afterPath="$PROJECT_DIR$/target/streams/compile/playRoutes/$global/streams/op-cache" />
-      <change beforePath="$PROJECT_DIR$/target/streams/test/externalDependencyClasspath/$global/streams/export" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/streams/test/managedClasspath/$global/streams/export" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/streams/test/unmanagedClasspath/$global/streams/export" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/streams/test/unmanagedJars/$global/streams/export" afterPath="" />
       <change beforePath="$PROJECT_DIR$/target/streams/web-assets/assets/$global/streams/sync-assets-web-assets" afterPath="$PROJECT_DIR$/target/streams/web-assets/assets/$global/streams/sync-assets-web-assets" />
-      <change beforePath="$PROJECT_DIR$/target/web/classes/main/META-INF/resources/webjars/frontend/1.0-SNAPSHOT/javascripts/controllers/signup.js" afterPath="$PROJECT_DIR$/target/web/classes/main/META-INF/resources/webjars/frontend/1.0-SNAPSHOT/javascripts/controllers/signup.js" />
-      <change beforePath="$PROJECT_DIR$/target/web/public/main/javascripts/controllers/signup.js" afterPath="$PROJECT_DIR$/target/web/public/main/javascripts/controllers/signup.js" />
+      <change beforePath="$PROJECT_DIR$/target/web/classes/main/META-INF/resources/webjars/frontend/1.0-SNAPSHOT/stylesheets/main.css" afterPath="$PROJECT_DIR$/target/web/classes/main/META-INF/resources/webjars/frontend/1.0-SNAPSHOT/stylesheets/main.css" />
+      <change beforePath="$PROJECT_DIR$/target/web/public/main/stylesheets/main.css" afterPath="$PROJECT_DIR$/target/web/public/main/stylesheets/main.css" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/project/project/target/" />
@@ -242,16 +173,53 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/controllers/LoginController.java">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="menu.scala.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/menu.scala.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="104" column="29" lean-forward="false" selection-start-line="104" selection-start-column="29" selection-end-line="104" selection-end-column="29" />
-              <folding>
-                <element signature="method#signup#0;class#LoginController#0" expanded="false" />
-                <element signature="method#login#0;class#LoginController#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="204">
+              <caret line="12" column="80" lean-forward="false" selection-start-line="12" selection-start-column="80" selection-end-line="12" selection-end-column="80" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="homeUser.scala.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/homeUser.scala.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="31" lean-forward="true" selection-start-line="1" selection-start-column="15" selection-end-line="1" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SubmitApiController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/SubmitApiController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="243">
+              <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="submitApi.scala.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/submitApi.scala.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="14" lean-forward="false" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomeController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/HomeController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="75" lean-forward="false" selection-start-line="7" selection-start-column="75" selection-end-line="7" selection-end-column="75" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -260,7 +228,7 @@
         <entry file="file://$PROJECT_DIR$/app/services/BackendURLService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
-              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -269,7 +237,7 @@
       <file leaf-file-name="forgotPwd.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/javascripts/controllers/forgotPwd.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
+            <state relative-caret-position="1037">
               <caret line="61" column="26" lean-forward="false" selection-start-line="61" selection-start-column="26" selection-end-line="61" selection-end-column="26" />
               <folding />
             </state>
@@ -279,8 +247,18 @@
       <file leaf-file-name="routes" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/conf/routes">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="52" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state relative-caret-position="442">
+              <caret line="26" column="79" lean-forward="false" selection-start-line="26" selection-start-column="68" selection-end-line="26" selection-end-column="79" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.conf" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/conf/application.conf">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="51" lean-forward="false" selection-start-line="3" selection-start-column="51" selection-end-line="3" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -301,6 +279,7 @@
       <find>homeView</find>
       <find>resetPassword</find>
       <find>resetPasswordView</find>
+      <find>logout</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -314,7 +293,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/conf/application.conf" />
         <option value="$PROJECT_DIR$/app/UIForms/Login.java" />
         <option value="$PROJECT_DIR$/build.sbt" />
         <option value="$PROJECT_DIR$/app/UIForm/LoginForm.java" />
@@ -323,16 +301,19 @@
         <option value="$PROJECT_DIR$/public/javascripts/controllers/login.js" />
         <option value="$PROJECT_DIR$/app/views/login.scala.html" />
         <option value="$PROJECT_DIR$/app/views/signup.scala.html" />
-        <option value="$PROJECT_DIR$/app/controllers/HomeController.java" />
         <option value="$PROJECT_DIR$/app/views/homeUser.scala.html" />
         <option value="$PROJECT_DIR$/app/UIForm/ResetPasswordForm.java" />
         <option value="$PROJECT_DIR$/app/services/BackendURLService.java" />
-        <option value="$PROJECT_DIR$/app/views/menu.scala.html" />
         <option value="$PROJECT_DIR$/public/javascripts/controllers/forgotPwd.js" />
         <option value="$PROJECT_DIR$/app/views/forgotPwd.scala.html" />
         <option value="$PROJECT_DIR$/app/views/resetPassword.scala.html" />
-        <option value="$PROJECT_DIR$/conf/routes" />
+        <option value="$PROJECT_DIR$/app/controllers/HomeController.java" />
+        <option value="$PROJECT_DIR$/conf/application.conf" />
         <option value="$PROJECT_DIR$/app/controllers/LoginController.java" />
+        <option value="$PROJECT_DIR$/app/views/menu.scala.html" />
+        <option value="$PROJECT_DIR$/conf/routes" />
+        <option value="$PROJECT_DIR$/app/views/submitApi.scala.html" />
+        <option value="$PROJECT_DIR$/app/controllers/SubmitApiController.java" />
       </list>
     </option>
   </component>
@@ -391,6 +372,8 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -430,8 +413,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -590,15 +571,16 @@
       <workItem from="1522341744427" duration="5637000" />
       <workItem from="1522355482428" duration="6000" />
       <workItem from="1522394553221" duration="7945000" />
-      <workItem from="1522404929297" duration="3693000" />
+      <workItem from="1522404929297" duration="3854000" />
+      <workItem from="1522437285930" duration="2393000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17281000" />
+    <option name="totallyTimeSpent" value="19835000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -617,16 +599,16 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31076178" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30983117" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24920128" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="sbt-shell-toolwindow" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SonarLint" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -690,7 +672,16 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/controllers/LoginController.java</url>
+          <line>45</line>
+          <properties />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -699,8 +690,43 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="method#signup#0;class#LoginController#0" expanded="false" />
-            <element signature="method#login#0;class#LoginController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/services/BackendURLService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/routes">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="52" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/controllers/forgotPwd.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1037">
+          <caret line="61" column="26" lean-forward="false" selection-start-line="61" selection-start-column="26" selection-end-line="61" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="method#signup#0;class#LoginController#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -765,13 +791,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/conf/application.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build.sbt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -827,42 +846,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/UIForm/LoginForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding>
-            <element signature="e#137#138#0" expanded="false" />
-            <element signature="e#168#169#0" expanded="false" />
-            <element signature="e#216#217#0" expanded="false" />
-            <element signature="e#256#257#0" expanded="false" />
-            <element signature="e#291#292#0" expanded="false" />
-            <element signature="e#322#323#0" expanded="false" />
-            <element signature="e#370#371#0" expanded="false" />
-            <element signature="e#410#411#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/target/scala-2.12/routes/main/controllers/ReverseRoutes.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="21" column="8" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/HomeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/homeUser.scala.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -896,25 +883,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/login.scala.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="508">
-          <caret line="35" column="34" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/menu.scala.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/controllers/forgotPwd.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
+        <state relative-caret-position="1037">
           <caret line="61" column="26" lean-forward="false" selection-start-line="61" selection-start-column="26" selection-end-line="61" selection-end-column="26" />
           <folding />
         </state>
@@ -936,30 +907,94 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/conf/routes">
+    <entry file="file://$PROJECT_DIR$/app/services/BackendURLService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="52" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state relative-caret-position="289">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/services/BackendURLService.java">
+    <entry file="file://$PROJECT_DIR$/app/views/login.scala.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state relative-caret-position="272">
+          <caret line="16" column="62" lean-forward="false" selection-start-line="16" selection-start-column="57" selection-end-line="16" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/UIForm/LoginForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="26" lean-forward="false" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/HomeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="75" lean-forward="false" selection-start-line="7" selection-start-column="75" selection-end-line="7" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/application.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="51" lean-forward="false" selection-start-line="3" selection-start-column="51" selection-end-line="3" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="104" column="29" lean-forward="false" selection-start-line="104" selection-start-column="29" selection-end-line="104" selection-end-column="29" />
+        <state relative-caret-position="256">
+          <caret line="48" column="4" lean-forward="false" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="4" />
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="method#signup#0;class#LoginController#0" expanded="false" />
-            <element signature="method#login#0;class#LoginController#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/routes">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="79" lean-forward="false" selection-start-line="26" selection-start-column="68" selection-end-line="26" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/menu.scala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="80" lean-forward="false" selection-start-line="12" selection-start-column="80" selection-end-line="12" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/homeUser.scala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="31" lean-forward="true" selection-start-line="1" selection-start-column="15" selection-end-line="1" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/submitApi.scala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="14" lean-forward="false" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/SubmitApiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

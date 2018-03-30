@@ -1,11 +1,11 @@
 package models;
 
 import javax.persistence.*;
-
+import java.util.*;
 import io.ebean.*;
 import org.mindrot.jbcrypt.BCrypt;
 import play.data.validation.*;
-// import org.mindrot.jbcrypt.BCrypt;
+
 
 @Entity
 @Table(name="users")
@@ -32,6 +32,8 @@ public class User extends Model {
     @Constraints.Required
     public String userType;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    public List<Api> apis = new ArrayList<>();
 
     public static final Finder<Long, User> find = new Finder<>(User.class);
 

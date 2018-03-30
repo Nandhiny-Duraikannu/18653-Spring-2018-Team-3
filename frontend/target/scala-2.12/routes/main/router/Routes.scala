@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/frontend/conf/routes
-// @DATE:Fri Mar 30 04:17:27 PDT 2018
+// @DATE:Fri Mar 30 13:00:19 PDT 2018
 
 package router
 
@@ -16,10 +16,12 @@ class Routes(
   override val errorHandler: play.api.http.HttpErrorHandler, 
   // @LINE:6
   LoginController_2: controllers.LoginController,
-  // @LINE:11
+  // @LINE:12
   HomeController_0: controllers.HomeController,
-  // @LINE:25
+  // @LINE:22
   Assets_1: controllers.Assets,
+  // @LINE:26
+  SubmitApiController_3: controllers.SubmitApiController,
   val prefix: String
 ) extends GeneratedRouter {
 
@@ -27,15 +29,17 @@ class Routes(
    def this(errorHandler: play.api.http.HttpErrorHandler,
     // @LINE:6
     LoginController_2: controllers.LoginController,
-    // @LINE:11
+    // @LINE:12
     HomeController_0: controllers.HomeController,
-    // @LINE:25
-    Assets_1: controllers.Assets
-  ) = this(errorHandler, LoginController_2, HomeController_0, Assets_1, "/")
+    // @LINE:22
+    Assets_1: controllers.Assets,
+    // @LINE:26
+    SubmitApiController_3: controllers.SubmitApiController
+  ) = this(errorHandler, LoginController_2, HomeController_0, Assets_1, SubmitApiController_3, "/")
 
   def withPrefix(prefix: String): Routes = {
     router.RoutesPrefix.setPrefix(prefix)
-    new Routes(errorHandler, LoginController_2, HomeController_0, Assets_1, prefix)
+    new Routes(errorHandler, LoginController_2, HomeController_0, Assets_1, SubmitApiController_3, prefix)
   }
 
   private[this] val defaultPrefix: String = {
@@ -47,13 +51,15 @@ class Routes(
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """signup""", """controllers.LoginController.signupView()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """forgotpassword""", """controllers.LoginController.forgotPwdView()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """resetPassword""", """controllers.LoginController.resetPasswordView()"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """home/""" + "$" + """id<[^/]+>""", """controllers.HomeController.homeView(id:Int)"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """logout""", """controllers.LoginController.logout()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """home""", """controllers.HomeController.homeView()"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """login""", """controllers.LoginController.login()"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """signup""", """controllers.LoginController.signup()"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """forgotpassword""", """controllers.LoginController.forgotPwd()"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """resetPassword""", """controllers.LoginController.resetPassword()"""),
-    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """logout""", """controllers.LoginController.logout()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """submitapi""", """controllers.SubmitApiController.submitApi()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """createapi""", """controllers.SubmitApiController.apiFormView()"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
     case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
@@ -134,28 +140,46 @@ class Routes(
   )
 
   // @LINE:11
-  private[this] lazy val controllers_HomeController_homeView4_route = Route("GET",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("home/"), DynamicPart("id", """[^/]+""",true)))
+  private[this] lazy val controllers_LoginController_logout4_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("logout")))
   )
-  private[this] lazy val controllers_HomeController_homeView4_invoker = createInvoker(
-    HomeController_0.homeView(fakeValue[Int]),
+  private[this] lazy val controllers_LoginController_logout4_invoker = createInvoker(
+    LoginController_2.logout(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.LoginController",
+      "logout",
+      Nil,
+      "GET",
+      this.prefix + """logout""",
+      """""",
+      Seq()
+    )
+  )
+
+  // @LINE:12
+  private[this] lazy val controllers_HomeController_homeView5_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("home")))
+  )
+  private[this] lazy val controllers_HomeController_homeView5_invoker = createInvoker(
+    HomeController_0.homeView(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.HomeController",
       "homeView",
-      Seq(classOf[Int]),
+      Nil,
       "GET",
-      this.prefix + """home/""" + "$" + """id<[^/]+>""",
+      this.prefix + """home""",
       """""",
       Seq()
     )
   )
 
   // @LINE:14
-  private[this] lazy val controllers_LoginController_login5_route = Route("POST",
+  private[this] lazy val controllers_LoginController_login6_route = Route("POST",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("login")))
   )
-  private[this] lazy val controllers_LoginController_login5_invoker = createInvoker(
+  private[this] lazy val controllers_LoginController_login6_invoker = createInvoker(
     LoginController_2.login(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -165,15 +189,15 @@ class Routes(
       "POST",
       this.prefix + """login""",
       """""",
-      Seq("""nocsrf""")
+      Seq()
     )
   )
 
-  // @LINE:16
-  private[this] lazy val controllers_LoginController_signup6_route = Route("POST",
+  // @LINE:15
+  private[this] lazy val controllers_LoginController_signup7_route = Route("POST",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("signup")))
   )
-  private[this] lazy val controllers_LoginController_signup6_invoker = createInvoker(
+  private[this] lazy val controllers_LoginController_signup7_invoker = createInvoker(
     LoginController_2.signup(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -183,15 +207,15 @@ class Routes(
       "POST",
       this.prefix + """signup""",
       """""",
-      Seq("""nocsrf""")
+      Seq()
     )
   )
 
-  // @LINE:18
-  private[this] lazy val controllers_LoginController_forgotPwd7_route = Route("POST",
+  // @LINE:16
+  private[this] lazy val controllers_LoginController_forgotPwd8_route = Route("POST",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("forgotpassword")))
   )
-  private[this] lazy val controllers_LoginController_forgotPwd7_invoker = createInvoker(
+  private[this] lazy val controllers_LoginController_forgotPwd8_invoker = createInvoker(
     LoginController_2.forgotPwd(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -201,15 +225,15 @@ class Routes(
       "POST",
       this.prefix + """forgotpassword""",
       """""",
-      Seq("""nocsrf""")
+      Seq()
     )
   )
 
-  // @LINE:20
-  private[this] lazy val controllers_LoginController_resetPassword8_route = Route("POST",
+  // @LINE:17
+  private[this] lazy val controllers_LoginController_resetPassword9_route = Route("POST",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("resetPassword")))
   )
-  private[this] lazy val controllers_LoginController_resetPassword8_invoker = createInvoker(
+  private[this] lazy val controllers_LoginController_resetPassword9_invoker = createInvoker(
     LoginController_2.resetPassword(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
@@ -219,29 +243,11 @@ class Routes(
       "POST",
       this.prefix + """resetPassword""",
       """""",
-      Seq("""nocsrf""")
+      Seq()
     )
   )
 
   // @LINE:22
-  private[this] lazy val controllers_LoginController_logout9_route = Route("POST",
-    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("logout")))
-  )
-  private[this] lazy val controllers_LoginController_logout9_invoker = createInvoker(
-    LoginController_2.logout(),
-    play.api.routing.HandlerDef(this.getClass.getClassLoader,
-      "router",
-      "controllers.LoginController",
-      "logout",
-      Nil,
-      "POST",
-      this.prefix + """logout""",
-      """""",
-      Seq("""nocsrf""")
-    )
-  )
-
-  // @LINE:25
   private[this] lazy val controllers_Assets_versioned10_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("assets/"), DynamicPart("file", """.+""",false)))
   )
@@ -255,6 +261,42 @@ class Routes(
       "GET",
       this.prefix + """assets/""" + "$" + """file<.+>""",
       """ LEAVE --- For front end static files""",
+      Seq()
+    )
+  )
+
+  // @LINE:26
+  private[this] lazy val controllers_SubmitApiController_submitApi11_route = Route("POST",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("submitapi")))
+  )
+  private[this] lazy val controllers_SubmitApiController_submitApi11_invoker = createInvoker(
+    SubmitApiController_3.submitApi(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.SubmitApiController",
+      "submitApi",
+      Nil,
+      "POST",
+      this.prefix + """submitapi""",
+      """api""",
+      Seq()
+    )
+  )
+
+  // @LINE:27
+  private[this] lazy val controllers_SubmitApiController_apiFormView12_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("createapi")))
+  )
+  private[this] lazy val controllers_SubmitApiController_apiFormView12_invoker = createInvoker(
+    SubmitApiController_3.apiFormView(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.SubmitApiController",
+      "apiFormView",
+      Nil,
+      "GET",
+      this.prefix + """createapi""",
+      """""",
       Seq()
     )
   )
@@ -287,45 +329,57 @@ class Routes(
       }
   
     // @LINE:11
-    case controllers_HomeController_homeView4_route(params@_) =>
-      call(params.fromPath[Int]("id", None)) { (id) =>
-        controllers_HomeController_homeView4_invoker.call(HomeController_0.homeView(id))
+    case controllers_LoginController_logout4_route(params@_) =>
+      call { 
+        controllers_LoginController_logout4_invoker.call(LoginController_2.logout())
+      }
+  
+    // @LINE:12
+    case controllers_HomeController_homeView5_route(params@_) =>
+      call { 
+        controllers_HomeController_homeView5_invoker.call(HomeController_0.homeView())
       }
   
     // @LINE:14
-    case controllers_LoginController_login5_route(params@_) =>
+    case controllers_LoginController_login6_route(params@_) =>
       call { 
-        controllers_LoginController_login5_invoker.call(LoginController_2.login())
+        controllers_LoginController_login6_invoker.call(LoginController_2.login())
+      }
+  
+    // @LINE:15
+    case controllers_LoginController_signup7_route(params@_) =>
+      call { 
+        controllers_LoginController_signup7_invoker.call(LoginController_2.signup())
       }
   
     // @LINE:16
-    case controllers_LoginController_signup6_route(params@_) =>
+    case controllers_LoginController_forgotPwd8_route(params@_) =>
       call { 
-        controllers_LoginController_signup6_invoker.call(LoginController_2.signup())
+        controllers_LoginController_forgotPwd8_invoker.call(LoginController_2.forgotPwd())
       }
   
-    // @LINE:18
-    case controllers_LoginController_forgotPwd7_route(params@_) =>
+    // @LINE:17
+    case controllers_LoginController_resetPassword9_route(params@_) =>
       call { 
-        controllers_LoginController_forgotPwd7_invoker.call(LoginController_2.forgotPwd())
-      }
-  
-    // @LINE:20
-    case controllers_LoginController_resetPassword8_route(params@_) =>
-      call { 
-        controllers_LoginController_resetPassword8_invoker.call(LoginController_2.resetPassword())
+        controllers_LoginController_resetPassword9_invoker.call(LoginController_2.resetPassword())
       }
   
     // @LINE:22
-    case controllers_LoginController_logout9_route(params@_) =>
-      call { 
-        controllers_LoginController_logout9_invoker.call(LoginController_2.logout())
-      }
-  
-    // @LINE:25
     case controllers_Assets_versioned10_route(params@_) =>
       call(Param[String]("path", Right("/public")), params.fromPath[Asset]("file", None)) { (path, file) =>
         controllers_Assets_versioned10_invoker.call(Assets_1.versioned(path, file))
+      }
+  
+    // @LINE:26
+    case controllers_SubmitApiController_submitApi11_route(params@_) =>
+      call { 
+        controllers_SubmitApiController_submitApi11_invoker.call(SubmitApiController_3.submitApi())
+      }
+  
+    // @LINE:27
+    case controllers_SubmitApiController_apiFormView12_route(params@_) =>
+      call { 
+        controllers_SubmitApiController_apiFormView12_invoker.call(SubmitApiController_3.apiFormView())
       }
   }
 }

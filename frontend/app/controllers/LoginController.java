@@ -7,6 +7,7 @@ import play.data.FormFactory;
 import play.libs.Json;
 import play.libs.ws.*;
 import play.mvc.*;
+import play.mvc.Http.*;
 import services.BackendURLService;
 import play.data.Form;
 import javax.inject.Inject;
@@ -42,7 +43,10 @@ public class LoginController extends Controller implements WSBodyReadables, WSBo
 
     public Result resetPasswordView () { return ok(views.html.resetPassword.render()); }
 
-    public Result logout () { return redirect(routes.LoginController.loginView()); }
+    public Result logout () {
+        session().clear();
+        return redirect(routes.LoginController.loginView());
+    }
 
     // Signup logic
     public CompletionStage<Result> signup () {
@@ -72,17 +76,20 @@ public class LoginController extends Controller implements WSBodyReadables, WSBo
         Form<LoginForm> loginForm = formFactory.form(LoginForm.class).bindFromRequest();
         LoginForm incomingForm = loginForm.get();
         String userJSON = Json.toJson(incomingForm).toString();
-
+        Context ctx = Http.Context.current();
         // Post the json to create the user in the backend
         WSRequest request = ws.url(urlService.loginURL());
         return request
         .addHeader("Content-Type", "application/json")
         .post(userJSON)
         .thenApply((WSResponse r) -> {
-            System.out.println(r.getStatus());
             if (r.getStatus() == 200) {
                 int userId = r.asJson().get("id").asInt();
-                return redirect(routes.HomeController.homeView(userId));
+                String username = r.asJson().get("username").asText();
+                ctx.session().clear();
+                ctx.session().put("id", String.valueOf(userId));
+                ctx.session().put("username", username);
+                return redirect(routes.HomeController.homeView());
             } else {
                 return badRequest("Error while trying to login user");
             }
@@ -94,7 +101,7 @@ public class LoginController extends Controller implements WSBodyReadables, WSBo
         Form<ResetPasswordForm> resetPasswordForm = formFactory.form(ResetPasswordForm.class).bindFromRequest();
         ResetPasswordForm formData = resetPasswordForm.get();
         String formJson = Json.toJson(formData).toString();
-        System.out.println("---" + formJson);
+
         // Post the json to create the user in the backend
         WSRequest request = ws.url(urlService.resetPasswordURL());
         return request

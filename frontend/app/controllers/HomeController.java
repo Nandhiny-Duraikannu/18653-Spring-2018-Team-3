@@ -4,9 +4,8 @@ import play.mvc.*;
 
 public class HomeController extends Controller {
 
-    public Result homeView (int userId) {
-        String username = "test";
-        return ok(views.html.homeUser.render(userId, username));
+    public Result homeView () {
+        return ok(views.html.homeUser.render(Integer.valueOf(session().get("id")), session().get("username")));
     }
 
 }

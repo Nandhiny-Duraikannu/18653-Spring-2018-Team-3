@@ -3,6 +3,20 @@
 
 # --- !Ups
 
+create table api (
+  id                            bigint auto_increment not null,
+  apiname                       varchar(255),
+  apihomepage                   varchar(255),
+  apiendpoint                   varchar(255),
+  version                       varchar(255),
+  scope                         varchar(255),
+  apidescription                varchar(255),
+  emailaddress                  varchar(255),
+  user_id                       bigint,
+  object_type                   varchar(255),
+  constraint pk_api primary key (id)
+);
+
 create table task (
   id                            bigint auto_increment not null,
   name                          varchar(255),
@@ -21,8 +35,16 @@ create table users (
   constraint pk_users primary key (id)
 );
 
+alter table api add constraint fk_api_user_id foreign key (user_id) references users (id) on delete restrict on update restrict;
+create index ix_api_user_id on api (user_id);
+
 
 # --- !Downs
+
+alter table api drop foreign key fk_api_user_id;
+drop index ix_api_user_id on api;
+
+drop table if exists api;
 
 drop table if exists task;
 

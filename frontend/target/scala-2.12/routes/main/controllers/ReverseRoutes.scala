@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/JeromeKimbrough/Documents/Scolaire/CMU/Classes/2 - 18653 Software Design and Architecture/Project/frontend/conf/routes
-// @DATE:Fri Mar 30 04:17:27 PDT 2018
+// @DATE:Fri Mar 30 13:00:19 PDT 2018
 
 import play.api.mvc.Call
 
@@ -11,17 +11,17 @@ import _root_.play.libs.F
 // @LINE:6
 package controllers {
 
-  // @LINE:11
+  // @LINE:12
   class ReverseHomeController(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:11
-    def homeView(id:Int): Call = {
+    // @LINE:12
+    def homeView(): Call = {
       
-      Call("GET", _prefix + { _defaultPrefix } + "home/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Int]].unbind("id", id)))
+      Call("GET", _prefix + { _defaultPrefix } + "home")
     }
   
   }
@@ -39,7 +39,7 @@ package controllers {
       Call("GET", _prefix + { _defaultPrefix } + "forgotpassword")
     }
   
-    // @LINE:20
+    // @LINE:17
     def resetPassword(): Call = {
       
       Call("POST", _prefix + { _defaultPrefix } + "resetPassword")
@@ -57,7 +57,7 @@ package controllers {
       Call("GET", _prefix + { _defaultPrefix } + "resetPassword")
     }
   
-    // @LINE:16
+    // @LINE:15
     def signup(): Call = {
       
       Call("POST", _prefix + { _defaultPrefix } + "signup")
@@ -69,13 +69,13 @@ package controllers {
       Call("GET", _prefix + { _defaultPrefix } + "signup")
     }
   
-    // @LINE:22
+    // @LINE:11
     def logout(): Call = {
       
-      Call("POST", _prefix + { _defaultPrefix } + "logout")
+      Call("GET", _prefix + { _defaultPrefix } + "logout")
     }
   
-    // @LINE:18
+    // @LINE:16
     def forgotPwd(): Call = {
       
       Call("POST", _prefix + { _defaultPrefix } + "forgotpassword")
@@ -89,17 +89,38 @@ package controllers {
   
   }
 
-  // @LINE:25
+  // @LINE:22
   class ReverseAssets(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:25
+    // @LINE:22
     def versioned(file:Asset): Call = {
       implicit lazy val _rrc = new play.core.routing.ReverseRouteContext(Map(("path", "/public"))); _rrc
       Call("GET", _prefix + { _defaultPrefix } + "assets/" + implicitly[play.api.mvc.PathBindable[Asset]].unbind("file", file))
+    }
+  
+  }
+
+  // @LINE:26
+  class ReverseSubmitApiController(_prefix: => String) {
+    def _defaultPrefix: String = {
+      if (_prefix.endsWith("/")) "" else "/"
+    }
+
+  
+    // @LINE:26
+    def submitApi(): Call = {
+      
+      Call("POST", _prefix + { _defaultPrefix } + "submitapi")
+    }
+  
+    // @LINE:27
+    def apiFormView(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "createapi")
     }
   
   }

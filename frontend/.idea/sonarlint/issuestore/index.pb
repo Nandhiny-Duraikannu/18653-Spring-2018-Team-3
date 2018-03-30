@@ -33,3 +33,13 @@ $app/controllers/LoginController.java,b/4/b42c50f57b8e46ed3db0821a2ce3d046d351c
 conf/routes,f/4/f42c25577a4c66653928d76c7519c0d46aa2b4e7
 I
 app/views/menu.scala.html,c/c/cc9c71e69d0530cebcc7f5d83aa9079d2590f141
+Q
+!app/UIForm/ResetPasswordForm.java,2/7/27508e772b0a1a785cb9b4afaf216b5f3290e94f
+N
+app/views/forgotPwd.scala.html,e/4/e4e5dcb5bed675193503e7ec097417fea5a866bc
+R
+"app/views/resetPassword.scala.html,0/1/017556ee97b1d763973e504d7796c3842a6eb66d
+S
+#app/services/BackendURLService.java,e/d/eddd7a7d9f898e7c29157768b919cb4f0d3a95c2
+[
++public/javascripts/controllers/forgotPwd.js,9/d/9d33642da0bb53daaf26faf20f5fdf2d9ac172a1

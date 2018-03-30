@@ -40,6 +40,17 @@ public class UserDAO {
         }
     }
 
+    public User getUserByUserId (int id) {
+        User userDB = new User();
+        try {
+            User user = userDB.find.query().where().eq("id", id).findUnique();
+            return user;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public String getAllUsers () {
         User userDB = new User();
         List<User> users = userDB.find.all();

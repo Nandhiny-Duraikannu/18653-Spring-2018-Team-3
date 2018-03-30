@@ -12,7 +12,6 @@ public class Api extends Model {
     @Id
     public Long id;
 
-
     @Column(name = "apiname")
     @Constraints.Required
     public String apiname;
@@ -37,6 +36,8 @@ public class Api extends Model {
     @Column(name = "emailaddress")
     public String emailaddress;
 
+    @ManyToOne
+    public User user;
 
     public String objectType;
 
@@ -118,7 +119,6 @@ public class Api extends Model {
     }
 
     public void setParameters(String apiname, String apihomepage, String apiendpoint, String version, String scope, String apidescription, String emailaddress) {
-
         this.apiname = apiname;
         this.apihomepage = apihomepage;
         this.apiendpoint = apiendpoint;
