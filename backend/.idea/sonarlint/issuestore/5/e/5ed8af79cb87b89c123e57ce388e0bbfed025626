@@ -1,6 +1,8 @@
 
-T
-squid:S106"9Replace this use of System.out or System.err by a logger.(Ø¼¢ƒ8·À¨ï¦,
-Vsquid:S2209"5Change this instance-reference to a static reference.(¥î¯Žüÿÿÿÿ8·À¨ï¦,
-tsquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(Ä”òª8·À¨ï¦,
-€squid:S1149"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(ì­ŠÜúÿÿÿÿ8·À¨ï¦,
+€squid:S1149"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(ì­ŠÜúÿÿÿÿ8Ö×Ê²§,
+Vsquid:S2209"5Change this instance-reference to a static reference.(¥î¯Žüÿÿÿÿ8Ö×Ê²§,
+Psquid:S2209"5Change this instance-reference to a static reference.(£¶¡	8ÇËË²§,
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8ÇËË²§,
+tsquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(Ä”òª8Ö×Ê²§,
+[squid:UselessImportCheck"2Remove this unused import 'com.avaje.ebean.Ebean'.(¡¹“á8Ö×Ê²§,
+fsquid:UselessImportCheck"8Remove this unused import 'com.avaje.ebean.Transaction'.(ÅïÉéûÿÿÿÿ8Ö×Ê²§,

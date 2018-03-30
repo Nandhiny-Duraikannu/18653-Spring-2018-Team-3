@@ -1,20 +1,24 @@
 package controllers;
 
-import play.data.DynamicForm;
+import UIForm.LoginForm;
+import UIForm.ResetPasswordForm;
+import UIForm.SignupForm;
 import play.data.FormFactory;
+import play.libs.Json;
 import play.libs.ws.*;
 import play.mvc.*;
 import services.BackendURLService;
-
+import play.data.Form;
 import javax.inject.Inject;
 import java.util.concurrent.CompletionStage;
-import com.fasterxml.jackson.databind.JsonNode;
+
 
 /**
  * This controller contains an action to handle HTTP requests
  * to the application's home page.
  */
 public class LoginController extends Controller implements WSBodyReadables, WSBodyWritables {
+
     private final FormFactory formFactory;
     private final WSClient ws;
     private final BackendURLService urlService;
@@ -26,37 +30,105 @@ public class LoginController extends Controller implements WSBodyReadables, WSBo
         this.urlService = new BackendURLService();
     }
 
-    public Result loginView () {
-        return ok(views.html.login.render());
-    }
+    public Result loginView () { return ok(views.html.login.render()); }
 
     public Result signupView () {
         return ok(views.html.signup.render());
     }
 
+    public Result forgotPwdView () {
+        return ok(views.html.forgotPwd.render());
+    }
+
+    public Result resetPasswordView () { return ok(views.html.resetPassword.render()); }
+
+    public Result logout () { return redirect(routes.LoginController.loginView()); }
+
     // Signup logic
     public CompletionStage<Result> signup () {
-        DynamicForm form = formFactory.form().bindFromRequest();
-
-        StringBuilder userJSON = new StringBuilder();
-        userJSON.append("{");
-        userJSON.append("\"username\": \"").append(form.get("username")).append("\", ");
-        userJSON.append("\"password\": \"").append(form.get("password")).append("\", ");
-        userJSON.append("\"securityQuestion\": \"").append(form.get("securityQuestion")).append("\", ");
-        userJSON.append("\"answer\": \"").append(form.get("answer")).append("\"} ");
+        Form<SignupForm> form = formFactory.form(SignupForm.class).bindFromRequest();
+        SignupForm info = form.get();
+        String json = Json.toJson(info).toString();
 
         // Post the json to create the user in the backend
         WSRequest request = ws.url(urlService.signupURL());
         return request
         .addHeader("Content-Type", "application/json")
-        .post(userJSON.toString())
+        .post(json)
         .thenApply((WSResponse r) -> {
             if (r.getStatus() == 200) {
                 int userId = r.asJson().get("id").asInt();
                 String username = r.asJson().get("username").asText();
-                return ok(views.html.homeUser.render(username, userId));
+                System.out.println("{\"username\":\"" + username + "\", \"id\":\"" + userId + "\"}");
+                return redirect(routes.LoginController.loginView());
             } else {
                 return badRequest("Error while trying to create user");
+            }
+        });
+    }
+
+    // Login logic
+    public CompletionStage<Result> login () {
+        Form<LoginForm> loginForm = formFactory.form(LoginForm.class).bindFromRequest();
+        LoginForm incomingForm = loginForm.get();
+        String userJSON = Json.toJson(incomingForm).toString();
+
+        // Post the json to create the user in the backend
+        WSRequest request = ws.url(urlService.loginURL());
+        return request
+        .addHeader("Content-Type", "application/json")
+        .post(userJSON)
+        .thenApply((WSResponse r) -> {
+            System.out.println(r.getStatus());
+            if (r.getStatus() == 200) {
+                int userId = r.asJson().get("id").asInt();
+                return redirect(routes.HomeController.homeView(userId));
+            } else {
+                return badRequest("Error while trying to login user");
+            }
+        });
+    }
+
+     // Login logic
+    public CompletionStage<Result> forgotPwd () {
+        Form<ResetPasswordForm> resetPasswordForm = formFactory.form(ResetPasswordForm.class).bindFromRequest();
+        ResetPasswordForm formData = resetPasswordForm.get();
+        String formJson = Json.toJson(formData).toString();
+        System.out.println("---" + formJson);
+        // Post the json to create the user in the backend
+        WSRequest request = ws.url(urlService.resetPasswordURL());
+        return request
+        .addHeader("Content-Type", "application/json")
+        .post(formJson)
+        .thenApply((WSResponse r) -> {
+            if (r.getStatus() == 200) {
+                boolean reset = r.asJson().get("reset").asBoolean();
+                if (reset) {
+                    return redirect(routes.LoginController.loginView());
+                } else {
+                    return redirect(routes.LoginController.forgotPwdView());
+                }
+
+            } else {
+                return badRequest("Error while trying to reset password");
+            }
+        });
+    }
+
+    public CompletionStage<Result> resetPassword () {
+        Form<SignupForm> resetPasswordForm = formFactory.form(SignupForm.class).bindFromRequest();
+        SignupForm formData = resetPasswordForm.get();
+        String newPassword = "{\"newPassword\": \"" + formData.getPassword() + "\"}";
+        // Post the json to create the user in the backend
+        WSRequest request = ws.url(urlService.newPasswordURL());
+        return request
+        .addHeader("Content-Type", "application/json")
+        .post(newPassword)
+        .thenApply((WSResponse r) -> {
+            if (r.getStatus() == 200) {
+                return redirect(routes.LoginController.loginView());
+            } else {
+                return badRequest("Error while trying to reset password");
             }
         });
     }

@@ -1,8 +1,11 @@
 package controllers;
 
 import DAO.UserDAO;
+import forms.LoginForm;
+import forms.ResetPasswordForm;
 import models.User;
 import play.data.DynamicForm;
+import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.*;
 
@@ -31,4 +34,36 @@ public class LoginController extends Controller {
         User user = userDAO.createNewUser(username, password, securityQuestion, answer);
         return ok(user.toJSON());
     }
+
+    public Result login() {
+        Form<LoginForm> form = formFactory.form(LoginForm.class).bindFromRequest();
+        LoginForm loginData = form.get();
+        User user = userDAO.getUserByUsername(loginData.getUsername());
+        if (user != null && user.authenticate(loginData.getPassword())) {
+            return ok(user.toJSON());
+        } else {
+            return notFound("Invalid Login");
+        }
+    }
+
+    public Result forgotPwd() {
+        Form<ResetPasswordForm> form = formFactory.form(ResetPasswordForm.class).bindFromRequest();
+        ResetPasswordForm passwordForm = form.get();
+
+        String username = passwordForm.getUsername();
+        String securityQuestion = passwordForm.getSecurityQuestion();
+        String answer = passwordForm.getAnswer();
+        User user = userDAO.getUserByUsername(username);
+        if (
+            username.equals(user.getUsername()) &&
+            securityQuestion.equals(user.getSecurityQuestion()) &&
+            answer.equals(user.getAnswer())) {
+            user.updatePassword("temp");
+            return ok("{\"reset\":true}");
+        } else {
+            System.out.println("nope");
+            return ok("{\"reset\":false}");
+        }
+    }
 }
+

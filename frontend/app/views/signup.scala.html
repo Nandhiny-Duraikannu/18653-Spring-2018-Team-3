@@ -13,36 +13,37 @@
 
     <div class="container">
         <div class="row">
-            <form class="col s8 offset-s2" id="loginForm">
+            <div class="col s8 offset-s2" id="loginForm">
+                @helper.form(action = routes.LoginController.signup) {
 
                 <div class="input-field col s12">
-                    <input placeholder="Username" id="username" type="text">
+                    <input placeholder="Username" name="username" id="username" type="text">
                     <label for="username">Username</label>
                 </div>
-                <div class="col s12" id="usernameRequiredBadge">
-                    <span class="new badge" data-badge-caption="USERNAME IS REQUIRED"></span>
-                </div>
-
-                <div class="input-field col s6">
-                    <input placeholder="Password" id="password" type="password">
-                    <label for="password">Password</label>
-                </div>
-                <div class="input-field col s6">
-                    <input placeholder="Repeat Password" id="password2" type="password">
-                    <label for="password2">Repeat Password</label>
-                </div>
-                <div class="col s6" id="password1RequiredBadge">
-                    <span class="new badge" data-badge-caption="PASSWORD IS REQUIRED"></span>
-                </div>
-                <div class="col s6 offset-s6" id="password2RequiredBadge">
-                    <span class="new badge" data-badge-caption="PLEASE REPEAT PASSWORD"></span>
-                </div>
-                <div class="col s12" id="passwordErrorBadge">
-                    <span class="new badge" data-badge-caption="PASSWORDS DO NOT MATCH"></span>
-                </div>
+                @*<div class="col s12" id="usernameRequiredBadge">*@
+                    @*<span class="new badge" data-badge-caption="USERNAME IS REQUIRED"></span>*@
+                @*</div>*@
 
                 <div class="input-field col s12">
-                    <select id="securityQuestionSelect">
+                    <input placeholder="Password" id="password" type="password" name="password">
+                    <label for="password">Password</label>
+                </div>
+                @*<div class="input-field col s6">*@
+                    @*<input placeholder="Repeat Password" id="password2" type="password" name="password2">*@
+                    @*<label for="password2">Repeat Password</label>*@
+                @*</div>*@
+                @*<div class="col s6" id="password1RequiredBadge">*@
+                    @*<span class="new badge" data-badge-caption="PASSWORD IS REQUIRED"></span>*@
+                @*</div>*@
+                @*<div class="col s6 offset-s6" id="password2RequiredBadge">*@
+                    @*<span class="new badge" data-badge-caption="PLEASE REPEAT PASSWORD"></span>*@
+                @*</div>*@
+                @*<div class="col s12" id="passwordErrorBadge">*@
+                    @*<span class="new badge" data-badge-caption="PASSWORDS DO NOT MATCH"></span>*@
+                @*</div>*@
+
+                <div class="input-field col s12">
+                    <select id="securityQuestionSelect" name="securityQuestion">
                         <option value="" disabled selected>Please select a security question</option>
                         <option value="born">Where were you born?</option>
                         <option value="car">What was your first car?</option>
@@ -50,23 +51,25 @@
                     </select>
                     <label>Security question</label>
                 </div>
-                <div class="col s12" id="securityQuestionErrorBadge">
-                    <span class="new badge" data-badge-caption="PLEASE SELECT A SECURITY QUESTION"></span>
-                </div>
+                @*<div class="col s12" id="securityQuestionErrorBadge">*@
+                    @*<span class="new badge" data-badge-caption="PLEASE SELECT A SECURITY QUESTION"></span>*@
+                @*</div>*@
 
                 <div class="input-field col s12">
-                    <input placeholder="Answer" id="answer" type="text">
+                    <input placeholder="Answer" id="answer" type="text" name="answer">
                     <label for="answer">Answer</label>
                 </div>
 
-                <div class="col s12" id="answerRequiredBadge">
-                    <span class="new badge" data-badge-caption="ANSWER IS REQUIRED"></span>
-                </div>
+                @*<div class="col s12" id="answerRequiredBadge">*@
+                    @*<span class="new badge" data-badge-caption="ANSWER IS REQUIRED"></span>*@
+                @*</div>*@
 
+                <a href="@routes.LoginController.loginView()" class="btn-flat left">Already have an account? Login!</a>
                 <button id="signupButton" class="btn right" type="submit">Let's go!
                     <i class="material-icons right">chevron_right</i>
                 </button>
-            </form>
+            </div>
+            }
         </div>
     </div>
 

@@ -3,6 +3,7 @@ package models;
 import javax.persistence.*;
 
 import io.ebean.*;
+import org.mindrot.jbcrypt.BCrypt;
 import play.data.validation.*;
 // import org.mindrot.jbcrypt.BCrypt;
 
@@ -52,11 +53,11 @@ public class User extends Model {
     }
 
     public String getPasswordHash() {
-        return passwordHash;
+        return this.passwordHash;
     }
 
     public void setPasswordHash(String password) {
-        this.passwordHash = password;
+        this.passwordHash = this.encryptPassword(password);
     }
 
     public String getSecurityQuestion() {
@@ -83,26 +84,28 @@ public class User extends Model {
         this.userType = userType;
     }
 
-//    public String encryptPassword(String unencryptedPassword) {
-//        return BCrypt.hashpw(unencryptedPassword, BCrypt.gensalt());
-//    }
+    public String encryptPassword(String unencryptedPassword) {
+        return BCrypt.hashpw(unencryptedPassword, BCrypt.gensalt());
+    }
 
-    public static User authenticate(String userName, String password) {
-        User user = User.find.query().where().eq("userName", userName).findUnique();
-        if (user != null && password.equals(user.passwordHash)) {
-//        if (user != null && BCrypt.checkpw(password, user.passwordHash)) {
-//            TODO: use BCRYPT to authenticate.
-            return user;
+    public boolean authenticate(String password) {
+        if (BCrypt.checkpw(password, this.passwordHash)) {
+            return true;
         } else {
-            return null;
+            return false;
         }
     }
 
     public void setParameters(String username, String password, String securityQuestion, String answer) {
         this.username = username;
-        this.passwordHash = password; //this.encryptPassword(password);
+        this.setPasswordHash(password);
         this.securityQuestion = securityQuestion;
         this.answer = answer;
+    }
+
+    public void updatePassword(String password) {
+        this.setPasswordHash(password);
+        this.save();
     }
 
     public String toJSON() {
@@ -110,7 +113,9 @@ public class User extends Model {
         json.append("{");
         json.append("\"id\": \"").append(this.getId()).append("\", ");
         json.append("\"username\": \"").append(this.getUsername()).append("\", ");
-        json.append("\"type\": \"").append(this.getUserType()).append("\"}");
+        json.append("\"type\": \"").append(this.getUserType()).append("\", ");
+        json.append("\"securityQuestion\": \"").append(this.getSecurityQuestion()).append("\", ");
+        json.append("\"answer\": \"").append(this.getAnswer()).append("\"}");
         return json.toString();
     }
 }

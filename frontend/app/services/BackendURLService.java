@@ -8,4 +8,10 @@ public class BackendURLService {
 
     public String signupURL () { return baseURL + "signup"; }
 
+    public String loginURL () { return baseURL + "login"; }
+
+    public String resetPasswordURL() { return baseURL + "forgotpassword"; }
+
+    public String newPasswordURL () { return baseURL + "confirmReset"; }
+
 }
