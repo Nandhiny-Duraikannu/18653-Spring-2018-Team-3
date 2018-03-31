@@ -63,7 +63,6 @@ public class LoginController extends Controller implements WSBodyReadables, WSBo
             if (r.getStatus() == 200) {
                 int userId = r.asJson().get("id").asInt();
                 String username = r.asJson().get("username").asText();
-                System.out.println("{\"username\":\"" + username + "\", \"id\":\"" + userId + "\"}");
                 return redirect(routes.LoginController.loginView());
             } else {
                 return badRequest("Error while trying to create user");

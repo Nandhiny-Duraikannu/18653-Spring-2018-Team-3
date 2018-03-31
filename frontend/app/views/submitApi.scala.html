@@ -1,50 +1,38 @@
-@(username: String)
+@()
 
 @main("Add API") {
-    @menu(username)
+    @menu()
 
-    <div class="header red darken-3">
-        <div class="container">
-            <div class="row">
-                <div class="col s12">
-                    <h2>Submit an API</h2>
-                    <p>Please fill out the following elements:</p>
-                </div>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h2>Submit an API</h2>
+                <p>Please fill out the following elements:</p>
             </div>
         </div>
     </div>
 
     <div class="container">
         <div class="row">
-            <form class="section scrollspy" id="apiform">
+            @helper.form(action = routes.SubmitApiController.submitApi()) {
                 <div class="input-field col s12">
-                    <input id="apiname" type="text">
+                    <input id="apiname" type="text" name="apiname" autofocus>
                     <label for="apiname">API Name</label>
                 </div>
-                <div class="col s12" id="apinameRequiredBadge">
-                    <span class="new badge" data-badge-caption="API NAME IS REQUIRED"></span>
-                </div>
-
                 <div class="input-field col s12">
-                    <input id="apihomepage" type="text">
+                    <input id="apihomepage" type="text" name="apihomepage">
                     <label for="apihomepage">API Provider's Home Page</label>
                 </div>
-                <div class="col s12" id="apihomepageRequiredBadge">
-                    <span class="new badge" data-badge-caption="API PROVIDER HOMEPAGE IS REQUIRED"></span>
-                </div>
-
                 <div class="input-field col s12">
-                    <input id="apiendpoint" type="text">
+                    <input id="apiendpoint" type="text" name="apiendpoint">
                     <label for="apiEndPoint">API Endpoint</label>
                 </div>
-
                 <div class="input-field col s12">
-                    <input id="version" type="text">
+                    <input id="version" type="text" name="version">
                     <label for="version">Version</label>
                 </div>
-
                 <div class="input-field col s12">
-                    <select id="scope">
+                    <select id="scope" name="scope">
                         <option value="" disabled selected></option>
                         <option value="meta">Metaservice API</option>
                         <option value="micro">Microservice API</option>
@@ -53,32 +41,22 @@
                     <label>Scope</label>
                 </div>
                 <div class="input-field col s12">
-                        <textarea id="apidescription" class="materialize-textarea"></textarea>
+                        <textarea id="apidescription" class="materialize-textarea" name="apidescription"></textarea>
                         <label for="apidescription">API Description</label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="emailaddress" type="email">
+                    <input id="emailaddress" type="email" name="emailaddress">
                     <label for="emailaddress">Support Email Address</label>
                 </div>
-                <div class="col s12" align="right" id="successBadge">
-                    <span class="new badge" data-badge-caption="SUBMISSION SUCCESSFUL"></span>
-                </div>
-
-                <button id="clearButton" class="btn " type="submit" onclick="clear()">Clear
-                    <i class="material-icons right">chevron_right</i>
+                <button id="clearButton" class="btn left" type="button" onclick="clear()">
+                    <i class="material-icons right">close</i> &nbsp; Clear
                 </button>
-
-                <button id="submitButton" class="btn "  style="margin: 2%" type="submit">Submit
-                    <i class="material-icons right">chevron_right</i>
+                <button id="submitButton" class="btn right green darken-3" type="submit">Submit
+                    <i class="material-icons right">check</i>
                 </button>
-
-
-
-            </form>
-
-
+            }
         </div>
     </div>
 
-    <script src="@routes.Assets.versioned("javascripts/controllers/submitapi.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("javascripts/controllers/setup.js")" type="text/javascript"></script>
 }

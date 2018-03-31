@@ -1,5 +1,5 @@
 logs
-frontend/project/project
+frontend/project/project/
 backend/project/project
 frontend/project/target
 backend/project/target
@@ -19,6 +19,7 @@ backend/.idea
 .settings
 .target
 .cache
+.idea
 bin
 .DS_Store
 activator-sbt-*-shim.sbt

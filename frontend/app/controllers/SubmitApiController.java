@@ -1,7 +1,10 @@
 package controllers;
 
+import UIForm.ApiForm;
 import play.data.DynamicForm;
+import play.data.Form;
 import play.data.FormFactory;
+import play.libs.Json;
 import play.libs.ws.*;
 import play.mvc.*;
 import services.BackendURLService;
@@ -26,32 +29,22 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
     }
 
     public Result apiFormView () {
-        return ok(views.html.submitApi.render(session().get("username")));
+        return ok(views.html.submitApi.render());
     }
 
-    public Result searchApiView () { return ok(views.html.searchApis.render(session().get("username"))); }
+    public Result searchApiView () { return ok(views.html.searchApis.render()); }
 
     public CompletionStage<Result> submitApi () {
-        DynamicForm form = formFactory.form().bindFromRequest();
-
-        StringBuilder apiJSON = new StringBuilder();
-        apiJSON.append("{");
-        apiJSON.append("\"user_id\": \"").append(session().get("id")).append("\", ");
-        apiJSON.append("\"apiname\": \"").append(form.get("apiname")).append("\", ");
-        apiJSON.append("\"apihomepage\": \"").append(form.get("apihomepage")).append("\", ");
-        apiJSON.append("\"apiendpoint\": \"").append(form.get("apiendpoint")).append("\", ");
-        apiJSON.append("\"version\": \"").append(form.get("version")).append("\", ");
-        apiJSON.append("\"scope\": \"").append(form.get("scope")).append("\", ");
-        apiJSON.append("\"apidescription\": \"").append(form.get("apidescription")).append("\", ");
-     //   apiJSON.append("\"objecttype\": \"").append(form.get("objecttype")).append("\", ");
-        apiJSON.append("\"emailaddress\": \"").append(form.get("emailaddress")).append("\"} ");
-
+        Form<ApiForm> apiForm = formFactory.form(ApiForm.class).bindFromRequest();
+        ApiForm apiData = apiForm.get();
+        apiData.setUser(session().get("username"));
+        String apiJson = Json.toJson(apiData).toString();
 
         // Post the json to create the user in the backend
         WSRequest request = ws.url(urlService.submitApiURL());
         return request
         .addHeader("Content-Type", "application/json")
-        .post(apiJSON.toString())
+        .post(apiJson)
         .thenApply((WSResponse r) -> {
             if (r.getStatus() == 200) {
                 return redirect(routes.HomeController.homeView());
@@ -71,11 +64,9 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
         .get()
         .thenApply((WSResponse r) -> {
             if (r.getStatus() == 200) {
-                System.out.println("-------" + r.getBody());
 
                 return ok(r.getBody());
             } else {
-                System.out.println("test error" + r.getStatus());
                 return badRequest("Error while searching for an API");
             }
         });

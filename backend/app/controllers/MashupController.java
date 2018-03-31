@@ -1,6 +1,8 @@
 package controllers;
 
+import forms.MashupForm;
 import play.data.DynamicForm;
+import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.*;
 import play.libs.Json;
@@ -25,15 +27,13 @@ public class MashupController extends Controller {
 
     // Submit a Mashup
     public Result submitMashup() {
-        DynamicForm form = formFactory.form().bindFromRequest();
-        String username = form.get("username");
-        String name = form.get("name");
-        String url = form.get("url");
-        String description = form.get("description");
+        Form<MashupForm> mashupForm = formFactory.form(MashupForm.class).bindFromRequest();
+        MashupForm mashupInfo = mashupForm.get();
 
-        User user = userDAO.findUserByUsername(username);
-        Mashup mashup = mashupDAO.createMashup(user, name, url, description);
-        System.out.println(mashup.toJson());
+        User user = userDAO.findUserByUsername(mashupInfo.getUser());
+
+        Mashup mashup = mashupDAO.createMashup(user, mashupInfo.getName(), mashupInfo.getUrl(), mashupInfo
+                .getDescription());
         return ok(mashup.toJson());
     }
 

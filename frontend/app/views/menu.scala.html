@@ -1,19 +1,20 @@
-@(username: String)
+@()
 
 <nav class="nav-extended">
     <div class="container">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo">Logo</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="@routes.LoginController.logout">Logout</a></li>
+            <ul class="left">
+                <li class="tab"><a href="@routes.HomeController.homeView()"><i class="material-icons"
+                style="line-height: 43px">home</i></a></li>
+                <li class="tab"><a href="@routes.SubmitApiController.apiFormView()">Submit an API</a></li>
+                <li class="tab"><a href="@routes.MashupController.submitMashupView()">Submit a Mashup</a></li>
             </ul>
-        </div>
-        <div class="nav-content">
-            <ul class="tabs tabs-transparent">
-                <li class="tab"><a href="@routes.SubmitApiController.apiFormView()">Add an API</a></li>
-                <li class="tab"><a href="@routes.SubmitApiController.searchApiView()">Search APIs</a></li>
-                <li class="tab"><a href="@routes.MashupController.submitMashupView()">Add a Mashup</a></li>
-                <li class="tab"><a href="@routes.MashupController.mashupListView()">Mashup List</a></li>
+            <ul class="right">
+                <li><a href="@routes.SubmitApiController.apiFormView()"><i
+                class="material-icons">chevron_left add chevron_right </i></a></li>
+                <li><a href="@routes.SubmitApiController.searchApiView()"><i class="material-icons">search</i></a></li>
+                <li><a href="#"><i class="material-icons">person</i></a></li>
+                <li><a href="@routes.LoginController.logout"><i class="material-icons">exit_to_app</i></a></li>
             </ul>
         </div>
     </div>

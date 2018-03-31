@@ -2,8 +2,10 @@ package controllers;
 
 import DAO.*;
 import com.fasterxml.jackson.databind.JsonNode;
+import forms.ApiForm;
 import models.*;
 import play.data.DynamicForm;
+import play.data.Form;
 import play.data.FormFactory;
 import play.libs.Json;
 import play.mvc.*;
@@ -28,19 +30,22 @@ public class ApiController extends Controller {
     }
 
     public Result submitApi() {
-        DynamicForm form = formFactory.form().bindFromRequest();
-        String userId = form.get("user_id");
-        String apiname = form.get("apiname");
-        String apihomepage = form.get("apihomepage");
-        String apiendpoint = form.get("apiendpoint");
-        String version = form.get("version");
-        String scope = form.get("scope");
-        String apidescription = form.get("apidescription");
-        String emailaddress = form.get("emailaddress");
+        Form<ApiForm> apiForm = formFactory.form(ApiForm.class).bindFromRequest();
+        ApiForm apiData = apiForm.get();
 
-        User user = userDAO.getUserByUserId(Integer.valueOf(userId));
+        String username = apiData.getUser();
+        String apiName = apiData.getApiname();
+        String apiHomePage = apiData.getApihomepage();
+        String apiEndpoint = apiData.getApiendpoint();
+        String version = apiData.getVersion();
+        String scope = apiData.getScope();
+        String apiDescription = apiData.getApidescription();
+        String emailAddress = apiData.getEmailaddress();
 
-        Api api = apiDAO.addApi(user, apiname, apihomepage, apiendpoint, version, scope, apidescription, emailaddress);
+        User user = userDAO.getUserByUsername(username);
+
+        Api api = apiDAO.addApi(user, apiName, apiHomePage, apiEndpoint, version, scope, apiDescription,
+                emailAddress);
         return ok(api.toJSON());
     }
 

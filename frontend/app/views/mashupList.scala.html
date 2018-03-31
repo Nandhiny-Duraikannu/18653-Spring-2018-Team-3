@@ -1,17 +1,27 @@
-@main("Mashups") {
+@import UIForm.Mashup
+@(mashups: List [Mashup], value: String)
 
-    @menu("")
+@main("Mashups") {
+    @menu()
 
     <div class="container">
         <h2>Mashup List</h2>
         <div class="row">
+        @helper.form(routes.MashupController.searchMashups()) {
+
             <div class="input-field col s9">
-                <input type="text" id="search-input" name="query">
+                <input type="text" id="search-input" value="@value" name="query">
                 <label for="search-input">Search for Mashup</label>
             </div>
-            <div class="input-field col s3">
-                <button class="btn right" id="search-button">Search</button>
+            <div class="input-field col s2">
+                <button class="btn right" id="search-button">Search <i class="material-icons right">search</i></button>
             </div>
+        }
+        @helper.form(routes.MashupController.mashupListView()) {
+            <div class="input-field col s1">
+                <button class="btn right" id="search-button">Reset</button>
+            </div>
+        }
         </div>
         <div class="row">
             <table id="mashupTable">
@@ -22,12 +32,16 @@
                         <th>URL</th>
                     </tr>
                 </thead>
-
                 <tbody>
+                    @mashups.map { mashup =>
+                        <tr>
+                            <td> @mashup.getName() </td>
+                            <td> @mashup.getUser() </td>
+                            <td> @mashup.getUrl() </td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
     </div>
-
-    <script src="@routes.Assets.versioned("javascripts/controllers/mashupList.js")" type="text/javascript"></script>
 }
