@@ -1,8 +1,8 @@
 logs
-frontend/project/project/
-backend/project/project
-frontend/project/target
-backend/project/target
+frontend/project
+backend/project
+frontend/project
+backend/project
 frontend/target
 backend/target
 tmp
