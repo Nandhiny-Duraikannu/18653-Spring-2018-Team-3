@@ -10,6 +10,8 @@ POST    /signup                     controllers.LoginController.signup()
 
 POST    /forgotpassword             controllers.LoginController.forgotPwd()
 
+POST    /confirmReset             controllers.LoginController.confirmReset()
+
 GET     /users                      controllers.UserController.getAllUsers()
 
 # Mashup

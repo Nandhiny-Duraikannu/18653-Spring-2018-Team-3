@@ -3,6 +3,7 @@ package controllers;
 import UIForm.LoginForm;
 import UIForm.ResetPasswordForm;
 import UIForm.SignupForm;
+import UIForm.NewPasswordForm;
 import play.data.FormFactory;
 import play.libs.Json;
 import play.libs.ws.*;
@@ -100,17 +101,21 @@ public class LoginController extends Controller implements WSBodyReadables, WSBo
         Form<ResetPasswordForm> resetPasswordForm = formFactory.form(ResetPasswordForm.class).bindFromRequest();
         ResetPasswordForm formData = resetPasswordForm.get();
         String formJson = Json.toJson(formData).toString();
-
+        Context ctx = Http.Context.current();
         // Post the json to create the user in the backend
+        System.out.println(formJson);
         WSRequest request = ws.url(urlService.resetPasswordURL());
         return request
         .addHeader("Content-Type", "application/json")
         .post(formJson)
         .thenApply((WSResponse r) -> {
             if (r.getStatus() == 200) {
+                String username = r.asJson().get("username").asText();
                 boolean reset = r.asJson().get("reset").asBoolean();
+                ctx.session().clear();
+                ctx.session().put("username", username);
                 if (reset) {
-                    return redirect(routes.LoginController.loginView());
+                    return redirect(routes.LoginController.resetPasswordView());
                 } else {
                     return redirect(routes.LoginController.forgotPwdView());
                 }
@@ -122,14 +127,19 @@ public class LoginController extends Controller implements WSBodyReadables, WSBo
     }
 
     public CompletionStage<Result> resetPassword () {
-        Form<SignupForm> resetPasswordForm = formFactory.form(SignupForm.class).bindFromRequest();
-        SignupForm formData = resetPasswordForm.get();
-        String newPassword = "{\"newPassword\": \"" + formData.getPassword() + "\"}";
-        // Post the json to create the user in the backend
+        Form<NewPasswordForm> newPasswordForm = formFactory.form(NewPasswordForm.class).bindFromRequest();
+        NewPasswordForm formData = newPasswordForm.get();
+        String reset = "{\"username\": \"" + session().get("username") + "\",";
+        reset += "\"newPassword\": \"" + formData.getPassword() + "\"}";
+        
+        //String formJson = Json.toJson(reset).toString();
+        //Post the json to create the user in the backend
         WSRequest request = ws.url(urlService.newPasswordURL());
+
+        System.out.println(reset);
         return request
         .addHeader("Content-Type", "application/json")
-        .post(newPassword)
+        .post(reset)
         .thenApply((WSResponse r) -> {
             if (r.getStatus() == 200) {
                 return redirect(routes.LoginController.loginView());
