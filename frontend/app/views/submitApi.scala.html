@@ -16,16 +16,19 @@
         <div class="row">
             @helper.form(action = routes.SubmitApiController.submitApi()) {
                 <div class="input-field col s12">
-                    <input id="apiname" type="text" name="apiname" autofocus>
-                    <label for="apiname">API Name</label>
+                    <input id="name" type="text" name="name" autofocus>
+                    <label for="name">API Name</label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="apihomepage" type="text" name="apihomepage">
-                    <label for="apihomepage">API Provider's Home Page</label>
+                    <input id="homepage" type="text" name="homepage">
+                    <label for="homepage">API Provider's Home Page</label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="apiendpoint" type="text" name="apiendpoint">
-                    <label for="apiEndPoint">API Endpoint</label>
+                    <input id="type" type="hidden" name="type" value="api">
+                </div>
+                <div class="input-field col s12">
+                    <input id="endpoint" type="text" name="endpoint">
+                    <label for="endpoint">API Endpoint</label>
                 </div>
                 <div class="input-field col s12">
                     <input id="version" type="text" name="version">
@@ -41,14 +44,14 @@
                     <label>Scope</label>
                 </div>
                 <div class="input-field col s12">
-                        <textarea id="apidescription" class="materialize-textarea" name="apidescription"></textarea>
-                        <label for="apidescription">API Description</label>
+                        <textarea id="description" class="materialize-textarea" name="description"></textarea>
+                        <label for="description">API Description</label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="emailaddress" type="email" name="emailaddress">
-                    <label for="emailaddress">Support Email Address</label>
+                    <input id="email" type="email" name="email">
+                    <label for="email">Support Email Address</label>
                 </div>
-                <button id="clearButton" class="btn left" type="button" onclick="clear()">
+                <button id="clearButton" class="btn left" type="reset">
                     <i class="material-icons right">close</i> &nbsp; Clear
                 </button>
                 <button id="submitButton" class="btn right green darken-3" type="submit">Submit

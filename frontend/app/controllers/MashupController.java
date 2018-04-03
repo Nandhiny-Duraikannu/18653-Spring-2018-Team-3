@@ -20,6 +20,8 @@ public class MashupController extends Controller implements WSBodyReadables, WSB
     private final FormFactory formFactory;
     private final WSClient ws;
     private final BackendURLService urlService;
+    private List<String> apiIds;
+    private Form<Mashup> mashupForm;
 
     @Inject
     public MashupController(WSClient ws, FormFactory formFactory) {
@@ -38,9 +40,9 @@ public class MashupController extends Controller implements WSBodyReadables, WSB
         for (JsonNode mashup : jsonNode) {
             Mashup newMashup = new Mashup();
             newMashup.setName(mashup.get("name").asText());
-            newMashup.setUrl(mashup.get("url").asText());
             newMashup.setDescription(mashup.get("description").asText());
-            newMashup.setUser(mashup.get("user").asText());
+            newMashup.setDescription(mashup.get("apiIds").asText());
+            newMashup.setUser_id(mashup.get("id").asText());
             mashups.add(newMashup);
         }
         return mashups;
@@ -70,9 +72,8 @@ public class MashupController extends Controller implements WSBodyReadables, WSB
     public CompletionStage<Result> submitMashup () {
         Form<Mashup> mashupForm = formFactory.form(Mashup.class).bindFromRequest();
         Mashup mashup = mashupForm.get();
-        mashup.setUser(session().get("username"));
+        mashup.setUser_id(session().get("id"));
         String mashupJson = Json.toJson(mashup).toString();
-
         // Post the json to create the user in the backend
         WSRequest request = ws.url(urlService.submitMashupURL());
         return request
@@ -80,11 +81,13 @@ public class MashupController extends Controller implements WSBodyReadables, WSB
         .post(mashupJson)
         .thenApply((WSResponse r) -> {
             if (r.getStatus() == 200) {
-                return redirect(routes.MashupController.mashupListView());
+                return redirect(routes.HomeController.homeView());
             } else {
                 System.out.println(r.getStatus());
                 return badRequest("Error while trying to submit mashup");
             }
         });
     }
+
+
 }

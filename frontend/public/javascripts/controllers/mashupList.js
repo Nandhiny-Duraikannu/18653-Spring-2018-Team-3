@@ -32,6 +32,7 @@ function searchMashups() {
 }
 
 $(document).ready(function() {
+
     getAllMashups();
 
     $("#search-button").click(() => {
