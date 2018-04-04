@@ -29,15 +29,15 @@
                     <tr>
                         <th>Name</th>
                         <th>Submitter</th>
-                        <th>URL</th>
+
                     </tr>
                 </thead>
                 <tbody>
                     @mashups.map { mashup =>
                         <tr>
                             <td> @mashup.getName() </td>
-                            <td> @mashup.getUser() </td>
-                            <td> @mashup.getUrl() </td>
+                            <td> @mashup.getUser_id() </td>
+
                         </tr>
                     }
                 </tbody>

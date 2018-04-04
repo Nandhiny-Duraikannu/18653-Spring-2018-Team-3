@@ -1,11 +1,11 @@
 $(document).ready(function() {
-    let apiname = $("#apiname");
-    let apihomepage = $("#apihomepage");
-    let apiendpoint = $("#apiendpoint");
+    let name = $("#name");
+    let homepage = $("#homepage");
+    let endpoint = $("#endpoint");
     let version = $("#version");
     let scope = $("#scope");
-    let apidescription = $("#apidescription");
-    let emailaddress = $("#emailaddress");
+    let description = $("#description");
+    let email = $("#email");
 
     // error badges
     let apinameRequiredBadge = $("#apinameRequiredBadge");
@@ -42,21 +42,21 @@ $(document).ready(function() {
 
     function clear()
     {
-        let apiname = "";
-        let apihomepage = "";
-        let apiendpoint = "";
+        let name = "";
+        let homepage = "";
+        let endpoint = "";
         let version = "";
         let scope = "";
-        let apidescription = "";
-        let emailaddress ="";
+        let description = "";
+        let email ="";
         successBadge.hide();
     }
 
     function allFieldsAreFilled () {
-        if (!apiname.val()) {
+        if (!name.val()) {
             apinameRequiredBadge.show();
             return false;
-        } else if (!apihomepage.val()) {
+        } else if (!homepage.val()) {
             apihomepageRequiredBadge.show();
             return false;
         } else {
@@ -72,13 +72,13 @@ $(document).ready(function() {
     if (allFieldsAreFilled()) {
            // $("#submitButton").addClass("disabled").attr("disabled", "disabled");
             submitApi({
-                apiname: apiname.val(),
-                apihomepage: apihomepage.val(),
-                apiendpoint: apiendpoint.val(),
+                name: name.val(),
+                homepage: homepage.val(),
+                endpoint: endpoint.val(),
                 version: version.val(),
                 scope: scope.val(),
-                apidescription: apidescription.val(),
-                emailaddress: emailaddress.val()
+                description: description.val(),
+                email: email.val()
             });
 
     }

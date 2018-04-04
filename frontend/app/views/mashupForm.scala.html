@@ -10,18 +10,51 @@
                     <input placeholder="Name" id="name" name="name" type="text" required autofocus>
                     <label for="name">Name</label>
                 </div>
-                <div class="input-field col s12">
-                    <input placeholder="URL" id="url" name="url" type="text" required>
-                    <label for="url">URL</label>
+               <div class="input-field col s12">
+                    <input id="type" name="type" type="hidden" value="mashup">
                 </div>
                 <div class="input-field col s12">
                     <textarea placeholder="Description" id="description" name="description" class="materialize-textarea"></textarea>
                     <label for="description">Description</label>
                 </div>
-                <button class="btn right" type="submit">Submit
-                    <i class="material-icons right">chevron_right</i>
+
+                <div class="input-field col s12">
+                    <label>API ID</label>
+                </div>
+                <div class="row">
+                    <table id="mashupapis">
+                        <thead>
+                            <tr>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+
+                                     <div class="input-field col s12">
+                                     <input  id="apiIds" name="apiIds[]" type="text" multiple>
+                                     </div>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <a class="waves-effect waves-light btn  add-row" >Add Another API
+                        <i class="material-icons right">chevron_right</i>
+                    </a>
+                </div>
+
+
+                <button id="submitButton" class="btn right green darken-3" type="submit">Submit
+                    <i class="material-icons right">check</i>
                 </button>
+
             }
         </div>
     </div>
+    <script src="@routes.Assets.versioned("javascripts/controllers/addmashup.js")" type="text/javascript"></script>
+
 }

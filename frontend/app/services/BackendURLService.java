@@ -15,7 +15,7 @@ public class BackendURLService {
     public String newPasswordURL () { return baseURL + "confirmReset"; }
 
     //SUBMIT API
-    public String submitApiURL () { return baseURL + "submitapi"; }
+    public String submitApiURL () { return baseURL + "api"; }
 
     // Search API
     public String searchAPIURL () { return baseURL + "searchAPI"; }
@@ -24,5 +24,5 @@ public class BackendURLService {
 
     public String searchMashupsURL(String query) { return baseURL + "search/mashup?query="+query; }
 
-    public String submitMashupURL() { return baseURL + "mashup"; }
+    public String submitMashupURL() { return baseURL + "api"; }
 }

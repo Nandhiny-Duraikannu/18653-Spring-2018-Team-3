@@ -2,37 +2,58 @@ package UIForm;
 
 public class ApiForm {
 
-    private String apiname;
-    private String apihomepage;
-    private String apiendpoint;
+    private String name;
+    private String type;
+    private String apiIds;
+    private String homepage;
+    private String endpoint;
     private String version;
     private String scope;
-    private String apidescription;
-    private String emailaddress;
-    private String user;
+    private String description;
+    private String email;
+    private String user_id;
 
-    public String getApiname() {
-        return apiname;
+    public String getName() {
+        return name;
     }
 
-    public void setApiname(String apiname) {
-        this.apiname = apiname;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getApihomepage() {
-        return apihomepage;
+
+    public String getType() {
+      return type;
+  }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public void setApihomepage(String apihomepage) {
-        this.apihomepage = apihomepage;
+
+    public String getApiIds() {
+        return apiIds;
     }
 
-    public String getApiendpoint() {
-        return apiendpoint;
+    public void setApiIds(String apiIds) {
+        this.apiIds = apiIds;
     }
 
-    public void setApiendpoint(String apiendpoint) {
-        this.apiendpoint = apiendpoint;
+
+    public String getHomepage() {
+        return homepage;
+    }
+
+    public void setHomepage(String homepage) {
+        this.homepage = homepage;
+    }
+
+    public String getEndpoint() {
+        return endpoint;
+    }
+
+    public void setEndpoint(String endpoint) {
+        this.endpoint = endpoint;
     }
 
     public String getVersion() {
@@ -51,27 +72,27 @@ public class ApiForm {
         this.scope = scope;
     }
 
-    public String getApidescription() {
-        return apidescription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setApidescription(String apidescription) {
-        this.apidescription = apidescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getEmailaddress() {
-        return emailaddress;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmailaddress(String emailaddress) {
-        this.emailaddress = emailaddress;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getUser() {
-        return user;
+    public String getUser_id() {
+        return user_id;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 }

@@ -3,9 +3,13 @@ package UIForm;
 public class Mashup {
 
     private String name;
-    private String url;
+
     private String description;
-    private String user;
+    private String user_id;
+
+    private String type;
+
+    private String[] apiIds;
 
     public String getName() {
         return name;
@@ -15,12 +19,21 @@ public class Mashup {
         this.name = name;
     }
 
-    public String getUrl() {
-        return url;
+    public String getType() {
+        return type;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String[] getApiIds() {
+
+        return apiIds;
+    }
+
+    public void setApiIds(String[] apiIds) {
+        this.apiIds = apiIds;
     }
 
     public String getDescription() {
@@ -31,21 +44,22 @@ public class Mashup {
         this.description = description;
     }
 
-    public String getUser() {
-        return user;
+    public String getUser_id() {
+        return user_id;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
     @Override
     public String toString() {
         return "Mashup{" +
                 "name='" + name + '\'' +
-                ", url='" + url + '\'' +
                 ", description='" + description + '\'' +
-                ", user='" + user + '\'' +
+                ", user_id='" + user_id + '\'' +
+                ", apiIds='" + apiIds + '\'' +
+                ", type='" + type + '\'' +
                 '}';
     }
 }

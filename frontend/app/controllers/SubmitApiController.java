@@ -37,7 +37,7 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
     public CompletionStage<Result> submitApi () {
         Form<ApiForm> apiForm = formFactory.form(ApiForm.class).bindFromRequest();
         ApiForm apiData = apiForm.get();
-        apiData.setUser(session().get("username"));
+        apiData.setUser_id(session().get("id"));
         String apiJson = Json.toJson(apiData).toString();
 
         // Post the json to create the user in the backend
@@ -46,6 +46,8 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
         .addHeader("Content-Type", "application/json")
         .post(apiJson)
         .thenApply((WSResponse r) -> {
+            System.out.println("r.getStatus():"+r.getStatus());
+            System.out.println("request:"+r);
             if (r.getStatus() == 200) {
                 return redirect(routes.HomeController.homeView());
             } else {
