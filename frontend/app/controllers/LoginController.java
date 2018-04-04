@@ -32,7 +32,7 @@ public class LoginController extends Controller implements WSBodyReadables, WSBo
         this.urlService = new BackendURLService();
     }
 
-    public Result loginView () { return ok(views.html.login.render()); }
+    public Result loginView (boolean showWrongPassword) { return ok(views.html.login.render(showWrongPassword)); }
 
     public Result signupView () {
         return ok(views.html.signup.render());
@@ -46,7 +46,7 @@ public class LoginController extends Controller implements WSBodyReadables, WSBo
 
     public Result logout () {
         session().clear();
-        return redirect(routes.LoginController.loginView());
+        return redirect(routes.LoginController.loginView(false));
     }
 
     // Signup logic
@@ -64,7 +64,7 @@ public class LoginController extends Controller implements WSBodyReadables, WSBo
             if (r.getStatus() == 200) {
                 int userId = r.asJson().get("id").asInt();
                 String username = r.asJson().get("username").asText();
-                return redirect(routes.LoginController.loginView());
+                return redirect(routes.LoginController.loginView(false));
             } else {
                 return badRequest("Error while trying to create user");
             }
@@ -91,7 +91,7 @@ public class LoginController extends Controller implements WSBodyReadables, WSBo
                 ctx.session().put("username", username);
                 return redirect(routes.HomeController.homeView());
             } else {
-                return badRequest("Error while trying to login user");
+                return redirect(routes.LoginController.loginView(true));
             }
         });
     }
@@ -132,19 +132,17 @@ public class LoginController extends Controller implements WSBodyReadables, WSBo
         String reset = "{\"username\": \"" + session().get("username") + "\",";
         reset += "\"newPassword\": \"" + formData.getPassword() + "\"}";
         
-        //String formJson = Json.toJson(reset).toString();
         //Post the json to create the user in the backend
         WSRequest request = ws.url(urlService.newPasswordURL());
 
-        System.out.println(reset);
         return request
         .addHeader("Content-Type", "application/json")
         .post(reset)
         .thenApply((WSResponse r) -> {
             if (r.getStatus() == 200) {
-                return redirect(routes.LoginController.loginView());
+                return redirect(routes.LoginController.loginView(false));
             } else {
-                return badRequest("Error while trying to reset password");
+                return redirect(routes.LoginController.resetPasswordView());
             }
         });
     }

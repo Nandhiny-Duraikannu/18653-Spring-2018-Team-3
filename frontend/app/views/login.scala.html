@@ -1,3 +1,5 @@
+@(wrongPassword: Boolean)
+
 @main("Login | Service Repository") {
 
     <div class="header red accent-4">
@@ -17,13 +19,18 @@
             <div class="col s10 offset-s1">
             @helper.form(action = routes.LoginController.login) {
                 <div class="input-field col s12">
-                    <input placeholder="Username" type="text" name="username" autofocus>
+                    <input id="username" placeholder="Username" type="text" name="username" autofocus required>
                     <label for="username">Username</label>
                 </div>
                 <div class="input-field col s12">
-                    <input placeholder="Password" id="password" type="password" name="password">
+                    <input placeholder="Password" id="password" type="password" name="password" required>
                     <label for="password">Password</label>
                 </div>
+
+                @if(wrongPassword) {
+                <span class="new badge" data-badge-caption="Wrong username or password. Please try again."></span>
+                }
+
                 <a href="@routes.LoginController.signup" class="btn-flat left">Create an account</a>
                 <a href="@routes.LoginController.forgotPwdView" class="btn-flat left">Forgot Password</a>
                 <button id="loginButton" class="btn right" type="submit">Login
