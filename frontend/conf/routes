@@ -4,7 +4,7 @@
 
 # Signup, login, password reset, ...
 GET     /                           controllers.LoginController.loginView(showWrongPassword: Boolean ?= false)
-GET     /signup                     controllers.LoginController.signupView()
+GET     /signup                     controllers.LoginController.signupView(showError: Boolean ?= false)
 GET     /forgotpassword             controllers.LoginController.forgotPwdView()
 GET     /resetPassword              controllers.LoginController.resetPasswordView()
 

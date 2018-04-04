@@ -1,3 +1,5 @@
+@(showError: Boolean)
+
 @main("Create an account | Service Repository") {
 
     <div class="header red darken-3">
@@ -38,7 +40,12 @@
                     <label for="answer">Answer</label>
                 </div>
                 <a href="@routes.LoginController.loginView()" class="btn-flat left">Already have an account?
-                    Login!</a>
+                    Login!
+                </a>
+                    @if(showError) {
+                        <span class="new badge" data-badge-caption="A user with the same username already
+                        exists."></span>
+                    }
                 <button id="signupButton" class="btn right" type="submit">Let's go!
                     <i class="material-icons right">chevron_right</i>
                 </button>

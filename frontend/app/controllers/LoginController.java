@@ -34,8 +34,8 @@ public class LoginController extends Controller implements WSBodyReadables, WSBo
 
     public Result loginView (boolean showWrongPassword) { return ok(views.html.login.render(showWrongPassword)); }
 
-    public Result signupView () {
-        return ok(views.html.signup.render());
+    public Result signupView (boolean showError) {
+        return ok(views.html.signup.render(showError));
     }
 
     public Result forgotPwdView () {
@@ -66,7 +66,7 @@ public class LoginController extends Controller implements WSBodyReadables, WSBo
                 String username = r.asJson().get("username").asText();
                 return redirect(routes.LoginController.loginView(false));
             } else {
-                return badRequest("Error while trying to create user");
+                return redirect(routes.LoginController.signupView(true));
             }
         });
     }

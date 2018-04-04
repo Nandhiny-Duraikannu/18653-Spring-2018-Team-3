@@ -30,7 +30,7 @@ public class MashupController extends Controller {
         Form<MashupForm> mashupForm = formFactory.form(MashupForm.class).bindFromRequest();
         MashupForm mashupInfo = mashupForm.get();
 
-        User user = userDAO.findUserByUsername(mashupInfo.getUser());
+        User user = userDAO.getUserByUsername(mashupInfo.getUser());
 
         Mashup mashup = mashupDAO.createMashup(user, mashupInfo.getName(), mashupInfo.getUrl(), mashupInfo
                 .getDescription());

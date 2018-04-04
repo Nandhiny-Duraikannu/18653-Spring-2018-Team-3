@@ -19,10 +19,16 @@ public class UserDAO {
 
     public User createNewUser(String username, String password, String securityQuestion, String answer) {
         UserFactory userFactory = new UserFactory();
-        User user = userFactory.getUser("normal_user");
-        user.setParameters(username, password, securityQuestion, answer);
-        user.save();
-        return user;
+
+        User userWithSameUsername = this.getUserByUsername(username);
+        if (userWithSameUsername != null) {
+            return null;
+        } else {
+            User user = userFactory.getUser("normal_user");
+            user.setParameters(username, password, securityQuestion, answer);
+            user.save();
+            return user;
+        }
     }
 
     public User getUserByUsername(String username) {
@@ -65,9 +71,5 @@ public class UserDAO {
         }
         stringBuffer.append("]");
         return stringBuffer.toString();
-    }
-
-    public User findUserByUsername(String username) {
-        return User.find.query().where().eq("username", username).findOne();
     }
 }

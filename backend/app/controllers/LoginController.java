@@ -32,7 +32,11 @@ public class LoginController extends Controller {
         String securityQuestion = form.get("securityQuestion");
         String answer = form.get("answer");
         User user = userDAO.createNewUser(username, password, securityQuestion, answer);
-        return ok(user.toJSON());
+        if (user != null) {
+            return ok(user.toJSON());
+        } else {
+            return badRequest("User with same username already exists.");
+        }
     }
 
     public Result login() {
