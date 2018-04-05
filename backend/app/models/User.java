@@ -37,9 +37,6 @@ public class User extends Model {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     public List<Api> apis = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    public List<Mashup> mashups = new ArrayList<>();
-
     public static final Finder<Long, User> find = new Finder<>(User.class);
 
     // Getters and setters
@@ -113,6 +110,10 @@ public class User extends Model {
     public void updatePassword(String password) {
         this.setPasswordHash(password);
         this.save();
+    }
+
+    public void addApi(Api api) {
+        apis.add(api);
     }
 
     public String toJSON() {

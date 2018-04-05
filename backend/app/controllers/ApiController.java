@@ -2,16 +2,16 @@ package controllers;
 
 import DAO.*;
 import com.fasterxml.jackson.databind.JsonNode;
-import forms.ApiForm;
 import models.*;
 import play.data.DynamicForm;
-import play.data.Form;
 import play.data.FormFactory;
 import play.libs.Json;
 import play.mvc.*;
+import services.ApiFactory;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -23,36 +23,45 @@ public class ApiController extends Controller {
 
     private ApiDAO apiDAO = new ApiDAO();
     private UserDAO userDAO = new UserDAO();
+    private ApiFactory apiFactory = new ApiFactory();
 
     @Inject
     public ApiController(FormFactory formFactory) {
         this.formFactory = formFactory;
     }
 
+    @BodyParser.Of(BodyParser.Json.class)
     public Result submitApi() {
-        Form<ApiForm> apiForm = formFactory.form(ApiForm.class).bindFromRequest();
-        ApiForm apiData = apiForm.get();
+        JsonNode apiJson = request().body().asJson();
+        String userId = apiJson.findPath("user_id").textValue();
+        String apiType = apiJson.findPath("type").textValue();
+        String name = apiJson.findPath("name").textValue();
+        String homepage = apiJson.findPath("homepage").textValue();
+        String endpoint = apiJson.findPath("endpoint").textValue();
+        String version = apiJson.findPath("version").textValue();
+        String scope = apiJson.findPath("scope").textValue();
+        String description = apiJson.findPath("description").textValue();
+        String email = apiJson.findPath("email").textValue();
 
-        String username = apiData.getUser();
-        String apiName = apiData.getApiname();
-        String apiHomePage = apiData.getApihomepage();
-        String apiEndpoint = apiData.getApiendpoint();
-        String version = apiData.getVersion();
-        String scope = apiData.getScope();
-        String apiDescription = apiData.getApidescription();
-        String emailAddress = apiData.getEmailaddress();
+        JsonNode apiIdsNode = apiJson.findPath("apiIds");
+        List<Integer> apiIds = new ArrayList<>();
+        for (JsonNode n: apiIdsNode) {
+            apiIds.add(Integer.valueOf(n.textValue()));
+        }
 
-        User user = userDAO.getUserByUsername(username);
-
-        Api api = apiDAO.addApi(user, apiName, apiHomePage, apiEndpoint, version, scope, apiDescription,
-                emailAddress);
-        return ok(api.toJSON());
+        User user = userDAO.getUserByUserId(Integer.valueOf(userId));
+        Api api = apiFactory.createApi(apiType, name, homepage, endpoint, version, scope, description, email, apiIds);
+        user.addApi(api);
+        user.save();
+        return ok(api.toJson());
     }
 
-
-    public Result getApi () {
-        String allapi = apiDAO.getApi();
-        return ok(allapi);
+    public Result getAllApis () {
+        List<JsonNode> apis = new ArrayList<>();
+        for (Api api: apiDAO.getAll()) {
+            apis.add(api.toJson());
+        }
+        return ok(Json.toJson(apis));
     }
 
     public Result searchApi () {
@@ -63,7 +72,7 @@ public class ApiController extends Controller {
 
         List<JsonNode> apisJson = new ArrayList<>();
         for (Api api: apis) {
-            apisJson.add(api.toJSONObj());
+            apisJson.add(api.toJson());
         }
         return ok(Json.toJson(apisJson));
     }
