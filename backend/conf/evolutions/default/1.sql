@@ -3,27 +3,32 @@
 
 # --- !Ups
 
-create table api (
-  id                            bigint auto_increment not null,
-  apiname                       varchar(255),
-  apihomepage                   varchar(255),
-  apiendpoint                   varchar(255),
-  version                       varchar(255),
-  scope                         varchar(255),
-  apidescription                varchar(255),
-  emailaddress                  varchar(255),
-  user_id                       bigint,
-  object_type                   varchar(255),
-  constraint pk_api primary key (id)
-);
-
-create table mashups (
+create table apis (
+  apitype                       varchar(31) not null,
   id                            bigint auto_increment not null,
   name                          varchar(255),
-  url                           varchar(255),
-  description                   varchar(255),
+  homepage                      varchar(255),
+  endpoint                      varchar(255) default '',
+  version                       varchar(255) default '',
+  scope                         varchar(255) default '',
+  description                   varchar(255) default '',
+  email                         varchar(255) default '',
   user_id                       bigint,
-  constraint pk_mashups primary key (id)
+  constraint pk_apis primary key (id)
+);
+
+create table mashup_apis (
+  mashup_id                     bigint not null,
+  api_id                        bigint not null,
+  constraint pk_mashup_apis primary key (mashup_id,api_id)
+);
+
+create table task (
+  id                            bigint auto_increment not null,
+  name                          varchar(255),
+  done                          tinyint(1) default 0 not null,
+  due_date                      datetime(6),
+  constraint pk_task primary key (id)
 );
 
 create table users (
@@ -36,24 +41,32 @@ create table users (
   constraint pk_users primary key (id)
 );
 
-alter table api add constraint fk_api_user_id foreign key (user_id) references users (id) on delete restrict on update restrict;
-create index ix_api_user_id on api (user_id);
+alter table apis add constraint fk_apis_user_id foreign key (user_id) references users (id) on delete restrict on update restrict;
+create index ix_apis_user_id on apis (user_id);
 
-alter table mashups add constraint fk_mashups_user_id foreign key (user_id) references users (id) on delete restrict on update restrict;
-create index ix_mashups_user_id on mashups (user_id);
+alter table mashup_apis add constraint fk_mashup_apis_apis_1 foreign key (mashup_id) references apis (id) on delete restrict on update restrict;
+create index ix_mashup_apis_apis_1 on mashup_apis (mashup_id);
+
+alter table mashup_apis add constraint fk_mashup_apis_apis_2 foreign key (api_id) references apis (id) on delete restrict on update restrict;
+create index ix_mashup_apis_apis_2 on mashup_apis (api_id);
 
 
 # --- !Downs
 
-alter table api drop foreign key fk_api_user_id;
-drop index ix_api_user_id on api;
+alter table apis drop foreign key fk_apis_user_id;
+drop index ix_apis_user_id on apis;
 
-alter table mashups drop foreign key fk_mashups_user_id;
-drop index ix_mashups_user_id on mashups;
+alter table mashup_apis drop foreign key fk_mashup_apis_apis_1;
+drop index ix_mashup_apis_apis_1 on mashup_apis;
 
-drop table if exists api;
+alter table mashup_apis drop foreign key fk_mashup_apis_apis_2;
+drop index ix_mashup_apis_apis_2 on mashup_apis;
 
-drop table if exists mashups;
+drop table if exists apis;
+
+drop table if exists mashup_apis;
+
+drop table if exists task;
 
 drop table if exists users;
 

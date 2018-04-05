@@ -32,11 +32,7 @@ public class LoginController extends Controller {
         String securityQuestion = form.get("securityQuestion");
         String answer = form.get("answer");
         User user = userDAO.createNewUser(username, password, securityQuestion, answer);
-        if (user != null) {
-            return ok(user.toJSON());
-        } else {
-            return badRequest("User with same username already exists.");
-        }
+        return ok(user.toJSON());
     }
 
     public Result login() {
@@ -62,32 +58,11 @@ public class LoginController extends Controller {
             username.equals(user.getUsername()) &&
             securityQuestion.equals(user.getSecurityQuestion()) &&
             answer.equals(user.getAnswer())) {
-
-            String reset = "{\"username\": \"" + username + "\",";
-            reset += "\"reset\": \"" +  true + "\"}";
-
             user.updatePassword("temp");
-            return ok(reset);
-        } else {
-            String reset = "{\"username\": \"" + username + "\",";
-            reset += "\"reset\": \"" +  false + "\"}";
-            return ok(reset);
-        }
-    }
-
-    public Result confirmReset() {
-        DynamicForm form = formFactory.form().bindFromRequest();
-        String username = form.get("username");
-        String password = form.get("newPassword");
-    
-        User user = userDAO.getUserByUsername(username);
-        if(user != null ){
-            user.updatePassword(password);
             return ok("{\"reset\":true}");
         } else {
             return ok("{\"reset\":false}");
         }
-        //return ok(user.toJSON());
     }
 }
 

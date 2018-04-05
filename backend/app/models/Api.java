@@ -7,42 +7,46 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.ebean.*;
 import play.data.validation.*;
 import play.libs.Json;
+import java.util.*;
 
 @Entity
-@Table(name="api")
+@Table(name="apis")
+@Inheritance(strategy= InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="apiType")
+@DiscriminatorValue("api")
 public class Api extends Model {
 
     @Id
     public Long id;
 
-    @Column(name = "apiname")
+    @Column(name = "name")
     @Constraints.Required
-    public String apiname;
+    public String name;
 
-    @Column(name = "apihomepage")
+    @Column(name = "homepage")
     @Constraints.Required
-    public String apihomepage;
+    public String homepage;
 
+    @Column(name = "endpoint", columnDefinition = "varchar(255) default ''")
+    public String endpoint;
 
-    @Column(name = "apiendpoint")
-    public String apiendpoint;
-
-    @Column(name = "version")
+    @Column(name = "version", columnDefinition = "varchar(255) default ''")
     public String version;
 
-    @Column(name = "scope")
+    @Column(name = "scope", columnDefinition = "varchar(255) default ''")
     public String scope;
 
-    @Column(name = "apidescription")
-    public String apidescription;
+    @Column(name = "description", columnDefinition = "varchar(255) default ''")
+    public String description;
 
-    @Column(name = "emailaddress")
-    public String emailaddress;
+    @Column(name = "email", columnDefinition = "varchar(255) default ''")
+    public String email;
 
     @ManyToOne
     public User user;
 
-    public String objectType;
+    @ManyToMany(mappedBy = "apis", cascade = CascadeType.ALL)
+    public List<Mashup> mashups = new ArrayList<>();
 
     public static final Finder<Long, Api> find = new Finder<>(Api.class);
 
@@ -50,107 +54,83 @@ public class Api extends Model {
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getApiname() {
-        return apiname;
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setApiname(String apiname) {
-        this.apiname = apiname;
+    public String getHomepage() {
+        return homepage;
+    }
+    public void setHomepage(String homepage) {
+        this.homepage = homepage;
     }
 
-    public String getApiHomepage() {
-        return apihomepage;
+    public String getEndpoint() {
+        return endpoint;
     }
-
-    public void setApiHomepage(String apihomepage) {
-        this.apihomepage = apihomepage;
-    }
-
-
-
-    public String apiendpoint() {
-        return apiendpoint;
-    }
-
-    public void apiendpoint(String apiendpoint) {
-        this.apiendpoint = apiendpoint;
+    public void setEndpoint(String endpoint) {
+        this.endpoint = endpoint;
     }
 
 
-    public String version() {
+    public String getVersion() {
         return version;
     }
-    public void version(String version) {
+    public void setVersion(String version) {
         this.version = version;
     }
 
-    public String scope() {
+    public String getScope() {
         return scope;
     }
-    public void scope(String scope) {
+    public void setScope(String scope) {
         this.scope = scope;
     }
 
 
-    public String apidescription() {
-        return apidescription;
+    public String getDescription() {
+        return description;
     }
-    public void apidescription(String apidescription) {
-        this.apidescription = apidescription;
-    }
-
-
-    public String emailaddress() {
-        return emailaddress;
-    }
-    public void emailaddress(String emailaddress) {
-        this.emailaddress = emailaddress;
+    public void setDescription(String apidescription) {
+        this.description = description;
     }
 
 
-    public String getObjectType() {
-        return objectType;
+    public String getEmail() {
+        return email;
     }
-    public void setObjectType(String objectType) {
-
-        this.objectType = objectType;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public void setParameters(String apiname, String apihomepage, String apiendpoint, String version, String scope, String apidescription, String emailaddress) {
-        this.apiname = apiname;
-        this.apihomepage = apihomepage;
-        this.apiendpoint = apiendpoint;
+    public void setParameters(String name, String homepage, String endpoint, String version, String scope, String description, String email) {
+        this.name = name;
+        this.homepage = homepage;
+        this.endpoint = endpoint;
         this.version = version;
         this.scope = scope;
-        this.apidescription = apidescription;
-        this.emailaddress = emailaddress;
+        this.description = description;
+        this.email = email;
     }
 
-    public String toJSON() {
-        StringBuffer json = new StringBuffer();
-        json.append("{");
-        json.append("\"id\": \"").append(this.getId()).append("\", ");
-        json.append("\"apiname\": \"").append(this.getApiname()).append("\", ");
-        json.append("\"apiendpoint\": \"").append(this.apiendpoint()).append("\", ");
-        json.append("\"version\": \"").append(this.version()).append("\", ");
-        json.append("\"scope\": \"").append(this.scope()).append("\", ");
-        json.append("\"apidescription\": \"").append(this.apidescription()).append("\", ");
-        json.append("\"emailaddress\": \"").append(this.emailaddress()).append("\"}");
-        return json.toString();
-
-    }
-
-    public JsonNode toJSONObj () {
-        ObjectNode result = Json.newObject();
-        result.put("name", apiname);
-        result.put("url", apiendpoint);
-        result.put("description", apidescription);
-        result.put("user", user.username);
-        return Json.toJson(result);
+    public ObjectNode toJson() {
+        ObjectNode result = Json.newObject()
+                .put("id", id)
+                .put("type", "api")
+                .put("name", name)
+                .put("homepage", homepage)
+                .put("endpoint", endpoint)
+                .put("version", version)
+                .put("scope", scope)
+                .put("description", description)
+                .put("user", user.username);
+        return result;
     }
 }
