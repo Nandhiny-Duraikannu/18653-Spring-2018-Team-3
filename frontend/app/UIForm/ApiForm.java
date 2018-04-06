@@ -1,7 +1,11 @@
 package UIForm;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ApiForm {
 
+    private int id;
     private String name;
     private String type;
     private String apiIds;
@@ -13,6 +17,13 @@ public class ApiForm {
     private String email;
     private String user_id;
     private String status;
+    private List<Comment> comments = new ArrayList<Comment>();
+
+    public int getId() { return id; }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -22,7 +33,6 @@ public class ApiForm {
         this.name = name;
     }
 
-
     public String getType() {
       return type;
   }
@@ -31,7 +41,6 @@ public class ApiForm {
         this.type = type;
     }
 
-
     public String getApiIds() {
         return apiIds;
     }
@@ -39,7 +48,6 @@ public class ApiForm {
     public void setApiIds(String apiIds) {
         this.apiIds = apiIds;
     }
-
 
     public String getHomepage() {
         return homepage;
@@ -104,4 +112,9 @@ public class ApiForm {
     public void setStatus(String status) {
         this.status = status;
     }
+    public void addComment (Comment newComment) {
+        comments.add(newComment);
+    }
+
+    public List<Comment> getComments () { return comments; }
 }

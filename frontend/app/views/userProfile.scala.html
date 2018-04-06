@@ -36,22 +36,45 @@
 
                 <div class="input-field col s12">
                     <div class="col-s4">
-                        <label>
-                            <input class="with-gap" name="notificationMethod" type="radio" value="email" />
-                            <span>E-mail</span>
-                        </label>
+                        @if(userForm.getNotificationMethod == "email") {
+                            <label>
+                                <input class="with-gap" name="notificationMethod" type="radio" value="email" checked />
+                                <span>E-mail</span>
+                            </label>
+                        } else {
+                            <label>
+                                <input class="with-gap" name="notificationMethod" type="radio" value="email"  />
+                                <span>E-mail</span>
+                            </label>
+                        }
                     </div>
                     <div class="col-s4">
-                        <label>
-                            <input class="with-gap" name="notificationMethod" type="radio" value="text" />
-                            <span>Text message</span>
-                        </label>
+                        @if(userForm.getNotificationMethod == "text") {
+                            <label>
+                                <input class="with-gap" name="notificationMethod" type="radio" value="text" checked />
+                                <span>Text message</span>
+                            </label>
+                        } else {
+                            <label>
+                                <input class="with-gap" name="notificationMethod" type="radio" value="text" />
+                                <span>Text message</span>
+                            </label>
+                        }
                     </div>
                     <div class="col-s4">
-                        <label>
-                            <input class="with-gap" name="notificationMethod" type="radio" value="message" />
-                            <span>Message</span>
-                        </label>
+                        @if(userForm.getNotificationMethod == "phone") {
+                            <label>
+                                <input class="with-gap" name="notificationMethod" type="radio" value="phone" checked />
+                                <span>Phone call</span>
+                            </label>
+                        } else {
+                            <label>
+                                <input class="with-gap" name="notificationMethod" type="radio" value="phone" />
+                                <span>Phone call</span>
+                            </label>
+
+                        }
+
                     </div>
                 </div>
 

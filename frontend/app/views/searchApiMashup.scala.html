@@ -57,7 +57,7 @@
                     <tbody>
                     @apis.map { api =>
                         <tr>
-                            <td> @api.getName() </td>
+                            <td><a href="@routes.SubmitApiController.displayApiView(api.getId())">@api.getName()</a></td>
                             <td> @api.getDescription() </td>
                             @if(api.getStatus()=="YES"){
                                  <td><button id="submitUnFollowButton" class="btn left" type="submit" name="unfollow" >Following
@@ -70,25 +70,22 @@
 
                             }
                            
-
                         </tr>
                     }
                         @mashups.map { mashup =>
                             <tr>
-                                <td> @mashup.getName() </td>
+                                <td><a href="@routes.SubmitApiController.displayApiView(mashup.getId())"> @mashup.getName()</a></td>
                                 <td> @mashup.getDescription() </td>
-                                @*if(@mashup.getStatus()=="Yes"){*@
-                                     @*<td><button id="submitUnFollowButton" class="btn left" type="submit" name="unfollow">Following*@
-                                        @*<i class="material-icons right">following</i>*@
-                                     @*</button> </td>*@
-                                @*}*@
-                                    @*else{*@
-                                   @*<td> <button id="submitFollowButton" class="btn left" type="submit" name="follow">Follow*@
-                                        @*<i class="material-icons right">follow</i>*@
-                                    @*</button> </td>*@
+                                @if(mashup.getStatus()=="YES"){
+                                     <td><button id="submitUnFollowButton" class="btn left" type="submit" name="unfollow">Following
+                                        <i class="material-icons right">following</i>
+                                     </button> </td>
+                                } else{
+                                   <td> <button id="submitFollowButton" class="btn left" type="submit" name="follow">Follow
+                                        <i class="material-icons right">follow</i>
+                                    </button> </td>
 
-                                @*}*@
-
+                                }
                             </tr>
                         }
 

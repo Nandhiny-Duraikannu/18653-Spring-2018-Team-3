@@ -1,13 +1,13 @@
 package models;
 
 import javax.persistence.*;
-import java.util.*;
 import io.ebean.*;
 import org.mindrot.jbcrypt.BCrypt;
 import play.data.validation.*;
 import java.util.List;
 import java.util.ArrayList;
-// import org.mindrot.jbcrypt.BCrypt;
+
+import services.notification.*;
 
 @Entity
 @Table(name="users")
@@ -46,7 +46,6 @@ public class User extends Model {
 
     @Column(name = "notificationMethod")
     public String notificationMethod;
-
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     public List<Api> apis = new ArrayList<>();
@@ -102,28 +101,49 @@ public class User extends Model {
         this.userType = userType;
     }
 
-    public String getPhoneNumber() { return phoneNumber; }
+    public String getPhoneNumber() {
+        if (this.phoneNumber != null) {
+            return this.phoneNumber;
+        } else {
+            return "";
+        }
+    }
 
     public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
 
-    public String getEmail() { return email; }
+    public String getEmail() {
+        if (this.email != null) {
+            return this.email;
+        } else {
+            return "";
+        }
+    }
 
     public void setEmail(String email) { this.email = email; }
 
-    public String getNotificationMethod() { return notificationMethod; }
+    public String getNotificationMethod() {
+        if (this.notificationMethod != null) {
+            return this.notificationMethod;
+        } else {
+            return "";
+        }
+    }
 
     public void setNotificationMethod(String notificationMethod) { this.notificationMethod = notificationMethod; }
 
+    public String getName() {
+        if (this.name != null) {
+            return name;
+        } else {
+            return "";
+        }
+    }
+
+    public void setName(String name) { this.name = name; }
+
+
     public String encryptPassword(String unencryptedPassword) {
         return BCrypt.hashpw(unencryptedPassword, BCrypt.gensalt());
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public boolean authenticate(String password) {
@@ -171,6 +191,12 @@ public class User extends Model {
         json.append("\"phoneNumber\": \"").append(this.getPhoneNumber()).append("\", ");
         json.append("\"notificationMethod\": \"").append(this.getNotificationMethod()).append("\"}");
         return json.toString();
+    }
+
+    public void sendNotification(String apiName) {
+        // TODO: switch on notification method
+        SendNotificationAPI notificationApi = new SendEmailNotification();
+        notificationApi.sendNotification(apiName, email);
     }
 
 }

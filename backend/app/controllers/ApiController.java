@@ -25,6 +25,7 @@ public class ApiController extends Controller {
     private UserDAO userDAO = new UserDAO();
     private ApiFactory apiFactory = new ApiFactory();
 
+
     @Inject
     public ApiController(FormFactory formFactory) {
         this.formFactory = formFactory;
@@ -44,6 +45,7 @@ public class ApiController extends Controller {
         String email = apiJson.findPath("email").textValue();
 
         JsonNode apiIdsNode = apiJson.findPath("apiIds");
+
         List<Integer> apiIds = new ArrayList<>();
         for (JsonNode n: apiIdsNode) {
             apiIds.add(Integer.valueOf(n.textValue()));
@@ -118,7 +120,7 @@ public class ApiController extends Controller {
              followers.add(follower.api_id.intValue());
         }
 
-        System.out.println("type USER ID"+ userId);
+        System.out.println("type followers ID"+ followers);
 
         if (type.equals("api"))
         {
@@ -151,29 +153,65 @@ public class ApiController extends Controller {
                     }
                 }
                 else
-                        {
-                            System.out.println("else");
-                        // ObjectNode result = super.toJson().put("status", "No");
-                            apisJson.add(api.toJson().put("status","NO"));
-                           // apisJson.add(api.toJson());
-                        }
-
-
-                
+                {
+                    System.out.println("else");
+                // ObjectNode result = super.toJson().put("status", "No");
+                    apisJson.add(api.toJson().put("status","NO"));
+                   // apisJson.add(api.toJson());
+                }
             }
+            System.out.println(Json.toJson(apisJson));
             return ok(Json.toJson(apisJson));
         }
-        else
-            {
-                System.out.println("in mashup search");
-                List<Mashup> mashups = mashupDAO.searchMashups(searchParam,type);
+        else {
+            System.out.println("in mashup search");
+            List<Mashup> mashups = mashupDAO.searchMashups(searchParam,type);
 
-                List<JsonNode> mashupsJson = new ArrayList<>();
-                for (Mashup mashup : mashups)
+            List<JsonNode> mashupsJson = new ArrayList<>();
+            for (Mashup mashup : mashups)
+            {
+                System.out.println("in mashup"+ mashup.toJson());
+                if(!followers.isEmpty())
                 {
-                    mashupsJson.add(mashup.toJson());
+                    System.out.println("inside followers" +mashup.id +" "+followers.get(1));
+                    //  if(((api.id).toString()).equals(i.toString()))
+                    if ((Long.toString(mashup.id)).equals(Integer.toString(followers.get(1))))
+                    {
+                        System.out.println("in if");
+                        // ObjectNode result = super.toJson().put("status", "Yes");
+                        mashupsJson.add(mashup.toJson().put("status", "YES"));
+                        //  apisJson.add(api.toJson());
+                        // ((ObjectNode)jsonNode).put("value", "NO");
+
+                    }
+                    else
+                    {
+                        System.out.println("else 1");
+                        // ObjectNode result = super.toJson().put("status", "No");
+                            mashupsJson.add(mashup.toJson().put("status","NO"));
+                            // apisJson.add(api.toJson());
+
+                        }
+                    }
+                    else
+                    {
+                        System.out.println("else 2");
+                        // ObjectNode result = super.toJson().put("status", "No");
+                        mashupsJson.add(mashup.toJson().put("status","NO"));
+                        // apisJson.add(api.toJson());
+                    }
+
                 }
                 return ok(Json.toJson(mashupsJson));
             }
-    }   
+
+    }
+
+    public Result getApiById (int id) {
+        Api api = apiDAO.getApiById(id);
+
+        String apiCommentsJson = apiDAO.getCommentsForApi(id);
+        String result = api.toJsonWithComments(apiCommentsJson);
+        return ok(result);
+    }
 }

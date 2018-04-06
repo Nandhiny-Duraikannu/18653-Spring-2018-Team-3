@@ -33,6 +33,8 @@ public class BackendURLService {
 
     public String submitMashupURL() { return baseURL + "api"; }
 
+    public String getApiURL (int id) { return baseURL + "apis/" + id; }
+
     // UserForm profile
     public String userProfileURL (int userId) { return baseURL + "users/" + userId; }
 }
