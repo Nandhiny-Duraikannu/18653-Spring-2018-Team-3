@@ -4,14 +4,14 @@
 
 # Signup, login, reset password, ...
 
-POST    /login                      controllers.LoginController.login()
+POST    /login                       controllers.LoginController.login()
 
-POST    /signup                     controllers.LoginController.signup()
+POST    /signup                      controllers.LoginController.signup()
 
-POST    /forgotpassword             controllers.LoginController.forgotPwd()
+POST    /forgotpassword              controllers.LoginController.forgotPwd()
 
-GET     /                           controllers.UserController.getAllUsers()
-GET     /users                      controllers.UserController.getAllUsers()
+GET     /                            controllers.UserController.getAllUsers()
+GET     /users                       controllers.UserController.getAllUsers()
 
 #Submit API
 POST    /api                         controllers.ApiController.submitApi()
@@ -24,10 +24,14 @@ POST    /follow                         controllers.ApiController.followApi()
 GET     /followers                      controllers.ApiController.getAllFollowers()
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+GET     /assets/*file                controllers.Assets.versioned(path="/public", file: Asset)
 
 
 
 # User profile
 GET      /users/:userId              controllers.UserController.getUserProfile(userId: Int)
 POST     /users/:userId              controllers.UserController.updateUserProfile(userId: Int)
+
+# APIs
+GET      /apis/:id                   controllers.ApiController.getApiById(id: Int)
+#POST     /apis/:id/comments          controllers.ApiController.addCommentToApi(id: Int)

@@ -2,16 +2,22 @@ package UIForm;
 
 public class Mashup {
 
+    private int id;
     private String name;
-
     private String description;
     private String user_id;
-
     private String type;
-
     private String status;
 
     private String[] apiIds;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
