@@ -25,4 +25,7 @@ public class BackendURLService {
     public String searchMashupsURL(String query) { return baseURL + "search/mashup?query="+query; }
 
     public String submitMashupURL() { return baseURL + "api"; }
+
+    // UserForm profile
+    public String userProfileURL (int userId) { return baseURL + "users/" + userId; }
 }

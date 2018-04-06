@@ -60,4 +60,25 @@ public class UserDAO {
     public User findUserByUsername(String username) {
         return User.find.query().where().eq("username", username).findOne();
     }
+
+    public User updateUserProfile (int userId, String name, String email, String phoneNumber, String
+            notificationMethod) {
+        User userDB = new User();
+        try {
+            User user = userDB.find.query().where().eq("id", userId).findUnique();
+            if (user == null) {
+                return null;
+            } else {
+                user.setName(name);
+                user.setEmail(email);
+                user.setPhoneNumber(phoneNumber);
+                user.setNotificationMethod(notificationMethod);
+                user.save();
+                return user;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
