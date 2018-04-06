@@ -19,7 +19,7 @@ public class PhoneNotification extends NotificationTemplate {
 
     @Override
     void addContent() {
-        content = "You received this phone call because someone posted a comment under this API.";
+        content = "You received this phone call because someone followed this API.";
     }
 
     @Override

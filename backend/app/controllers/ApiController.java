@@ -65,7 +65,11 @@ public class ApiController extends Controller {
         String apiID = apiJson.findPath("api_id").textValue();
 
         Api submitter = apiDAO.getById(Integer.valueOf(apiID));
-        System.out.println("api value for user:"+submitter.toJson());
+
+        List<User> followers = followerDAO.getFollowers(Integer.valueOf(apiID));
+        submitter.notifyAllFollowers(followers);
+
+//        System.out.println("api value for user:"+submitter.toJson());
         Follower follower = apiFactory.followApi(Long.parseLong(userId), Long.parseLong(apiID), Long.parseLong(userId));
         
         return ok(follower.toJson());

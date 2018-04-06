@@ -208,11 +208,7 @@ public class Api extends Model {
         return sb.toString();
     }
 
-    public void notifyAllFollowers() {
-        // TODO: dummy values for now, change to actual followers later
-        List<User> followers = new ArrayList<>();
-        followers.add(user);
-
+    public void notifyAllFollowers(List<User> followers) {
         for (User follower: followers) {
             follower.sendNotification(name);
         }

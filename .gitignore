@@ -8,6 +8,7 @@ backend/target
 tmp
 .history
 dist
+.gradle
 frontend/.idea
 backend/.idea
 /*.iml

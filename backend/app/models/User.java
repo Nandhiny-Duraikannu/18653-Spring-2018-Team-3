@@ -194,9 +194,16 @@ public class User extends Model {
     }
 
     public void sendNotification(String apiName) {
-        // TODO: switch on notification method
-        SendNotificationAPI notificationApi = new SendEmailNotification();
-        notificationApi.sendNotification(apiName, email);
+        if (notificationMethod.equals("email")) {
+            SendNotificationAPI notificationApi = new SendEmailNotification();
+            notificationApi.sendNotification(apiName, email);
+        } else if (notificationMethod.equals("phone")) {
+            SendNotificationAPI notificationApi = new SendPhoneNotification();
+            notificationApi.sendNotification(apiName, phoneNumber);
+        } else if (notificationMethod.equals("text")) {
+            SendNotificationAPI notificationApi = new SendTextNotification();
+            notificationApi.sendNotification(apiName, phoneNumber);
+        }
     }
 
 }
