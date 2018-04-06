@@ -25,8 +25,6 @@ public class ApiFactory {
                 Api api = apiDAO.getById(apiId);
                 if (api != null)
                     mashup.addApi(api);
-//new
-
             }
             return mashup;
         }

@@ -19,7 +19,8 @@ public class ApiDAO {
     public List<Api> searchAPIs (String searchParam,String type) {
         return Api.find.query().where().like("name", "%" + searchParam + "%").eq("apitype",type).findList();
     }
-    public List<Api> searchAPIs (String userId) {
+    public List<Api> searchAPIs (int userId) {
+        System.out.println("userId in search " + userId);
         return Api.find.query().where().eq("user_id", userId).findList();
     }
     public Api getApiById(int id) {

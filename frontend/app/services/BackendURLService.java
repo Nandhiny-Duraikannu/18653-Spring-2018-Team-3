@@ -32,6 +32,7 @@ public class BackendURLService {
 
     public String getApiURL (int id) { return baseURL + "apis/" + id; }
 
+    public String getFollowers (int id) { return baseURL + "followers?userId=" + id; }
     // UserForm profile
     public String userProfileURL (int userId) { return baseURL + "users/" + userId; }
 }

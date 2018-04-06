@@ -86,27 +86,21 @@ public class ApiController extends Controller {
     public Result getAllFollowers ()
     {
         DynamicForm form = formFactory.form().bindFromRequest();
-        String userId = form.get("userId");
-        System.out.println("userId test in getall followers"+userId);
+        int userId = Integer.valueOf(form.get("userId"));
         List<Api> apis = apiDAO.searchAPIs(userId);
-       
         List<JsonNode> followers = new ArrayList<>();
-        for (Follower follower: followerDAO.getAll())
-        {
-            System.out.println("insides followers");
-            for(Api api : apis)
-            {
-                System.out.println("insides apis");
-                System.out.println("b4 if"+api.id + follower.api_id);
-                    if(((api.id).toString()).equals((follower.api_id).toString()))
-                    {
-                       // ObjectNode result = super.toJson().put("status", "Yes");
-                        System.out.println("inside if");
-                       followers.add(follower.toJson());
-                    }
+        Map<int, List<Integer>> userToApiMap = new HashMap<>();
+        for (Follower follower: followerDAO.getAll()) {
+            for(Api api : apis) {
+                if(((api.id).toString()).equals((follower.api_id).toString())) {
+                    List<Integer> followerList = userToApiMap.getOrDefault(api.id, new ArrayList<>());
+                    followerList.add(follower.getFollowerId());
+                    userToApiMap.put(api.id, followerList);
+                }
             }
         }
-        return ok(Json.toJson(followers));
+
+        return ok(Json.toJson(userToApiMap));
     }
 
     public Result searchApi ()

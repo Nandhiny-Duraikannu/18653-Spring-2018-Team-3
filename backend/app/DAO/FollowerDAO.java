@@ -8,9 +8,7 @@ import services.*;
 public class FollowerDAO {
     private UserDAO userDAO = new UserDAO();
 
-    public List<Follower> getAll() {
-        return Follower.find.all();
-    }
+    public List<Follower> getAll() { return Follower.find.all(); }
 
     public List<User> getFollowers(int apiId) {
         List<Follower> followerModels = Follower.find.query().where().eq("api_id", apiId).findList();
