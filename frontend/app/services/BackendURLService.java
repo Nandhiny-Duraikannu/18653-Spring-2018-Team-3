@@ -18,7 +18,7 @@ public class BackendURLService {
     public String submitApiURL () { return baseURL + "api"; }
 
     // Search API
-    public String searchAPIURL () { return baseURL + "searchAPI"; }
+    public String searchAPIURL () { return baseURL + "search/api"; }
 
     public String getAllMashupsURL() { return baseURL + "mashups"; }
 
