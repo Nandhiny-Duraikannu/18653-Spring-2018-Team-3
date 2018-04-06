@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class ApiController extends Controller {
     private final FormFactory formFactory;
-
+    private MashupDAO mashupDAO = new MashupDAO();
     private ApiDAO apiDAO = new ApiDAO();
     private UserDAO userDAO = new UserDAO();
     private ApiFactory apiFactory = new ApiFactory();
@@ -67,13 +67,31 @@ public class ApiController extends Controller {
     public Result searchApi () {
         DynamicForm form = formFactory.form().bindFromRequest();
         String searchParam = form.get("searchParam");
-    
-        List<Api> apis = apiDAO.searchAPIs(searchParam);
+        String type = form.get("type");
+        System.out.println("type"+type);
 
-        List<JsonNode> apisJson = new ArrayList<>();
-        for (Api api: apis) {
-            apisJson.add(api.toJson());
+        if (type.equals("api")) {
+            List<Api> apis = apiDAO.searchAPIs(searchParam,type);
+
+            List<JsonNode> apisJson = new ArrayList<>();
+            for (Api api : apis) {
+                apisJson.add(api.toJson());
+            }
+            return ok(Json.toJson(apisJson));
         }
-        return ok(Json.toJson(apisJson));
+        else
+            {
+                System.out.println("in mashup search");
+                List<Mashup> mashups = mashupDAO.searchMashups(searchParam,type);
+
+                List<JsonNode> mashupsJson = new ArrayList<>();
+                for (Mashup mashup : mashups) {
+                    mashupsJson.add(mashup.toJson());
+                }
+                return ok(Json.toJson(mashupsJson));
+
+            }
+
+
     }
 }

@@ -1,6 +1,7 @@
 package controllers;
 
 import UIForm.ApiForm;
+import UIForm.Mashup;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.data.FormFactory;
@@ -8,8 +9,11 @@ import play.libs.Json;
 import play.libs.ws.*;
 import play.mvc.*;
 import services.BackendURLService;
+import com.fasterxml.jackson.databind.JsonNode;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CompletionStage;
 
 /**
@@ -20,6 +24,10 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
     private final FormFactory formFactory;
     private final WSClient ws;
     private final BackendURLService urlService;
+    private List<ApiForm> apiForm = new ArrayList<>();;
+    private List<Mashup> mashForm =new ArrayList<>();;
+
+
 
     @Inject
     public SubmitApiController(WSClient ws, FormFactory formFactory) {
@@ -32,7 +40,7 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
         return ok(views.html.submitApi.render());
     }
 
-    public Result searchApiView () { return ok(views.html.searchApis.render()); }
+    public Result searchApiView () { return ok(views.html.searchApiMashup.render(apiForm,mashForm)); }
 
     public CompletionStage<Result> submitApi () {
         Form<ApiForm> apiForm = formFactory.form(ApiForm.class).bindFromRequest();
@@ -58,7 +66,8 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
 
     public CompletionStage<Result> searchApis () {
         DynamicForm form = formFactory.form().bindFromRequest();
-        String url = urlService.searchAPIURL() + "?searchParam=" + form.get("searchParam");
+        String url = urlService.searchURL() + "?searchParam=" + form.get("searchParam")+"&type="+form.get("type");
+        System.out.println("in api search"+url);
         // Post the json to create the user in the backend
         WSRequest request = ws.url(url);
         return request
@@ -66,11 +75,51 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
         .get()
         .thenApply((WSResponse r) -> {
             if (r.getStatus() == 200) {
+                if(form.get("type").equals("api")) {
+                    System.out.println("search api success");
+                    //   return ok(r.getBody());
+                    List<ApiForm> res = generateApiFromJson(r);
+                    return ok(views.html.searchApiMashup.render(res,mashForm));
+                }
+                else if (form.get("type").equals("mashup"))
+                {
+                    List<Mashup> res = generateMashupFromJson(r);
+                    return ok(views.html.searchApiMashup.render(apiForm,res));
 
-                return ok(r.getBody());
+
+                }
+                else{
+                    return badRequest("Error searching object type");
+                }
             } else {
-                return badRequest("Error while searching for an API");
+                return badRequest("Error while searching ");
             }
         });
     }
+
+    private List<ApiForm> generateApiFromJson (WSResponse r) {
+        JsonNode jsonNode = Json.parse(r.getBody());
+        List<ApiForm> apis = new ArrayList<ApiForm>();
+        for (JsonNode api : jsonNode) {
+            ApiForm newApi = new ApiForm();
+            newApi.setName(api.get("name").asText());
+            newApi.setDescription(api.get("description").asText());
+            apis.add(newApi);
+        }
+        return apis;
+    }
+
+    private List<Mashup> generateMashupFromJson (WSResponse r) {
+        JsonNode jsonNode = Json.parse(r.getBody());
+        List<Mashup> mashups = new ArrayList<Mashup>();
+        for (JsonNode mashup : jsonNode) {
+            Mashup newMashup = new Mashup();
+            newMashup.setName(mashup.get("name").asText());
+            newMashup.setDescription(mashup.get("description").asText());
+            mashups.add(newMashup);
+        }
+        return mashups;
+    }
+
+
 }

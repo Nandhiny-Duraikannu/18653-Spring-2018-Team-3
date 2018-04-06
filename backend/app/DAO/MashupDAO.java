@@ -1,19 +1,19 @@
 package DAO;
 
-import models.*;
-import java.util.List;
+import models.Mashup;
 
+import java.util.List;
 import services.*;
 
-public class ApiDAO {
+public class MashupDAO {
 
-    public List<Api> getAll() {
-        return Api.find.query().fetch("user").findList();
+    public List<Mashup> getAll() {
+        return Mashup.find.query().findList();
     }
 
-    public Api getById(int apiId) {
-        return Api.find.query().where().eq("id", apiId).findUnique();
-    }
+//  //  public Api getById(int apiId) {
+//        return Api.find.query().where().eq("id", apiId).findUnique();
+//    }
 
 //    public String getApi () {
 //        Api apiDB = new Api();
@@ -31,7 +31,7 @@ public class ApiDAO {
 //        return stringBuffer.toString();
 //    }
 
-    public List<Api> searchAPIs (String searchParam,String type) {
-        return Api.find.query().where().like("name", "%" + searchParam + "%").eq("apitype",type).findList();
+    public List<Mashup> searchMashups (String searchParam, String type) {
+        return Mashup.find.query().where().like("name", "%" + searchParam + "%").eq("apitype",type).findList();
     }
 }

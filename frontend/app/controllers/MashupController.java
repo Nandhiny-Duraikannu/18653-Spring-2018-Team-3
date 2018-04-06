@@ -1,5 +1,6 @@
 package controllers;
 
+import UIForm.ApiForm;
 import UIForm.Mashup;
 import play.data.DynamicForm;
 import play.data.Form;
@@ -23,6 +24,7 @@ public class MashupController extends Controller implements WSBodyReadables, WSB
     private List<String> apiIds;
     private Form<Mashup> mashupForm;
 
+
     @Inject
     public MashupController(WSClient ws, FormFactory formFactory) {
         this.ws = ws;
@@ -34,18 +36,18 @@ public class MashupController extends Controller implements WSBodyReadables, WSB
         return ok(views.html.mashupForm.render());
     }
 
-    private List<Mashup> generateMashupFromJson (WSResponse r) {
-        JsonNode jsonNode = Json.parse(r.getBody());
+    private List<Mashup> generateMashupFromJson (WSResponse x) {
+        JsonNode jsonNode = Json.parse(x.getBody());
         List<Mashup> mashups = new ArrayList<Mashup>();
         for (JsonNode mashup : jsonNode) {
             Mashup newMashup = new Mashup();
             newMashup.setName(mashup.get("name").asText());
             newMashup.setDescription(mashup.get("description").asText());
-            newMashup.setDescription(mashup.get("apiIds").asText());
-            newMashup.setUser_id(mashup.get("id").asText());
             mashups.add(newMashup);
         }
         return mashups;
+
+
     }
 
     public CompletionStage<Result> mashupListView () {
@@ -66,7 +68,9 @@ public class MashupController extends Controller implements WSBodyReadables, WSB
         .thenApply((WSResponse r) -> {
             List<Mashup> res = generateMashupFromJson(r);
             return ok(views.html.mashupList.render(res, query));
+
         });
+
     }
 
     public CompletionStage<Result> submitMashup () {
