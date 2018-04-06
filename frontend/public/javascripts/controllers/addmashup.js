@@ -1,4 +1,15 @@
 $('document').ready(function() {
+
+
+    let mashupSpecific = $("#mashupSpecific");
+    mashupSpecific.hide();
+    let type = $("#type");
+    $('input[type=radio]').on('change',function() {
+        mashupSpecific.show();
+        mashupSpecific.eq( $('input[type=radio]').index( this ) ).hide();
+    });
+
+
     $(".add-row").click(function(){
 
         var markup = "<tr>\n" +
