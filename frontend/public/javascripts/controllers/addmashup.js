@@ -1,3 +1,4 @@
+
 $('document').ready(function() {
 
 
@@ -8,7 +9,6 @@ $('document').ready(function() {
         mashupSpecific.show();
         mashupSpecific.eq( $('input[type=radio]').index( this ) ).hide();
     });
-
 
     $(".add-row").click(function(){
 
