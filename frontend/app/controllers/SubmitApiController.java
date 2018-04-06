@@ -66,7 +66,7 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
 
     public CompletionStage<Result> searchApis () {
         DynamicForm form = formFactory.form().bindFromRequest();
-        String url = urlService.searchURL() + "?searchParam=" + form.get("searchParam")+"&type="+form.get("type");
+        String url = urlService.searchURL() + "?searchParam=" + form.get("searchParam")+"&type="+form.get("type")+"&userId="+session().get("id");
         System.out.println("in api search"+url);
         // Post the json to create the user in the backend
         WSRequest request = ws.url(url);

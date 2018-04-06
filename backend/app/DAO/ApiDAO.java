@@ -11,6 +11,7 @@ public class ApiDAO {
         return Api.find.query().fetch("user").findList();
     }
 
+
     public Api getById(int apiId) {
         return Api.find.query().where().eq("id", apiId).findUnique();
     }

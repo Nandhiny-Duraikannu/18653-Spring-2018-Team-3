@@ -36,4 +36,14 @@ public class ApiFactory {
         }
     }
 
+    public Follower followApi(Integer user_id, Integer api_id, Integer submitter_id)
+        {
+            
+            Follower follower = new Follower();
+            follower.setParameters(user_id,api_id,submitter_id);
+            return follower;
+
+        }
+    
+
 }

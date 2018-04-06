@@ -23,6 +23,12 @@ create table mashup_apis (
   constraint pk_mashup_apis primary key (mashup_id,api_id)
 );
 
+create table followers (
+  api_id                        bigint,
+  follower_id                   bigint,
+  submitter_id                  bigint
+);
+
 create table users (
   id                            bigint auto_increment not null,
   username                      varchar(255),
@@ -61,6 +67,8 @@ drop index ix_mashup_apis_apis_2 on mashup_apis;
 drop table if exists apis;
 
 drop table if exists mashup_apis;
+
+drop table if exists followers;
 
 drop table if exists users;
 
