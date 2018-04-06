@@ -12,34 +12,29 @@
             <div class="col s12">
                 <h3>Search for API/Mashup</h3>
                 @helper.form(action = routes.SubmitApiController.searchApis()) {
-                <div>
 
-                    <div class="input-field col s12">
-                        <input placeholder="Enter Name" id="searchParam" type="text" name="searchParam">
-                    </div>
                     <div class="row">
-                        <div class="col s12">
-                            <p>
-                                <label>
-                            <input class="with-gap" name="type" type="radio" value="api" checked />
-                            <span>API</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input class="with-gap" name="type" type="radio" value="mashup" />
-                            <span>Mashup</span>
-                        </label>
-                    </p>
+                        <div class="input-field col s6">
+                            <input placeholder="Enter Name" id="searchParam" type="text" name="searchParam">
+                        </div>
+                        <div class="col s2">
+                            <label>
+                                <input class="with-gap" name="type" type="radio" value="api" checked />
+                                <span>API</span>
+                            </label>
+                        </div>
+                        <div class="col s2">
+                            <label>
+                                <input class="with-gap" name="type" type="radio" value="mashup" />
+                                <span>Mashup</span>
+                            </label>
+                        </div>
+                        <div class="col s2">
+                            <button id="submitSearchButton" class="btn left" type="submit" name="search">Search
+                                <i class="material-icons right">search</i>
+                            </button>
                         </div>
                     </div>
-                    <div>
-                    <button id="submitSearchButton" class="btn left" type="submit" name="search">Search
-                        <i class="material-icons right">search</i>
-                    </button>
-                    </div>
-
-                </div>
                 }
             </div>
             <div class="col s12" id="resultArea">
