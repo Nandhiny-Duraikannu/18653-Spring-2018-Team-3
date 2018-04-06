@@ -19,7 +19,7 @@ public class TextNotification extends NotificationTemplate {
 
     @Override
     void addContent() {
-        content = "You received this text message because someone posted a comment under this API.";
+        content = "You received this text message because someone followed this API.";
     }
 
     @Override
