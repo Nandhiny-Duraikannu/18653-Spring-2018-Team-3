@@ -57,14 +57,12 @@
                         <tr>
                             <td><a href="@routes.SubmitApiController.displayApiView(api.getId())">@api.getName()</a></td>
                             <td> @api.getDescription() </td>
-
                         </tr>
                     }
                         @mashups.map { mashup =>
                             <tr>
                                 <td><a href="@routes.SubmitApiController.displayApiView(mashup.getId())"> @mashup.getName()</a></td>
                                 <td> @mashup.getDescription() </td>
-
                             </tr>
                         }
 
