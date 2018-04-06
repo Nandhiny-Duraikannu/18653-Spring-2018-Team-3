@@ -42,6 +42,38 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
 
     public Result searchApiView () { return ok(views.html.searchApiMashup.render(apiForm,mashForm)); }
 
+    public CompletionStage<Result> displayApiView (int id) {
+        String url = urlService.getApiURL(id);
+        // Post the json to create the user in the backend
+        WSRequest request = ws.url(url);
+        return request
+        .addHeader("Content-Type", "application/json")
+        .get()
+        .thenApply((WSResponse r) -> {
+            System.out.println("r.getStatus(): "+r.getStatus());
+            System.out.println("request:"+r.getBody());
+            if (r.getStatus() == 200) {
+                JsonNode body = Json.toJson(r.getBody());
+                ApiForm apiForm = new ApiForm();
+                System.out.println("--------------------");
+                System.out.println("=================" + body.get("id").asInt());
+                apiForm.setId(body.get("id").asInt());
+                apiForm.setName(body.get("name").asText());
+                apiForm.setType(body.get("type").asText());
+                apiForm.setHomepage(body.get("homepage").asText());
+                apiForm.setEndpoint(body.get("endpoint").asText());
+                apiForm.setVersion(body.get("version").asText());
+                apiForm.setScope(body.get("scope").asText());
+                apiForm.setDescription(body.get("description").asText());
+                apiForm.setEmail(body.get("email").asText());
+
+                return ok(views.html.apiDetail.render(apiForm));
+            } else {
+                return badRequest("Error while getting API");
+            }
+        });
+    }
+
     public CompletionStage<Result> submitApi () {
         Form<ApiForm> apiForm = formFactory.form(ApiForm.class).bindFromRequest();
         ApiForm apiData = apiForm.get();
@@ -67,7 +99,7 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
     public CompletionStage<Result> searchApis () {
         DynamicForm form = formFactory.form().bindFromRequest();
         String url = urlService.searchURL() + "?searchParam=" + form.get("searchParam")+"&type="+form.get("type");
-        System.out.println("in api search"+url);
+
         // Post the json to create the user in the backend
         WSRequest request = ws.url(url);
         return request
@@ -76,8 +108,6 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
         .thenApply((WSResponse r) -> {
             if (r.getStatus() == 200) {
                 if(form.get("type").equals("api")) {
-                    System.out.println("search api success");
-                    //   return ok(r.getBody());
                     List<ApiForm> res = generateApiFromJson(r);
                     return ok(views.html.searchApiMashup.render(res,mashForm));
                 }
@@ -102,6 +132,7 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
         List<ApiForm> apis = new ArrayList<ApiForm>();
         for (JsonNode api : jsonNode) {
             ApiForm newApi = new ApiForm();
+            newApi.setId(api.get("id").asInt());
             newApi.setName(api.get("name").asText());
             newApi.setDescription(api.get("description").asText());
             apis.add(newApi);
@@ -114,12 +145,12 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
         List<Mashup> mashups = new ArrayList<Mashup>();
         for (JsonNode mashup : jsonNode) {
             Mashup newMashup = new Mashup();
+            newMashup.setId(mashup.get("id").asInt());
+
             newMashup.setName(mashup.get("name").asText());
             newMashup.setDescription(mashup.get("description").asText());
             mashups.add(newMashup);
         }
         return mashups;
     }
-
-
 }

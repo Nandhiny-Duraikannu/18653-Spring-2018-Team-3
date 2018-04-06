@@ -3,6 +3,7 @@ package models;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.ebean.*;
 import play.data.validation.*;
@@ -48,6 +49,9 @@ public class Api extends Model {
     @ManyToMany(mappedBy = "apis", cascade = CascadeType.ALL)
     public List<Mashup> mashups = new ArrayList<>();
 
+    @OneToMany(mappedBy = "api", cascade = CascadeType.ALL)
+    public List<ApiComments> apiComments = new ArrayList<ApiComments>();
+
     public static final Finder<Long, Api> find = new Finder<>(Api.class);
 
     // Getters and setters
@@ -59,21 +63,33 @@ public class Api extends Model {
     }
 
     public String getName() {
-        return name;
+        if(this.name != null) {
+            return name;
+        } else {
+            return "";
+        }
     }
     public void setName(String name) {
         this.name = name;
     }
 
     public String getHomepage() {
-        return homepage;
+        if(this.homepage != null) {
+            return homepage;
+        } else {
+            return "";
+        }
     }
     public void setHomepage(String homepage) {
         this.homepage = homepage;
     }
 
     public String getEndpoint() {
-        return endpoint;
+        if(this.endpoint != null) {
+            return endpoint;
+        } else {
+            return "";
+        }
     }
     public void setEndpoint(String endpoint) {
         this.endpoint = endpoint;
@@ -81,14 +97,22 @@ public class Api extends Model {
 
 
     public String getVersion() {
-        return version;
+        if(this.version != null) {
+            return version;
+        } else {
+            return "";
+        }
     }
     public void setVersion(String version) {
         this.version = version;
     }
 
     public String getScope() {
-        return scope;
+        if(this.scope != null) {
+            return scope;
+        } else {
+            return "";
+        }
     }
     public void setScope(String scope) {
         this.scope = scope;
@@ -96,18 +120,46 @@ public class Api extends Model {
 
 
     public String getDescription() {
-        return description;
+        if(this.description != null) {
+            return description;
+        } else {
+            return "";
+        }
     }
-    public void setDescription(String apidescription) {
-        this.description = description;
+    public void setDescription(String apiDescription) {
+        this.description = apiDescription;
     }
 
 
     public String getEmail() {
-        return email;
+        if(this.email != null) {
+            return email;
+        } else {
+            return "";
+        }
     }
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Mashup> getMashups() {
+        return mashups;
+    }
+
+    public void setMashups(List<Mashup> mashups) {
+        this.mashups = mashups;
+    }
+
+    public void setComments (List<ApiComments> comments) {
+        this.apiComments = comments;
     }
 
     public void setParameters(String name, String homepage, String endpoint, String version, String scope, String description, String email) {
@@ -121,6 +173,8 @@ public class Api extends Model {
     }
 
     public ObjectNode toJson() {
+        String username = user.username;
+        if (username == null) username = "";
         ObjectNode result = Json.newObject()
                 .put("id", id)
                 .put("type", "api")
@@ -130,7 +184,25 @@ public class Api extends Model {
                 .put("version", version)
                 .put("scope", scope)
                 .put("description", description)
-                .put("user", user.username);
+                .put("user", username);
         return result;
+    }
+
+    public String toJsonWithComments (String commentsJson){
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("{");
+        sb.append("\"id\": \"").append(this.getId()).append("\",");
+        sb.append("\"type\": \"").append("api").append("\",");
+        sb.append("\"name\": \"").append(this.getName()).append("\",");
+        sb.append("\"homepage\": \"").append(this.getHomepage()).append("\",");
+        sb.append("\"endpoint\": \"").append(this.getEndpoint()).append("\",");
+        sb.append("\"version\": \"").append(this.getVersion()).append("\",");
+        sb.append("\"scope\": \"").append(this.getScope()).append("\",");
+        sb.append("\"description\": \"").append(this.getDescription()).append("\",");
+        sb.append("\"user\": \"").append(this.getUser()).append("\",");
+        sb.append("\"comments\": ").append(commentsJson);
+        sb.append("}");
+        return sb.toString();
     }
 }

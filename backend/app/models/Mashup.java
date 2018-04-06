@@ -25,7 +25,8 @@ public class Mashup extends Api {
 
     @Override
     public ObjectNode toJson() {
-        ObjectNode result = super.toJson().put("type", "mashup");
+        ObjectNode result = super.toJson().put("type", "mashup")
+                .put("id", this.id);
         ArrayNode apiIds = result.putArray("apis");
         for (Api api: apis) {
             apiIds.add(api.id);

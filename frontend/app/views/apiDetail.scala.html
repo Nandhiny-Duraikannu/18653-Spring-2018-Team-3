@@ -1,0 +1,16 @@
+@import UIForm.ApiForm
+@(api: ApiForm)
+
+@main("Mashups") {
+    @menu()
+
+    <div class="container">
+        <h2>Submission Details</h2>
+        <div class="row">
+            <div class="col-s12">
+                <p>@api.getId()</p>
+                <p>@api.getEndpoint()</p>
+            </div>
+        </div>
+    </div>
+}

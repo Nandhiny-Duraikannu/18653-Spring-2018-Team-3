@@ -23,6 +23,14 @@ create table mashup_apis (
   constraint pk_mashup_apis primary key (mashup_id,api_id)
 );
 
+create table api_comments (
+  id                            bigint auto_increment not null,
+  apiid                         integer not null,
+  comment                       varchar(255),
+  api_id                        bigint,
+  constraint pk_api_comments primary key (id)
+);
+
 create table users (
   id                            bigint auto_increment not null,
   username                      varchar(255),
@@ -46,6 +54,9 @@ create index ix_mashup_apis_apis_1 on mashup_apis (mashup_id);
 alter table mashup_apis add constraint fk_mashup_apis_apis_2 foreign key (api_id) references apis (id) on delete restrict on update restrict;
 create index ix_mashup_apis_apis_2 on mashup_apis (api_id);
 
+alter table api_comments add constraint fk_api_comments_api_id foreign key (api_id) references apis (id) on delete restrict on update restrict;
+create index ix_api_comments_api_id on api_comments (api_id);
+
 
 # --- !Downs
 
@@ -58,9 +69,14 @@ drop index ix_mashup_apis_apis_1 on mashup_apis;
 alter table mashup_apis drop foreign key fk_mashup_apis_apis_2;
 drop index ix_mashup_apis_apis_2 on mashup_apis;
 
+alter table api_comments drop foreign key fk_api_comments_api_id;
+drop index ix_api_comments_api_id on api_comments;
+
 drop table if exists apis;
 
 drop table if exists mashup_apis;
+
+drop table if exists api_comments;
 
 drop table if exists users;
 

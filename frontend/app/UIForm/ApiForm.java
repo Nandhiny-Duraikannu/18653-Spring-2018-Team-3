@@ -2,6 +2,7 @@ package UIForm;
 
 public class ApiForm {
 
+    private int id;
     private String name;
     private String type;
     private String apiIds;
@@ -13,6 +14,12 @@ public class ApiForm {
     private String email;
     private String user_id;
 
+    public int getId() { return id; }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -20,7 +27,6 @@ public class ApiForm {
     public void setName(String name) {
         this.name = name;
     }
-
 
     public String getType() {
       return type;
@@ -30,7 +36,6 @@ public class ApiForm {
         this.type = type;
     }
 
-
     public String getApiIds() {
         return apiIds;
     }
@@ -38,7 +43,6 @@ public class ApiForm {
     public void setApiIds(String apiIds) {
         this.apiIds = apiIds;
     }
-
 
     public String getHomepage() {
         return homepage;

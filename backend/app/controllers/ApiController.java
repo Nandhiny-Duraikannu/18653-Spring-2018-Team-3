@@ -76,21 +76,27 @@ public class ApiController extends Controller {
             for (Api api : apis) {
                 apisJson.add(api.toJson());
             }
+            System.out.println(Json.toJson(apisJson));
             return ok(Json.toJson(apisJson));
         }
-        else
-            {
-                System.out.println("in mashup search");
-                List<Mashup> mashups = mashupDAO.searchMashups(searchParam,type);
+        else {
+            System.out.println("in mashup search");
+            List<Mashup> mashups = mashupDAO.searchMashups(searchParam,type);
 
-                List<JsonNode> mashupsJson = new ArrayList<>();
-                for (Mashup mashup : mashups) {
-                    mashupsJson.add(mashup.toJson());
-                }
-                return ok(Json.toJson(mashupsJson));
-
+            List<JsonNode> mashupsJson = new ArrayList<>();
+            for (Mashup mashup : mashups) {
+                mashupsJson.add(mashup.toJson());
             }
+            return ok(Json.toJson(mashupsJson));
 
+        }
+    }
 
+    public Result getApiById (int id) {
+        Api api = apiDAO.getApiById(id);
+
+        String apiCommentsJson = apiDAO.getCommentsForApi(id);
+        String result = api.toJsonWithComments(apiCommentsJson);
+        return ok(result);
     }
 }
