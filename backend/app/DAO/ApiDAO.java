@@ -45,7 +45,10 @@ public class ApiDAO {
         StringBuilder sb = new StringBuilder();
         sb.append("[");
         for (int i = 0; i < comments.size(); i++) {
-            sb.append(comments.get(i).toJson()).append(",");
+            sb.append(comments.get(i).toJson());
+            if (i != (comments.size() - 1)) {
+                sb.append(",");
+            }
         }
         sb.append("]");
 

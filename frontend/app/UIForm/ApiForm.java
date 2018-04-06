@@ -1,5 +1,8 @@
 package UIForm;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ApiForm {
 
     private int id;
@@ -13,6 +16,7 @@ public class ApiForm {
     private String description;
     private String email;
     private String user_id;
+    private List<Comment> comments = new ArrayList<Comment>();
 
     public int getId() { return id; }
 
@@ -99,4 +103,10 @@ public class ApiForm {
     public void setUser_id(String user_id) {
         this.user_id = user_id;
     }
+
+    public void addComment (Comment newComment) {
+        comments.add(newComment);
+    }
+
+    public List<Comment> getComments () { return comments; }
 }

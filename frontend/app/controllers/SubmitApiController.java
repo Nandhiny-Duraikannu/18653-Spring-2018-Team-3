@@ -2,17 +2,22 @@ package controllers;
 
 import UIForm.ApiForm;
 import UIForm.Mashup;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.data.FormFactory;
 import play.libs.Json;
 import play.libs.ws.*;
 import play.mvc.*;
+import scala.util.parsing.json.JSONObject;
 import services.BackendURLService;
 import com.fasterxml.jackson.databind.JsonNode;
 
+import UIForm.Comment;
+
 import javax.inject.Inject;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CompletionStage;
 
@@ -50,24 +55,32 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
         .addHeader("Content-Type", "application/json")
         .get()
         .thenApply((WSResponse r) -> {
-            System.out.println("r.getStatus(): "+r.getStatus());
-            System.out.println("request:"+r.getBody());
             if (r.getStatus() == 200) {
-                JsonNode body = Json.toJson(r.getBody());
                 ApiForm apiForm = new ApiForm();
-                System.out.println("--------------------");
-                System.out.println("=================" + body.get("id").asInt());
-                apiForm.setId(body.get("id").asInt());
-                apiForm.setName(body.get("name").asText());
-                apiForm.setType(body.get("type").asText());
-                apiForm.setHomepage(body.get("homepage").asText());
-                apiForm.setEndpoint(body.get("endpoint").asText());
-                apiForm.setVersion(body.get("version").asText());
-                apiForm.setScope(body.get("scope").asText());
-                apiForm.setDescription(body.get("description").asText());
-                apiForm.setEmail(body.get("email").asText());
 
-                return ok(views.html.apiDetail.render(apiForm));
+                JsonNode body = Json.parse(r.getBody().toString());
+                JsonNode comments = (JsonNode)body.findPath("comments");
+
+                apiForm.setId(body.findPath("id").asInt());
+                apiForm.setName(body.findPath("name").asText());
+                apiForm.setType(body.findPath("type").asText());
+                apiForm.setHomepage(body.findPath("homepage").asText());
+                apiForm.setEndpoint(body.findPath("endpoint").asText());
+                apiForm.setVersion(body.findPath("version").asText());
+                apiForm.setScope(body.findPath("scope").asText());
+                apiForm.setDescription(body.findPath("description").asText());
+                apiForm.setEmail(body.findPath("email").asText());
+
+                ArrayNode arr = (ArrayNode)comments;
+                Iterator<JsonNode> it = arr.iterator();
+
+                while (it.hasNext()) {
+                    JsonNode obj = it.next();
+                    Comment c = new Comment();
+                    c.setContent(obj.findPath("comment").asText());
+                    apiForm.addComment(c);
+                }
+                return ok(views.html.apiDetail.render(apiForm, apiForm.getComments()));
             } else {
                 return badRequest("Error while getting API");
             }
@@ -86,8 +99,6 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
         .addHeader("Content-Type", "application/json")
         .post(apiJson)
         .thenApply((WSResponse r) -> {
-            System.out.println("r.getStatus():"+r.getStatus());
-            System.out.println("request:"+r);
             if (r.getStatus() == 200) {
                 return redirect(routes.HomeController.homeView());
             } else {
