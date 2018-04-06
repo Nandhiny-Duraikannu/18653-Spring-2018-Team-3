@@ -3,20 +3,44 @@
     @menu()
 
     <div class="container">
-        <h2>Submit a Mashup</h2>
+
         <div class="row">
             @helper.form(routes.MashupController.submitMashup()) {
+                <h2>Submit an API/Mashup</h2>
+                <div class="row">
+                    <div class="col s12">
+                        <p>
+                            <label>
+                                <input class="with-gap" id="type" name="type" type="radio" value="api" checked />
+                                <span>API</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input class="with-gap" id="type" name="type" type="radio" value="mashup" />
+                                <span>Mashup</span>
+                            </label>
+                        </p>
+                    </div>
+                </div>
+                <div>
                 <div class="input-field col s12">
                     <input placeholder="Name" id="name" name="name" type="text" required autofocus>
                     <label for="name">Name</label>
                 </div>
-               <div class="input-field col s12">
+               <!--div class="input-field col s12">
                     <input id="type" name="type" type="hidden" value="mashup">
-                </div>
+                </div-->
                 <div class="input-field col s12">
                     <textarea placeholder="Description" id="description" name="description" class="materialize-textarea"></textarea>
                     <label for="description">Description</label>
                 </div>
+                    <!--div class="input-field col s12">
+                        <input id="email" type="email" name="email">
+                        <label for="email">Support Email Address</label>
+                    </div-->
+
+                  <div id = "mashupSpecific">
 
                 <div class="input-field col s12">
                     <label>API ID</label>
@@ -46,11 +70,15 @@
                         <i class="material-icons right">chevron_right</i>
                     </a>
                 </div>
+                </div>
 
-
-                <button id="submitButton" class="btn right green darken-3" type="submit">Submit
+                    <button id="submitButton" class="btn  green darken-3 right" type="submit">Submit
                     <i class="material-icons right">check</i>
                 </button>
+
+                    <button id="clearButton" class="btn left" type="reset">
+                        <i class="material-icons right">close</i> &nbsp; Clear
+                    </button>
 
             }
         </div>
