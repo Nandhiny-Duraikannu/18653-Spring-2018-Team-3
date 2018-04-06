@@ -29,6 +29,8 @@ GET     /mashup/submit              controllers.MashupController.submitMashupVie
 POST    /mashup                     controllers.MashupController.submitMashup()
 
 GET     /apis/:id                   controllers.SubmitApiController.displayApiView(id: Int)
+POST    /apis/:id/comment           controllers.SubmitApiController.addComment(id: Int)
+
 
 # For front end static files
 # LEAVE --- For front end static files

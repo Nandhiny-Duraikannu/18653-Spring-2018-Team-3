@@ -164,4 +164,8 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
         }
         return mashups;
     }
+
+    public Result addComment (int id) {
+        return ok ();
+    }
 }

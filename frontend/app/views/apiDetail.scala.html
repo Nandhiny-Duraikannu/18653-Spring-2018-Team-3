@@ -10,7 +10,7 @@
     <div class="container">
         <h2>Submission Details</h2>
         <div class="row">
-            <div class="col-s3">
+            <div class="col s3">
                 <h5>API info</h5>
                 <p>Published by: @api.getUser_id()</p>
                 <p>Endpoint: @api.getEndpoint()</p>
@@ -21,17 +21,47 @@
                 <p>Support: <a href="@api.getEmail()"></a> @api.getEmail()</p>
             </div>
 
-            <div class="col-s9">
-                <h5>Comments</h5>
-                @for(comment <- comments) {
-                    <div class="card">
-                        <div class="card-content">
-                            <p>@comment.getContent()</p>
-                        </div>
-                    </div>
-                }
-
-            </div>
+            @*<div class="col s9">*@
+                @*<div class="row">*@
+                    @*<div class="col s10">*@
+                        @*<h5>Comments</h5>*@
+                    @*</div>*@
+                    @*<div class="col s2">*@
+                        @*<a href="#">*@
+                            @*<i class="material-icons">add</i>*@
+                        @*</a>*@
+                    @*</div>*@
+                @*</div>*@
+                @*<div class="row">*@
+                    @*<div class="col s12" id="comments">*@
+                        @*@for(comment <- comments) {*@
+                            @*<div class="card">*@
+                                @*<div class="card-content">*@
+                                    @*<p>@comment.getContent()</p>*@
+                                @*</div>*@
+                            @*</div>*@
+                        @*}*@
+                    @*</div>*@
+                @*</div>*@
+            @*</div>*@
         </div>
+
+        @*<div id="addCommentModal" class="modal">*@
+            @*<div class="modal-content">*@
+                @*<h4>Type your comment here: </h4>*@
+                @*@helper.form(action = routes.SubmitApiController.addComment(api.getId())) {*@
+                    @*<div class="input-field col s12">*@
+                        @*<input id="content" placeholder="Content" type="text" name="content" autofocus required>*@
+                        @*<label for="content">Content</label>*@
+                    @*</div>*@
+
+                    @*<button id="sendCommentButtom" class="btn right" type="submit">Login*@
+                        @*<i class="material-icons right">send</i>*@
+                    @*</button>*@
+                @*}*@
+            @*</div>*@
+        @*</div>*@
     </div>
+    <script src="@routes.Assets.versioned("javascripts/controllers/addComment.js")" type="text/javascript"></script>
+
 }
