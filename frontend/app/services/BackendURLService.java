@@ -18,11 +18,18 @@ public class BackendURLService {
     public String submitApiURL () { return baseURL + "api"; }
 
     // Search API
+
     public String searchURL () { return baseURL + "search"; }
+
+    public String searchAPIURL () { return baseURL + "search/api"; }
+
 
     public String getAllMashupsURL() { return baseURL + "mashups"; }
 
     public String searchMashupsURL(String query) { return baseURL + "searchApiMashup/mashup?query="+query; }
 
     public String submitMashupURL() { return baseURL + "api"; }
+
+    // UserForm profile
+    public String userProfileURL (int userId) { return baseURL + "users/" + userId; }
 }

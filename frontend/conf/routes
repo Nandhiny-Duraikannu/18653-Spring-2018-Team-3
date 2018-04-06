@@ -16,6 +16,10 @@ POST    /signup                     controllers.LoginController.signup()
 POST    /forgotpassword             controllers.LoginController.forgotPwd()
 POST    /resetPassword              controllers.LoginController.resetPassword()
 
+# userForm profile
+GET     /users                      controllers.UserProfileController.getUserProfile()
+POST    /users                      controllers.UserProfileController.updateUserProfile()
+
 
 # Mashup
 GET     /mashups                    controllers.MashupController.mashupListView()
