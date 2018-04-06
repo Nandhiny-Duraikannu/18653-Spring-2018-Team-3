@@ -23,6 +23,7 @@ public class MashupController extends Controller implements WSBodyReadables, WSB
     private final BackendURLService urlService;
     private List<String> apiIds;
     private Form<Mashup> mashupForm;
+   private String[] blankApiIds = {"0"};
 
 
     @Inject
@@ -77,9 +78,20 @@ public class MashupController extends Controller implements WSBodyReadables, WSB
         Form<Mashup> mashupForm = formFactory.form(Mashup.class).bindFromRequest();
         Mashup mashup = mashupForm.get();
         mashup.setUser_id(session().get("id"));
+        String typeCheck = mashup.getType();
+
+
+        if(typeCheck.equals("api"))
+        {
+            System.out.println("setting blank id"+blankApiIds);
+            mashup.setApiIds(blankApiIds);
+        }
+
         String mashupJson = Json.toJson(mashup).toString();
+
         // Post the json to create the user in the backend
         WSRequest request = ws.url(urlService.submitMashupURL());
+        System.out.println("mashup api request"+mashupJson + typeCheck );
         return request
         .addHeader("Content-Type", "application/json")
         .post(mashupJson)
