@@ -118,7 +118,7 @@ public class ApiController extends Controller {
              followers.add(follower.api_id.intValue());
         }
 
-        System.out.println("type USER ID"+ userId);
+        System.out.println("type followers ID"+ followers);
 
         if (type.equals("api"))
         {
@@ -165,13 +165,44 @@ public class ApiController extends Controller {
         }
         else
             {
+
                 System.out.println("in mashup search");
                 List<Mashup> mashups = mashupDAO.searchMashups(searchParam,type);
 
                 List<JsonNode> mashupsJson = new ArrayList<>();
                 for (Mashup mashup : mashups)
                 {
-                    mashupsJson.add(mashup.toJson());
+                    System.out.println("in mashup"+ mashup.toJson());
+                    if(!followers.isEmpty())
+                    {
+                        System.out.println("inside followers" +mashup.id +" "+followers.get(1));
+                        //  if(((api.id).toString()).equals(i.toString()))
+                        if ((Long.toString(mashup.id)).equals(Integer.toString(followers.get(1))))
+                        {
+                            System.out.println("in if");
+                            // ObjectNode result = super.toJson().put("status", "Yes");
+                            mashupsJson.add(mashup.toJson().put("status", "YES"));
+                            //  apisJson.add(api.toJson());
+                            // ((ObjectNode)jsonNode).put("value", "NO");
+
+                        }
+                        else
+                        {
+                            System.out.println("else 1");
+                            // ObjectNode result = super.toJson().put("status", "No");
+                            mashupsJson.add(mashup.toJson().put("status","NO"));
+                            // apisJson.add(api.toJson());
+
+                        }
+                    }
+                    else
+                    {
+                        System.out.println("else 2");
+                        // ObjectNode result = super.toJson().put("status", "No");
+                        mashupsJson.add(mashup.toJson().put("status","NO"));
+                        // apisJson.add(api.toJson());
+                    }
+
                 }
                 return ok(Json.toJson(mashupsJson));
             }

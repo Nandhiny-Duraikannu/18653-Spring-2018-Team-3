@@ -118,7 +118,7 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
             Mashup newMashup = new Mashup();
             newMashup.setName(mashup.get("name").asText());
             newMashup.setDescription(mashup.get("description").asText());
-          //  newMashup.setStatus(mashup.get("status").asText());
+            newMashup.setStatus(mashup.get("status").asText());
             mashups.add(newMashup);
         }
         return mashups;

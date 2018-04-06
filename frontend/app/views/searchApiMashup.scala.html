@@ -76,17 +76,16 @@
                             <tr>
                                 <td> @mashup.getName() </td>
                                 <td> @mashup.getDescription() </td>
-                                @*if(@mashup.getStatus()=="Yes"){*@
-                                     @*<td><button id="submitUnFollowButton" class="btn left" type="submit" name="unfollow">Following*@
-                                        @*<i class="material-icons right">following</i>*@
-                                     @*</button> </td>*@
-                                @*}*@
-                                    @*else{*@
-                                   @*<td> <button id="submitFollowButton" class="btn left" type="submit" name="follow">Follow*@
-                                        @*<i class="material-icons right">follow</i>*@
-                                    @*</button> </td>*@
+                                @if(mashup.getStatus()=="YES"){
+                                     <td><button id="submitUnFollowButton" class="btn left" type="submit" name="unfollow">Following
+                                        <i class="material-icons right">following</i>
+                                     </button> </td>
+                                } else{
+                                   <td> <button id="submitFollowButton" class="btn left" type="submit" name="follow">Follow
+                                        <i class="material-icons right">follow</i>
+                                    </button> </td>
 
-                                @*}*@
+                                }
 
                             </tr>
                         }
