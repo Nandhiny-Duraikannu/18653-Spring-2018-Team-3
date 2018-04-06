@@ -1,0 +1,65 @@
+@import UIForm.UserForm
+
+@(userForm: UserForm)
+
+@main("Set user profile information | Service Repository") {
+    @menu()
+
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h2>Hi @userForm.getName()!</h2>
+                <p>Please fill out the following information:</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col s10 offset-s1" id="loginForm">
+            @helper.form(action = routes.UserProfileController.updateUserProfile()) {
+
+                <div class="input-field col s12">
+                    <input placeholder="Name" name="name" id="name" type="text" value="@userForm.getName()" required>
+                    <label for="name">Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input placeholder="Email address" id="email" type="email" name="email" value="@userForm.getEmail()"
+                    required>
+                    <label for="email">Email address</label>
+                </div>
+                <div class="input-field col s6">
+                    <input placeholder="Phone Number" id="phoneNumber" type="text" name="phoneNumber"
+                    value="@userForm.getPhoneNumber()" required>
+                    <label for="email">Phone Number</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <div class="col-s4">
+                        <label>
+                            <input class="with-gap" name="notificationMethod" type="radio" value="email" />
+                            <span>E-mail</span>
+                        </label>
+                    </div>
+                    <div class="col-s4">
+                        <label>
+                            <input class="with-gap" name="notificationMethod" type="radio" value="text" />
+                            <span>Text message</span>
+                        </label>
+                    </div>
+                    <div class="col-s4">
+                        <label>
+                            <input class="with-gap" name="notificationMethod" type="radio" value="message" />
+                            <span>Message</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button id="signupButton" class="btn right" type="submit">Let's go!
+                    <i class="material-icons right">chevron_right</i>
+                </button>
+            </div>
+            }
+        </div>
+    </div>
+}
