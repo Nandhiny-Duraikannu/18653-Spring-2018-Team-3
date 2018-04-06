@@ -133,4 +133,13 @@ public class Api extends Model {
                 .put("user", user.username);
         return result;
     }
+
+    public void notifyAllFollowers() {
+        // TODO: dummy values for now, change to actual followers later
+        List<User> followers = new ArrayList<>();
+        followers.add(user);
+
+        for (User follower: followers)
+            follower.sendNotification(name);
+    }
 }

@@ -1,6 +1,6 @@
 package services.notification;
 
-public class TextNotification extends NotificationTemplate {
+public class PhoneNotification extends NotificationTemplate {
 
     @Override
     void initialize() {
@@ -9,7 +9,7 @@ public class TextNotification extends NotificationTemplate {
 
     @Override
     void addSubject(String apiName) {
-        subject = "Text Notification for Api: " + apiName;
+        subject = "Phone Notification for Api: " + apiName;
     }
 
     @Override
@@ -19,13 +19,13 @@ public class TextNotification extends NotificationTemplate {
 
     @Override
     void addContent() {
-        content = "You received this text message because someone posted a comment under this API.";
+        content = "You received this phone call because someone posted a comment under this API.";
     }
 
     @Override
     void sendNotification(String destination) {
-        System.out.println("Notification Text Message has been sent to: "+destination);
-        System.out.println("+-------------------- Text Message ---------------------+");
+        System.out.println("Phone Call Notification has been made to: "+destination);
+        System.out.println("+----------------------- Phone -------------------------+");
         System.out.println("+ Subject: " + subject);
         System.out.println("+ Title: " + title);
         System.out.println("+ Content: " + content);
