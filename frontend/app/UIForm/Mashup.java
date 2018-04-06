@@ -9,6 +9,8 @@ public class Mashup {
 
     private String type;
 
+    private String status;
+
     private String[] apiIds;
 
     public String getName() {
@@ -50,6 +52,14 @@ public class Mashup {
 
     public void setUser_id(String user_id) {
         this.user_id = user_id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Override

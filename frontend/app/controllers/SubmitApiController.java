@@ -104,6 +104,8 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
             ApiForm newApi = new ApiForm();
             newApi.setName(api.get("name").asText());
             newApi.setDescription(api.get("description").asText());
+            newApi.setStatus(api.get("status").asText());
+
             apis.add(newApi);
         }
         return apis;
@@ -116,6 +118,7 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
             Mashup newMashup = new Mashup();
             newMashup.setName(mashup.get("name").asText());
             newMashup.setDescription(mashup.get("description").asText());
+          //  newMashup.setStatus(mashup.get("status").asText());
             mashups.add(newMashup);
         }
         return mashups;

@@ -35,4 +35,7 @@ public class ApiDAO {
     public List<Api> searchAPIs (String searchParam,String type) {
         return Api.find.query().where().like("name", "%" + searchParam + "%").eq("apitype",type).findList();
     }
+    public List<Api> searchAPIs (String userId) {
+        return Api.find.query().where().eq("user_id",userId).findList();
+    }
 }

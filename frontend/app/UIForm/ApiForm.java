@@ -12,6 +12,7 @@ public class ApiForm {
     private String description;
     private String email;
     private String user_id;
+    private String status;
 
     public String getName() {
         return name;
@@ -94,5 +95,13 @@ public class ApiForm {
 
     public void setUser_id(String user_id) {
         this.user_id = user_id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

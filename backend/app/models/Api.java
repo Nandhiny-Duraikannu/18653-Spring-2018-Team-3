@@ -50,6 +50,8 @@ public class Api extends Model {
 
     public static final Finder<Long, Api> find = new Finder<>(Api.class);
 
+
+
     // Getters and setters
     public Long getId() {
         return id;
@@ -109,6 +111,8 @@ public class Api extends Model {
     public void setEmail(String email) {
         this.email = email;
     }
+
+
 
     public void setParameters(String name, String homepage, String endpoint, String version, String scope, String description, String email) {
         this.name = name;

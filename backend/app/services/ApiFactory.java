@@ -36,7 +36,7 @@ public class ApiFactory {
         }
     }
 
-    public Follower followApi(Integer user_id, Integer api_id, Integer submitter_id)
+    public Follower followApi(Long user_id, Long api_id, Long submitter_id)
         {
             
             Follower follower = new Follower();
