@@ -63,7 +63,7 @@ public class ApiController extends Controller {
         JsonNode apiJson = request().body().asJson();
         String userId = apiJson.findPath("user_id").textValue();
         String apiID = apiJson.findPath("api_id").textValue();
-    
+
         Api submitter = apiDAO.getById(Integer.valueOf(apiID));
         System.out.println("api value for user:"+submitter.toJson());
         Follower follower = apiFactory.followApi(Long.parseLong(userId), Long.parseLong(apiID), Long.parseLong(userId));
