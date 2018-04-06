@@ -75,6 +75,9 @@ public class ApiController extends Controller {
             List<JsonNode> apisJson = new ArrayList<>();
             for (Api api : apis) {
                 apisJson.add(api.toJson());
+
+                // TODO: test
+                api.notifyAllFollowers();
             }
             return ok(Json.toJson(apisJson));
         }
@@ -90,7 +93,5 @@ public class ApiController extends Controller {
                 return ok(Json.toJson(mashupsJson));
 
             }
-
-
     }
 }

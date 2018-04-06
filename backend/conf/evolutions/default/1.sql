@@ -23,6 +23,14 @@ create table mashup_apis (
   constraint pk_mashup_apis primary key (mashup_id,api_id)
 );
 
+create table task (
+  id                            bigint auto_increment not null,
+  name                          varchar(255),
+  done                          tinyint(1) default 0 not null,
+  due_date                      datetime(6),
+  constraint pk_task primary key (id)
+);
+
 create table users (
   id                            bigint auto_increment not null,
   username                      varchar(255),
@@ -61,6 +69,8 @@ drop index ix_mashup_apis_apis_2 on mashup_apis;
 drop table if exists apis;
 
 drop table if exists mashup_apis;
+
+drop table if exists task;
 
 drop table if exists users;
 
