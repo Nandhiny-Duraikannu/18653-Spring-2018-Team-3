@@ -75,6 +75,9 @@ public class ApiController extends Controller {
             List<JsonNode> apisJson = new ArrayList<>();
             for (Api api : apis) {
                 apisJson.add(api.toJson());
+
+                // TODO: test
+                api.notifyAllFollowers();
             }
             System.out.println(Json.toJson(apisJson));
             return ok(Json.toJson(apisJson));

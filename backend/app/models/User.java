@@ -7,6 +7,8 @@ import play.data.validation.*;
 import java.util.List;
 import java.util.ArrayList;
 
+import services.notification.*;
+
 @Entity
 @Table(name="users")
 public class User extends Model {
@@ -189,6 +191,12 @@ public class User extends Model {
         json.append("\"phoneNumber\": \"").append(this.getPhoneNumber()).append("\", ");
         json.append("\"notificationMethod\": \"").append(this.getNotificationMethod()).append("\"}");
         return json.toString();
+    }
+
+    public void sendNotification(String apiName) {
+        // TODO: switch on notification method
+        SendNotificationAPI notificationApi = new SendEmailNotification();
+        notificationApi.sendNotification(apiName, email);
     }
 
 }

@@ -188,7 +188,7 @@ public class Api extends Model {
         return result;
     }
 
-    public String toJsonWithComments (String commentsJson){
+    public String toJsonWithComments (String commentsJson) {
         StringBuilder sb = new StringBuilder();
 
         sb.append("{");
@@ -204,5 +204,15 @@ public class Api extends Model {
         sb.append("\"comments\": ").append(commentsJson);
         sb.append("}");
         return sb.toString();
+    }
+
+    public void notifyAllFollowers() {
+        // TODO: dummy values for now, change to actual followers later
+        List<User> followers = new ArrayList<>();
+        followers.add(user);
+
+        for (User follower: followers) {
+            follower.sendNotification(name);
+        }
     }
 }
