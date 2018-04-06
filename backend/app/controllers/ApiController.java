@@ -21,6 +21,7 @@ public class ApiController extends Controller {
     private final FormFactory formFactory;
     private MashupDAO mashupDAO = new MashupDAO();
     private ApiDAO apiDAO = new ApiDAO();
+    private FollowerDAO followerDAO = new FollowerDAO();
     private UserDAO userDAO = new UserDAO();
     private ApiFactory apiFactory = new ApiFactory();
 
@@ -57,6 +58,19 @@ public class ApiController extends Controller {
         return ok(api.toJson());
     }
 
+    @BodyParser.Of(BodyParser.Json.class)
+    public Result followApi() {
+        JsonNode apiJson = request().body().asJson();
+        String userId = apiJson.findPath("user_id").textValue();
+        String apiID = apiJson.findPath("api_id").textValue();
+    
+        Api submitter = apiDAO.getById(Integer.valueOf(apiID));
+        System.out.println("api value for user:"+submitter.toJson());
+        Follower follower = apiFactory.followApi(Long.parseLong(userId), Long.parseLong(apiID), Long.parseLong(userId));
+        
+        return ok(follower.toJson());
+    }
+
     public Result getAllApis () {
         List<JsonNode> apis = new ArrayList<>();
         for (Api api: apiDAO.getAll()) {
@@ -65,21 +79,86 @@ public class ApiController extends Controller {
         return ok(Json.toJson(apis));
     }
 
-    public Result searchApi () {
+    public Result getAllFollowers ()
+    {
+        DynamicForm form = formFactory.form().bindFromRequest();
+        String userId = form.get("userId");
+        System.out.println("userId test in getall followers"+userId);
+        List<Api> apis = apiDAO.searchAPIs(userId);
+       
+        List<JsonNode> followers = new ArrayList<>();
+        for (Follower follower: followerDAO.getAll())
+        {
+            System.out.println("insides followers");
+            for(Api api : apis)
+            {
+                System.out.println("insides apis");
+                System.out.println("b4 if"+api.id + follower.api_id);
+                    if(((api.id).toString()).equals((follower.api_id).toString()))
+                    {
+                       // ObjectNode result = super.toJson().put("status", "Yes");
+                        System.out.println("inside if");
+                       followers.add(follower.toJson());
+                    }
+            }
+        }
+        return ok(Json.toJson(followers));
+    }
+
+    public Result searchApi ()
+    {
         DynamicForm form = formFactory.form().bindFromRequest();
         String searchParam = form.get("searchParam");
+        String userId = form.get("userId");
         String type = form.get("type");
-        System.out.println("type"+type);
 
-        if (type.equals("api")) {
+
+        List<Integer> followers = new ArrayList<>();
+        for (Follower follower: followerDAO.getAll())
+        {
+            if(((follower.follower_id).toString()).equals(userId))
+             followers.add(follower.api_id.intValue());
+        }
+
+        System.out.println("type followers ID"+ followers);
+
+        if (type.equals("api"))
+        {
             List<Api> apis = apiDAO.searchAPIs(searchParam,type);
 
             List<JsonNode> apisJson = new ArrayList<>();
-            for (Api api : apis) {
-                apisJson.add(api.toJson());
+            for (Api api : apis)
+            {
+                System.out.println("in api"+ api.toJson());
+                if(!followers.isEmpty())
+                {
+                    System.out.println("inside followers" );
+                    //  if(((api.id).toString()).equals(i.toString()))
+                    if ((Long.toString(api.id)).equals(Integer.toString(followers.get(0))))
+                    {
+                        System.out.println("in if");
+                        // ObjectNode result = super.toJson().put("status", "Yes");
+                        apisJson.add(api.toJson().put("status", "YES"));
+                        //  apisJson.add(api.toJson());
+                        // ((ObjectNode)jsonNode).put("value", "NO");
 
-                // TODO: test
-                api.notifyAllFollowers();
+                    }
+                    else
+                    {
+                        System.out.println("else");
+                        // ObjectNode result = super.toJson().put("status", "No");
+                        apisJson.add(api.toJson().put("status","NO"));
+                        // apisJson.add(api.toJson());
+
+                    }
+                }
+                else
+                {
+                    System.out.println("else");
+                // ObjectNode result = super.toJson().put("status", "No");
+                    apisJson.add(api.toJson().put("status","NO"));
+                   // apisJson.add(api.toJson());
+                }
             }
             System.out.println(Json.toJson(apisJson));
             return ok(Json.toJson(apisJson));
@@ -89,12 +168,43 @@ public class ApiController extends Controller {
             List<Mashup> mashups = mashupDAO.searchMashups(searchParam,type);
 
             List<JsonNode> mashupsJson = new ArrayList<>();
-            for (Mashup mashup : mashups) {
-                mashupsJson.add(mashup.toJson());
-            }
-            return ok(Json.toJson(mashupsJson));
+            for (Mashup mashup : mashups)
+            {
+                System.out.println("in mashup"+ mashup.toJson());
+                if(!followers.isEmpty())
+                {
+                    System.out.println("inside followers" +mashup.id +" "+followers.get(1));
+                    //  if(((api.id).toString()).equals(i.toString()))
+                    if ((Long.toString(mashup.id)).equals(Integer.toString(followers.get(1))))
+                    {
+                        System.out.println("in if");
+                        // ObjectNode result = super.toJson().put("status", "Yes");
+                        mashupsJson.add(mashup.toJson().put("status", "YES"));
+                        //  apisJson.add(api.toJson());
+                        // ((ObjectNode)jsonNode).put("value", "NO");
 
-        }
+                    }
+                    else
+                    {
+                        System.out.println("else 1");
+                        // ObjectNode result = super.toJson().put("status", "No");
+                            mashupsJson.add(mashup.toJson().put("status","NO"));
+                            // apisJson.add(api.toJson());
+
+                        }
+                    }
+                    else
+                    {
+                        System.out.println("else 2");
+                        // ObjectNode result = super.toJson().put("status", "No");
+                        mashupsJson.add(mashup.toJson().put("status","NO"));
+                        // apisJson.add(api.toJson());
+                    }
+
+                }
+                return ok(Json.toJson(mashupsJson));
+            }
+
     }
 
     public Result getApiById (int id) {

@@ -54,6 +54,8 @@ public class Api extends Model {
 
     public static final Finder<Long, Api> find = new Finder<>(Api.class);
 
+
+
     // Getters and setters
     public Long getId() {
         return id;

@@ -109,8 +109,8 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
 
     public CompletionStage<Result> searchApis () {
         DynamicForm form = formFactory.form().bindFromRequest();
-        String url = urlService.searchURL() + "?searchParam=" + form.get("searchParam")+"&type="+form.get("type");
-
+        String url = urlService.searchURL() + "?searchParam=" + form.get("searchParam")+"&type="+form.get("type")+"&userId="+session().get("id");
+        System.out.println("in api search"+url);
         // Post the json to create the user in the backend
         WSRequest request = ws.url(url);
         return request
@@ -146,6 +146,8 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
             newApi.setId(api.get("id").asInt());
             newApi.setName(api.get("name").asText());
             newApi.setDescription(api.get("description").asText());
+            newApi.setStatus(api.get("status").asText());
+
             apis.add(newApi);
         }
         return apis;
@@ -160,6 +162,7 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
 
             newMashup.setName(mashup.get("name").asText());
             newMashup.setDescription(mashup.get("description").asText());
+            newMashup.setStatus(mashup.get("status").asText());
             mashups.add(newMashup);
         }
         return mashups;
