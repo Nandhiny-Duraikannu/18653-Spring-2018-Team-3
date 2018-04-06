@@ -24,6 +24,7 @@ public class ApiController extends Controller {
     private UserDAO userDAO = new UserDAO();
     private ApiFactory apiFactory = new ApiFactory();
 
+
     @Inject
     public ApiController(FormFactory formFactory) {
         this.formFactory = formFactory;
@@ -43,6 +44,7 @@ public class ApiController extends Controller {
         String email = apiJson.findPath("email").textValue();
 
         JsonNode apiIdsNode = apiJson.findPath("apiIds");
+
         List<Integer> apiIds = new ArrayList<>();
         for (JsonNode n: apiIdsNode) {
             apiIds.add(Integer.valueOf(n.textValue()));
