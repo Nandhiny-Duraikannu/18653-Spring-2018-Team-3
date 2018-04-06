@@ -32,6 +32,10 @@ GET     /apis/:id                   controllers.SubmitApiController.displayApiVi
 POST    /apis/:id/comment           controllers.SubmitApiController.addComment(id: Int)
 
 
+# Follow
+POST     /follow                    controllers.FollowApiController.followApi()
+
+
 # For front end static files
 # LEAVE --- For front end static files
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
