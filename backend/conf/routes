@@ -26,8 +26,6 @@ GET     /followers                      controllers.ApiController.getAllFollower
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file                controllers.Assets.versioned(path="/public", file: Asset)
 
-
-
 # User profile
 GET      /users/:userId              controllers.UserController.getUserProfile(userId: Int)
 POST     /users/:userId              controllers.UserController.updateUserProfile(userId: Int)
