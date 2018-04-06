@@ -20,6 +20,10 @@ public class User extends Model {
     @Constraints.Required
     public String username;
 
+    @Column(name = "name")
+    @Constraints.Required
+    public String name;
+
     @Column(name = "passwordHash")
     @Constraints.Required
     public String passwordHash;
@@ -33,6 +37,16 @@ public class User extends Model {
     @Column(name = "userType")
     @Constraints.Required
     public String userType;
+
+    @Column(name = "phoneNumber")
+    public String phoneNumber;
+
+    @Column(name = "email")
+    public String email;
+
+    @Column(name = "notificationMethod")
+    public String notificationMethod;
+
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     public List<Api> apis = new ArrayList<>();
@@ -88,8 +102,28 @@ public class User extends Model {
         this.userType = userType;
     }
 
+    public String getPhoneNumber() { return phoneNumber; }
+
+    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
+
+    public String getEmail() { return email; }
+
+    public void setEmail(String email) { this.email = email; }
+
+    public String getNotificationMethod() { return notificationMethod; }
+
+    public void setNotificationMethod(String notificationMethod) { this.notificationMethod = notificationMethod; }
+
     public String encryptPassword(String unencryptedPassword) {
         return BCrypt.hashpw(unencryptedPassword, BCrypt.gensalt());
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public boolean authenticate(String password) {
@@ -126,4 +160,17 @@ public class User extends Model {
         json.append("\"answer\": \"").append(this.getAnswer()).append("\"}");
         return json.toString();
     }
+
+    public String profileToJson() {
+        StringBuffer json = new StringBuffer();
+        json.append("{");
+        json.append("\"id\": \"").append(this.getId()).append("\", ");
+        json.append("\"username\": \"").append(this.getUsername()).append("\", ");
+        json.append("\"name\": \"").append(this.getName()).append("\", ");
+        json.append("\"email\": \"").append(this.getEmail()).append("\", ");
+        json.append("\"phoneNumber\": \"").append(this.getPhoneNumber()).append("\", ");
+        json.append("\"notificationMethod\": \"").append(this.getNotificationMethod()).append("\"}");
+        return json.toString();
+    }
+
 }
