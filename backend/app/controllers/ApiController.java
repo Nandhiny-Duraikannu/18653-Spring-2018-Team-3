@@ -2,6 +2,7 @@ package controllers;
 
 import DAO.*;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import models.*;
 import play.data.DynamicForm;
 import play.data.FormFactory;
@@ -10,8 +11,7 @@ import play.mvc.*;
 import services.ApiFactory;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * This controller contains an action to handle HTTP requests
@@ -88,19 +88,38 @@ public class ApiController extends Controller {
         DynamicForm form = formFactory.form().bindFromRequest();
         int userId = Integer.valueOf(form.get("userId"));
         List<Api> apis = apiDAO.searchAPIs(userId);
-        List<JsonNode> followers = new ArrayList<>();
-        Map<int, List<Integer>> userToApiMap = new HashMap<>();
+
+        Map<Long, List<Long>> userToApiMap = new HashMap<>();
         for (Follower follower: followerDAO.getAll()) {
             for(Api api : apis) {
                 if(((api.id).toString()).equals((follower.api_id).toString())) {
-                    List<Integer> followerList = userToApiMap.getOrDefault(api.id, new ArrayList<>());
+                    List<Long> followerList = userToApiMap.getOrDefault(api.id, new ArrayList<>());
                     followerList.add(follower.getFollowerId());
                     userToApiMap.put(api.id, followerList);
                 }
             }
         }
 
-        return ok(Json.toJson(userToApiMap));
+        List<JsonNode> followerJson = new ArrayList<>();
+        for (Long apiId: userToApiMap.keySet()) {
+            List<JsonNode> apiFollowers = new ArrayList<>();
+            Api api = apiDAO.getById(Integer.valueOf(String.valueOf(apiId)));
+
+            ObjectNode apiJson = Json.newObject();
+            apiJson.put("name", api.getName());
+
+            for (Long follower_id: userToApiMap.get(apiId)) {
+                User follower = userDAO.getUserByUserId(Integer.valueOf(String.valueOf(follower_id)));
+                System.out.println(follower.toJSON());
+                if (follower != null)
+                    apiFollowers.add(follower.toFollowerJson());
+            }
+
+            apiJson.put("followers", Json.toJson(apiFollowers));
+            followerJson.add(apiJson);
+        }
+
+        return ok(Json.toJson(followerJson));
     }
 
     public Result searchApi ()

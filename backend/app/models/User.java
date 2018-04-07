@@ -1,12 +1,15 @@
 package models;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.ebean.*;
 import org.mindrot.jbcrypt.BCrypt;
 import play.data.validation.*;
 import java.util.List;
 import java.util.ArrayList;
 
+import play.libs.Json;
 import services.notification.*;
 
 @Entity
@@ -179,6 +182,13 @@ public class User extends Model {
         json.append("\"securityQuestion\": \"").append(this.getSecurityQuestion()).append("\", ");
         json.append("\"answer\": \"").append(this.getAnswer()).append("\"}");
         return json.toString();
+    }
+
+    public ObjectNode toFollowerJson() {
+        ObjectNode result = Json.newObject();
+        result.put("id", id);
+        result.put("username", username);
+        return result;
     }
 
     public String profileToJson() {
