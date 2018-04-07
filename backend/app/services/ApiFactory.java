@@ -33,11 +33,14 @@ public class ApiFactory {
             return null;
         }
     }
-    
-    public Follower followApi(Long user_id, Long api_id, Long submitter_id) {
-        Follower follower = new Follower();
-        follower.setParameters(user_id,api_id,submitter_id);
-        follower.save();
-        return follower;
-    }
+
+    public Follower followApi(Long user_id, Long api_id, Long submitter_id)
+        {
+            
+            Follower follower = new Follower();
+            follower.setParameters(user_id,api_id,submitter_id);
+            follower.save();
+            return follower;
+
+        }
 }

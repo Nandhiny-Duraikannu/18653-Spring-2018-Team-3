@@ -38,6 +38,7 @@ POST     /follow                    controllers.FollowApiController.followApi()
 GET      /followers                controllers.FollowApiController.getFollowers()
 
 
+
 # For front end static files
 # LEAVE --- For front end static files
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

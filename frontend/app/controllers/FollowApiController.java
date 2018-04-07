@@ -57,7 +57,6 @@ public class FollowApiController extends Controller implements WSBodyReadables, 
                     }
                 });
     }
-
     
  public CompletionStage<Result> getFollowers() {
         DynamicForm form = formFactory.form().bindFromRequest();
