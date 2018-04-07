@@ -1,9 +1,11 @@
-function renderFollowers(followers) {
+function renderFollowers(apis) {
     var tbody = $('#followerTable tbody');
     tbody.html('');
 
-    followers.map(follower => {
-        tbody.append('<tr><td>'+follower.name+'</td></tr>');
+    apis.map(api => {
+        api.followers.map(follower => {
+            tbody.append('<tr><td>'+follower.username+'</td><td>'+api.name+'</td></tr>');
+        });
     });
 }
 
