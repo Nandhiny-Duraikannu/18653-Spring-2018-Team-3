@@ -20,6 +20,9 @@ public class BackendURLService {
      //Follow API
     public String followApiURL () { return baseURL + "follow"; }
 
+     //Followers
+    public String getFollowersURL (String userId) { return baseURL + "followers?userId="+userId; }
+
     // Search API
 
     public String searchURL () { return baseURL + "search"; }

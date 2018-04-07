@@ -58,4 +58,15 @@ public class FollowApiController extends Controller implements WSBodyReadables, 
                 });
     }
 
+    
+ public CompletionStage<Result> getFollowers() {
+        DynamicForm form = formFactory.form().bindFromRequest();
+        String userId = session().get("id");
+        WSRequest request = ws.url(urlService.getFollowersURL(userId));
+        return request.get()
+        .thenApply((WSResponse r) -> {
+            JsonNode jsonNode = Json.parse(r.getBody());
+            return ok(jsonNode);
+        });
+    }
 }
