@@ -37,20 +37,25 @@ public class FollowApiController extends Controller implements WSBodyReadables, 
         DynamicForm form = formFactory.form().bindFromRequest();
         String apiId = form.get("apiId");
         String userId = session().get("id");
-
+        System.out.println("apiId in controller"+apiId+" "+userId);
         // Post the json to create the user in the backend
-        WSRequest request = ws.url(urlService.followApiURL(apiId, userId));
+        String followJson = "{\"api_id\": \"" + apiId + "\",";
+        followJson += "\"user_id\": \"" + userId + "\"}";
+        System.out.println("followJson"+followJson);
+        // Post the json to create the user in the backend
+        WSRequest request = ws.url(urlService.followApiURL());
+        System.out.println("request api follow"+request);
         return request
-        .post("followApi")
-        .thenApply((WSResponse r) -> {
-            if (r.getStatus() == 200) {
-                return ok("Following API now");
-            } else {
-                System.out.println(r.getStatus());
-                return badRequest("Error while trying to follow api/mashup");
-            }
-        });
+                .addHeader("Content-Type", "application/json")
+                .post(followJson)
+                .thenApply((WSResponse r) -> {
+                    if (r.getStatus() == 200) {
+                        return ok("Following API now");
+                    } else {
+                        System.out.println(r.getStatus());
+                        return badRequest("Error while trying to follow api/mashup");
+                    }
+                });
     }
-
 
 }

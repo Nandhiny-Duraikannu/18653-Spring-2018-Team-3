@@ -1,21 +1,18 @@
 $(document).ready(function() {
 
-  let resultArea = $("#resultArea");
-  let noresult = $("#noresult");
-  resultArea.hide();
-  noresult.hide();
+  // let resultArea = $("#resultArea");
+  // let noresult = $("#noresult");
+  // resultArea.hide();
+  // noresult.hide();
 
   $("#submitFollowButton").click(function () {
     var apiId = $(this).attr("data-id");
-    console.log(apiId);
+    console.log("apiId in ajax" +apiId);
     $.ajax({
       url: "/follow",
+        dataType: 'json',
+        data: {"apiId": apiId},
       type: "POST",
-      data: apiId,
-      headers: {
-        "Content-Type": "application/json"
-      },
-      dataType: 'json',
       success: (data) => {
         console.info(data);
       }

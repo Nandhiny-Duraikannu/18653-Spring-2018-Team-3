@@ -41,6 +41,7 @@ public class ApiFactory {
             
             Follower follower = new Follower();
             follower.setParameters(user_id,api_id,submitter_id);
+            follower.save();
             return follower;
 
         }

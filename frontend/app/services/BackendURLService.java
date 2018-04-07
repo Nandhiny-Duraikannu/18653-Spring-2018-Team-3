@@ -18,7 +18,7 @@ public class BackendURLService {
     public String submitApiURL () { return baseURL + "api"; }
 
      //Follow API
-    public String followApiURL (String apiId, String userId) { return baseURL + "follow?apiId="+apiId+"&userId="+userId; }
+    public String followApiURL () { return baseURL + "follow"; }
 
     // Search API
 
