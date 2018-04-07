@@ -10,6 +10,7 @@ GET     /resetPassword              controllers.LoginController.resetPasswordVie
 
 GET     /logout                     controllers.LoginController.logout()
 GET     /home                       controllers.HomeController.homeView()
+GET     /myfollowers                controllers.FollowerController.myFollowersView()
 
 POST    /login                      controllers.LoginController.login()
 POST    /signup                     controllers.LoginController.signup()
@@ -30,6 +31,12 @@ POST    /mashup                     controllers.MashupController.submitMashup()
 
 GET     /apis/:id                   controllers.SubmitApiController.displayApiView(id: Int)
 POST    /apis/:id/comment           controllers.SubmitApiController.addComment(id: Int)
+
+
+# Follow
+POST     /follow                    controllers.FollowApiController.followApi()
+GET      /followers                controllers.FollowApiController.getFollowers()
+
 
 
 # For front end static files

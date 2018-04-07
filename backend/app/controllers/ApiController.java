@@ -146,81 +146,69 @@ public class ApiController extends Controller {
             List<JsonNode> apisJson = new ArrayList<>();
             for (Api api : apis)
             {
+                Integer status_check = 0;
                 System.out.println("in api"+ api.toJson());
-                if(!followers.isEmpty())
-                {
-                    System.out.println("inside followers" );
-                    //  if(((api.id).toString()).equals(i.toString()))
-                    if ((Long.toString(api.id)).equals(Integer.toString(followers.get(0))))
+                    for (Integer i : followers)
                     {
-                        System.out.println("in if");
-                        // ObjectNode result = super.toJson().put("status", "Yes");
-                        apisJson.add(api.toJson().put("status", "YES"));
-                        //  apisJson.add(api.toJson());
-                        // ((ObjectNode)jsonNode).put("value", "NO");
+
+                        System.out.println("inside followers");
+
+                        if ((Long.toString(api.id)).equals(Integer.toString(i))) {
+                            System.out.println("in if");
+
+                            apisJson.add(api.toJson().put("status", "YES"));
+                            status_check = 1;
+                            break;
+
+
+                        }
 
                     }
-                    else
-                    {
-                        System.out.println("else");
-                        // ObjectNode result = super.toJson().put("status", "No");
-                        apisJson.add(api.toJson().put("status","NO"));
-                        // apisJson.add(api.toJson());
-
-                    }
-                }
-                else
+                if (status_check == 0)
                 {
-                    System.out.println("else");
-                // ObjectNode result = super.toJson().put("status", "No");
-                    apisJson.add(api.toJson().put("status","NO"));
-                   // apisJson.add(api.toJson());
+                    apisJson.add(api.toJson().put("status", "NO"));
                 }
+
             }
             System.out.println(Json.toJson(apisJson));
             return ok(Json.toJson(apisJson));
         }
         else {
             System.out.println("in mashup search");
-            List<Mashup> mashups = mashupDAO.searchMashups(searchParam,type);
+            List<Mashup> mashups = mashupDAO.searchMashups(searchParam, type);
 
             List<JsonNode> mashupsJson = new ArrayList<>();
             for (Mashup mashup : mashups)
             {
-                System.out.println("in mashup"+ mashup.toJson());
-                if(!followers.isEmpty())
-                {
-                    System.out.println("inside followers" +mashup.id +" "+followers.get(1));
-                    //  if(((api.id).toString()).equals(i.toString()))
-                    if ((Long.toString(mashup.id)).equals(Integer.toString(followers.get(1))))
+                Integer status_check_mashup = 0;
+                    System.out.println("in mashup" + mashup.toJson());
+                    for (Integer i : followers)
                     {
-                        System.out.println("in if");
-                        // ObjectNode result = super.toJson().put("status", "Yes");
-                        mashupsJson.add(mashup.toJson().put("status", "YES"));
-                        //  apisJson.add(api.toJson());
-                        // ((ObjectNode)jsonNode).put("value", "NO");
 
-                    }
-                    else
-                    {
-                        System.out.println("else 1");
-                        // ObjectNode result = super.toJson().put("status", "No");
-                            mashupsJson.add(mashup.toJson().put("status","NO"));
-                            // apisJson.add(api.toJson());
+                        System.out.println("inside followers");
+
+                        if ((Long.toString(mashup.id)).equals(Integer.toString(i)))
+                        {
+                            System.out.println("in yes "+mashup.id+" "+"yes");
+
+                            mashupsJson.add(mashup.toJson().put("status", "YES"));
+                            status_check_mashup = 1;
+                            break;
+
 
                         }
-                    }
-                    else
-                    {
-                        System.out.println("else 2");
-                        // ObjectNode result = super.toJson().put("status", "No");
-                        mashupsJson.add(mashup.toJson().put("status","NO"));
-                        // apisJson.add(api.toJson());
-                    }
 
+                    }
+                    if (status_check_mashup == 0)
+                    {
+                        mashupsJson.add(mashup.toJson().put("status", "NO"));
+                        System.out.println("in no "+mashup.id+" "+"no");
+                    }
                 }
-                return ok(Json.toJson(mashupsJson));
-            }
+
+
+            return ok(Json.toJson(mashupsJson));
+        }
 
     }
 
