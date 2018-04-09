@@ -17,6 +17,9 @@ public class Mashup extends Api {
             inverseJoinColumns=@JoinColumn(name="api_id", referencedColumnName="id"))
     public List<Api> apis = new ArrayList<>();
 
+    @ManyToMany(mappedBy = "followedApis")
+    public List<User> followers = new ArrayList<>();
+
     public static final Finder<Long, Mashup> find = new Finder<>(Mashup.class);
 
     public void addApi(Api api) {

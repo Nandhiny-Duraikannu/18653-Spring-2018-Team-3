@@ -31,12 +31,6 @@ create table api_comments (
   constraint pk_api_comments primary key (id)
 );
 
-create table followers (
-  api_id                        bigint,
-  follower_id                   bigint,
-  submitter_id                  bigint
-);
-
 create table task (
   id                            bigint auto_increment not null,
   name                          varchar(255),
@@ -59,6 +53,12 @@ create table users (
   constraint pk_users primary key (id)
 );
 
+create table api_followers (
+  user_id                       bigint not null,
+  api_id                        bigint not null,
+  constraint pk_api_followers primary key (user_id,api_id)
+);
+
 alter table apis add constraint fk_apis_user_id foreign key (user_id) references users (id) on delete restrict on update restrict;
 create index ix_apis_user_id on apis (user_id);
 
@@ -70,6 +70,12 @@ create index ix_mashup_apis_apis_2 on mashup_apis (api_id);
 
 alter table api_comments add constraint fk_api_comments_api_id foreign key (api_id) references apis (id) on delete restrict on update restrict;
 create index ix_api_comments_api_id on api_comments (api_id);
+
+alter table api_followers add constraint fk_api_followers_users foreign key (user_id) references users (id) on delete restrict on update restrict;
+create index ix_api_followers_users on api_followers (user_id);
+
+alter table api_followers add constraint fk_api_followers_apis foreign key (api_id) references apis (id) on delete restrict on update restrict;
+create index ix_api_followers_apis on api_followers (api_id);
 
 
 # --- !Downs
@@ -86,15 +92,21 @@ drop index ix_mashup_apis_apis_2 on mashup_apis;
 alter table api_comments drop foreign key fk_api_comments_api_id;
 drop index ix_api_comments_api_id on api_comments;
 
+alter table api_followers drop foreign key fk_api_followers_users;
+drop index ix_api_followers_users on api_followers;
+
+alter table api_followers drop foreign key fk_api_followers_apis;
+drop index ix_api_followers_apis on api_followers;
+
 drop table if exists apis;
 
 drop table if exists mashup_apis;
 
 drop table if exists api_comments;
 
-drop table if exists followers;
-
 drop table if exists task;
 
 drop table if exists users;
+
+drop table if exists api_followers;
 

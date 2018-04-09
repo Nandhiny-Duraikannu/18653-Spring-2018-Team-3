@@ -21,7 +21,6 @@ public class ApiController extends Controller {
     private final FormFactory formFactory;
     private MashupDAO mashupDAO = new MashupDAO();
     private ApiDAO apiDAO = new ApiDAO();
-    private FollowerDAO followerDAO = new FollowerDAO();
     private UserDAO userDAO = new UserDAO();
     private ApiFactory apiFactory = new ApiFactory();
 
@@ -64,15 +63,18 @@ public class ApiController extends Controller {
         String userId = apiJson.findPath("user_id").textValue();
         String apiID = apiJson.findPath("api_id").textValue();
 
-        Api submitter = apiDAO.getById(Integer.valueOf(apiID));
+        Api api = apiDAO.getById(Integer.valueOf(apiID));
+        if (api == null)
+            return notFound("API Not Found.");
 
-        List<User> followers = followerDAO.getFollowers(Integer.valueOf(apiID));
-        submitter.notifyAllFollowers(followers);
+        User user = userDAO.getUserByUserId(Integer.valueOf(userId));
+        if (user == null)
+            return notFound("User Not Found.");
 
-//        System.out.println("api value for user:"+submitter.toJson());
-        Follower follower = apiFactory.followApi(Long.parseLong(userId), Long.parseLong(apiID), Long.parseLong(userId));
-        
-        return ok(follower.toJson());
+        api.addFollower(user);
+        api.save();
+
+        return ok();
     }
 
     public Result getAllApis () {
@@ -83,133 +85,40 @@ public class ApiController extends Controller {
         return ok(Json.toJson(apis));
     }
 
-    public Result getAllFollowers ()
-    {
+    public Result getAllFollowers() {
         DynamicForm form = formFactory.form().bindFromRequest();
         int userId = Integer.valueOf(form.get("userId"));
         List<Api> apis = apiDAO.searchAPIs(userId);
 
-        Map<Long, List<Long>> userToApiMap = new HashMap<>();
-        for (Follower follower: followerDAO.getAll()) {
-            for(Api api : apis) {
-                if(((api.id).toString()).equals((follower.api_id).toString())) {
-                    List<Long> followerList = userToApiMap.getOrDefault(api.id, new ArrayList<>());
-                    followerList.add(follower.getFollowerId());
-                    userToApiMap.put(api.id, followerList);
-                }
-            }
+        List<JsonNode> apisJson = new ArrayList<>();
+        for (Api api: apis) {
+            apisJson.add(api.toJson());
         }
 
-        List<JsonNode> followerJson = new ArrayList<>();
-        for (Long apiId: userToApiMap.keySet()) {
-            List<JsonNode> apiFollowers = new ArrayList<>();
-            Api api = apiDAO.getById(Integer.valueOf(String.valueOf(apiId)));
-
-            ObjectNode apiJson = Json.newObject();
-            apiJson.put("name", api.getName());
-
-            for (Long follower_id: userToApiMap.get(apiId)) {
-                User follower = userDAO.getUserByUserId(Integer.valueOf(String.valueOf(follower_id)));
-                System.out.println(follower.toJSON());
-                if (follower != null)
-                    apiFollowers.add(follower.toFollowerJson());
-            }
-
-            apiJson.put("followers", Json.toJson(apiFollowers));
-            followerJson.add(apiJson);
-        }
-
-        return ok(Json.toJson(followerJson));
+        return ok(Json.toJson(apisJson));
     }
 
-    public Result searchApi ()
-    {
+    public Result searchApi() {
         DynamicForm form = formFactory.form().bindFromRequest();
         String searchParam = form.get("searchParam");
         String userId = form.get("userId");
         String type = form.get("type");
 
+        User user = userDAO.getUserByUserId(Integer.valueOf(userId));
+        if (user == null)
+            return notFound("User Not Found.");
 
-        List<Integer> followers = new ArrayList<>();
-        for (Follower follower: followerDAO.getAll())
-        {
-            if(((follower.follower_id).toString()).equals(userId))
-             followers.add(follower.api_id.intValue());
+        List<Api> apis = apiDAO.searchAPIs(searchParam, type);
+
+        List<JsonNode> apisJson = new ArrayList<>();
+        for (Api api: apis) {
+            ObjectNode apiJson = api.toJson();
+            boolean isFollowing = user.isFollowingApi(api);
+            apiJson.put("following", isFollowing ? "YES" : "NO");
+            apisJson.add(apiJson);
         }
 
-//        System.out.println("type followers ID"+ followers);
-
-        if (type.equals("api"))
-        {
-            List<Api> apis = apiDAO.searchAPIs(searchParam,type);
-
-            List<JsonNode> apisJson = new ArrayList<>();
-            for (Api api : apis)
-            {
-                Integer status_check = 0;
-//                System.out.println("in api"+ api.toJson());
-                    for (Integer i : followers)
-                    {
-
-//                        System.out.println("inside followers");
-
-                        if ((Long.toString(api.id)).equals(Integer.toString(i))) {
-//                            System.out.println("in if");
-
-                            apisJson.add(api.toJson().put("status", "YES"));
-                            status_check = 1;
-                            break;
-
-
-                        }
-
-                    }
-                if (status_check == 0)
-                {
-                    apisJson.add(api.toJson().put("status", "NO"));
-                }
-
-            }
-//            System.out.println(Json.toJson(apisJson));
-            return ok(Json.toJson(apisJson));
-        }
-        else {
-//            System.out.println("in mashup search");
-            List<Mashup> mashups = mashupDAO.searchMashups(searchParam, type);
-
-            List<JsonNode> mashupsJson = new ArrayList<>();
-            for (Mashup mashup : mashups)
-            {
-                Integer status_check_mashup = 0;
-//                    System.out.println("in mashup" + mashup.toJson());
-                    for (Integer i : followers)
-                    {
-
-//                        System.out.println("inside followers");
-
-                        if ((Long.toString(mashup.id)).equals(Integer.toString(i)))
-                        {
-//                            System.out.println("in yes "+mashup.id+" "+"yes");
-
-                            mashupsJson.add(mashup.toJson().put("status", "YES"));
-                            status_check_mashup = 1;
-                            break;
-
-
-                        }
-
-                    }
-                    if (status_check_mashup == 0)
-                    {
-                        mashupsJson.add(mashup.toJson().put("status", "NO"));
-//                        System.out.println("in no "+mashup.id+" "+"no");
-                    }
-                }
-
-
-            return ok(Json.toJson(mashupsJson));
-        }
-
+        return ok(Json.toJson(apisJson));
     }
 
     public Result getApiById (int id) {

@@ -29,8 +29,8 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
     private final FormFactory formFactory;
     private final WSClient ws;
     private final BackendURLService urlService;
-    private List<ApiForm> apiForm = new ArrayList<>();;
-    private List<Mashup> mashForm =new ArrayList<>();;
+    private List<ApiForm> apiForm = new ArrayList<>();
+    private List<Mashup> mashForm =new ArrayList<>();
 
 
 
@@ -110,7 +110,8 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
     public CompletionStage<Result> searchApis () {
         DynamicForm form = formFactory.form().bindFromRequest();
         String url = urlService.searchURL() + "?searchParam=" + form.get("searchParam")+"&type="+form.get("type")+"&userId="+session().get("id");
-        System.out.println("in api search"+url);
+//        System.out.println("in api search"+url);
+
         // Post the json to create the user in the backend
         WSRequest request = ws.url(url);
         return request
@@ -118,16 +119,15 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
         .get()
         .thenApply((WSResponse r) -> {
             if (r.getStatus() == 200) {
+
                 if(form.get("type").equals("api")) {
                     List<ApiForm> res = generateApiFromJson(r);
-                    return ok(views.html.searchApiMashup.render(res,mashForm));
+                    return ok(views.html.searchApiMashup.render(res, mashForm));
                 }
                 else if (form.get("type").equals("mashup"))
                 {
                     List<Mashup> res = generateMashupFromJson(r);
-                    return ok(views.html.searchApiMashup.render(apiForm,res));
-
-
+                    return ok(views.html.searchApiMashup.render(apiForm, res));
                 }
                 else{
                     return badRequest("Error searching object type");
@@ -140,13 +140,13 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
 
     private List<ApiForm> generateApiFromJson (WSResponse r) {
         JsonNode jsonNode = Json.parse(r.getBody());
-        List<ApiForm> apis = new ArrayList<ApiForm>();
+        List<ApiForm> apis = new ArrayList<>();
         for (JsonNode api : jsonNode) {
             ApiForm newApi = new ApiForm();
             newApi.setId(api.get("id").asInt());
             newApi.setName(api.get("name").asText());
             newApi.setDescription(api.get("description").asText());
-            newApi.setStatus(api.get("status").asText());
+            newApi.setStatus(api.get("following").asText());
 
             apis.add(newApi);
         }
@@ -162,7 +162,7 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
 
             newMashup.setName(mashup.get("name").asText());
             newMashup.setDescription(mashup.get("description").asText());
-            newMashup.setStatus(mashup.get("status").asText());
+            newMashup.setStatus(mashup.get("following").asText());
             mashups.add(newMashup);
         }
         return mashups;
