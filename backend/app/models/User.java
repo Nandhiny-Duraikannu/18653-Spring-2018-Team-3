@@ -204,7 +204,8 @@ public class User extends Model {
     }
 
     public void sendNotification(String apiName) {
-        if (notificationMethod.equals("email")) {
+
+        if (notificationMethod == null || notificationMethod.equals("email")) {
             SendNotificationAPI notificationApi = new SendEmailNotification();
             notificationApi.sendNotification(apiName, email);
         } else if (notificationMethod.equals("phone")) {

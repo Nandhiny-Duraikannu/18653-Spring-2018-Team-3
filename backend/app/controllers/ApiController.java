@@ -137,7 +137,7 @@ public class ApiController extends Controller {
              followers.add(follower.api_id.intValue());
         }
 
-        System.out.println("type followers ID"+ followers);
+//        System.out.println("type followers ID"+ followers);
 
         if (type.equals("api"))
         {
@@ -147,14 +147,14 @@ public class ApiController extends Controller {
             for (Api api : apis)
             {
                 Integer status_check = 0;
-                System.out.println("in api"+ api.toJson());
+//                System.out.println("in api"+ api.toJson());
                     for (Integer i : followers)
                     {
 
-                        System.out.println("inside followers");
+//                        System.out.println("inside followers");
 
                         if ((Long.toString(api.id)).equals(Integer.toString(i))) {
-                            System.out.println("in if");
+//                            System.out.println("in if");
 
                             apisJson.add(api.toJson().put("status", "YES"));
                             status_check = 1;
@@ -170,26 +170,26 @@ public class ApiController extends Controller {
                 }
 
             }
-            System.out.println(Json.toJson(apisJson));
+//            System.out.println(Json.toJson(apisJson));
             return ok(Json.toJson(apisJson));
         }
         else {
-            System.out.println("in mashup search");
+//            System.out.println("in mashup search");
             List<Mashup> mashups = mashupDAO.searchMashups(searchParam, type);
 
             List<JsonNode> mashupsJson = new ArrayList<>();
             for (Mashup mashup : mashups)
             {
                 Integer status_check_mashup = 0;
-                    System.out.println("in mashup" + mashup.toJson());
+//                    System.out.println("in mashup" + mashup.toJson());
                     for (Integer i : followers)
                     {
 
-                        System.out.println("inside followers");
+//                        System.out.println("inside followers");
 
                         if ((Long.toString(mashup.id)).equals(Integer.toString(i)))
                         {
-                            System.out.println("in yes "+mashup.id+" "+"yes");
+//                            System.out.println("in yes "+mashup.id+" "+"yes");
 
                             mashupsJson.add(mashup.toJson().put("status", "YES"));
                             status_check_mashup = 1;
@@ -202,7 +202,7 @@ public class ApiController extends Controller {
                     if (status_check_mashup == 0)
                     {
                         mashupsJson.add(mashup.toJson().put("status", "NO"));
-                        System.out.println("in no "+mashup.id+" "+"no");
+//                        System.out.println("in no "+mashup.id+" "+"no");
                     }
                 }
 
