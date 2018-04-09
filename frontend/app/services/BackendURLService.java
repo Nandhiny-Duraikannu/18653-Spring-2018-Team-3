@@ -36,6 +36,8 @@ public class BackendURLService {
 
     public String submitMashupURL() { return baseURL + "api"; }
 
+    public String getAllApisURL () { return baseURL + "apis"; }
+
     public String getApiURL (int id) { return baseURL + "apis/" + id; }
 
     public String getFollowers (int id) { return baseURL + "followers?userId=" + id; }

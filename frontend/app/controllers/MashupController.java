@@ -33,8 +33,29 @@ public class MashupController extends Controller implements WSBodyReadables, WSB
         this.urlService = new BackendURLService();
     }
 
-    public Result submitMashupView () {
-        return ok(views.html.mashupForm.render());
+    public CompletionStage<Result> submitMashupView () {
+        WSRequest request = ws.url(urlService.getAllApisURL());
+        return request.get()
+                .thenApply((WSResponse r) -> {
+                    List<ApiForm> apis = generateApiFromJson(r);
+                    System.out.println(apis.toString());
+                    return ok(views.html.mashupForm.render(apis));
+                });
+    }
+
+    // TODO: remove later
+    private List<ApiForm> generateApiFromJson (WSResponse r) {
+        JsonNode jsonNode = Json.parse(r.getBody());
+        List<ApiForm> apis = new ArrayList<>();
+        for (JsonNode api : jsonNode) {
+            ApiForm newApi = new ApiForm();
+            newApi.setId(api.get("id").asInt());
+            newApi.setName(api.get("name").asText());
+            newApi.setDescription(api.get("description").asText());
+
+            apis.add(newApi);
+        }
+        return apis;
     }
 
     private List<Mashup> generateMashupFromJson (WSResponse x) {
