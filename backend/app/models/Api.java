@@ -49,6 +49,9 @@ public class Api extends Model {
     @ManyToMany(mappedBy = "apis", cascade = CascadeType.ALL)
     public List<Mashup> mashups = new ArrayList<>();
 
+    @ManyToMany(mappedBy = "followedApis")
+    public List<User> followers = new ArrayList<>();
+
     @OneToMany(mappedBy = "api", cascade = CascadeType.ALL)
     public List<ApiComments> apiComments = new ArrayList<ApiComments>();
 
@@ -164,6 +167,10 @@ public class Api extends Model {
         this.apiComments = comments;
     }
 
+    public void addFollower(User user) {
+        followers.add(user);
+    }
+
     public void setParameters(String name, String homepage, String endpoint, String version, String scope, String description, String email) {
         this.name = name;
         this.homepage = homepage;
@@ -177,6 +184,12 @@ public class Api extends Model {
     public ObjectNode toJson() {
         String username = user.username;
         if (username == null) username = "";
+
+        List<JsonNode> followersList = new ArrayList<>();
+        for (User follower: followers) {
+            followersList.add(follower.toFollowerJson());
+        }
+
         ObjectNode result = Json.newObject()
                 .put("id", id)
                 .put("type", "api")
@@ -187,6 +200,7 @@ public class Api extends Model {
                 .put("scope", scope)
                 .put("description", description)
                 .put("user", username);
+        result.put("followers", Json.toJson(followersList));
         return result;
     }
 

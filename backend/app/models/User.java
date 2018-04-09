@@ -53,6 +53,12 @@ public class User extends Model {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     public List<Api> apis = new ArrayList<>();
 
+    @ManyToMany
+    @JoinTable(name = "api_followers",
+            joinColumns=@JoinColumn(name="user_id", referencedColumnName="id"),
+            inverseJoinColumns=@JoinColumn(name="api_id", referencedColumnName="id"))
+    public List<Api> followedApis = new ArrayList<>();
+
     public static final Finder<Long, User> find = new Finder<>(User.class);
 
     // Getters and setters
@@ -171,6 +177,14 @@ public class User extends Model {
 
     public void addApi(Api api) {
         apis.add(api);
+    }
+
+    public boolean isFollowingApi(Api api) {
+        for (Api a: followedApis) {
+            if (a.getId() == api.getId())
+                return true;
+        }
+        return false;
     }
 
     public String toJSON() {
