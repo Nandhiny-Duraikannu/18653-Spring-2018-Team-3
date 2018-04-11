@@ -6,6 +6,7 @@ public class DonateForm {
     protected String cardNumber;
     protected String expiryDate;
     protected String cvv;
+    protected String cardType;
     protected String invoiceID;
 
     public String getAmount() {
@@ -38,6 +39,14 @@ public class DonateForm {
 
     public void setCvv(String cvv) {
         this.cvv = cvv;
+    }
+
+    public String getCardType() {
+        return cardType;
+    }
+
+    public void setCardType(String cardType) {
+        this.cardType = cardType;
     }
 
     public String getInvoiceID() {
