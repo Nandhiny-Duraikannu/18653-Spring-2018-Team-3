@@ -37,6 +37,10 @@ POST    /apis/:id/comment           controllers.SubmitApiController.addComment(i
 POST     /follow                    controllers.FollowApiController.followApi()
 GET      /followers                controllers.FollowApiController.getFollowers()
 
+#Donation
+GET     /donate                       controllers.DonationController.donationView(showError: Boolean ?= false)
+POST    /donate                       controllers.DonationController.donate()
+
 
 
 # For front end static files
