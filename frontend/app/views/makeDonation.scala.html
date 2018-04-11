@@ -1,0 +1,43 @@
+@(showError: Boolean)
+
+@main("Make A Donation | Service Repository") {
+
+    @menu()
+    <div class="container">
+        <h4>Donate Now</h4>
+        <div class="container">
+            <div class="row">
+                <div class="col s10 offset-s1" id="donteForm">
+                    @helper.form(action = routes.DonationController.donate) {
+                    <div class="input-field col s12">
+                        <input placeholder="Amount" id="amount" type="text" name="amount" required>
+                        <label for="amount">Amount(in USD)</label>
+                    </div>
+
+                    <div class="input-field col s12">
+                        <input placeholder="Card Number" name="cardNumber" id="cardNumber" type="text" required>
+                        <label for="cardNumber">Card Number</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input placeholder="MM/YY" id="expiryDate" type="text" name="expiryDate" required>
+                        <label for="expiryDate">Expiry Date</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input placeholder="CVV" id="cvv" type="text" name="cvv" required>
+                        <label for="cvv">CVV</label>
+                    </div>
+                    <div class="input-field col s12">
+                            @if(showError) {
+                                <span class="new badge" data-badge-caption="Invalid Card Details"></span>
+                            }
+                        <button id="donateButton" class="btn right" type="submit">Let's go!
+                            <i class="material-icons right">chevron_right</i>
+                        </button>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+    <script src="@routes.Assets.versioned("javascripts/controllers/followers.js")" type="text/javascript"></script>
+}
