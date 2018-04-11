@@ -95,11 +95,43 @@ footer {
     background-color: #d50000;
     color: white;
 }
-.conversationContent {
-    padding: 15px !important;
+.messageContent {
     height: 100%;
     overflow-y: scroll;
 }
 .sendButton {
     margin-top: 15px;
+}
+
+.messageSenderSidebar {
+    font-weight: 700;
+    width:80%;
+    float: left;
+}
+.messageTimeSidebar {
+    width: 20%;
+    text-align: right;
+    font-size: 10px;
+    float: right;
+}
+.messageShortContent {
+    display: block;
+    font-size: 300;
+}
+.messageSidebarLine {
+    display: block;
+    clear: both;
+}
+
+.messageFrom {
+
+}
+.messageTitle {
+    display: block;
+    padding-bottom: 10px;
+    border-bottom: solid 1px #cdcdcd;
+}
+.messageContent {
+    display: block;
+    padding-top: 20px;
 }

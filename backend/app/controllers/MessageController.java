@@ -45,21 +45,20 @@ public class MessageController extends Controller {
     @BodyParser.Of(BodyParser.Json.class)
     public Result sendMessage() {
         JsonNode messageJson = request().body().asJson();
-        int senderId = Integer.valueOf(messageJson.findPath("sender_id").textValue());
+        int senderId = messageJson.findPath("sender_id").asInt();
+        int receiverId = messageJson.findPath("receiver_id").asInt();
+        String title = messageJson.findPath("title").textValue();
+        String content = messageJson.findPath("content").textValue();
+
         User sender = userDAO.getUserByUserId(senderId);
         if (sender == null)
             return notFound("Sender Not Found");
 
-        int receiverId = Integer.valueOf(messageJson.findPath("receiver_id").textValue());
         User receiver = userDAO.getUserByUserId(receiverId);
         if (receiver == null)
             return notFound("Receiver Not Found");
 
-        String title = messageJson.findPath("title").textValue();
-        String content = messageJson.findPath("content").textValue();
         Message message = sender.sendMessage(receiver, title, content);
-
         return ok(message.toJson());
     }
-
 }

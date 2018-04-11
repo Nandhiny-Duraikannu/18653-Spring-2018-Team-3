@@ -12,6 +12,7 @@ public class MessageDAO {
                 .fetch("receiver")
                 .where()
                 .eq("receiver_id", receiver.getId())
+                .orderBy("datetime desc")
                 .findList();
     }
 

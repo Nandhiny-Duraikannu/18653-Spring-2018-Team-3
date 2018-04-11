@@ -7,42 +7,48 @@
     <div class="container">
         <div class="row">
             <div class="col s12">
-                <h2>My messages</h2>
+                <h2>My received messages</h2>
             </div>
         </div>
     </div>
     <div class="row">
+        <div class="col s12 offset-s11">
+            <button id="writeMessageButton" class="btn-floating btn-large red"><i class="material-icons">add</i></button>
+        </div>
         <div class="col s12">
             <div class="card horizontal">
                 <div class="">
                     <ul class="conversationList">
-                        <li class="conversation active" id="conv1">conv1</li>
-                        <li class="conversation" id="conv2">conv2</li>
-                        <li class="conversation" id="conv3">conv3</li>
-                        <li class="conversation" id="conv4">conv4</li>
-                        <li class="conversation" id="conv5">conv5</li>
                     </ul>
                 </div>
                 <div class="card-stacked">
-                    <div class="card-content">
-                        <ul class="conversationContent">
-                            <li class="message">message1</li>
-                            <li class="message">message1</li>
-                            <li class="message">message1</li>
-                            <li class="message">message1</li>
-                            <li class="message">message1</li>
-                            <li class="message">message1</li>
-                            <li class="message">message1</li>
-                        </ul>
-                    </div>
-                    <div class="card-action">
-                        <div class="input-field col s11">
-                            <input id="messageContent" type="text" class="validate">
-                            <label for="messageContent">Type your message here.</label>
+                    <div id="readMessageView">
+                        <div class="card-content">
+                            <div class="messageContainer">
+                                <p class="messageFrom">from</p>
+                                <p class="messageTitle">title</p>
+                                <p class="messageContent">content</p>
+                            </div>
                         </div>
-                        <div class="col s1 sendButton">
-                            <button id="sendMessageButton" class="btn-floating btn-large red"><i
-                            class="material-icons">send</i></button>
+                    </div>
+                    <div id="writeMessageView">
+                        <div class="card-content">
+                            <div class="input-field col s12">
+                                <select id="receiverUsersSelect">
+                                    <option value="" disabled selected>Please select a user</option>
+                                </select>
+                                <label>Destination User</label>
+                            </div>
+                        </div>
+                        <div class="card-action">
+                            <div class="input-field col s11">
+                                <input id="messageContentInput" type="text" class="validate">
+                                <label for="messageContentInput">Type your message here.</label>
+                            </div>
+                            <div class="col s1 sendButton">
+                                <button id="sendMessageButton" class="btn-floating btn-large red"><i
+                                class="material-icons">send</i></button>
+                            </div>
                         </div>
                     </div>
                 </div>

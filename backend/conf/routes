@@ -36,4 +36,4 @@ GET      /apis/:id                   controllers.ApiController.getApiById(id: In
 
 # Messages
 GET     /messages/:userId             controllers.MessageController.getReceivedMessages(userId: Int)
-POST    /message                      controllers.MessageController.sendMessage()
+POST    /messages                     controllers.MessageController.sendMessage()

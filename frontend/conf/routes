@@ -20,7 +20,7 @@ POST    /resetPassword              controllers.LoginController.resetPassword()
 # userForm profile
 GET     /users                      controllers.UserProfileController.getUserProfile()
 POST    /users                      controllers.UserProfileController.updateUserProfile()
-
+GET     /users/all                  controllers.UserProfileController.getAllUsers()
 
 # Mashup
 GET     /mashups                    controllers.MashupController.mashupListView()
@@ -35,7 +35,7 @@ POST    /apis/:id/comment           controllers.SubmitApiController.addComment(i
 
 # Follow
 POST     /follow                    controllers.FollowApiController.followApi()
-GET      /followers                controllers.FollowApiController.getFollowers()
+GET      /followers                 controllers.FollowApiController.getFollowers()
 
 
 
@@ -52,3 +52,5 @@ GET     /search                     controllers.SubmitApiController.searchApis()
 
 # messages
 GET     /messages                   controllers.MessageController.showMessageView()
+GET     /messages/user              controllers.MessageController.getMessagesForUser()
+POST    /messages                   controllers.MessageController.sendMessage()
