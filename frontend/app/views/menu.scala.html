@@ -4,13 +4,14 @@
     <div class="container">
         <div class="nav-wrapper">
             <ul class="left">
-                <li class="tab"><a href="@routes.HomeController.homeView()"><i class="material-icons"
-                style="line-height: 43px">home</i></a></li>
+                <li class="tab"><a href="@routes.HomeController.homeView()"><i class="material-icons">home</i></a></li>
                 <li class="tab"><a href="@routes.FollowerController.myFollowersView()">My Followers</a></li>
                 <!--li class="tab"><a href="@routes.SubmitApiController.apiFormView()">Submit an API</a></li>
                 <li class="tab"><a href="@routes.MashupController.submitMashupView()">Submit a Mashup</a></li-->
             </ul>
             <ul class="right">
+                <li><a href="@routes.MessageController.showMessageView()"><i
+                class="material-icons">mail_outline</i></a></li>
                 <li><a href="@routes.MashupController.submitMashupView()"><i
                 class="material-icons">chevron_left add chevron_right </i></a></li>
                 <li><a href="@routes.SubmitApiController.searchApiView()"><i class="material-icons">search</i></a></li>

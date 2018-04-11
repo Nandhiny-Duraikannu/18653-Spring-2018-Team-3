@@ -54,3 +54,52 @@ footer {
     width: 100%;
     height: 60px;
 }
+
+.conversationsWrapper {
+    height: 450px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.conversationListContainer {
+    height: 100%;
+}
+.conversationName {
+    display: block;
+    float: left;
+}
+.conversationTime {
+    display: block;
+    float: right;
+}
+.conversationList {
+    height: 400px;
+    border-right: solid 1px #cdcdcd;
+    width: 200px;
+    margin:0px;
+    overflow-y: scroll;
+    padding: 0 !important;
+}
+.conversationList ul {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.conversation {
+    border-bottom: solid 1px #cdcdcd;
+    padding: 15px;
+}
+.conversation:hover {
+    background-color: #dddddd;
+    cursor: pointer;
+}
+.conversation.active {
+    background-color: #d50000;
+    color: white;
+}
+.conversationContent {
+    padding: 15px !important;
+    height: 100%;
+    overflow-y: scroll;
+}
+.sendButton {
+    margin-top: 15px;
+}

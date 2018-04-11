@@ -49,3 +49,6 @@ POST    /submitapi                  controllers.SubmitApiController.submitApi()
 GET     /createapi                  controllers.SubmitApiController.apiFormView()
 GET     /searchApis                 controllers.SubmitApiController.searchApiView()
 GET     /search                     controllers.SubmitApiController.searchApis()
+
+# messages
+GET     /messages                   controllers.MessageController.showMessageView()
