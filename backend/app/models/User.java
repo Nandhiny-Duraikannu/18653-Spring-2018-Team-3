@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import play.libs.Json;
 import services.notification.*;
+import services.message.*;
 
 @Entity
 @Table(name="users")
@@ -58,6 +59,12 @@ public class User extends Model {
             joinColumns=@JoinColumn(name="user_id", referencedColumnName="id"),
             inverseJoinColumns=@JoinColumn(name="api_id", referencedColumnName="id"))
     public List<Api> followedApis = new ArrayList<>();
+
+    @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL)
+    public List<Message> sentMessages = new ArrayList<>();
+
+    @OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL)
+    public List<Message> receivedMessages = new ArrayList<>();
 
     public static final Finder<Long, User> find = new Finder<>(User.class);
 
@@ -179,6 +186,14 @@ public class User extends Model {
         apis.add(api);
     }
 
+    public List<Message> getSentMessages() {
+        return sentMessages;
+    }
+
+    public List<Message> getReceivedMessages() {
+        return receivedMessages;
+    }
+
     public boolean isFollowingApi(Api api) {
         for (Api a: followedApis) {
             if (a.getId() == api.getId())
@@ -215,6 +230,10 @@ public class User extends Model {
         json.append("\"phoneNumber\": \"").append(this.getPhoneNumber()).append("\", ");
         json.append("\"notificationMethod\": \"").append(this.getNotificationMethod()).append("\"}");
         return json.toString();
+    }
+
+    public Message sendMessage(User receiver, String title, String content) {
+        return ChatRoom.sendMessage(this, receiver, title, content);
     }
 
     public void sendNotification(String apiName) {

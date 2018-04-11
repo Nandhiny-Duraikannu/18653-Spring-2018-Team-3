@@ -33,3 +33,7 @@ POST     /users/:userId              controllers.UserController.updateUserProfil
 # APIs
 GET      /apis/:id                   controllers.ApiController.getApiById(id: Int)
 #POST     /apis/:id/comments          controllers.ApiController.addCommentToApi(id: Int)
+
+# Messages
+GET     /messages/:userId             controllers.MessageController.getReceivedMessages(userId: Int)
+POST    /message                      controllers.MessageController.sendMessage()
