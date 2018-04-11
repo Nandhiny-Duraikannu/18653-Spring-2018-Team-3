@@ -15,6 +15,17 @@
                     </div>
 
                     <div class="input-field col s12">
+                        <select id="cardTypeSelect" name="cardTypeSelect" required>
+                            <option value="" disabled selected>Please select a card type</option>
+                            <option value="visa">Visa</option>
+                            <option value="master">MasterCard</option>
+                            <option value="amex">American Express</option>
+                            <option value="discover">Discover</option>
+                        </select>
+                        <label>Card Type</label>
+                    </div>
+
+                    <div class="input-field col s12">
                         <input placeholder="Card Number" name="cardNumber" id="cardNumber" type="text" required>
                         <label for="cardNumber">Card Number</label>
                     </div>
@@ -39,5 +50,5 @@
             </div>
         </div>
     </div>
-    <script src="@routes.Assets.versioned("javascripts/controllers/followers.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("javascripts/controllers/setup.js")" type="text/javascript"></script>
 }
