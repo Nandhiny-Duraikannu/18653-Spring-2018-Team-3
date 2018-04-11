@@ -12,58 +12,15 @@
         </div>
     </div>
     <div class="row">
-@*
-        <div class="conversationsWrapper">
-            <div class="col s3 conversationListContainer">
-                <div class="conversationList">
-                    <ul>
-                        <li class="conversation active">conv1</li>
-                        <li class="conversation">conv2</li>
-                        <li class="conversation">conv3</li>
-                        <li class="conversation">conv4</li>
-                        <li class="conversation">conv5</li>
-                        <li class="conversation">conv1</li>
-                        <li class="conversation">conv2</li>
-                        <li class="conversation">conv3</li>
-                        <li class="conversation">conv4</li>
-                        <li class="conversation">conv5</li>
-                        <li class="conversation">conv1</li>
-                        <li class="conversation">conv2</li>
-                        <li class="conversation">conv3</li>
-                        <li class="conversation">conv4</li>
-                        <li class="conversation">conv5</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="col s9 conversationContent">
-                blabla
-
-                    <input type="text">
-            </div>
-
-        </div>
-*@
-
         <div class="col s12">
             <div class="card horizontal">
                 <div class="">
                     <ul class="conversationList">
-                        <li class="conversation active">conv1</li>
-                        <li class="conversation">conv2</li>
-                        <li class="conversation">conv3</li>
-                        <li class="conversation">conv4</li>
-                        <li class="conversation">conv5</li>
-                        <li class="conversation">conv1</li>
-                        <li class="conversation">conv2</li>
-                        <li class="conversation">conv3</li>
-                        <li class="conversation">conv4</li>
-                        <li class="conversation">conv5</li>
-                        <li class="conversation">conv1</li>
-                        <li class="conversation">conv2</li>
-                        <li class="conversation">conv3</li>
-                        <li class="conversation">conv4</li>
-                        <li class="conversation">conv5</li>
+                        <li class="conversation active" id="conv1">conv1</li>
+                        <li class="conversation" id="conv2">conv2</li>
+                        <li class="conversation" id="conv3">conv3</li>
+                        <li class="conversation" id="conv4">conv4</li>
+                        <li class="conversation" id="conv5">conv5</li>
                     </ul>
                 </div>
                 <div class="card-stacked">
@@ -80,16 +37,18 @@
                     </div>
                     <div class="card-action">
                         <div class="input-field col s11">
-                            <input id="message" type="text" class="validate">
-                            <label for="message">Type your message here.</label>
+                            <input id="messageContent" type="text" class="validate">
+                            <label for="messageContent">Type your message here.</label>
                         </div>
                         <div class="col s1 sendButton">
-                            <a class="btn-floating btn-large red"><i class="material-icons">send</i></a>
+                            <button id="sendMessageButton" class="btn-floating btn-large red"><i
+                            class="material-icons">send</i></button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-}
 
+    <script src="@routes.Assets.versioned("javascripts/controllers/messages.js")" type="text/javascript"></script>
+}
