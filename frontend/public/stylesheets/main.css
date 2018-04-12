@@ -135,3 +135,7 @@ footer {
     display: block;
     padding-top: 20px;
 }
+
+.submitFollowButton {
+    width: 150px;
+}

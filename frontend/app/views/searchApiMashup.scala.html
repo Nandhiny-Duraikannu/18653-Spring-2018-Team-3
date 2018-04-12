@@ -56,11 +56,11 @@
                             <td> @api.getDescription() </td>
                             @if(api.getStatus()=="YES"){
                                  <td><button class="btn left" type="submit" name="unfollow" >Following
-                                    <i class="material-icons right">following</i>
+                                    <i class="material-icons right">star</i>
                                  </button> </td>
                             } else{
                                <td> <button data-id="@api.getId()" class="btn left submitFollowButton" type="submit" name="follow">Follow
-                                    <i class="material-icons right">follow</i>
+                                    <i class="material-icons right">star_border</i>
                                 </button> </td>
 
                             }
