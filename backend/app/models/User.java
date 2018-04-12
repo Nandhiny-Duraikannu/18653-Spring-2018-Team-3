@@ -236,6 +236,13 @@ public class User extends Model {
         return ChatRoom.sendMessage(this, receiver, title, content);
     }
 
+    public void sendMessageToFollowers(String title, String content) {
+        for (Api api: apis) {
+            for (User follower: api.getFollowers())
+                sendMessage(follower, title, content);
+        }
+    }
+
     public void sendNotification(String apiName) {
 
         if (notificationMethod == null || notificationMethod.equals("email")) {

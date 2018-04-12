@@ -54,11 +54,16 @@ public class MessageController extends Controller {
         if (sender == null)
             return notFound("Sender Not Found");
 
-        User receiver = userDAO.getUserByUserId(receiverId);
-        if (receiver == null)
-            return notFound("Receiver Not Found");
+        if (receiverId == 0) {
+            sender.sendMessageToFollowers(title, content);
+            return ok();
+        } else {
+            User receiver = userDAO.getUserByUserId(receiverId);
+            if (receiver == null)
+                return notFound("Receiver Not Found");
 
-        Message message = sender.sendMessage(receiver, title, content);
-        return ok(message.toJson());
+            Message message = sender.sendMessage(receiver, title, content);
+            return ok(message.toJson());
+        }
     }
 }
