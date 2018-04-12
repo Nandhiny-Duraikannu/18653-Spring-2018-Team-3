@@ -38,7 +38,7 @@ POST     /follow                    controllers.FollowApiController.followApi()
 GET      /followers                controllers.FollowApiController.getFollowers()
 
 #Donation
-GET     /donate                       controllers.DonationController.donationView(showError: Boolean ?= false)
+GET     /donate                       controllers.DonationController.donationView(showError: String ?= "noval")
 POST    /donate                       controllers.DonationController.donate()
 
 

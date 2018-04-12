@@ -4,7 +4,8 @@ public class DonateForm {
 
     protected String amount;
     protected String cardNumber;
-    protected String expiryDate;
+    protected String expiryYear;
+    protected String expiryMonth;
     protected String cvv;
     protected String cardType;
     protected String invoiceID;
@@ -25,12 +26,20 @@ public class DonateForm {
         this.cardNumber = cardNumber;
     }
 
-    public String getExpiryDate() {
-        return expiryDate;
+    public String getExpiryYear() {
+        return expiryYear;
     }
 
-    public void setExpiryDate(String expiryDate) {
-        this.expiryDate = expiryDate;
+    public void setExpiryYear(String expiryYear) {
+        this.expiryYear = expiryYear;
+    }
+
+    public String getExpiryMonth() {
+        return expiryMonth;
+    }
+
+    public void setExpiryMonth(String expiryMonth) {
+        this.expiryMonth = expiryMonth;
     }
 
     public String getCvv() {

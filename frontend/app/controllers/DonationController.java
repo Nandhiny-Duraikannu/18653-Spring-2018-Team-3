@@ -28,6 +28,7 @@ public class DonationController extends Controller implements WSBodyReadables, W
     private final FormFactory formFactory;
     private final WSClient ws;
     private final BackendURLService urlService;
+    private String showError = "";
 
     @Inject
     public DonationController(WSClient ws, FormFactory formFactory) {
@@ -36,8 +37,33 @@ public class DonationController extends Controller implements WSBodyReadables, W
         this.urlService = new BackendURLService();
     }
 
-    public Result donationView (boolean showError) {
+    public Result donationView (String showError) {
         return ok(views.html.makeDonation.render(showError));
+    }
+
+
+    public String buildJSON (String cardnum,String name,String expireMonth,String expireYear,String cvv,String amount)
+    {
+       StringBuilder sb = new StringBuilder();
+
+        sb.append("{\"intent\": \"sale\",\"payer\": {\"payment_method\": \"credit_card\",\"funding_instruments\": [ {" );
+        sb.append("\"credit_card\": {\"type\": \"visa\",\"number\": \"");
+        sb.append(cardnum);
+                sb.append("\",\"expire_month\": \"");
+                sb.append(expireMonth);
+                        sb.append("\",\"expire_year\": \"");
+                                sb.append(expireYear);
+                                        sb.append("\",\"cvv2\": \"") ;
+                                                sb.append(cvv);
+                                        sb.append("\",\"first_name\": \"") ;
+                                          sb.append(name);
+                                          sb.append("\",\"last_name\": \"shopper\" } }] },\"transactions\": [ {\"amount\": {");
+        sb.append("\"currency\": \"USD\", \"total\": \"");
+                sb.append(amount);
+        sb.append("\" },\"description\": \"Donation\" }] }");
+
+        System.out.println("sb:"+sb);
+        return sb.toString();
     }
 
 
@@ -45,21 +71,30 @@ public class DonationController extends Controller implements WSBodyReadables, W
     public CompletionStage<Result> donate () {
         Form<DonateForm> form = formFactory.form(DonateForm.class).bindFromRequest();
         DonateForm info = form.get();
-        String json = Json.toJson(info).toString();
-
-        // Post the json to create the user in the backend
-        WSRequest request = ws.url(urlService.donateURL());
+        String cardnum = info.getCardNumber().replaceAll("\\s+","");
+        System.out.println("cardnum:"+cardnum);
+        String expireMonth=info.getExpiryMonth();
+        String expireYear=info.getExpiryYear();
+        String cvv = info.getCvv();
+        String amount =info.getAmount();
+        String name = session().get("username");
+        String requestBody = buildJSON(cardnum,name,expireMonth,expireYear,cvv,amount);
+        String json = Json.toJson(requestBody).toString();
+        WSRequest request = ws.url(urlService.paypalPayment());
         return request
-        .addHeader("Content-Type", "application/json")
-        .post(json)
-        .thenApply((WSResponse r) -> {
-            if (r.getStatus() == 200) {
-                String invoiceID = r.asJson().get("invoiceID").asText();
-                return redirect(routes.DonationController.donationView(false));
+                .addHeader("Content-Type", "application/json")
+                .addHeader("Authorization", "Bearer A21AAGBUSVjupUjKiPBSH-qTykZdYAuZugExcCbDr5arxqvchDJ8XXz7eQgLsQHoRo3BaIxIvzgO4gVrGjXqZLRC3YevmkBGw")
+                .post(requestBody)
+                .thenApply((WSResponse r) -> {
+            if (r.getStatus() == 201) {
+                return redirect(routes.DonationController.donationView("false"));
             } else {
-                return redirect(routes.DonationController.donationView(true));
+                System.out.println("failed");
+                return redirect(routes.DonationController.donationView("true"));
             }
-        });
+        }
+
+        );
     }
 
 }

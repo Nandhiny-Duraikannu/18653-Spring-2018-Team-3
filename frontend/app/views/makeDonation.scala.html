@@ -1,4 +1,4 @@
-@(showError: Boolean)
+@(showError: String)
 
 @main("Make A Donation | Service Repository") {
 
@@ -29,18 +29,31 @@
                         <input placeholder="Card Number" name="cardNumber" id="cardNumber" type="text" required>
                         <label for="cardNumber">Card Number</label>
                     </div>
+                        <div class="input-field col s12">
+                            <input placeholder="MM" id="expiryMonth" type="text" name="expiryMonth" required>
+                            <label for="expiryMonth">Expiry Month</label>
+                        </div>
                     <div class="input-field col s12">
-                        <input placeholder="MM/YY" id="expiryDate" type="text" name="expiryDate" required>
-                        <label for="expiryDate">Expiry Date</label>
+                        <input placeholder="YYYY" id="expiryYear" type="text" name="expiryYear" required>
+                        <label for="expiryYear">Expiry Year</label>
                     </div>
+
                     <div class="input-field col s12">
                         <input placeholder="CVV" id="cvv" type="text" name="cvv" required>
                         <label for="cvv">CVV</label>
                     </div>
                     <div class="input-field col s12">
-                            @if(showError) {
-                                <span class="new badge" data-badge-caption="Invalid Card Details"></span>
+                            @if(showError=="true") {
+                                <span class="new badge" id="invalid" data-badge-caption="Invalid Card Details"></span>
                             }
+                        @if(showError=="false") {
+                            <span class="new badge" id="success" data-badge-caption="Successful"></span>
+                        }
+                        @if(showError=="noval") {
+
+                        }
+
+
                         <button id="donateButton" class="btn right" type="submit">Let's go!
                             <i class="material-icons right">chevron_right</i>
                         </button>

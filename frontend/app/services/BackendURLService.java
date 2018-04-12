@@ -4,6 +4,8 @@ public class BackendURLService {
 
     public final String baseURL = "http://localhost:9000/";
 
+    public final String paypal = "https://api.sandbox.paypal.com/v1/payments/payment";
+
     public BackendURLService () { }
 
     public String signupURL () { return baseURL + "signup"; }
@@ -47,4 +49,7 @@ public class BackendURLService {
 
     public String donateURL () { return baseURL + "donate"; }
 
+    public String paypalPayment() {
+        return paypal;
+    }
 }
