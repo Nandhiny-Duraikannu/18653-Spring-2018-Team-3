@@ -43,4 +43,11 @@ public class BackendURLService {
     public String getFollowers (int id) { return baseURL + "followers?userId=" + id; }
     // UserForm profile
     public String userProfileURL (int userId) { return baseURL + "users/" + userId; }
+
+    // Messages
+    public String getMessagesForUserURL (int userId) { return baseURL + "messages/" + userId; }
+
+    public String sendMessageURL () { return baseURL + "messages"; }
+
+    public String getAllUsersURL () { return baseURL + "users"; }
 }

@@ -167,6 +167,10 @@ public class Api extends Model {
         this.apiComments = comments;
     }
 
+    public List<User> getFollowers() {
+        return followers;
+    }
+
     public void addFollower(User user) {
         followers.add(user);
     }

@@ -23,7 +23,7 @@ public class MashupController extends Controller implements WSBodyReadables, WSB
     private final BackendURLService urlService;
     private List<String> apiIds;
     private Form<Mashup> mashupForm;
-   private String[] blankApiIds = {"0"};
+    private String[] blankApiIds = {"0"};
 
 
     @Inject
