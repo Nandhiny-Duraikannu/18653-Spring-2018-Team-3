@@ -31,14 +31,6 @@ create table api_comments (
   constraint pk_api_comments primary key (id)
 );
 
-create table task (
-  id                            bigint auto_increment not null,
-  name                          varchar(255),
-  done                          tinyint(1) default 0 not null,
-  due_date                      datetime(6),
-  constraint pk_task primary key (id)
-);
-
 create table users (
   id                            bigint auto_increment not null,
   username                      varchar(255),
@@ -103,8 +95,6 @@ drop table if exists apis;
 drop table if exists mashup_apis;
 
 drop table if exists api_comments;
-
-drop table if exists task;
 
 drop table if exists users;
 
