@@ -5,7 +5,7 @@ $(document).ready(function() {
   // resultArea.hide();
   // noresult.hide();
 
-  $("#submitFollowButton").click(function () {
+  $(".submitFollowButton").click(function () {
     var apiId = $(this).attr("data-id");
     console.log("apiId in ajax" +apiId);
     $.ajax({

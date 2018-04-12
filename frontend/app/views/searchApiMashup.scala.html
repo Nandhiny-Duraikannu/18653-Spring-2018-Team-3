@@ -55,11 +55,11 @@
                             <td><a href="@routes.SubmitApiController.displayApiView(api.getId())">@api.getName()</a></td>
                             <td> @api.getDescription() </td>
                             @if(api.getStatus()=="YES"){
-                                 <td><button id="submitUnFollowButton" class="btn left" type="submit" name="unfollow" >Following
+                                 <td><button class="btn left" type="submit" name="unfollow" >Following
                                     <i class="material-icons right">following</i>
                                  </button> </td>
                             } else{
-                               <td> <button id="submitFollowButton" data-id=@api.getId() class="btn left" type="submit" name="follow">Follow
+                               <td> <button data-id="@api.getId()" class="btn left submitFollowButton" type="submit" name="follow">Follow
                                     <i class="material-icons right">follow</i>
                                 </button> </td>
 
@@ -72,11 +72,11 @@
                                 <td><a href="@routes.SubmitApiController.displayApiView(mashup.getId())"> @mashup.getName()</a></td>
                                 <td> @mashup.getDescription() </td>
                                 @if(mashup.getStatus()=="YES"){
-                                     <td><button id="submitUnFollowButton" class="btn left" type="submit" name="unfollow">Following
+                                     <td><button class="btn left" type="submit" name="unfollow">Following
                                         <i class="material-icons right">following</i>
                                      </button> </td>
                                 } else{
-                                   <td> <button id="submitFollowButton" data-id=@mashup.getId() class="btn left" type="submit" name="follow">Follow
+                                   <td> <button data-id="@mashup.getId()" class="btn left submitFollowButton" type="submit" name="follow">Follow
                                         <i class="material-icons right">follow</i>
                                     </button> </td>
 
