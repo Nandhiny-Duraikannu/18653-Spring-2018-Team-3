@@ -71,6 +71,7 @@ public class ApiController extends Controller {
         if (user == null)
             return notFound("User Not Found.");
 
+        api.notifyAllFollowers();
         api.addFollower(user);
         api.save();
 
