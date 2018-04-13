@@ -31,9 +31,7 @@ public class UserProfileController extends Controller {
     private static Result displayUserProfilePageWithContent(WSResponse r) {
         if (r.getStatus() == 200) {
             JsonNode body = Json.parse(r.getBody());
-            System.out.println(body.asText());
             UserForm userFormResult = Json.fromJson(body, UserForm.class);
-            System.out.println(userFormResult);
             return ok(userProfile.render(userFormResult));
         } else {
             return ok(userProfile.render(new UserForm()));
@@ -43,7 +41,6 @@ public class UserProfileController extends Controller {
 
     public CompletionStage<Result> getUserProfile () {
         int userId = Integer.valueOf(session().get("id"));
-
         // Post the json to create the user in the backend
         WSRequest request = ws.url(urlService.userProfileURL(userId));
         return request
@@ -66,5 +63,15 @@ public class UserProfileController extends Controller {
         .addHeader("Content-Type", "application/json")
         .post(userJson)
         .thenApply(UserProfileController::displayUserProfilePageWithContent);
+    }
+
+    public CompletionStage<Result> getAllUsers () {
+        WSRequest request = ws.url(urlService.getAllUsersURL());
+        return request
+        .addHeader("Content-Type", "application/json")
+        .get()
+        .thenApply((WSResponse r) -> {
+            return ok(r.getBody());
+        });
     }
 }

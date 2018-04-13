@@ -37,14 +37,11 @@ public class FollowApiController extends Controller implements WSBodyReadables, 
         DynamicForm form = formFactory.form().bindFromRequest();
         String apiId = form.get("apiId");
         String userId = session().get("id");
-        System.out.println("apiId in controller"+apiId+" "+userId);
         // Post the json to create the user in the backend
         String followJson = "{\"api_id\": \"" + apiId + "\",";
         followJson += "\"user_id\": \"" + userId + "\"}";
-        System.out.println("followJson"+followJson);
         // Post the json to create the user in the backend
         WSRequest request = ws.url(urlService.followApiURL());
-        System.out.println("request api follow"+request);
         return request
                 .addHeader("Content-Type", "application/json")
                 .post(followJson)

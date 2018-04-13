@@ -49,6 +49,7 @@ public class BackendURLService {
     public String userProfileURL (int userId) { return baseURL + "users/" + userId; }
 
 
+
     public String donateURL (String payId) { return baseURL + "donate?payId="+payId; }
 
     public String paypalPayment() {
@@ -59,5 +60,11 @@ public class BackendURLService {
         return accessToken;
     }
 
+
+    public String getMessagesForUserURL (int userId) { return baseURL + "messages/" + userId; }
+
+    public String sendMessageURL () { return baseURL + "messages"; }
+
+    public String getAllUsersURL () { return baseURL + "users"; }
 
 }

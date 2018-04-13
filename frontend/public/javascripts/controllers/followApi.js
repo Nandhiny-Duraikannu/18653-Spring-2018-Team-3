@@ -5,16 +5,16 @@ $(document).ready(function() {
   // resultArea.hide();
   // noresult.hide();
 
-  $("#submitFollowButton").click(function () {
-    var apiId = $(this).attr("data-id");
-    console.log("apiId in ajax" +apiId);
+  $(".submitFollowButton").click(function () {
+    let thisButton = $(this);
+    let parentTD = thisButton.parent();
+    var apiId = thisButton.attr("data-id");
     $.ajax({
       url: "/follow",
-        dataType: 'json',
-        data: {"apiId": apiId},
+      data: {"apiId": apiId},
       type: "POST",
-      success: (data) => {
-        console.info(data);
+      success: function (data) {
+        parentTD.html("<button class='btn left' type='submit' name='unfollow'>Following<i class='material-icons right'>star</i></button>");
       }
     });
   });

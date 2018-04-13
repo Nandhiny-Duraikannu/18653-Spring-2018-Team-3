@@ -31,6 +31,17 @@ create table api_comments (
   constraint pk_api_comments primary key (id)
 );
 
+
+create table messages (
+  id                            bigint auto_increment not null,
+  title                         varchar(255),
+  content                       varchar(255),
+  sender_id                     bigint,
+  receiver_id                   bigint,
+  date                          datetime(6),
+  constraint pk_messages primary key (id)
+);
+
 create table users (
   id                            bigint auto_increment not null,
   username                      varchar(255),
@@ -63,6 +74,12 @@ create index ix_mashup_apis_apis_2 on mashup_apis (api_id);
 alter table api_comments add constraint fk_api_comments_api_id foreign key (api_id) references apis (id) on delete restrict on update restrict;
 create index ix_api_comments_api_id on api_comments (api_id);
 
+alter table messages add constraint fk_messages_sender_id foreign key (sender_id) references users (id) on delete restrict on update restrict;
+create index ix_messages_sender_id on messages (sender_id);
+
+alter table messages add constraint fk_messages_receiver_id foreign key (receiver_id) references users (id) on delete restrict on update restrict;
+create index ix_messages_receiver_id on messages (receiver_id);
+
 alter table api_followers add constraint fk_api_followers_users foreign key (user_id) references users (id) on delete restrict on update restrict;
 create index ix_api_followers_users on api_followers (user_id);
 
@@ -84,6 +101,12 @@ drop index ix_mashup_apis_apis_2 on mashup_apis;
 alter table api_comments drop foreign key fk_api_comments_api_id;
 drop index ix_api_comments_api_id on api_comments;
 
+alter table messages drop foreign key fk_messages_sender_id;
+drop index ix_messages_sender_id on messages;
+
+alter table messages drop foreign key fk_messages_receiver_id;
+drop index ix_messages_receiver_id on messages;
+
 alter table api_followers drop foreign key fk_api_followers_users;
 drop index ix_api_followers_users on api_followers;
 
@@ -95,6 +118,8 @@ drop table if exists apis;
 drop table if exists mashup_apis;
 
 drop table if exists api_comments;
+
+drop table if exists messages;
 
 drop table if exists users;
 
