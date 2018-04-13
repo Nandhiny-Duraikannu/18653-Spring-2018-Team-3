@@ -34,6 +34,11 @@ POST     /users/:userId              controllers.UserController.updateUserProfil
 GET      /apis/:id                   controllers.ApiController.getApiById(id: Int)
 #POST     /apis/:id/comments          controllers.ApiController.addCommentToApi(id: Int)
 
+
+# Donations ...
+POST    /donate                      controllers.DonationController.donate()
+
 # Messages
 GET     /messages/:userId             controllers.MessageController.getReceivedMessages(userId: Int)
 POST    /messages                     controllers.MessageController.sendMessage()
+

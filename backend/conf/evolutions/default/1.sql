@@ -31,6 +31,7 @@ create table api_comments (
   constraint pk_api_comments primary key (id)
 );
 
+
 create table messages (
   id                            bigint auto_increment not null,
   title                         varchar(255),
