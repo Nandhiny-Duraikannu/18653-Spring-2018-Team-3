@@ -9,13 +9,13 @@ public abstract class NotificationTemplate {
     abstract void addSubject(String apiName);
     abstract void addTitle(String apiName);
     abstract void addContent();
-    abstract void sendNotification(String destination);
+    abstract String sendNotification(String destination);
 
-    public final void send(String apiName, String destination) {
+    public final String send(String apiName, String destination) {
         initialize();
         addSubject(apiName);
         addTitle(apiName);
         addContent();
-        sendNotification(destination);
+        return sendNotification(destination);
     }
 }

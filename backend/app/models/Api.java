@@ -228,7 +228,7 @@ public class Api extends Model {
 
     public void notifyAllFollowers() {
         for (User follower: followers) {
-            follower.sendNotification(name);
+            follower.sendNotification(this);
         }
     }
 }

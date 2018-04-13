@@ -243,17 +243,16 @@ public class User extends Model {
         }
     }
 
-    public void sendNotification(String apiName) {
-
+    public void sendNotification(Api api) {
         if (notificationMethod == null || notificationMethod.equals("email")) {
             SendNotificationAPI notificationApi = new SendEmailNotification();
-            notificationApi.sendNotification(apiName, email);
+            notificationApi.sendNotification(api.getUser(), this, api.getName(), email);
         } else if (notificationMethod.equals("phone")) {
             SendNotificationAPI notificationApi = new SendPhoneNotification();
-            notificationApi.sendNotification(apiName, phoneNumber);
+            notificationApi.sendNotification(api.getUser(), this, api.getName(), phoneNumber);
         } else if (notificationMethod.equals("text")) {
             SendNotificationAPI notificationApi = new SendTextNotification();
-            notificationApi.sendNotification(apiName, phoneNumber);
+            notificationApi.sendNotification(api.getUser(), this, api.getName(), phoneNumber);
         }
     }
 

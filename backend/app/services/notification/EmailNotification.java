@@ -14,7 +14,7 @@ public class EmailNotification extends NotificationTemplate {
 
     @Override
     void addTitle(String apiName) {
-        title = "Acivity on API: " + apiName;
+        title = "Acivity on API: " + apiName + ". ";
     }
 
     @Override
@@ -23,12 +23,12 @@ public class EmailNotification extends NotificationTemplate {
     }
 
     @Override
-    void sendNotification(String destination) {
-        System.out.println("Notification Email has been sent to: "+destination);
-        System.out.println("+----------------------- Email -------------------------+");
-        System.out.println("+ Subject: " + subject);
-        System.out.println("+ Title: " + title);
-        System.out.println("+ Content: " + content);
-        System.out.println("+-------------------------------------------------------+");
+    String sendNotification(String destination) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Email Notification has been sent to: "+destination+". ");
+        sb.append(title);
+        sb.append(content);
+
+        return sb.toString();
     }
 }
