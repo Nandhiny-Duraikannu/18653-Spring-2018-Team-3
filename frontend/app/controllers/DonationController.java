@@ -42,9 +42,9 @@ public class DonationController extends Controller implements WSBodyReadables, W
         this.urlService = new BackendURLService();
     }
 
-    public Result donationView(String showError) {
+    public Result donationView(String showError, String payId) {
         getAccessToken();
-        return ok(views.html.makeDonation.render(showError));
+        return ok(views.html.makeDonation.render(showError,payId));
     }
 
 
@@ -121,10 +121,10 @@ public class DonationController extends Controller implements WSBodyReadables, W
                             String paymentId = jsonNode.get("id").toString();
                             WSRequest backendRequest = ws.url(urlService.donateURL(paymentId));
                             System.out.println("paypal success");
-                            return redirect(routes.DonationController.donationView("false"));
+                            return redirect(routes.DonationController.donationView("false",paymentId));
                         } else {
                             System.out.println("paypal payment failed"+r.getStatus());
-                            return redirect(routes.DonationController.donationView("true"));
+                            return redirect(routes.DonationController.donationView("true"," "));
                         }
                     });
 

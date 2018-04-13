@@ -1,4 +1,4 @@
-@(showError: String)
+@(showError: String,payId: String)
 
 @main("Make A Donation | Service Repository") {
 
@@ -47,7 +47,7 @@
                                 <span class="new badge" id="invalid" data-badge-caption="Invalid Card Details"></span>
                             }
                         @if(showError=="false") {
-                            <span class="new badge" id="success" data-badge-caption="Successful"></span>
+                            <span class="new badge" id="success" data-badge-caption="Successful PAYID= @payId"></span>
                         }
                         @if(showError=="noval") {
 
