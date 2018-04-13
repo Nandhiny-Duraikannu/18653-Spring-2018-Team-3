@@ -87,6 +87,22 @@ public class DonationController extends Controller implements WSBodyReadables, W
                 .post(requestBody)
                 .thenApply((WSResponse r) -> {
             if (r.getStatus() == 201) {
+                // String donate = "{\"username\": \"" + session().get("username") + "\",";
+                // donate += "\"invoiceid\": \"" + formData.getPassword() + "\"}";
+                
+                // //Post the json to create the user in the backend
+                // WSRequest request = ws.url(urlService.donateURL());
+
+                // return request
+                // .addHeader("Content-Type", "application/json")
+                // .post(donate)
+                // .thenApply((WSResponse r) -> {
+                //     if (r.getStatus() == 200) {
+                //         return redirect(routes.LoginController.loginView(false));
+                //     } else {
+                //         return redirect(routes.LoginController.resetPasswordView());
+                //     }
+                // });
                 return redirect(routes.DonationController.donationView("false"));
             } else {
                 System.out.println("failed");

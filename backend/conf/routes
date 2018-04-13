@@ -33,3 +33,6 @@ POST     /users/:userId              controllers.UserController.updateUserProfil
 # APIs
 GET      /apis/:id                   controllers.ApiController.getApiById(id: Int)
 #POST     /apis/:id/comments          controllers.ApiController.addCommentToApi(id: Int)
+
+# Donations ...
+POST    /donate                      controllers.DonationController.donate()
