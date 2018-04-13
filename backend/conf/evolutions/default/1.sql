@@ -31,6 +31,10 @@ create table api_comments (
   constraint pk_api_comments primary key (id)
 );
 
+create table donations (
+  username                      varchar(255),
+  invoiceid                     varchar(255)
+);
 
 create table messages (
   id                            bigint auto_increment not null,
@@ -118,6 +122,8 @@ drop table if exists apis;
 drop table if exists mashup_apis;
 
 drop table if exists api_comments;
+
+drop table if exists donations;
 
 drop table if exists messages;
 

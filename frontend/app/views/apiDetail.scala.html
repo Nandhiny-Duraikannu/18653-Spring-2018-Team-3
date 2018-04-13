@@ -2,10 +2,10 @@
 @import UIForm.Comment
 
 
-@(api: ApiForm, comments: List [Comment])
+@(username: String, api: ApiForm, comments: List [Comment])
 
 @main(api.getType() + " - " + api.getName()) {
-    @menu()
+    @menu(username)
 
     <div class="container">
         <h2>Submission Details</h2>

@@ -1,11 +1,11 @@
 @import UIForm.ApiForm
 @import UIForm.Mashup
 
-@(apis: List [ApiForm], mashups: List [Mashup])
+@(username: String, apis: List [ApiForm], mashups: List [Mashup])
 
 @main("Search | Service Repository"){
 
-    @menu()
+    @menu(username)
 
     <div class="container">
         <div class="row">

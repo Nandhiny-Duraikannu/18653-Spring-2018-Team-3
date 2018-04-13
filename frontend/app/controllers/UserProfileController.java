@@ -29,12 +29,13 @@ public class UserProfileController extends Controller {
     }
 
     private static Result displayUserProfilePageWithContent(WSResponse r) {
+        String username = session().get("username");
         if (r.getStatus() == 200) {
             JsonNode body = Json.parse(r.getBody());
             UserForm userFormResult = Json.fromJson(body, UserForm.class);
-            return ok(userProfile.render(userFormResult));
+            return ok(userProfile.render(username, userFormResult));
         } else {
-            return ok(userProfile.render(new UserForm()));
+            return ok(userProfile.render(username, new UserForm()));
         }
     }
 

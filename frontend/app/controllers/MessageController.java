@@ -21,7 +21,10 @@ public class MessageController extends Controller implements WSBodyReadables, WS
     private final WSClient ws;
     private final BackendURLService urlService;
 
-    public Result showMessageView () { return ok(views.html.messages.render()); }
+    public Result showMessageView () {
+        String username = session().get("username");
+        return ok(views.html.messages.render(username));
+    }
 
     @Inject
     public MessageController(WSClient ws, FormFactory formFactory) {

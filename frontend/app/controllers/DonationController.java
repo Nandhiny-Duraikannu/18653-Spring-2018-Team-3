@@ -43,8 +43,9 @@ public class DonationController extends Controller implements WSBodyReadables, W
     }
 
     public Result donationView(String showError, String payId) {
+        String username = session().get("username");
         getAccessToken();
-        return ok(views.html.makeDonation.render(showError,payId));
+        return ok(views.html.makeDonation.render(username, showError,payId));
     }
 
 

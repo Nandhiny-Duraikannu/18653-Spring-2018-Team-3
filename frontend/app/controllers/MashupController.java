@@ -35,11 +35,12 @@ public class MashupController extends Controller implements WSBodyReadables, WSB
 
     public CompletionStage<Result> submitMashupView () {
         WSRequest request = ws.url(urlService.getAllApisURL());
+        String username = session().get("username");
         return request.get()
                 .thenApply((WSResponse r) -> {
                     List<ApiForm> apis = generateApiFromJson(r);
                     System.out.println(apis.toString());
-                    return ok(views.html.mashupForm.render(apis));
+                    return ok(views.html.mashupForm.render(username, apis));
                 });
     }
 
@@ -73,23 +74,25 @@ public class MashupController extends Controller implements WSBodyReadables, WSB
     }
 
     public CompletionStage<Result> mashupListView () {
+        String username = session().get("username");
         WSRequest request = ws.url(urlService.getAllMashupsURL());
         return request.get()
         .thenApply((WSResponse r) -> {
             List<Mashup> res = generateMashupFromJson(r);
             System.out.println(res.toString());
-            return ok(views.html.mashupList.render(res, ""));
+            return ok(views.html.mashupList.render(username, res, ""));
         });
     }
 
     public CompletionStage<Result> searchMashups() {
+        String username = session().get("username");
         DynamicForm form = formFactory.form().bindFromRequest();
         String query = form.get("query");
         WSRequest request = ws.url(urlService.searchMashupsURL(query));
         return request.get()
         .thenApply((WSResponse r) -> {
             List<Mashup> res = generateMashupFromJson(r);
-            return ok(views.html.mashupList.render(res, query));
+            return ok(views.html.mashupList.render(username, res, query));
 
         });
 
@@ -101,10 +104,7 @@ public class MashupController extends Controller implements WSBodyReadables, WSB
         mashup.setUser_id(session().get("id"));
         String typeCheck = mashup.getType();
 
-
-        if(typeCheck.equals("api"))
-        {
-            System.out.println("setting blank id"+blankApiIds);
+        if(typeCheck.equals("api")) {
             mashup.setApiIds(blankApiIds);
         }
 
@@ -112,7 +112,6 @@ public class MashupController extends Controller implements WSBodyReadables, WSB
 
         // Post the json to create the user in the backend
         WSRequest request = ws.url(urlService.submitMashupURL());
-        System.out.println("mashup api request"+mashupJson + typeCheck );
         return request
         .addHeader("Content-Type", "application/json")
         .post(mashupJson)
@@ -120,7 +119,6 @@ public class MashupController extends Controller implements WSBodyReadables, WSB
             if (r.getStatus() == 200) {
                 return redirect(routes.HomeController.homeView());
             } else {
-                System.out.println(r.getStatus());
                 return badRequest("Error while trying to submit mashup");
             }
         });

@@ -38,26 +38,6 @@ public class HomeController extends Controller implements WSBodyReadables, WSBod
 
     public Result homeView () {
         String username = session().get("username");
-        // int userId = Integer.valueOf(session().get("id"));
-        // List<ApiForm> followers = new ArrayList<>();
-        // followers.add (new ApiForm());
-
-        // String url = urlService.getFollowers(userId);
-        // System.out.println(url);
-        // WSRequest request = ws.url(url);
-        // return request
-        // .addHeader("Content-Type", "application/json")
-        // .get()
-        // .thenApply((WSResponse r) -> {
-        //     if (r.getStatus() == 200) {
-
-        //         return redirect(routes.HomeController.homeView());
-        //     } else {
-        //         return badRequest("no");
-        //     }
-        // });
-
-
         return ok(views.html.homeUser.render(username));
     }
 

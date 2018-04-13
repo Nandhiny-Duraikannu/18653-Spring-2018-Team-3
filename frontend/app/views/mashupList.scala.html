@@ -1,8 +1,8 @@
 @import UIForm.Mashup
-@(mashups: List [Mashup], value: String)
+@(username: String, mashups: List [Mashup], value: String)
 
 @main("Mashups") {
-    @menu()
+    @menu(username)
 
     <div class="container">
         <h2>Mashup List</h2>

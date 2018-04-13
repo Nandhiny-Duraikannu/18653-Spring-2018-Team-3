@@ -42,12 +42,17 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
     }
 
     public Result apiFormView () {
-        return ok(views.html.submitApi.render());
+        String username = session().get("username");
+        return ok(views.html.submitApi.render(username));
     }
 
-    public Result searchApiView () { return ok(views.html.searchApiMashup.render(apiForm,mashForm)); }
+    public Result searchApiView () {
+        String username = session().get("username");
+        return ok(views.html.searchApiMashup.render(username, apiForm, mashForm));
+    }
 
     public CompletionStage<Result> displayApiView (int id) {
+        String username = session().get("username");
         String url = urlService.getApiURL(id);
         // Post the json to create the user in the backend
         WSRequest request = ws.url(url);
@@ -80,7 +85,7 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
                     c.setContent(obj.findPath("comment").asText());
                     apiForm.addComment(c);
                 }
-                return ok(views.html.apiDetail.render(apiForm, apiForm.getComments()));
+                return ok(views.html.apiDetail.render(username, apiForm, apiForm.getComments()));
             } else {
                 return badRequest("Error while getting API");
             }
@@ -108,6 +113,7 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
     }
 
     public CompletionStage<Result> searchApis () {
+        String username = session().get("username");
         DynamicForm form = formFactory.form().bindFromRequest();
         String url = urlService.searchURL() + "?searchParam=" + form.get("searchParam")+"&type="+form.get("type")+"&userId="+session().get("id");
 //        System.out.println("in api search"+url);
@@ -122,12 +128,12 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
 
                 if(form.get("type").equals("api")) {
                     List<ApiForm> res = generateApiFromJson(r);
-                    return ok(views.html.searchApiMashup.render(res, mashForm));
+                    return ok(views.html.searchApiMashup.render(username, res, mashForm));
                 }
                 else if (form.get("type").equals("mashup"))
                 {
                     List<Mashup> res = generateMashupFromJson(r);
-                    return ok(views.html.searchApiMashup.render(apiForm, res));
+                    return ok(views.html.searchApiMashup.render(username, apiForm, res));
                 }
                 else{
                     return badRequest("Error searching object type");

@@ -1,9 +1,10 @@
-@()
+@(username: String)
 
 <nav class="nav-extended">
     <div class="container">
         <div class="nav-wrapper">
             <ul class="left">
+                <li class="tab">Hello @username</li>
                 <li class="tab"><a href="@routes.HomeController.homeView()"><i class="material-icons">home</i></a></li>
                 <li class="tab"><a href="@routes.FollowerController.myFollowersView()">My Followers</a></li>
                 <li class="tab"><a href="@routes.DonationController.donationView()">Donate</a></li>
