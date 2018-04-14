@@ -5,10 +5,11 @@ import models.*;
 
 import java.util.List;
 
-public class ApiFactory {
+public class ApiFactory extends AbstractFactory {
     private ApiDAO apiDAO = new ApiDAO();
 
-    public Api createApi(String apiType, String name, String homepage, String endpoint, String version, String scope, String description, String email, List<Integer> apiIds)
+    @Override
+    public Api getApi(String apiType, String name, String homepage, String endpoint, String version, String scope, String description, String email, List<Integer> apiIds)
     {
         if (apiType.equalsIgnoreCase("api"))
         {
@@ -32,5 +33,10 @@ public class ApiFactory {
             {
             return null;
         }
+    }
+
+    @Override
+    public User getUser(String type) {
+        return null;
     }
 }

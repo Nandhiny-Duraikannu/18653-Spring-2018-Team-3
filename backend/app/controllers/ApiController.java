@@ -1,14 +1,16 @@
 package controllers;
 
-import DAO.*;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import models.*;
 import play.data.DynamicForm;
 import play.data.FormFactory;
 import play.libs.Json;
 import play.mvc.*;
-import services.factories.ApiFactory;
+
+import models.*;
+import services.factories.*;
+import DAO.*;
 
 import javax.inject.Inject;
 import java.util.*;
@@ -22,7 +24,7 @@ public class ApiController extends Controller {
     private MashupDAO mashupDAO = new MashupDAO();
     private ApiDAO apiDAO = new ApiDAO();
     private UserDAO userDAO = new UserDAO();
-    private ApiFactory apiFactory = new ApiFactory();
+    private AbstractFactory apiFactory = FactoryProducer.getFactory("api");
 
 
     @Inject
@@ -51,7 +53,7 @@ public class ApiController extends Controller {
         }
 
         User user = userDAO.getUserByUserId(Integer.valueOf(userId));
-        Api api = apiFactory.createApi(apiType, name, homepage, endpoint, version, scope, description, email, apiIds);
+        Api api = apiFactory.getApi(apiType, name, homepage, endpoint, version, scope, description, email, apiIds);
         user.addApi(api);
         user.save();
         return ok(api.toJson());
