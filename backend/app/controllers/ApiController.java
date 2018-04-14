@@ -63,9 +63,7 @@ public class ApiController extends Controller {
     }
 
     @BodyParser.Of(BodyParser.Json.class)
-    public Result updateApi () {
-        JsonNode apiJson = request().body().asJson();
-        int apiId = apiJson.findPath("id").asInt();
+    public Result updateApi (int apiId) {
         apiDAO.approveApi(apiId);
         return ok();
     }
