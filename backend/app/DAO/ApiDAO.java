@@ -1,8 +1,11 @@
 package DAO;
 
 import models.*;
+
+import java.util.Iterator;
 import java.util.List;
 
+import play.libs.Json;
 import services.*;
 
 public class ApiDAO {
@@ -28,18 +31,6 @@ public class ApiDAO {
     }
     public String getCommentsForApi (int id) {
         List <ApiComments> comments = ApiComments.find.query().where().eq("apiid", id).findList();
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
-        for (int i = 0; i < comments.size(); i++) {
-            sb.append(comments.get(i).toJson());
-            if (i != (comments.size() - 1)) {
-                sb.append(",");
-            }
-        }
-        sb.append("]");
-
-        System.out.println(sb.toString());
-
-        return sb.toString();
+        return Json.toJson(comments).asText();
     }
 }
