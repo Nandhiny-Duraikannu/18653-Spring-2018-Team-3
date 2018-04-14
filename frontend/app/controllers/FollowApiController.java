@@ -61,8 +61,7 @@ public class FollowApiController extends Controller implements WSBodyReadables, 
         WSRequest request = ws.url(urlService.getFollowersURL(userId));
         return request.get()
         .thenApply((WSResponse r) -> {
-            JsonNode jsonNode = Json.parse(r.getBody());
-            return ok(jsonNode);
+            return ok(r.getBody());
         });
     }
 }

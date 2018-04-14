@@ -1,7 +1,7 @@
 package DAO;
 
 import models.User;
-import services.UserFactory;
+import services.factories.UserFactory;
 
 import java.util.List;
 
@@ -55,10 +55,6 @@ public class UserDAO {
         }
         stringBuffer.append("]");
         return stringBuffer.toString();
-    }
-
-    public User findUserByUsername(String username) {
-        return User.find.query().where().eq("username", username).findOne();
     }
 
     public User updateUserProfile (int userId, String name, String email, String phoneNumber, String

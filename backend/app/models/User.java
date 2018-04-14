@@ -186,6 +186,14 @@ public class User extends Model {
         apis.add(api);
     }
 
+    public List<Api> getApis() {
+        return apis;
+    }
+
+    public void setApis(List<Api> apis) {
+        this.apis = apis;
+    }
+
     public List<Message> getSentMessages() {
         return sentMessages;
     }
@@ -233,14 +241,8 @@ public class User extends Model {
     }
 
     public Message sendMessage(User receiver, String title, String content) {
-        return ChatRoom.sendMessage(this, receiver, title, content);
-    }
-
-    public void sendMessageToFollowers(String title, String content) {
-        for (Api api: apis) {
-            for (User follower: api.getFollowers())
-                sendMessage(follower, title, content);
-        }
+        ChatRoom chatRoom = new ChatRoom();
+        return chatRoom.sendMessage(this, receiver, title, content);
     }
 
     public void sendNotification(Api api) {
