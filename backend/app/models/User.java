@@ -40,7 +40,7 @@ public class User extends Model {
 
     @Column(name = "userType")
     @Constraints.Required
-    public String userType;
+    public UserType userType;
 
     @Column(name = "phoneNumber")
     public String phoneNumber;
@@ -109,11 +109,11 @@ public class User extends Model {
         this.answer = answer;
     }
 
-    public String getUserType() {
+    public UserType getUserType() {
         return userType;
     }
 
-    public void setUserType(String userType) {
+    public void setUserType(UserType userType) {
         this.userType = userType;
     }
 

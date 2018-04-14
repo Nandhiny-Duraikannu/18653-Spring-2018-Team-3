@@ -1,16 +1,16 @@
 package DAO;
 
 import models.*;
-import java.util.List;
+import services.apiStates.ApiState;
+import services.apiStates.ApprovedApi;
 
-import services.*;
+import java.util.List;
 
 public class ApiDAO {
 
     public List<Api> getAll() {
         return Api.find.query().fetch("user").findList();
     }
-
 
     public Api getById(int apiId) {
         return Api.find.query().where().eq("id", apiId).findUnique();
@@ -37,9 +37,13 @@ public class ApiDAO {
             }
         }
         sb.append("]");
-
-        System.out.println(sb.toString());
-
         return sb.toString();
+    }
+
+    public void approveApi (int apiId) {
+        Api api = this.getApiById(apiId);
+        ApiState state = new ApprovedApi();
+        state.updateApiState(api);
+        api.save();
     }
 }

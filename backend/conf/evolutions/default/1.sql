@@ -13,6 +13,7 @@ create table apis (
   scope                         varchar(255) default '',
   description                   varchar(255) default '',
   email                         varchar(255) default '',
+  state                         varchar(255) default '',
   user_id                       bigint,
   constraint pk_apis primary key (id)
 );
@@ -53,10 +54,11 @@ create table users (
   passwordhash                  varchar(255),
   securityquestion              varchar(255),
   answer                        varchar(255),
-  usertype                      varchar(255),
+  usertype                      integer,
   phonenumber                   varchar(255),
   email                         varchar(255),
   notificationmethod            varchar(255),
+  constraint ck_users_usertype check ( userType in (0,1)),
   constraint pk_users primary key (id)
 );
 

@@ -43,6 +43,9 @@ public class Api extends Model {
     @Column(name = "email", columnDefinition = "varchar(255) default ''")
     public String email;
 
+    @Column(name = "state", columnDefinition = "varchar(255) default ''")
+    public String state;
+
     @ManyToOne
     public User user;
 
@@ -56,7 +59,6 @@ public class Api extends Model {
     public List<ApiComments> apiComments = new ArrayList<ApiComments>();
 
     public static final Finder<Long, Api> find = new Finder<>(Api.class);
-
 
 
     // Getters and setters
@@ -175,6 +177,14 @@ public class Api extends Model {
         followers.add(user);
     }
 
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
     public void setParameters(String name, String homepage, String endpoint, String version, String scope, String description, String email) {
         this.name = name;
         this.homepage = homepage;
@@ -203,7 +213,8 @@ public class Api extends Model {
                 .put("version", version)
                 .put("scope", scope)
                 .put("description", description)
-                .put("user", username);
+                .put("user", username)
+                .put("state", this.getState());
         result.put("followers", Json.toJson(followersList));
         return result;
     }
@@ -221,7 +232,8 @@ public class Api extends Model {
         sb.append("\"scope\": \"").append(this.getScope()).append("\",");
         sb.append("\"description\": \"").append(this.getDescription()).append("\",");
         sb.append("\"user\": \"").append(this.getUser()).append("\",");
-        sb.append("\"comments\": ").append(commentsJson);
+        sb.append("\"comments\": ").append(commentsJson).append("\",");
+        sb.append("\"state\": ").append(this.getState()).append("\"");
         sb.append("}");
         return sb.toString();
     }

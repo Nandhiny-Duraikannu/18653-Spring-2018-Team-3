@@ -8,6 +8,9 @@ import play.data.DynamicForm;
 import play.data.FormFactory;
 import play.libs.Json;
 import play.mvc.*;
+import services.apiStates.ApiState;
+import services.apiStates.ApprovedApi;
+import services.apiStates.PendingApi;
 import services.factories.ApiFactory;
 
 import javax.inject.Inject;
@@ -52,9 +55,19 @@ public class ApiController extends Controller {
 
         User user = userDAO.getUserByUserId(Integer.valueOf(userId));
         Api api = apiFactory.createApi(apiType, name, homepage, endpoint, version, scope, description, email, apiIds);
+        ApiState apiState = new PendingApi();
+        apiState.updateApiState(api);
         user.addApi(api);
         user.save();
         return ok(api.toJson());
+    }
+
+    @BodyParser.Of(BodyParser.Json.class)
+    public Result updateApi () {
+        JsonNode apiJson = request().body().asJson();
+        int apiId = apiJson.findPath("id").asInt();
+        apiDAO.approveApi(apiId);
+        return ok();
     }
 
     @BodyParser.Of(BodyParser.Json.class)

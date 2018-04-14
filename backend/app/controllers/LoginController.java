@@ -11,18 +11,16 @@ import play.mvc.*;
 
 import javax.inject.Inject;
 
-/**
- * This controller contains an action to handle HTTP requests
- * to the application's home page.
- */
 public class LoginController extends Controller {
     private final FormFactory formFactory;
 
-    private UserDAO userDAO = new UserDAO();
+    private UserDAO userDAO;
 
     @Inject
     public LoginController(FormFactory formFactory) {
         this.formFactory = formFactory;
+        this.userDAO = new UserDAO();
+        this.userDAO.ensureOneAdmin();
     }
 
     public Result signup() {
@@ -38,8 +36,10 @@ public class LoginController extends Controller {
     public Result login() {
         Form<LoginForm> form = formFactory.form(LoginForm.class).bindFromRequest();
         LoginForm loginData = form.get();
-        User user = userDAO.getUserByUsername(loginData.getUsername());
-        if (user != null && user.authenticate(loginData.getPassword())) {
+        String username = loginData.getUsername();
+        String password = loginData.getPassword();
+        User user = userDAO.getUserByUsername(username);
+        if (user != null && user.authenticate(password)) {
             return ok(user.toJSON());
         } else {
             return notFound("Invalid Login");
