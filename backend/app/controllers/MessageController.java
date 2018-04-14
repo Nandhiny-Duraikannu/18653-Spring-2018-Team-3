@@ -12,6 +12,7 @@ import javax.inject.Inject;
 
 import DAO.*;
 import models.*;
+import services.message.ChatRoom;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,20 +31,19 @@ public class MessageController extends Controller {
 
     public Result getReceivedMessages(int userId) {
         User receiver = userDAO.getUserByUserId(userId);
-        if (receiver == null)
+        ChatRoom chatRoom = new ChatRoom();
+        if (receiver == null) {
             return notFound("User Not Found.");
-
-        List<Message> messages = messageDAO.getReceivedMessages(receiver);
-        List<JsonNode> messagesJson = new ArrayList<>();
-        for (Message message: messages) {
-            messagesJson.add(message.toJson());
+        } else {
+            List<JsonNode> messagesJson = chatRoom.getReceivedMessagesForUser(receiver);
+            return ok(Json.toJson(messagesJson));
         }
-
-        return ok(Json.toJson(messagesJson));
     }
 
     @BodyParser.Of(BodyParser.Json.class)
     public Result sendMessage() {
+        ChatRoom chatRoom = new ChatRoom();
+
         JsonNode messageJson = request().body().asJson();
         int senderId = messageJson.findPath("sender_id").asInt();
         int receiverId = messageJson.findPath("receiver_id").asInt();
@@ -51,11 +51,11 @@ public class MessageController extends Controller {
         String content = messageJson.findPath("content").textValue();
 
         User sender = userDAO.getUserByUserId(senderId);
-        if (sender == null)
-            return notFound("Sender Not Found");
 
-        if (receiverId == 0) {
-            sender.sendMessageToFollowers(title, content);
+        if (sender == null){
+            return notFound("Sender Not Found");
+        } else if (receiverId == 0) {
+            chatRoom.sendMessageToFollowers(sender, title, content);
             return ok();
         } else {
             User receiver = userDAO.getUserByUserId(receiverId);
