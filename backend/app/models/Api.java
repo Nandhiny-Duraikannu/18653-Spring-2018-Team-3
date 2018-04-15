@@ -2,13 +2,12 @@ package models;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.ebean.*;
 import play.data.validation.*;
-import play.libs.Json;
 import java.util.*;
+
+import services.json.JsonVisitor;
 
 @Entity
 @Table(name="apis")
@@ -186,26 +185,8 @@ public class Api extends Model {
     }
 
     public ObjectNode toJson() {
-        String username = user.username;
-        if (username == null) username = "";
-
-        List<JsonNode> followersList = new ArrayList<>();
-        for (User follower: followers) {
-            followersList.add(follower.toFollowerJson());
-        }
-
-        ObjectNode result = Json.newObject()
-                .put("id", id)
-                .put("type", "api")
-                .put("name", name)
-                .put("homepage", homepage)
-                .put("endpoint", endpoint)
-                .put("version", version)
-                .put("scope", scope)
-                .put("description", description)
-                .put("user", username);
-        result.put("followers", Json.toJson(followersList));
-        return result;
+        JsonVisitor jsonVisitor = new JsonVisitor();
+        return jsonVisitor.visit(this);
     }
 
     public String toJsonWithComments (String commentsJson) {

@@ -126,9 +126,6 @@ public class ApiController extends Controller {
 
     public Result getApiById (int id) {
         Api api = apiDAO.getApiById(id);
-
-        String apiCommentsJson = apiDAO.getCommentsForApi(id);
-        String result = api.toJsonWithComments(apiCommentsJson);
-        return ok(result);
+        return ok(api.toJson());
     }
 }
