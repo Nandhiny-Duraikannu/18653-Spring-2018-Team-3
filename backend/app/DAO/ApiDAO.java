@@ -12,7 +12,6 @@ public class ApiDAO {
         return Api.find.query().fetch("user").findList();
     }
 
-
     public Api getById(int apiId) {
         return Api.find.query().where().eq("id", apiId).findUnique();
     }
@@ -20,13 +19,16 @@ public class ApiDAO {
     public List<Api> searchAPIs (String searchParam, String type) {
         return Api.find.query().where().like("name", "%" + searchParam + "%").eq("apitype",type).findList();
     }
+
     public List<Api> searchAPIs (int userId) {
         return Api.find.query().where().eq("user_id", userId).findList();
     }
+
     public Api getApiById(int id) {
         return Api.find.query().fetch("user").where().eq("id", id).findUnique();
         //.fetch("user")
     }
+
     public String getCommentsForApi (int id) {
         List <ApiComments> comments = ApiComments.find.query().where().eq("apiid", id).findList();
         return Json.toJson(comments).asText();

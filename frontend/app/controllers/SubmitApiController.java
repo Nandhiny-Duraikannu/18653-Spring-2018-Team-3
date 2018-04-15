@@ -64,7 +64,6 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
                 ApiForm apiForm = new ApiForm();
 
                 JsonNode body = Json.parse(r.getBody().toString());
-                JsonNode comments = (JsonNode)body.findPath("comments");
 
                 apiForm.setId(body.findPath("id").asInt());
                 apiForm.setName(body.findPath("name").asText());
@@ -76,15 +75,6 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
                 apiForm.setDescription(body.findPath("description").asText());
                 apiForm.setEmail(body.findPath("email").asText());
 
-                ArrayNode arr = (ArrayNode)comments;
-                Iterator<JsonNode> it = arr.iterator();
-
-                while (it.hasNext()) {
-                    JsonNode obj = it.next();
-                    Comment c = new Comment();
-                    c.setContent(obj.findPath("comment").asText());
-                    apiForm.addComment(c);
-                }
                 return ok(views.html.apiDetail.render(username, apiForm, apiForm.getComments()));
             } else {
                 return badRequest("Error while getting API");

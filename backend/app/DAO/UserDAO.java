@@ -1,15 +1,15 @@
 package DAO;
 
 import models.User;
-import services.factories.UserFactory;
+import services.factories.*;
 
 import java.util.Iterator;
 import java.util.List;
 
 public class UserDAO {
+    private AbstractFactory userFactory = FactoryProducer.getFactory("user");
 
     public User createNewUser(String username, String password, String securityQuestion, String answer) {
-        UserFactory userFactory = new UserFactory();
         User user = userFactory.getUser("normal_user");
         user.setParameters(username, password, securityQuestion, answer);
         user.save();
