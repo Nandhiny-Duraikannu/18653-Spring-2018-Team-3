@@ -66,12 +66,14 @@ public class ApiController extends Controller {
         String apiID = apiJson.findPath("api_id").textValue();
 
         Api api = apiDAO.getById(Integer.valueOf(apiID));
-        if (api == null)
+        if (api == null) {
             return notFound("API Not Found.");
+        }
 
         User user = userDAO.getUserByUserId(Integer.valueOf(userId));
-        if (user == null)
+        if (user == null) {
             return notFound("User Not Found.");
+        }
 
         api.notifyAllFollowers();
         api.addFollower(user);
@@ -82,8 +84,11 @@ public class ApiController extends Controller {
 
     public Result getAllApis () {
         List<JsonNode> apis = new ArrayList<>();
-        for (Api api: apiDAO.getAll()) {
-            apis.add(api.toJson());
+        List<Api> allApis = apiDAO.getAll();
+        Iterator<Api> apiIterator = allApis.iterator();
+
+        while(apiIterator.hasNext()) {
+            apis.add(apiIterator.next().toJson());
         }
         return ok(Json.toJson(apis));
     }
@@ -94,10 +99,10 @@ public class ApiController extends Controller {
         List<Api> apis = apiDAO.searchAPIs(userId);
 
         List<JsonNode> apisJson = new ArrayList<>();
-        for (Api api: apis) {
-            apisJson.add(api.toJson());
+        Iterator<Api> iterator = apis.iterator();
+        while (iterator.hasNext()) {
+            apisJson.add(iterator.next().toJson());
         }
-
         return ok(Json.toJson(apisJson));
     }
 
@@ -114,7 +119,10 @@ public class ApiController extends Controller {
         List<Api> apis = apiDAO.searchAPIs(searchParam, type);
 
         List<JsonNode> apisJson = new ArrayList<>();
-        for (Api api: apis) {
+        Iterator<Api> apiIterator = apis.iterator();
+
+        while(apiIterator.hasNext()) {
+            Api api = apiIterator.next();
             ObjectNode apiJson = api.toJson();
             boolean isFollowing = user.isFollowingApi(api);
             apiJson.put("following", isFollowing ? "YES" : "NO");

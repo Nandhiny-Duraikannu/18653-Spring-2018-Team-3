@@ -3,6 +3,7 @@ package DAO;
 import models.User;
 import services.factories.*;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class UserDAO {
@@ -48,10 +49,13 @@ public class UserDAO {
         stringBuffer.append("[");
 
         String comma = "";
-        for (User user : users) {
+
+        Iterator<User> userIterator = users.iterator();
+        while (userIterator.hasNext()) {
+            User currentUser = userIterator.next();
             stringBuffer.append(comma);
             comma = ", ";
-            stringBuffer.append(user.toJSON());
+            stringBuffer.append(currentUser.toJSON());
         }
         stringBuffer.append("]");
         return stringBuffer.toString();
