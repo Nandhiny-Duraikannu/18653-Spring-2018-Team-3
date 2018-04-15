@@ -43,14 +43,11 @@ public class ApproveApiController extends Controller  implements WSBodyReadables
     public CompletionStage<Result> approveApi () {
         DynamicForm form = formFactory.form().bindFromRequest();
         int apiId = Integer.valueOf(form.get("apiId"));
-        System.out.println("apiId " + apiId);
         WSRequest request = ws.url(urlService.approveApiURL());
-        System.out.println("urlService.approveApiURL() " + urlService.approveApiURL());
-        return request
+        System.out.println("urlService.approveApiURL() " + urlService.approveApiURL());return request
         .addHeader("Content-Type", "application/json")
         .post("{\"apiId\": " + apiId + "}")
         .thenApply((WSResponse r) -> {
-            System.out.println(r.getStatus());
             return ok(r.getBody());
         });
     }
