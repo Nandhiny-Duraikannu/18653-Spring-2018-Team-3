@@ -33,7 +33,7 @@ public class DonationController extends Controller implements WSBodyReadables, W
     private final WSClient ws;
     private final BackendURLService urlService;
     private String showError = "";
-   public static String accessToken;
+    public static String accessToken;
 
     @Inject
     public DonationController(WSClient ws, FormFactory formFactory) {
@@ -44,8 +44,9 @@ public class DonationController extends Controller implements WSBodyReadables, W
 
     public Result donationView(String showError, String payId) {
         String username = session().get("username");
+        String userType = session().get("type");
         getAccessToken();
-        return ok(views.html.makeDonation.render(username, showError,payId));
+        return ok(views.html.makeDonation.render(username, userType, showError,payId));
     }
 
 

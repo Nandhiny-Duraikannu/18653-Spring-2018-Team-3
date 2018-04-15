@@ -86,9 +86,11 @@ public class LoginController extends Controller implements WSBodyReadables, WSBo
             if (r.getStatus() == 200) {
                 int userId = r.asJson().get("id").asInt();
                 String username = r.asJson().get("username").asText();
+                String userType = r.asJson().get("type").asText();
                 ctx.session().clear();
                 ctx.session().put("id", String.valueOf(userId));
                 ctx.session().put("username", username);
+                ctx.session().put("type", userType);
                 return redirect(routes.HomeController.homeView());
             } else {
                 return redirect(routes.LoginController.loginView(true));

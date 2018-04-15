@@ -4,6 +4,7 @@ import models.User;
 import models.UserType;
 import services.factories.UserFactory;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class UserDAO {
@@ -33,7 +34,7 @@ public class UserDAO {
                 System.out.println("The admin already exists.");
             }
         } catch (Exception e) {
-            System.out.println("There was an error adding the admin.");
+            System.out.println("There was an error checking for the admin.");
         }
     }
 
@@ -70,10 +71,13 @@ public class UserDAO {
         stringBuffer.append("[");
 
         String comma = "";
-        for (User user : users) {
+
+        Iterator<User> userIterator = users.iterator();
+        while (userIterator.hasNext()) {
+            User currentUser = userIterator.next();
             stringBuffer.append(comma);
             comma = ", ";
-            stringBuffer.append(user.toJSON());
+            stringBuffer.append(currentUser.toJSON());
         }
         stringBuffer.append("]");
         return stringBuffer.toString();

@@ -59,9 +59,9 @@ public class LoginController extends Controller {
             securityQuestion.equals(user.getSecurityQuestion()) &&
             answer.equals(user.getAnswer())) {
             user.updatePassword("temp");
-            return ok("{\"reset\":true}");
+            return ok("{\"reset\": true}");
         } else {
-            return ok("{\"reset\":false}");
+            return ok("{\"reset\": false}");
         }
     }
 }

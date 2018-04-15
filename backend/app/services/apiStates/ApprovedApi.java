@@ -5,6 +5,6 @@ import models.Api;
 public class ApprovedApi implements ApiState {
     @Override
     public void updateApiState(Api api) {
-        api.setState("APPROVED");
+        api.setState(ApiStates.APPROVED);
     }
 }

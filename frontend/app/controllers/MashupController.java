@@ -36,11 +36,12 @@ public class MashupController extends Controller implements WSBodyReadables, WSB
     public CompletionStage<Result> submitMashupView () {
         WSRequest request = ws.url(urlService.getAllApisURL());
         String username = session().get("username");
+        String userType = session().get("type");
         return request.get()
                 .thenApply((WSResponse r) -> {
                     List<ApiForm> apis = generateApiFromJson(r);
                     System.out.println(apis.toString());
-                    return ok(views.html.mashupForm.render(username, apis));
+                    return ok(views.html.mashupForm.render(username, userType,  apis));
                 });
     }
 
@@ -75,24 +76,26 @@ public class MashupController extends Controller implements WSBodyReadables, WSB
 
     public CompletionStage<Result> mashupListView () {
         String username = session().get("username");
+        String userType = session().get("type");
         WSRequest request = ws.url(urlService.getAllMashupsURL());
         return request.get()
         .thenApply((WSResponse r) -> {
             List<Mashup> res = generateMashupFromJson(r);
             System.out.println(res.toString());
-            return ok(views.html.mashupList.render(username, res, ""));
+            return ok(views.html.mashupList.render(username, userType, res, ""));
         });
     }
 
     public CompletionStage<Result> searchMashups() {
         String username = session().get("username");
+        String userType = session().get("type");
         DynamicForm form = formFactory.form().bindFromRequest();
         String query = form.get("query");
         WSRequest request = ws.url(urlService.searchMashupsURL(query));
         return request.get()
         .thenApply((WSResponse r) -> {
             List<Mashup> res = generateMashupFromJson(r);
-            return ok(views.html.mashupList.render(username, res, query));
+            return ok(views.html.mashupList.render(username, userType, res, query));
 
         });
 

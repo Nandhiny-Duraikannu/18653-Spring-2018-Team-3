@@ -23,7 +23,8 @@ public class MessageController extends Controller implements WSBodyReadables, WS
 
     public Result showMessageView () {
         String username = session().get("username");
-        return ok(views.html.messages.render(username));
+        String userType = session().get("type");
+        return ok(views.html.messages.render(username, userType));
     }
 
     @Inject

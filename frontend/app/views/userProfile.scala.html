@@ -1,9 +1,9 @@
 @import UIForm.UserForm
 
-@(username: String, userForm: UserForm)
+@(username: String, userType: String, userForm: UserForm)
 
 @main("Set user profile information | Service Repository") {
-    @menu(username)
+    @menu(username, userType)
 
     <div class="container">
         <div class="row">

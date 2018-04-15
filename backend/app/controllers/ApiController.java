@@ -8,6 +8,9 @@ import play.data.DynamicForm;
 import play.data.FormFactory;
 import play.libs.Json;
 import play.mvc.*;
+import services.apiFilter.ApiStateCriteria;
+import services.apiFilter.ApprovedCriteria;
+import services.apiFilter.PendingCriteria;
 import services.apiStates.ApiState;
 import services.apiStates.ApprovedApi;
 import services.apiStates.PendingApi;
@@ -63,7 +66,11 @@ public class ApiController extends Controller {
     }
 
     @BodyParser.Of(BodyParser.Json.class)
-    public Result updateApi (int apiId) {
+    public Result updateApi () {
+        System.out.println("test update");
+        JsonNode apiJson = request().body().asJson();
+        int apiId = apiJson.findPath("apiId").intValue();
+        System.out.println("update api " + apiId);
         apiDAO.approveApi(apiId);
         return ok();
     }
@@ -75,12 +82,14 @@ public class ApiController extends Controller {
         String apiID = apiJson.findPath("api_id").textValue();
 
         Api api = apiDAO.getById(Integer.valueOf(apiID));
-        if (api == null)
+        if (api == null) {
             return notFound("API Not Found.");
+        }
 
         User user = userDAO.getUserByUserId(Integer.valueOf(userId));
-        if (user == null)
+        if (user == null) {
             return notFound("User Not Found.");
+        }
 
         api.notifyAllFollowers();
         api.addFollower(user);
@@ -91,10 +100,42 @@ public class ApiController extends Controller {
 
     public Result getAllApis () {
         List<JsonNode> apis = new ArrayList<>();
-        for (Api api: apiDAO.getAll()) {
-            apis.add(api.toJson());
+        List<Api> allApis = apiDAO.getAll();
+
+        Iterator<Api> apiIterator = allApis.iterator();
+        while(apiIterator.hasNext()) {
+            apis.add(apiIterator.next().toJson());
         }
+
         return ok(Json.toJson(apis));
+    }
+
+    public Result getApisPerState () {
+
+        ApiStateCriteria approvedApiCriteria = new ApprovedCriteria();
+        ApiStateCriteria pendingApiCriteria = new PendingCriteria();
+
+        List<JsonNode> jsonApprovedApis = new ArrayList<>();
+        List<JsonNode> jsonPendingApis = new ArrayList<>();
+
+        List<Api> allApis = apiDAO.getAll();
+        List<Api> approvedApis = approvedApiCriteria.meetCriteria(allApis);
+        List<Api> pendingApis = pendingApiCriteria.meetCriteria(allApis);
+
+        Iterator<Api> approvedApiIterator = approvedApis.iterator();
+        Iterator<Api> pendingApiIterator = pendingApis.iterator();
+
+        while(approvedApiIterator.hasNext()) {
+            Api approvedApi = approvedApiIterator.next();
+            jsonApprovedApis.add(approvedApi.toJson());
+        }
+        while(pendingApiIterator.hasNext()) {
+            Api pendingApi = pendingApiIterator.next();
+            jsonPendingApis.add(pendingApi.toJson());
+        }
+        String result = "{\"approvedApis\": " + jsonApprovedApis + ", ";
+        result += "\"pendingApis\": " + jsonPendingApis + "}";
+        return ok(result);
     }
 
     public Result getAllFollowers() {
@@ -103,10 +144,10 @@ public class ApiController extends Controller {
         List<Api> apis = apiDAO.searchAPIs(userId);
 
         List<JsonNode> apisJson = new ArrayList<>();
-        for (Api api: apis) {
-            apisJson.add(api.toJson());
+        Iterator<Api> iterator = apis.iterator();
+        while (iterator.hasNext()) {
+            apisJson.add(iterator.next().toJson());
         }
-
         return ok(Json.toJson(apisJson));
     }
 
@@ -123,7 +164,10 @@ public class ApiController extends Controller {
         List<Api> apis = apiDAO.searchAPIs(searchParam, type);
 
         List<JsonNode> apisJson = new ArrayList<>();
-        for (Api api: apis) {
+        Iterator<Api> apiIterator = apis.iterator();
+
+        while(apiIterator.hasNext()) {
+            Api api = apiIterator.next();
             ObjectNode apiJson = api.toJson();
             boolean isFollowing = user.isFollowingApi(api);
             apiJson.put("following", isFollowing ? "YES" : "NO");

@@ -8,6 +8,9 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.ebean.*;
 import play.data.validation.*;
 import play.libs.Json;
+import services.apiStates.ApiState;
+import services.apiStates.ApiStates;
+
 import java.util.*;
 
 @Entity
@@ -44,7 +47,7 @@ public class Api extends Model {
     public String email;
 
     @Column(name = "state", columnDefinition = "varchar(255) default ''")
-    public String state;
+    public ApiStates state;
 
     @ManyToOne
     public User user;
@@ -177,11 +180,11 @@ public class Api extends Model {
         followers.add(user);
     }
 
-    public String getState() {
+    public ApiStates getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(ApiStates state) {
         this.state = state;
     }
 
@@ -214,7 +217,7 @@ public class Api extends Model {
                 .put("scope", scope)
                 .put("description", description)
                 .put("user", username)
-                .put("state", this.getState());
+                .put("state", this.getState().toString());
         result.put("followers", Json.toJson(followersList));
         return result;
     }
