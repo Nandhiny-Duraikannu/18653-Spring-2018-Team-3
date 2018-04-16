@@ -36,5 +36,6 @@ public class ApiDAO {
         ApiState state = new ApprovedApi();
         state.updateApiState(api);
         api.save();
+        api.notifyAllFollowers("approve");
     }
 }

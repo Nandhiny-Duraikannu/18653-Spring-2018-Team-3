@@ -241,9 +241,9 @@ public class Api extends Model {
         return sb.toString();
     }
 
-    public void notifyAllFollowers() {
+    public void notifyAllFollowers(String activity) {
         for (User follower: followers) {
-            follower.sendNotification(this);
+            follower.sendNotification(this, activity);
         }
     }
 }

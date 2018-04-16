@@ -8,14 +8,14 @@ public abstract class NotificationTemplate {
     abstract void initialize();
     abstract void addSubject(String apiName);
     abstract void addTitle(String apiName);
-    abstract void addContent();
+    abstract void addContent(String activity);
     abstract String sendNotification(String destination);
 
-    public final String send(String apiName, String destination) {
+    public final String send(String apiName, String destination, String activity) {
         initialize();
         addSubject(apiName);
         addTitle(apiName);
-        addContent();
+        addContent(activity);
         return sendNotification(destination);
     }
 }
