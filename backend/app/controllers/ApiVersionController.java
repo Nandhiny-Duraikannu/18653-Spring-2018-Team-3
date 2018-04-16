@@ -44,7 +44,6 @@ public class ApiVersionController extends Controller {
 
     public Result getVersionsForApi(int apiId) {
         List<Api> apis = apiDAO.getVersionsForApi(apiId);
-        List<String> jsonApis = new ArrayList<>();
         Iterator<Api> apiIterator = apis.iterator();
         StringBuilder sb = new StringBuilder();
         sb.append("[");

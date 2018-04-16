@@ -46,7 +46,7 @@ public class ApiFactory extends AbstractFactory {
     }
 
     @Override
-    public User getUser(String type) {
+    public User getUser(UserType type) {
         return null;
     }
 }

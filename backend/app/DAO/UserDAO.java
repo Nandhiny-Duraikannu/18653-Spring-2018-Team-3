@@ -1,6 +1,7 @@
 package DAO;
 
 import models.User;
+import models.UserType;
 import services.factories.*;
 
 import java.util.Iterator;
@@ -10,10 +11,33 @@ public class UserDAO {
     private AbstractFactory userFactory = FactoryProducer.getFactory("user");
 
     public User createNewUser(String username, String password, String securityQuestion, String answer) {
-        User user = userFactory.getUser("normal_user");
+        UserFactory userFactory = new UserFactory();
+        User user = userFactory.getUser(UserType.STANDARD_USER);
+      
         user.setParameters(username, password, securityQuestion, answer);
         user.save();
         return user;
+    }
+
+    public void ensureOneAdmin () {
+        UserFactory userFactory = new UserFactory();
+        User userDB = new User();
+        try {
+            User user = userDB.find.query().where().eq("usertype", UserType.ADMIN_USER).findUnique();
+            if (user == null) {
+                userDB = userFactory.getUser(UserType.ADMIN_USER);
+                userDB.setUsername("admin");
+                userDB.setPasswordHash("admin");
+                userDB.setSecurityQuestion("car");
+                userDB.setAnswer("admin");
+                userDB.setName("Administrator");
+                userDB.save();
+            } else {
+                System.out.println("The admin already exists.");
+            }
+        } catch (Exception e) {
+            System.out.println("There was an error checking for the admin.");
+        }
     }
 
     public User getUserByUsername(String username) {

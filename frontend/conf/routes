@@ -29,8 +29,12 @@ GET     /mashups/search             controllers.MashupController.searchMashups()
 GET     /mashup/submit              controllers.MashupController.submitMashupView()
 POST    /mashup                     controllers.MashupController.submitMashup()
 
+GET     /apis/approve               controllers.ApproveApiController.approveApiView()
+POST    /apis/approve               controllers.ApproveApiController.approveApi()
+GET     /apis/state                 controllers.ApproveApiController.getApisPerState()
 GET     /apis/:id                   controllers.SubmitApiController.displayApiView(id: Int)
 POST    /apis/:id/comment           controllers.SubmitApiController.addComment(id: Int)
+
 # Api version
 GET     /apis/:id/version           controllers.ApiVersionController.updateApiView(id: Int)
 GET     /apis/:id/allversions       controllers.ApiVersionController.allVersionsForApiView(id: Int)

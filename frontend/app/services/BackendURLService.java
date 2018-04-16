@@ -71,5 +71,8 @@ public class BackendURLService {
     public String updateApiUrl () { return baseURL + "apis/version"; }
 
     public String getVersionsForApiURL(int apiId) { return baseURL + "apis/" + apiId + "/versions"; }
+    public String getApiPerState () { return baseURL + "apis/state"; }
+
+    public String approveApiURL () { return baseURL + "api/state"; }
 
 }

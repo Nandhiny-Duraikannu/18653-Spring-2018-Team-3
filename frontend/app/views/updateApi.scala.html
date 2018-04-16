@@ -1,9 +1,9 @@
 @import UIForm.ApiForm
 
-@(username: String, api: ApiForm)
+@(username: String, userType: String, api: ApiForm)
 
 @main("Update API " + api.getName() + " - Service Repository") {
-    @menu(username)
+    @menu(username, userType)
 
     <div class="container">
         <h2>Submission Details</h2>

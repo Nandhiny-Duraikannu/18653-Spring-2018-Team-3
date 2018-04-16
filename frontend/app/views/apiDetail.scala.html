@@ -2,10 +2,10 @@
 @import UIForm.Comment
 
 
-@(username: String, api: ApiForm, comments: List [Comment])
+@(username: String, userType: String, api: ApiForm, comments: List [Comment])
 
-@main(api.getType().toUpperCase() + " - " + api.getName()) {
-    @menu(username)
+@main(api.getType() + " - " + api.getName()) {
+    @menu(username, userType)
 
     <div class="container">
         <h2>You are currently updating @api.getType() @api.getName()</h2>

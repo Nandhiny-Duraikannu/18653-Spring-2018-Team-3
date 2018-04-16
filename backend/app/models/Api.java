@@ -5,6 +5,11 @@ import javax.persistence.*;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.ebean.*;
 import play.data.validation.*;
+
+import play.libs.Json;
+import services.apiStates.ApiState;
+import services.apiStates.ApiStates;
+
 import java.util.*;
 
 import services.json.JsonVisitor;
@@ -49,6 +54,9 @@ public class Api extends Model implements Cloneable {
     @Column(name = "submissionVersion", columnDefinition = "varchar(255) default ''")
     public int submissionVersion;
 
+    @Column(name = "state", columnDefinition = "varchar(255) default ''")
+    public ApiStates state;
+
     @ManyToOne
     public User user;
 
@@ -76,11 +84,13 @@ public class Api extends Model implements Cloneable {
 
     // Getters and setters
     public Long getDBId() { return id; }
+
     public void setDBId(Long id) { this.id = id; }
 
     public Long getId() {
         return apiId;
     }
+
     public void setId(Long id) {
         this.apiId = id;
     }
@@ -92,6 +102,7 @@ public class Api extends Model implements Cloneable {
             return "";
         }
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -103,6 +114,7 @@ public class Api extends Model implements Cloneable {
             return "";
         }
     }
+
     public void setHomepage(String homepage) {
         this.homepage = homepage;
     }
@@ -114,10 +126,10 @@ public class Api extends Model implements Cloneable {
             return "";
         }
     }
+
     public void setEndpoint(String endpoint) {
         this.endpoint = endpoint;
     }
-
 
     public String getVersion() {
         if(this.version != null) {
@@ -126,6 +138,7 @@ public class Api extends Model implements Cloneable {
             return "";
         }
     }
+
     public void setVersion(String version) {
         this.version = version;
     }
@@ -137,10 +150,10 @@ public class Api extends Model implements Cloneable {
             return "";
         }
     }
+
     public void setScope(String scope) {
         this.scope = scope;
     }
-
 
     public String getDescription() {
         if(this.description != null) {
@@ -149,10 +162,10 @@ public class Api extends Model implements Cloneable {
             return "";
         }
     }
+
     public void setDescription(String apiDescription) {
         this.description = apiDescription;
     }
-
 
     public String getEmail() {
         if(this.email != null) {
@@ -161,6 +174,7 @@ public class Api extends Model implements Cloneable {
             return "";
         }
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -191,6 +205,14 @@ public class Api extends Model implements Cloneable {
 
     public void addFollower(User user) {
         followers.add(user);
+    }
+
+    public ApiStates getState() {
+        return state;
+    }
+
+    public void setState(ApiStates state) {
+        this.state = state;
     }
 
     public void setParameters(String name, String homepage, String endpoint, String version, String scope, String description, String email) {
@@ -228,14 +250,18 @@ public class Api extends Model implements Cloneable {
         sb.append("\"scope\": \"").append(this.getScope()).append("\",");
         sb.append("\"description\": \"").append(this.getDescription()).append("\",");
         sb.append("\"user\": \"").append(this.getUser()).append("\",");
-        sb.append("\"comments\": ").append(commentsJson);
+        sb.append("\"comments\": ").append(commentsJson).append("\",");
+        sb.append("\"state\": ").append(this.getState()).append("\"");
         sb.append("}");
         return sb.toString();
     }
 
-    public void notifyAllFollowers() {
+    public void notifyAllFollowers(String activity) {
+        if (activity.equals("approve")) {
+            user.sendNotification(this, activity);
+        }
         for (User follower: followers) {
-            follower.sendNotification(this);
+            follower.sendNotification(this, activity);
         }
     }
 

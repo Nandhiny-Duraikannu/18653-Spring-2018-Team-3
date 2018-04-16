@@ -2,10 +2,10 @@
 @import UIForm.Comment
 
 
-@(username: String, apiId: Int)
+@(username: String, userType: String, apiId: Int)
 
 @main("Versions - Service Repository") {
-    @menu(username)
+    @menu(username, userType)
 
     <div class="container">
         <h2>Versions of API <span class="apiName"></span></h2>

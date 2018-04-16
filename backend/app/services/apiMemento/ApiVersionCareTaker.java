@@ -19,6 +19,7 @@ public class ApiVersionCareTaker {
         memento.getState().setSubmissionVersion(this.versions.size() + 1);
         if (this.versions.size() != 0) {
             memento.getState().setUser(this.versions.get(0).getState().getUser());
+            memento.getState().setState(this.versions.get(0).getState().getState());
         }
         versions.add(memento);
     }

@@ -49,7 +49,8 @@ public class ApiVersionController extends Controller {
 
     public Result allVersionsForApiView (int apiId) {
         String username = session().get("username");
-        return ok(views.html.allVersionsOfApi.render(username, apiId));
+        String userType = session().get("type");
+        return ok(views.html.allVersionsOfApi.render(username, userType, apiId));
     }
 
     public CompletionStage<Result> allVersionsForApi (int apiId) {
@@ -64,6 +65,7 @@ public class ApiVersionController extends Controller {
 
     public CompletionStage<Result> updateApiView (int apiId) {
         String username = session().get("username");
+        String userType = session().get("type");
         String url = urlService.getApiURL(apiId);
         // Post the json to create the user in the backend
         WSRequest request = ws.url(url);
@@ -85,7 +87,7 @@ public class ApiVersionController extends Controller {
                 apiForm.setDescription(body.findPath("description").asText());
                 apiForm.setUser_id(body.findPath("user").asText());
 
-                return ok(views.html.updateApi.render(username, apiForm));
+                return ok(views.html.updateApi.render(username, userType, apiForm));
             } else {
                 return badRequest("Error while getting API");
             }
