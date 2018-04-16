@@ -117,4 +117,22 @@ public class ApiForm {
     }
 
     public List<Comment> getComments () { return comments; }
+
+    @Override
+    public String toString() {
+        return "ApiForm{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", apiIds='" + apiIds + '\'' +
+                ", homepage='" + homepage + '\'' +
+                ", endpoint='" + endpoint + '\'' +
+                ", version='" + version + '\'' +
+                ", scope='" + scope + '\'' +
+                ", description='" + description + '\'' +
+                ", email='" + email + '\'' +
+                ", user_id='" + user_id + '\'' +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }

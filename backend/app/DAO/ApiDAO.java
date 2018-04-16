@@ -12,8 +12,26 @@ public class ApiDAO {
         return Api.find.query().fetch("user").findList();
     }
 
+    public List<Api> getVersionsOfApi (int apiId) {
+        return Api.find.query().where().eq("id", apiId).orderBy("submissionVersion").findList();
+    }
+
+    public Long getNextId () {
+        List<Api> apis = Api.find.query().order("id").findList();
+        if (apis.size() == 0) {
+            return Long.valueOf("1");
+        } else {
+            return apis.get(apis.size() - 1).getDBId() + 1;
+        }
+    }
+
+    public Api getApiByIdAndVersion(int apiId, int versionId) {
+        return Api.find.query().where().eq("id", apiId).eq("submissionVersion", versionId).findUnique();
+    }
+
     public Api getById(int apiId) {
-        return Api.find.query().where().eq("id", apiId).findUnique();
+        List<Api> apis = getVersionsOfApi(apiId);
+        return apis.get(apis.size() - 1);
     }
 
     public List<Api> searchAPIs (String searchParam, String type) {

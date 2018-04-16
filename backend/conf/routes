@@ -42,3 +42,5 @@ POST    /donate                      controllers.DonationController.donate()
 GET     /messages/:userId             controllers.MessageController.getReceivedMessages(userId: Int)
 POST    /messages                     controllers.MessageController.sendMessage()
 
+# follow apis
+POST    /apis/version                  controllers.ApiVersionController.updateApi()

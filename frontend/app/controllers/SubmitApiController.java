@@ -63,8 +63,7 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
             if (r.getStatus() == 200) {
                 ApiForm apiForm = new ApiForm();
 
-                JsonNode body = Json.parse(r.getBody().toString());
-
+                JsonNode body = Json.parse(r.getBody());
                 apiForm.setId(body.findPath("id").asInt());
                 apiForm.setName(body.findPath("name").asText());
                 apiForm.setType(body.findPath("type").asText());
@@ -73,7 +72,7 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
                 apiForm.setVersion(body.findPath("version").asText());
                 apiForm.setScope(body.findPath("scope").asText());
                 apiForm.setDescription(body.findPath("description").asText());
-                apiForm.setEmail(body.findPath("email").asText());
+                apiForm.setUser_id(body.findPath("user").asText());
 
                 return ok(views.html.apiDetail.render(username, apiForm, apiForm.getComments()));
             } else {

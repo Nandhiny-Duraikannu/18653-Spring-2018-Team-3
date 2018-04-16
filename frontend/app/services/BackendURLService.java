@@ -67,4 +67,7 @@ public class BackendURLService {
 
     public String getAllUsersURL () { return baseURL + "users"; }
 
+    // Update API
+    public String updateApiUrl () { return baseURL + "apis/version"; }
+
 }
