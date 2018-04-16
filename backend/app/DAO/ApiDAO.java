@@ -13,7 +13,7 @@ public class ApiDAO {
     }
 
     public List<Api> getVersionsOfApi (int apiId) {
-        return Api.find.query().where().eq("id", apiId).orderBy("submissionVersion").findList();
+        return Api.find.query().where().eq("apiId", apiId).orderBy("submissionVersion").findList();
     }
 
     public Long getNextId () {
@@ -43,8 +43,8 @@ public class ApiDAO {
     }
 
     public Api getApiById(int id) {
-        return Api.find.query().fetch("user").where().eq("id", id).findUnique();
-        //.fetch("user")
+        List<Api> apis = Api.find.query().fetch("user").where().eq("apiId", id).order("submissionVersion").findList();
+        return apis.get(apis.size() - 1);
     }
 
     public String getCommentsForApi (int id) {
