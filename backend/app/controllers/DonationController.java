@@ -5,8 +5,13 @@ import models.Donation;
 import play.data.DynamicForm;
 import play.data.FormFactory;
 import play.mvc.*;
+import services.proxy.*;
+
+import java.math.BigInteger;
+import java.time.Year;
 
 import javax.inject.Inject;
+import java.time.Month;
 
 public class DonationController extends Controller {
 
@@ -22,9 +27,17 @@ public class DonationController extends Controller {
      public Result donate() {
         DynamicForm form = formFactory.form().bindFromRequest();
         String username = form.get("username");
-        String invoiceid = form.get("invoiceid");
+        String cardnum = form.get("cardnum");
+         String month = form.get("month");
+         String year = form.get("year");
+         String cvv = form.get("sec");
+         String amount = form.get("amount");
 
-        Donation donate = donationDAO.createInvoice(username, invoiceid);
+         //proxy design pattern
+         paymentInterface proxy = new paymentPaypal();
+         String payId = proxy.payment(username,cardnum,month,year,cvv,amount);
+         System.out.println("saved:"+username + ":"+cardnum+ ":"+month + ":"+year + ":"+cvv + ":"+amount + ":"+payId);
+        Donation donate = donationDAO.createInvoice(username, cardnum, month,year,cvv,amount,payId );
         return ok(donate.toJSON());
     }
 

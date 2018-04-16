@@ -50,7 +50,7 @@ public class BackendURLService {
 
 
 
-    public String donateURL (String payId) { return baseURL + "donate?payId="+payId; }
+    public String donateURL () { return baseURL + "donate";}
 
     public String paypalPayment() {
         return paypal;
