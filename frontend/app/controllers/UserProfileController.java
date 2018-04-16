@@ -28,29 +28,27 @@ public class UserProfileController extends Controller {
         this.urlService = new BackendURLService();
     }
 
-    private static Result displayUserProfilePageWithContent(WSResponse r) {
-        String username = session().get("username");
-        if (r.getStatus() == 200) {
-            JsonNode body = Json.parse(r.getBody());
-            UserForm userFormResult = Json.fromJson(body, UserForm.class);
-            return ok(userProfile.render(username, userFormResult));
-        } else {
-            return ok(userProfile.render(username, new UserForm()));
-        }
-    }
-
-
     public CompletionStage<Result> getUserProfile () {
+        String username = session().get("username");
         int userId = Integer.valueOf(session().get("id"));
         // Post the json to create the user in the backend
         WSRequest request = ws.url(urlService.userProfileURL(userId));
         return request
         .addHeader("Content-Type", "application/json")
         .get()
-        .thenApply(UserProfileController::displayUserProfilePageWithContent);
+        .thenApply((WSResponse r) -> {
+            if (r.getStatus() == 200) {
+                JsonNode body = Json.parse(r.getBody());
+                UserForm userFormResult = Json.fromJson(body, UserForm.class);
+                return ok(userProfile.render(username, userFormResult));
+            } else {
+                return ok(userProfile.render(username, new UserForm()));
+            }
+        });
     }
 
     public CompletionStage<Result> updateUserProfile () {
+        String username = session().get("username");
         int userId = Integer.valueOf(session().get("id"));
 
         Form<UserForm> userForm = formFactory.form(UserForm.class).bindFromRequest();
@@ -63,7 +61,15 @@ public class UserProfileController extends Controller {
         return request
         .addHeader("Content-Type", "application/json")
         .post(userJson)
-        .thenApply(UserProfileController::displayUserProfilePageWithContent);
+        .thenApply((WSResponse r) -> {
+            if (r.getStatus() == 200) {
+                JsonNode body = Json.parse(r.getBody());
+                UserForm userFormResult = Json.fromJson(body, UserForm.class);
+                return ok(userProfile.render(username, userFormResult));
+            } else {
+                return ok(userProfile.render(username, new UserForm()));
+            }
+        });
     }
 
     public CompletionStage<Result> getAllUsers () {
