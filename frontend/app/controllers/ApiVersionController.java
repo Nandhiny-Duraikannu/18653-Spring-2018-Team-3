@@ -37,15 +37,28 @@ public class ApiVersionController extends Controller {
         Form<ApiForm> apiForm = formFactory.form(ApiForm.class).bindFromRequest();
         ApiForm api = apiForm.get();
         api.setId(apiId);
-        System.out.println(api);
 
         WSRequest request = ws.url(urlService.updateApiUrl());
         return request
         .addHeader("Content-Type", "application/json")
         .post(Json.toJson(api))
         .thenApply((WSResponse r) -> {
-            System.out.println("After API update " + r.getStatus());
             return redirect(routes.SubmitApiController.displayApiView(api.getId()));
+        });
+    }
+
+    public Result allVersionsForApiView (int apiId) {
+        String username = session().get("username");
+        return ok(views.html.allVersionsOfApi.render(username, apiId));
+    }
+
+    public CompletionStage<Result> allVersionsForApi (int apiId) {
+        WSRequest request = ws.url(urlService.getVersionsForApiURL(apiId));
+        return request
+        .addHeader("Content-Type", "application/json")
+        .get()
+        .thenApply((WSResponse r) -> {
+            return ok(r.getBody());
         });
     }
 
@@ -71,11 +84,6 @@ public class ApiVersionController extends Controller {
                 apiForm.setScope(body.findPath("scope").asText());
                 apiForm.setDescription(body.findPath("description").asText());
                 apiForm.setUser_id(body.findPath("user").asText());
-
-                System.out.println("====================");
-                System.out.println("description " + apiForm.getDescription());
-                System.out.println("====================");
-
 
                 return ok(views.html.updateApi.render(username, apiForm));
             } else {

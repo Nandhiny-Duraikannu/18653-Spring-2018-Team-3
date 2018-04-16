@@ -33,7 +33,9 @@ GET     /apis/:id                   controllers.SubmitApiController.displayApiVi
 POST    /apis/:id/comment           controllers.SubmitApiController.addComment(id: Int)
 # Api version
 GET     /apis/:id/version           controllers.ApiVersionController.updateApiView(id: Int)
-POST    /apis/:id/version               controllers.ApiVersionController.updateApi(id: Int)
+GET     /apis/:id/allversions       controllers.ApiVersionController.allVersionsForApiView(id: Int)
+GET     /apis/:id/versions          controllers.ApiVersionController.allVersionsForApi(id: Int)
+POST    /apis/:id/version           controllers.ApiVersionController.updateApi(id: Int)
 
 # Follow
 POST     /follow                    controllers.FollowApiController.followApi()

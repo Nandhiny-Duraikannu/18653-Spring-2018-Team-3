@@ -139,3 +139,7 @@ footer {
 .submitFollowButton {
     width: 150px;
 }
+
+.hidden-info {
+    display: none;
+}

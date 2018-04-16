@@ -44,3 +44,4 @@ POST    /messages                     controllers.MessageController.sendMessage(
 
 # follow apis
 POST    /apis/version                  controllers.ApiVersionController.updateApi()
+GET     /apis/:id/versions             controllers.ApiVersionController.getVersionsForApi(id: Int)

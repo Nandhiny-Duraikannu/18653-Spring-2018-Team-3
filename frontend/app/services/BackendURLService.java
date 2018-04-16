@@ -70,4 +70,6 @@ public class BackendURLService {
     // Update API
     public String updateApiUrl () { return baseURL + "apis/version"; }
 
+    public String getVersionsForApiURL(int apiId) { return baseURL + "apis/" + apiId + "/versions"; }
+
 }
