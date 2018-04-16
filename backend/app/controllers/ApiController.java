@@ -8,10 +8,18 @@ import play.data.FormFactory;
 import play.libs.Json;
 import play.mvc.*;
 
+import services.apiFilter.ApiStateCriteria;
+import services.apiFilter.ApprovedCriteria;
+import services.apiFilter.PendingCriteria;
+import services.apiStates.ApiState;
+import services.apiStates.ApprovedApi;
+import services.apiStates.PendingApi;
+import services.factories.ApiFactory;
+
 import models.*;
-import services.factories.*;
 import DAO.*;
 import services.submissions.SubmissionCache;
+
 
 import javax.inject.Inject;
 import java.util.*;
@@ -61,10 +69,23 @@ public class ApiController extends Controller {
         }
 
         User user = userDAO.getUserByUserId(Integer.valueOf(userId));
-        Api api = apiFactory.getApi(apiType, name, homepage, endpoint, version, scope, description, email, apiIds);
+        Api api = apiFactory.createApi(apiType, name, homepage, endpoint, version, scope, description, email, apiIds);
+        ApiState apiState = new PendingApi();
+        apiState.updateApiState(api);
+      
         user.addApi(api);
         user.save();
         return ok(api.toJson());
+    }
+
+    @BodyParser.Of(BodyParser.Json.class)
+    public Result updateApi () {
+        System.out.println("test update");
+        JsonNode apiJson = request().body().asJson();
+        int apiId = apiJson.findPath("apiId").intValue();
+        System.out.println("update api " + apiId);
+        apiDAO.approveApi(apiId);
+        return ok();
     }
 
     @BodyParser.Of(BodyParser.Json.class)
@@ -83,7 +104,7 @@ public class ApiController extends Controller {
             return notFound("User Not Found.");
         }
 
-        api.notifyAllFollowers();
+        api.notifyAllFollowers("follow");
         api.addFollower(user);
         api.save();
 
@@ -93,12 +114,41 @@ public class ApiController extends Controller {
     public Result getAllApis () {
         List<JsonNode> apis = new ArrayList<>();
         List<Api> allApis = apiDAO.getAll();
-        Iterator<Api> apiIterator = allApis.iterator();
 
+        Iterator<Api> apiIterator = allApis.iterator();
         while(apiIterator.hasNext()) {
             apis.add(apiIterator.next().toJson());
         }
+
         return ok(Json.toJson(apis));
+    }
+
+    public Result getApisPerState () {
+
+        ApiStateCriteria approvedApiCriteria = new ApprovedCriteria();
+        ApiStateCriteria pendingApiCriteria = new PendingCriteria();
+
+        List<JsonNode> jsonApprovedApis = new ArrayList<>();
+        List<JsonNode> jsonPendingApis = new ArrayList<>();
+
+        List<Api> allApis = apiDAO.getAll();
+        List<Api> approvedApis = approvedApiCriteria.meetCriteria(allApis);
+        List<Api> pendingApis = pendingApiCriteria.meetCriteria(allApis);
+
+        Iterator<Api> approvedApiIterator = approvedApis.iterator();
+        Iterator<Api> pendingApiIterator = pendingApis.iterator();
+
+        while(approvedApiIterator.hasNext()) {
+            Api approvedApi = approvedApiIterator.next();
+            jsonApprovedApis.add(approvedApi.toJson());
+        }
+        while(pendingApiIterator.hasNext()) {
+            Api pendingApi = pendingApiIterator.next();
+            jsonPendingApis.add(pendingApi.toJson());
+        }
+        String result = "{\"approvedApis\": " + jsonApprovedApis + ", ";
+        result += "\"pendingApis\": " + jsonPendingApis + "}";
+        return ok(result);
     }
 
     public Result getAllFollowers() {

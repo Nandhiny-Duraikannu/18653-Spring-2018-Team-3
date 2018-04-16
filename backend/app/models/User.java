@@ -40,7 +40,7 @@ public class User extends Model {
 
     @Column(name = "userType")
     @Constraints.Required
-    public String userType;
+    public UserType userType;
 
     @Column(name = "phoneNumber")
     public String phoneNumber;
@@ -109,11 +109,11 @@ public class User extends Model {
         this.answer = answer;
     }
 
-    public String getUserType() {
+    public UserType getUserType() {
         return userType;
     }
 
-    public void setUserType(String userType) {
+    public void setUserType(UserType userType) {
         this.userType = userType;
     }
 
@@ -245,16 +245,16 @@ public class User extends Model {
         return chatRoom.sendMessage(this, receiver, title, content);
     }
 
-    public void sendNotification(Api api) {
+    public void sendNotification(Api api, String activity) {
         if (notificationMethod == null || notificationMethod.equals("email")) {
             SendNotificationAPI notificationApi = new SendEmailNotification();
-            notificationApi.sendNotification(api.getUser(), this, api.getName(), email);
+            notificationApi.sendNotification(api.getUser(), this, api.getName(), email, activity);
         } else if (notificationMethod.equals("phone")) {
             SendNotificationAPI notificationApi = new SendPhoneNotification();
-            notificationApi.sendNotification(api.getUser(), this, api.getName(), phoneNumber);
+            notificationApi.sendNotification(api.getUser(), this, api.getName(), phoneNumber, activity);
         } else if (notificationMethod.equals("text")) {
             SendNotificationAPI notificationApi = new SendTextNotification();
-            notificationApi.sendNotification(api.getUser(), this, api.getName(), phoneNumber);
+            notificationApi.sendNotification(api.getUser(), this, api.getName(), phoneNumber, activity);
         }
     }
 

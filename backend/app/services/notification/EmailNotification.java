@@ -18,8 +18,14 @@ public class EmailNotification extends NotificationTemplate {
     }
 
     @Override
-    void addContent() {
-        content = "You received this text message because someone followed this API.";
+    void addContent(String activity) {
+        content = "You received this email because ";
+        if (activity.equalsIgnoreCase("follow"))
+            content += "someone followed this API. ";
+        else if (activity.equalsIgnoreCase("approve"))
+            content += "an admin approved this API. ";
+        else
+            content += "an activity happened to this API. ";
     }
 
     @Override

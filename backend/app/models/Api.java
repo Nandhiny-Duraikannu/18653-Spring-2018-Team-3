@@ -5,6 +5,11 @@ import javax.persistence.*;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.ebean.*;
 import play.data.validation.*;
+
+import play.libs.Json;
+import services.apiStates.ApiState;
+import services.apiStates.ApiStates;
+
 import java.util.*;
 
 import services.json.JsonVisitor;
@@ -41,6 +46,9 @@ public class Api extends Model implements Cloneable {
 
     @Column(name = "email", columnDefinition = "varchar(255) default ''")
     public String email;
+
+    @Column(name = "state", columnDefinition = "varchar(255) default ''")
+    public ApiStates state;
 
     @ManyToOne
     public User user;
@@ -183,6 +191,14 @@ public class Api extends Model implements Cloneable {
         followers.add(user);
     }
 
+    public ApiStates getState() {
+        return state;
+    }
+
+    public void setState(ApiStates state) {
+        this.state = state;
+    }
+
     public void setParameters(String name, String homepage, String endpoint, String version, String scope, String description, String email) {
         this.name = name;
         this.homepage = homepage;
@@ -211,14 +227,15 @@ public class Api extends Model implements Cloneable {
         sb.append("\"scope\": \"").append(this.getScope()).append("\",");
         sb.append("\"description\": \"").append(this.getDescription()).append("\",");
         sb.append("\"user\": \"").append(this.getUser()).append("\",");
-        sb.append("\"comments\": ").append(commentsJson);
+        sb.append("\"comments\": ").append(commentsJson).append("\",");
+        sb.append("\"state\": ").append(this.getState()).append("\"");
         sb.append("}");
         return sb.toString();
     }
 
-    public void notifyAllFollowers() {
+    public void notifyAllFollowers(String activity) {
         for (User follower: followers) {
-            follower.sendNotification(this);
+            follower.sendNotification(this, activity);
         }
     }
 }

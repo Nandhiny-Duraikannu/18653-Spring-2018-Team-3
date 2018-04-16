@@ -67,4 +67,8 @@ public class BackendURLService {
 
     public String getAllUsersURL () { return baseURL + "users"; }
 
+    public String getApiPerState () { return baseURL + "apis/state"; }
+
+    public String approveApiURL () { return baseURL + "api/state"; }
+
 }

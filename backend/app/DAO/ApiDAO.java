@@ -1,9 +1,9 @@
 package DAO;
 
 import models.*;
-
+import services.apiStates.ApiState;
+import services.apiStates.ApprovedApi;
 import java.util.List;
-
 import play.libs.Json;
 
 public class ApiDAO {
@@ -32,5 +32,13 @@ public class ApiDAO {
     public String getCommentsForApi (int id) {
         List <ApiComments> comments = ApiComments.find.query().where().eq("apiid", id).findList();
         return Json.toJson(comments).asText();
+    }
+
+    public void approveApi (int apiId) {
+        Api api = this.getApiById(apiId);
+        ApiState state = new ApprovedApi();
+        state.updateApiState(api);
+        api.save();
+        api.notifyAllFollowers("approve");
     }
 }

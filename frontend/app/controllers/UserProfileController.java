@@ -28,9 +28,22 @@ public class UserProfileController extends Controller {
         this.urlService = new BackendURLService();
     }
 
+    private static Result displayUserProfilePageWithContent(WSResponse r) {
+        String username = session().get("username");
+        String userType = session().get("type");
+        if (r.getStatus() == 200) {
+            JsonNode body = Json.parse(r.getBody());
+            UserForm userFormResult = Json.fromJson(body, UserForm.class);
+            return ok(userProfile.render(username, userType, userFormResult));
+        } else {
+            return ok(userProfile.render(username, userType, new UserForm()));
+        }
+    }
+  
     public CompletionStage<Result> getUserProfile () {
         String username = session().get("username");
         int userId = Integer.valueOf(session().get("id"));
+
         // Post the json to create the user in the backend
         WSRequest request = ws.url(urlService.userProfileURL(userId));
         return request
