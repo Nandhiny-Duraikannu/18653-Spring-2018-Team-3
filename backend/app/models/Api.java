@@ -14,7 +14,7 @@ import services.json.JsonVisitor;
 @Inheritance(strategy= InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="apiType")
 @DiscriminatorValue("api")
-public class Api extends Model {
+public class Api extends Model implements Cloneable {
 
     @Id
     public Long id;
@@ -56,7 +56,16 @@ public class Api extends Model {
 
     public static final Finder<Long, Api> find = new Finder<>(Api.class);
 
-
+    @Override
+    public Object clone() {
+        Object clone = null;
+        try {
+            clone = super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return clone;
+    }
 
     // Getters and setters
     public Long getId() {

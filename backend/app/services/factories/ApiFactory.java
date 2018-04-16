@@ -2,24 +2,32 @@ package services.factories;
 
 import DAO.ApiDAO;
 import models.*;
+import services.submissions.SubmissionCache;
 
 import java.util.List;
 
 public class ApiFactory extends AbstractFactory {
-    private ApiDAO apiDAO = new ApiDAO();
+    private ApiDAO apiDAO;
+    private SubmissionCache submissionCache;
+
+    public ApiFactory () {
+        this.apiDAO = new ApiDAO();
+        this.submissionCache = new SubmissionCache();
+        this.submissionCache.loadCache();
+    }
 
     @Override
     public Api getApi(String apiType, String name, String homepage, String endpoint, String version, String scope, String description, String email, List<Integer> apiIds)
     {
         if (apiType.equalsIgnoreCase("api"))
         {
-            Api api = new Api();
+            Api api = this.submissionCache.getApi();
             api.setParameters(name,homepage,endpoint,version,scope,description,email);
             return api;
 
         } else if (apiType.equalsIgnoreCase("mashup"))
         {
-            Mashup mashup = new Mashup();
+            Mashup mashup = this.submissionCache.getMashup();
             mashup.setParameters(name,homepage,endpoint,version,scope,description,email);
 
             for (int apiId: apiIds) {

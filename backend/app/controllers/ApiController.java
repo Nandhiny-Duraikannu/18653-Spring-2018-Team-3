@@ -11,6 +11,7 @@ import play.mvc.*;
 import models.*;
 import services.factories.*;
 import DAO.*;
+import services.submissions.SubmissionCache;
 
 import javax.inject.Inject;
 import java.util.*;
@@ -21,15 +22,22 @@ import java.util.*;
  */
 public class ApiController extends Controller {
     private final FormFactory formFactory;
-    private MashupDAO mashupDAO = new MashupDAO();
-    private ApiDAO apiDAO = new ApiDAO();
-    private UserDAO userDAO = new UserDAO();
-    private AbstractFactory apiFactory = FactoryProducer.getFactory("api");
 
+    private MashupDAO mashupDAO;
+    private ApiDAO apiDAO;
+    private UserDAO userDAO;
+
+    private AbstractFactory apiFactory;
 
     @Inject
     public ApiController(FormFactory formFactory) {
         this.formFactory = formFactory;
+
+        this.mashupDAO = new MashupDAO();
+        this.apiDAO = new ApiDAO();
+        this.userDAO = new UserDAO();
+
+        this.apiFactory = FactoryProducer.getFactory("api");
     }
 
     @BodyParser.Of(BodyParser.Json.class)
