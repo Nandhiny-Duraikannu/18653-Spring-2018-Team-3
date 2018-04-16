@@ -6,6 +6,7 @@ import play.data.DynamicForm;
 import play.data.FormFactory;
 import play.mvc.*;
 import services.proxy.*;
+import play.libs.ws.*;
 
 import java.math.BigInteger;
 import java.time.Year;
@@ -16,6 +17,7 @@ import java.time.Month;
 public class DonationController extends Controller {
 
     private final FormFactory formFactory;
+   //private final WSClient ws;
 
     private DonationDAO donationDAO = new DonationDAO();
 
