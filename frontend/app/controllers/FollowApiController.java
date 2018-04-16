@@ -49,7 +49,6 @@ public class FollowApiController extends Controller implements WSBodyReadables, 
                     if (r.getStatus() == 200) {
                         return ok("Following API now");
                     } else {
-                        System.out.println(r.getStatus());
                         return badRequest("Error while trying to follow api/mashup");
                     }
                 });

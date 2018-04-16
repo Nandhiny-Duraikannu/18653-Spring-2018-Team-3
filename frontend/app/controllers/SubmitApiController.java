@@ -67,7 +67,6 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
                 ApiForm apiForm = new ApiForm();
 
                 JsonNode body = Json.parse(r.getBody().toString());
-                JsonNode comments = (JsonNode)body.findPath("comments");
 
                 apiForm.setId(body.findPath("id").asInt());
                 apiForm.setName(body.findPath("name").asText());
@@ -120,7 +119,6 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
         String userType = session().get("type");
         DynamicForm form = formFactory.form().bindFromRequest();
         String url = urlService.searchURL() + "?searchParam=" + form.get("searchParam")+"&type="+form.get("type")+"&userId="+session().get("id");
-//        System.out.println("in api search"+url);
 
         // Post the json to create the user in the backend
         WSRequest request = ws.url(url);

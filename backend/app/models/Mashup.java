@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import io.ebean.*;
 import javax.persistence.*;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import services.json.JsonVisitor;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -26,14 +28,12 @@ public class Mashup extends Api {
         apis.add(api);
     }
 
-    @Override
+    public List<Api> getApis() {
+        return apis;
+    }
+
     public ObjectNode toJson() {
-        ObjectNode result = super.toJson().put("type", "mashup")
-                .put("id", this.id);
-        ArrayNode apiIds = result.putArray("apis");
-        for (Api api: apis) {
-            apiIds.add(api.id);
-        }
-        return result;
+        JsonVisitor jsonVisitor = new JsonVisitor();
+        return jsonVisitor.visit(this);
     }
 }

@@ -2,23 +2,24 @@ package models;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.ebean.*;
 import play.data.validation.*;
+
 import play.libs.Json;
 import services.apiStates.ApiState;
 import services.apiStates.ApiStates;
 
 import java.util.*;
 
+import services.json.JsonVisitor;
+
 @Entity
 @Table(name="apis")
 @Inheritance(strategy= InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="apiType")
 @DiscriminatorValue("api")
-public class Api extends Model {
+public class Api extends Model implements Cloneable {
 
     @Id
     public Long id;
@@ -63,6 +64,16 @@ public class Api extends Model {
 
     public static final Finder<Long, Api> find = new Finder<>(Api.class);
 
+    @Override
+    public Object clone() {
+        Object clone = null;
+        try {
+            clone = super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return clone;
+    }
 
     // Getters and setters
     public Long getId() {
@@ -199,27 +210,8 @@ public class Api extends Model {
     }
 
     public ObjectNode toJson() {
-        String username = user.username;
-        if (username == null) username = "";
-
-        List<JsonNode> followersList = new ArrayList<>();
-        for (User follower: followers) {
-            followersList.add(follower.toFollowerJson());
-        }
-
-        ObjectNode result = Json.newObject()
-                .put("id", id)
-                .put("type", "api")
-                .put("name", name)
-                .put("homepage", homepage)
-                .put("endpoint", endpoint)
-                .put("version", version)
-                .put("scope", scope)
-                .put("description", description)
-                .put("user", username)
-                .put("state", this.getState().toString());
-        result.put("followers", Json.toJson(followersList));
-        return result;
+        JsonVisitor jsonVisitor = new JsonVisitor();
+        return jsonVisitor.visit(this);
     }
 
     public String toJsonWithComments (String commentsJson) {

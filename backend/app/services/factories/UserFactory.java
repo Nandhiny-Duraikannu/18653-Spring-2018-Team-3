@@ -3,8 +3,11 @@ package services.factories;
 import models.User;
 import models.UserType;
 
-public class UserFactory {
+import java.util.List;
 
+public class UserFactory extends AbstractFactory {
+
+    @Override
     public User getUser(UserType type) {
         if (type.equals(UserType.STANDARD_USER)) {
             User user = new User();
@@ -19,4 +22,8 @@ public class UserFactory {
         }
     }
 
+    @Override
+    public Api getApi(String apiType, String name, String homepage, String endpoint, String version, String scope, String description, String email, List<Integer> apiIds) {
+        return null;
+    }
 }

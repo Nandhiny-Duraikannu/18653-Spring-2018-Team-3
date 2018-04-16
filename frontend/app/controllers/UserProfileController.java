@@ -39,9 +39,9 @@ public class UserProfileController extends Controller {
             return ok(userProfile.render(username, userType, new UserForm()));
         }
     }
-
-
+  
     public CompletionStage<Result> getUserProfile () {
+        String username = session().get("username");
         int userId = Integer.valueOf(session().get("id"));
 
         // Post the json to create the user in the backend
@@ -49,10 +49,19 @@ public class UserProfileController extends Controller {
         return request
         .addHeader("Content-Type", "application/json")
         .get()
-        .thenApply(UserProfileController::displayUserProfilePageWithContent);
+        .thenApply((WSResponse r) -> {
+            if (r.getStatus() == 200) {
+                JsonNode body = Json.parse(r.getBody());
+                UserForm userFormResult = Json.fromJson(body, UserForm.class);
+                return ok(userProfile.render(username, userFormResult));
+            } else {
+                return ok(userProfile.render(username, new UserForm()));
+            }
+        });
     }
 
     public CompletionStage<Result> updateUserProfile () {
+        String username = session().get("username");
         int userId = Integer.valueOf(session().get("id"));
 
         Form<UserForm> userForm = formFactory.form(UserForm.class).bindFromRequest();
@@ -65,7 +74,15 @@ public class UserProfileController extends Controller {
         return request
         .addHeader("Content-Type", "application/json")
         .post(userJson)
-        .thenApply(UserProfileController::displayUserProfilePageWithContent);
+        .thenApply((WSResponse r) -> {
+            if (r.getStatus() == 200) {
+                JsonNode body = Json.parse(r.getBody());
+                UserForm userFormResult = Json.fromJson(body, UserForm.class);
+                return ok(userProfile.render(username, userFormResult));
+            } else {
+                return ok(userProfile.render(username, new UserForm()));
+            }
+        });
     }
 
     public CompletionStage<Result> getAllUsers () {

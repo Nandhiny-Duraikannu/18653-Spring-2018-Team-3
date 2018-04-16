@@ -1,13 +1,13 @@
 package controllers;
 
-import DAO.*;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import models.*;
 import play.data.DynamicForm;
 import play.data.FormFactory;
 import play.libs.Json;
 import play.mvc.*;
+
 import services.apiFilter.ApiStateCriteria;
 import services.apiFilter.ApprovedCriteria;
 import services.apiFilter.PendingCriteria;
@@ -15,6 +15,11 @@ import services.apiStates.ApiState;
 import services.apiStates.ApprovedApi;
 import services.apiStates.PendingApi;
 import services.factories.ApiFactory;
+
+import models.*;
+import DAO.*;
+import services.submissions.SubmissionCache;
+
 
 import javax.inject.Inject;
 import java.util.*;
@@ -25,15 +30,22 @@ import java.util.*;
  */
 public class ApiController extends Controller {
     private final FormFactory formFactory;
-    private MashupDAO mashupDAO = new MashupDAO();
-    private ApiDAO apiDAO = new ApiDAO();
-    private UserDAO userDAO = new UserDAO();
-    private ApiFactory apiFactory = new ApiFactory();
 
+    private MashupDAO mashupDAO;
+    private ApiDAO apiDAO;
+    private UserDAO userDAO;
+
+    private AbstractFactory apiFactory;
 
     @Inject
     public ApiController(FormFactory formFactory) {
         this.formFactory = formFactory;
+
+        this.mashupDAO = new MashupDAO();
+        this.apiDAO = new ApiDAO();
+        this.userDAO = new UserDAO();
+
+        this.apiFactory = FactoryProducer.getFactory("api");
     }
 
     @BodyParser.Of(BodyParser.Json.class)
@@ -60,6 +72,7 @@ public class ApiController extends Controller {
         Api api = apiFactory.createApi(apiType, name, homepage, endpoint, version, scope, description, email, apiIds);
         ApiState apiState = new PendingApi();
         apiState.updateApiState(api);
+      
         user.addApi(api);
         user.save();
         return ok(api.toJson());
@@ -179,9 +192,6 @@ public class ApiController extends Controller {
 
     public Result getApiById (int id) {
         Api api = apiDAO.getApiById(id);
-
-        String apiCommentsJson = apiDAO.getCommentsForApi(id);
-        String result = api.toJsonWithComments(apiCommentsJson);
-        return ok(result);
+        return ok(api.toJson());
     }
 }

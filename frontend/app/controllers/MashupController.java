@@ -40,7 +40,6 @@ public class MashupController extends Controller implements WSBodyReadables, WSB
         return request.get()
                 .thenApply((WSResponse r) -> {
                     List<ApiForm> apis = generateApiFromJson(r);
-                    System.out.println(apis.toString());
                     return ok(views.html.mashupForm.render(username, userType,  apis));
                 });
     }
@@ -81,7 +80,6 @@ public class MashupController extends Controller implements WSBodyReadables, WSB
         return request.get()
         .thenApply((WSResponse r) -> {
             List<Mashup> res = generateMashupFromJson(r);
-            System.out.println(res.toString());
             return ok(views.html.mashupList.render(username, userType, res, ""));
         });
     }

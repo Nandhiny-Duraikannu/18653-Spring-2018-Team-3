@@ -105,7 +105,6 @@ public class LoginController extends Controller implements WSBodyReadables, WSBo
         String formJson = Json.toJson(formData).toString();
         Context ctx = Http.Context.current();
         // Post the json to create the user in the backend
-        System.out.println(formJson);
         WSRequest request = ws.url(urlService.resetPasswordURL());
         return request
         .addHeader("Content-Type", "application/json")

@@ -86,7 +86,6 @@ public class DonationController extends Controller implements WSBodyReadables, W
                     if (x.getStatus() == 200) {
                         JsonNode jsonNode = Json.parse(x.getBody());
                         accessToken = jsonNode.get("access_token").toString();
-                        System.out.println("success access token" + accessToken);
                         return ok("Access Token Success");
 
                     } else {
@@ -122,10 +121,8 @@ public class DonationController extends Controller implements WSBodyReadables, W
                              JsonNode jsonNode = Json.parse(r.getBody());
                             String paymentId = jsonNode.get("id").toString();
                             WSRequest backendRequest = ws.url(urlService.donateURL(paymentId));
-                            System.out.println("paypal success");
                             return redirect(routes.DonationController.donationView("false",paymentId));
                         } else {
-                            System.out.println("paypal payment failed"+r.getStatus());
                             return redirect(routes.DonationController.donationView("true"," "));
                         }
                     });
