@@ -39,6 +39,7 @@ public class SubmissionCache {
         this.api.setScope("");
         this.api.setUser(null);
         this.api.setVersion("0");
+        this.api.setSubmissionVersion(1);
     }
 
     private void initializeMashup () {
@@ -54,6 +55,7 @@ public class SubmissionCache {
         this.mashup.setScope("");
         this.mashup.setUser(null);
         this.mashup.setVersion("0");
+        this.mashup.setSubmissionVersion(1);
     }
 
 }

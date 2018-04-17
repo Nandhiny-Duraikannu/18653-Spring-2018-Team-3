@@ -4,6 +4,7 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import play.data.DynamicForm;
+import play.data.Form;
 import play.data.FormFactory;
 import play.libs.Json;
 import play.mvc.*;
@@ -14,10 +15,12 @@ import services.apiFilter.PendingCriteria;
 import services.apiStates.ApiState;
 import services.apiStates.ApprovedApi;
 import services.apiStates.PendingApi;
+import services.factories.AbstractFactory;
 import services.factories.ApiFactory;
 
 import models.*;
 import DAO.*;
+import services.factories.FactoryProducer;
 import services.submissions.SubmissionCache;
 
 
@@ -69,7 +72,7 @@ public class ApiController extends Controller {
         }
 
         User user = userDAO.getUserByUserId(Integer.valueOf(userId));
-        Api api = apiFactory.createApi(apiType, name, homepage, endpoint, version, scope, description, email, apiIds);
+        Api api = apiFactory.getApi(apiType, name, homepage, endpoint, version, scope, description, email, apiIds);
         ApiState apiState = new PendingApi();
         apiState.updateApiState(api);
       
@@ -80,10 +83,8 @@ public class ApiController extends Controller {
 
     @BodyParser.Of(BodyParser.Json.class)
     public Result updateApi () {
-        System.out.println("test update");
         JsonNode apiJson = request().body().asJson();
         int apiId = apiJson.findPath("apiId").intValue();
-        System.out.println("update api " + apiId);
         apiDAO.approveApi(apiId);
         return ok();
     }
@@ -137,7 +138,6 @@ public class ApiController extends Controller {
 
         Iterator<Api> approvedApiIterator = approvedApis.iterator();
         Iterator<Api> pendingApiIterator = pendingApis.iterator();
-
         while(approvedApiIterator.hasNext()) {
             Api approvedApi = approvedApiIterator.next();
             jsonApprovedApis.add(approvedApi.toJson());

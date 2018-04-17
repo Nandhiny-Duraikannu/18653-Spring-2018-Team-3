@@ -19,17 +19,19 @@ public class ApiFactory extends AbstractFactory {
     @Override
     public Api getApi(String apiType, String name, String homepage, String endpoint, String version, String scope, String description, String email, List<Integer> apiIds)
     {
+        Long nextId = apiDAO.getNextId();
         if (apiType.equalsIgnoreCase("api"))
         {
             Api api = this.submissionCache.getApi();
             api.setParameters(name,homepage,endpoint,version,scope,description,email);
+            api.setId(nextId);
             return api;
 
         } else if (apiType.equalsIgnoreCase("mashup"))
         {
             Mashup mashup = this.submissionCache.getMashup();
             mashup.setParameters(name,homepage,endpoint,version,scope,description,email);
-
+            mashup.setId(nextId);
             for (int apiId: apiIds) {
                 Api api = apiDAO.getById(apiId);
                 if (api != null)
@@ -44,7 +46,7 @@ public class ApiFactory extends AbstractFactory {
     }
 
     @Override
-    public User getUser(String type) {
+    public User getUser(UserType type) {
         return null;
     }
 }

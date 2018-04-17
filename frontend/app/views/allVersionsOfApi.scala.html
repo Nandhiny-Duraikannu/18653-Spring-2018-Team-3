@@ -1,0 +1,19 @@
+@import UIForm.ApiForm
+@import UIForm.Comment
+
+
+@(username: String, userType: String, apiId: Int)
+
+@main("Versions - Service Repository") {
+    @menu(username, userType)
+
+    <div class="container">
+        <h2>Versions of API <span class="apiName"></span></h2>
+        <span id="hiddenId" class="hidden-info">@apiId</span>
+        <div class="row apiContainer">
+        </div>
+    </div>
+
+    <script src="@routes.Assets.versioned("javascripts/controllers/apiVersions.js")" type="text/javascript"></script>
+
+}

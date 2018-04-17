@@ -1,5 +1,6 @@
 package services.factories;
 
+import models.Api;
 import models.User;
 import models.UserType;
 

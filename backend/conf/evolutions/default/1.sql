@@ -6,6 +6,7 @@
 create table apis (
   apitype                       varchar(31) not null,
   id                            bigint auto_increment not null,
+  apiid                         bigint,
   name                          varchar(255),
   homepage                      varchar(255),
   endpoint                      varchar(255) default '',
@@ -13,6 +14,7 @@ create table apis (
   scope                         varchar(255) default '',
   description                   varchar(255) default '',
   email                         varchar(255) default '',
+  submissionversion             varchar(255) default '' not null,
   state                         varchar(255) default '',
   user_id                       bigint,
   constraint ck_apis_state check ( state in (0,1)),

@@ -66,8 +66,7 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
             if (r.getStatus() == 200) {
                 ApiForm apiForm = new ApiForm();
 
-                JsonNode body = Json.parse(r.getBody().toString());
-
+                JsonNode body = Json.parse(r.getBody());
                 apiForm.setId(body.findPath("id").asInt());
                 apiForm.setName(body.findPath("name").asText());
                 apiForm.setType(body.findPath("type").asText());
@@ -76,17 +75,17 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
                 apiForm.setVersion(body.findPath("version").asText());
                 apiForm.setScope(body.findPath("scope").asText());
                 apiForm.setDescription(body.findPath("description").asText());
-                apiForm.setEmail(body.findPath("email").asText());
+                apiForm.setUser_id(body.findPath("user").asText());
 
-                ArrayNode arr = (ArrayNode)comments;
-                Iterator<JsonNode> it = arr.iterator();
-
-                while (it.hasNext()) {
-                    JsonNode obj = it.next();
-                    Comment c = new Comment();
-                    c.setContent(obj.findPath("comment").asText());
-                    apiForm.addComment(c);
-                }
+//                ArrayNode arr = (ArrayNode)comments;
+//                Iterator<JsonNode> it = arr.iterator();
+//
+//                while (it.hasNext()) {
+//                    JsonNode obj = it.next();
+//                    Comment c = new Comment();
+//                    c.setContent(obj.findPath("comment").asText());
+//                    apiForm.addComment(c);
+//                }
                 return ok(views.html.apiDetail.render(username, userType, apiForm, apiForm.getComments()));
             } else {
                 return badRequest("Error while getting API");

@@ -8,60 +8,35 @@
     @menu(username, userType)
 
     <div class="container">
-        <h2>Submission Details</h2>
+        <h2>You are currently updating @api.getType() @api.getName()</h2>
+
         <div class="row">
             <div class="col s3">
-                <h5>API info</h5>
-                <p>Published by: @api.getUser_id()</p>
+                <h5>@api.getType() info</h5>
+                <p>Published by: @api.getUser_id</p>
                 <p>Endpoint: @api.getEndpoint()</p>
                 <p>Homepage: @api.getHomepage()</p>
                 <p>Version: @api.getVersion()</p>
                 <p>Scope: @api.getScope()</p>
                 <p>Description: @api.getDescription()</p>
-                <p>Support: <a href="@api.getEmail()"></a> @api.getEmail()</p>
             </div>
-
-            @*<div class="col s9">*@
-                @*<div class="row">*@
-                    @*<div class="col s10">*@
-                        @*<h5>Comments</h5>*@
-                    @*</div>*@
-                    @*<div class="col s2">*@
-                        @*<a href="#">*@
-                            @*<i class="material-icons">add</i>*@
-                        @*</a>*@
-                    @*</div>*@
-                @*</div>*@
-                @*<div class="row">*@
-                    @*<div class="col s12" id="comments">*@
-                        @*@for(comment <- comments) {*@
-                            @*<div class="card">*@
-                                @*<div class="card-content">*@
-                                    @*<p>@comment.getContent()</p>*@
-                                @*</div>*@
-                            @*</div>*@
-                        @*}*@
-                    @*</div>*@
-                @*</div>*@
-            @*</div>*@
         </div>
-
-        @*<div id="addCommentModal" class="modal">*@
-            @*<div class="modal-content">*@
-                @*<h4>Type your comment here: </h4>*@
-                @*@helper.form(action = routes.SubmitApiController.addComment(api.getId())) {*@
-                    @*<div class="input-field col s12">*@
-                        @*<input id="content" placeholder="Content" type="text" name="content" autofocus required>*@
-                        @*<label for="content">Content</label>*@
-                    @*</div>*@
-
-                    @*<button id="sendCommentButtom" class="btn right" type="submit">Login*@
-                        @*<i class="material-icons right">send</i>*@
-                    @*</button>*@
-                @*}*@
-            @*</div>*@
-        @*</div>*@
+        @if(username == api.getUser_id()) {
+            <div class="row">
+                <div class="col s12">
+                    <a class="btn-flat right" href="@routes.ApiVersionController.updateApiView(api.getId())">
+                        <span style="margin-right: 10px; display: block; float: left;">Update this API</span>
+                        <i class="material-icons">update</i>
+                    </a>
+                    <a class="btn-flat right" href="@routes.ApiVersionController.allVersionsForApiView(api.getId())">
+                        <span style="margin-right: 10px; display: block; float: left;">See all versions</span>
+                        <i class="material-icons">list</i>
+                    </a>
+                </div>
+            </div>
+        }
     </div>
+
     <script src="@routes.Assets.versioned("javascripts/controllers/addComment.js")" type="text/javascript"></script>
 
 }

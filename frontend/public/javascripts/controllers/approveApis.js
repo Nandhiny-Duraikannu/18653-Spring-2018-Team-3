@@ -29,6 +29,7 @@ $(document).ready(function() {
 
   let displayApis = function (apis) {
     apis = JSON.parse(apis);
+    console.log("apis", apis);
     let pendingApisHTML = "";
     let approvedApisHTML = "";
     for (let i = 0; i < apis.approvedApis.length; i++) {

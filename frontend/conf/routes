@@ -35,14 +35,20 @@ GET     /apis/state                 controllers.ApproveApiController.getApisPerS
 GET     /apis/:id                   controllers.SubmitApiController.displayApiView(id: Int)
 POST    /apis/:id/comment           controllers.SubmitApiController.addComment(id: Int)
 
+# Api version
+GET     /apis/:id/version           controllers.ApiVersionController.updateApiView(id: Int)
+GET     /apis/:id/allversions       controllers.ApiVersionController.allVersionsForApiView(id: Int)
+GET     /apis/:id/versions          controllers.ApiVersionController.allVersionsForApi(id: Int)
+POST    /apis/:id/version           controllers.ApiVersionController.updateApi(id: Int)
+
 # Follow
 POST     /follow                    controllers.FollowApiController.followApi()
 GET      /followers                 controllers.FollowApiController.getFollowers()
 
 #Donation
-GET     /donate                       controllers.DonationController.donationView(showError: String ?= "noval", payId : String ?= "noval")
-POST    /donate                       controllers.DonationController.donate()
-POST    /accesscode                        controllers.DonationController.getAccessToken()
+GET     /donate                     controllers.DonationController.donationView(showError: String ?= "noval", payId : String ?= "noval")
+POST    /donate                     controllers.DonationController.donate()
+POST    /accesscode                 controllers.DonationController.getAccessToken()
 
 
 # For front end static files

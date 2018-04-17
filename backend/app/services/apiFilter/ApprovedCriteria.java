@@ -13,7 +13,6 @@ public class ApprovedCriteria implements ApiStateCriteria {
     @Override
     public List<Api> meetCriteria(List<Api> apis) {
         List<Api> approvedApis = new ArrayList<>();
-
         // Loop through the APIs to filer out the approved ones
         Iterator<Api> apiIterator = apis.iterator();
         while(apiIterator.hasNext()) {
