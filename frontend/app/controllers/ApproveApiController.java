@@ -44,7 +44,7 @@ public class ApproveApiController extends Controller  implements WSBodyReadables
         DynamicForm form = formFactory.form().bindFromRequest();
         int apiId = Integer.valueOf(form.get("apiId"));
         WSRequest request = ws.url(urlService.approveApiURL());
-        System.out.println("urlService.approveApiURL() " + urlService.approveApiURL());return request
+        return request
         .addHeader("Content-Type", "application/json")
         .post("{\"apiId\": " + apiId + "}")
         .thenApply((WSResponse r) -> {
