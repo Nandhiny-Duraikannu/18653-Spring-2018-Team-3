@@ -38,7 +38,8 @@ public class HomeController extends Controller implements WSBodyReadables, WSBod
 
     public Result homeView () {
         String username = session().get("username");
-        return ok(views.html.homeUser.render(username));
+        String userType = session().get("type");
+        return ok(views.html.homeUser.render(username, userType));
     }
 
 }

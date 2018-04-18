@@ -1,10 +1,10 @@
 @import UIForm.ApiForm
 
-@(username: String, apis: List[ApiForm])
+@(username: String, userType: String, apis: List[ApiForm])
 
 @main("Submit a Mashup") {
 
-    @menu(username)
+    @menu(username, userType)
 
     <div class="container">
 

@@ -1,24 +1,30 @@
-@(username: String)
+@(username: String, userType: String)
 
 <nav class="nav-extended">
     <div class="container">
         <div class="nav-wrapper">
             <ul class="left">
-                <li class="tab">Hello @username</li>
+                <li class="tab">Hello @username
+                    @if(userType == "STANDARD_USER") {
+                        (User)
+                    } else {
+                        (Admin)
+                    }
+                </li>
                 <li class="tab"><a href="@routes.HomeController.homeView()"><i class="material-icons">home</i></a></li>
                 <li class="tab"><a href="@routes.FollowerController.myFollowersView()">My Followers</a></li>
                 <li class="tab"><a href="@routes.DonationController.donationView()">Donate</a></li>
-                <!--li class="tab"><a href="@routes.SubmitApiController.apiFormView()">Submit an API</a></li>
-                <li class="tab"><a href="@routes.MashupController.submitMashupView()">Submit a Mashup</a></li-->
             </ul>
             <ul class="right">
+                @if(userType == "ADMIN_USER") {
+                    <li><a href="@routes.ApproveApiController.approveApiView()"><i class="material-icons">check code</i></a></li>
+                }
                 <li><a href="@routes.MessageController.showMessageView()"><i
                 class="material-icons">mail_outline</i></a></li>
-                <li><a href="@routes.MashupController.submitMashupView()"><i
-                class="material-icons">chevron_left add chevron_right </i></a></li>
+                <li><a href="@routes.MashupController.submitMashupView()"><i  class="material-icons">chevron_left add
+                    chevron_right </i></a></li>
                 <li><a href="@routes.SubmitApiController.searchApiView()"><i class="material-icons">search</i></a></li>
-                <li><a href="@routes.UserProfileController.getUserProfile()"><i
-class="material-icons">person</i></a></li>
+                <li><a href="@routes.UserProfileController.getUserProfile()"><i class="material-icons">person</i></a></li>
                 <li><a href="@routes.LoginController.logout"><i class="material-icons">exit_to_app</i></a></li>
             </ul>
         </div>

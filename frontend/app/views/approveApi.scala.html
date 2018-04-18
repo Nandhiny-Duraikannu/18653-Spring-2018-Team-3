@@ -1,0 +1,46 @@
+@(username: String, userType: String)
+
+
+@main("Approve Submissions - Service Repository") {
+
+    @menu(username, userType)
+
+    <div class="container">
+        <h2>Approve Pending APIs</h2>
+
+        <div class="row">
+            <div class="col s12">
+                <h4>Pending APIs</h4>
+                <table id="pendingApisTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>State</th>
+                            <th>Approve</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pendingApisTableBody">
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col s12">
+                <h4>Approved APIs</h4>
+                <table id="approvedApisTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>State</th>
+                        </tr>
+                    </thead>
+                    <tbody id="approvedApisTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="@routes.Assets.versioned("javascripts/controllers/approveApis.js")" type="text/javascript"></script>
+}

@@ -43,16 +43,19 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
 
     public Result apiFormView () {
         String username = session().get("username");
-        return ok(views.html.submitApi.render(username));
+        String userType = session().get("type");
+        return ok(views.html.submitApi.render(username, userType));
     }
 
     public Result searchApiView () {
         String username = session().get("username");
-        return ok(views.html.searchApiMashup.render(username, apiForm, mashForm));
+        String userType = session().get("type");
+        return ok(views.html.searchApiMashup.render(username, userType, apiForm, mashForm));
     }
 
     public CompletionStage<Result> displayApiView (int id) {
         String username = session().get("username");
+        String userType = session().get("type");
         String url = urlService.getApiURL(id);
         // Post the json to create the user in the backend
         WSRequest request = ws.url(url);
@@ -63,8 +66,7 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
             if (r.getStatus() == 200) {
                 ApiForm apiForm = new ApiForm();
 
-                JsonNode body = Json.parse(r.getBody().toString());
-
+                JsonNode body = Json.parse(r.getBody());
                 apiForm.setId(body.findPath("id").asInt());
                 apiForm.setName(body.findPath("name").asText());
                 apiForm.setType(body.findPath("type").asText());
@@ -73,9 +75,18 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
                 apiForm.setVersion(body.findPath("version").asText());
                 apiForm.setScope(body.findPath("scope").asText());
                 apiForm.setDescription(body.findPath("description").asText());
-                apiForm.setEmail(body.findPath("email").asText());
+                apiForm.setUser_id(body.findPath("user").asText());
 
-                return ok(views.html.apiDetail.render(username, apiForm, apiForm.getComments()));
+//                ArrayNode arr = (ArrayNode)comments;
+//                Iterator<JsonNode> it = arr.iterator();
+//
+//                while (it.hasNext()) {
+//                    JsonNode obj = it.next();
+//                    Comment c = new Comment();
+//                    c.setContent(obj.findPath("comment").asText());
+//                    apiForm.addComment(c);
+//                }
+                return ok(views.html.apiDetail.render(username, userType, apiForm, apiForm.getComments()));
             } else {
                 return badRequest("Error while getting API");
             }
@@ -104,6 +115,7 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
 
     public CompletionStage<Result> searchApis () {
         String username = session().get("username");
+        String userType = session().get("type");
         DynamicForm form = formFactory.form().bindFromRequest();
         String url = urlService.searchURL() + "?searchParam=" + form.get("searchParam")+"&type="+form.get("type")+"&userId="+session().get("id");
 
@@ -117,12 +129,12 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
 
                 if(form.get("type").equals("api")) {
                     List<ApiForm> res = generateApiFromJson(r);
-                    return ok(views.html.searchApiMashup.render(username, res, mashForm));
+                    return ok(views.html.searchApiMashup.render(username, userType, res, mashForm));
                 }
                 else if (form.get("type").equals("mashup"))
                 {
                     List<Mashup> res = generateMashupFromJson(r);
-                    return ok(views.html.searchApiMashup.render(username, apiForm, res));
+                    return ok(views.html.searchApiMashup.render(username, userType, apiForm, res));
                 }
                 else{
                     return badRequest("Error searching object type");
