@@ -75,4 +75,6 @@ public class BackendURLService {
 
     public String approveApiURL () { return baseURL + "api/state"; }
 
+    public String getLogMessagesURL () { return baseURL + "log"; }
+
 }

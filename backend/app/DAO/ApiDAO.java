@@ -1,5 +1,6 @@
 package DAO;
 
+import enums.NotificationType;
 import models.*;
 
 import java.util.ArrayList;
@@ -113,6 +114,6 @@ public class ApiDAO {
         ApiState state = new ApprovedApi();
         state.updateApiState(api);
         api.save();
-        api.notifyAllFollowers("approve");
+        api.notifyAllFollowers(NotificationType.APPROVE_NOTIFICATION);
     }
 }

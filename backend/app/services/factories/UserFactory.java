@@ -2,7 +2,7 @@ package services.factories;
 
 import models.Api;
 import models.User;
-import models.UserType;
+import enums.UserType;
 
 import java.util.List;
 

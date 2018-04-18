@@ -66,3 +66,7 @@ GET     /search                     controllers.SubmitApiController.searchApis()
 GET     /messages                   controllers.MessageController.showMessageView()
 GET     /messages/user              controllers.MessageController.getMessagesForUser()
 POST    /messages                   controllers.MessageController.sendMessage()
+
+# Activity Log for Admin
+GET     /log                        controllers.LogMessageController.logMessagesView()
+GET     /log/messages               controllers.LogMessageController.getLogMessages()

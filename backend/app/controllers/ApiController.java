@@ -3,6 +3,7 @@ package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import enums.NotificationType;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.data.FormFactory;
@@ -37,6 +38,7 @@ public class ApiController extends Controller {
     private MashupDAO mashupDAO;
     private ApiDAO apiDAO;
     private UserDAO userDAO;
+    private LogMessageDAO logMessageDAO;
 
     private AbstractFactory apiFactory;
 
@@ -47,6 +49,7 @@ public class ApiController extends Controller {
         this.mashupDAO = new MashupDAO();
         this.apiDAO = new ApiDAO();
         this.userDAO = new UserDAO();
+        this.logMessageDAO = new LogMessageDAO();
 
         this.apiFactory = FactoryProducer.getFactory("api");
     }
@@ -78,6 +81,9 @@ public class ApiController extends Controller {
       
         user.addApi(api);
         user.save();
+
+        logMessageDAO.writeSubmitApiLogMessage(user.getUsername(), name);
+
         return ok(api.toJson());
     }
 
@@ -105,7 +111,7 @@ public class ApiController extends Controller {
             return notFound("User Not Found.");
         }
 
-        api.notifyAllFollowers("follow");
+        api.notifyAllFollowers(NotificationType.FOLLOW_NOTIFICATION);
         api.addFollower(user);
         api.save();
 
@@ -187,11 +193,17 @@ public class ApiController extends Controller {
             apisJson.add(apiJson);
         }
 
+        logMessageDAO.writeSearchApiLogMessage(user.getUsername(), searchParam);
+
         return ok(Json.toJson(apisJson));
     }
 
     public Result getApiById (int id) {
         Api api = apiDAO.getApiById(id);
+
+        if (api != null)
+            logMessageDAO.writeViewApiLogMessage("someone", api.getName());
+
         return ok(api.toJson());
     }
 }

@@ -17,6 +17,7 @@
             </ul>
             <ul class="right">
                 @if(userType == "ADMIN_USER") {
+                    <li><a href="@routes.LogMessageController.logMessagesView()"><i class="material-icons left">list</i>Activity Log</a></li>
                     <li><a href="@routes.ApproveApiController.approveApiView()"><i class="material-icons">check code</i></a></li>
                 }
                 <li><a href="@routes.MessageController.showMessageView()"><i

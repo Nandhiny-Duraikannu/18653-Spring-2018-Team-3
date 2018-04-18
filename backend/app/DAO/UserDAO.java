@@ -1,7 +1,7 @@
 package DAO;
 
 import models.User;
-import models.UserType;
+import enums.UserType;
 import services.factories.*;
 
 import java.util.Iterator;

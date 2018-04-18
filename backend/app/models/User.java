@@ -3,6 +3,8 @@ package models;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import enums.NotificationType;
+import enums.UserType;
 import io.ebean.*;
 import org.mindrot.jbcrypt.BCrypt;
 import play.data.validation.*;
@@ -245,16 +247,16 @@ public class User extends Model {
         return chatRoom.sendMessage(this, receiver, title, content);
     }
 
-    public void sendNotification(Api api, String activity) {
+    public void sendNotification(Api api, NotificationType notificationType) {
         if (notificationMethod == null || notificationMethod.equals("email")) {
             SendNotificationAPI notificationApi = new SendEmailNotification();
-            notificationApi.sendNotification(api.getUser(), this, api.getName(), email, activity);
+            notificationApi.sendNotification(api.getUser(), this, api.getName(), email, notificationType);
         } else if (notificationMethod.equals("phone")) {
             SendNotificationAPI notificationApi = new SendPhoneNotification();
-            notificationApi.sendNotification(api.getUser(), this, api.getName(), phoneNumber, activity);
+            notificationApi.sendNotification(api.getUser(), this, api.getName(), phoneNumber, notificationType);
         } else if (notificationMethod.equals("text")) {
             SendNotificationAPI notificationApi = new SendTextNotification();
-            notificationApi.sendNotification(api.getUser(), this, api.getName(), phoneNumber, activity);
+            notificationApi.sendNotification(api.getUser(), this, api.getName(), phoneNumber, notificationType);
         }
     }
 
