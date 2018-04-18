@@ -45,7 +45,7 @@ public class DonationController extends Controller implements WSBodyReadables, W
 
     public Result donationView(String showError) {
         String username = session().get("username");
-       // getAccessToken();
+        getAccessToken();
         return ok(views.html.makeDonation.render(username, showError));
     }
 
@@ -64,15 +64,15 @@ public class DonationController extends Controller implements WSBodyReadables, W
         paymentJson += "\"month\": \"" + month + "\",";
         paymentJson += "\"year\": \"" + year + "\",";
         paymentJson += "\"sec\": \"" + cvv + "\",";
-        paymentJson += "\"amount\": \"" + amount  + "\"}";
+        paymentJson += "\"amount\": \"" + amount + "\",";
+        paymentJson += "\"accessToken\":" + accessToken + "}";
         // Post the json to create the user in the backend
-        System.out.println("paymentJson:"+paymentJson);
         WSRequest request = ws.url(urlService.donateURL());
         return request
                 .addHeader("Content-Type", "application/json")
                 .post(paymentJson)
                 .thenApply((WSResponse r) -> {
-                    if (r.getStatus() == 200) {
+            if (r.getStatus() == 200) {
                         return redirect(routes.DonationController.donationView("false"));
                      } else {
                             return redirect(routes.DonationController.donationView("true"));
@@ -80,83 +80,27 @@ public class DonationController extends Controller implements WSBodyReadables, W
                 });
     }
 
-//    public String buildJSON(String cardnum, String name, String expireMonth, String expireYear, String cvv, String amount) {
-//        StringBuilder sb = new StringBuilder();
-//
-//        sb.append("{\"intent\": \"sale\",\"payer\": {\"payment_method\": \"credit_card\",\"funding_instruments\": [ {");
-//        sb.append("\"credit_card\": {\"type\": \"visa\",\"number\": \"");
-//        sb.append(cardnum);
-//        sb.append("\",\"expire_month\": \"");
-//        sb.append(expireMonth);
-//        sb.append("\",\"expire_year\": \"");
-//        sb.append(expireYear);
-//        sb.append("\",\"cvv2\": \"");
-//        sb.append(cvv);
-//        sb.append("\",\"first_name\": \"");
-//        sb.append(name);
-//        sb.append("\",\"last_name\": \"shopper\" } }] },\"transactions\": [ {\"amount\": {");
-//        sb.append("\"currency\": \"USD\", \"total\": \"");
-//        sb.append(amount);
-//        sb.append("\" },\"description\": \"Donation\" }] }");
-//
-//        return sb.toString();
-//    }
-//
-//
-//    public CompletionStage<Result> getAccessToken()
-//    {
-//
-//        WSRequest request = ws.url(urlService.paypalAccessToken());
-//        return request
-//                .addHeader("Accept-Language", "en_US")
-//                .addHeader("Content-Type", "application/x-www-form-urlencoded")
-//                .addHeader("Authorization", "Basic QVFTZkdoYmFZYWVzVFhzWG85ODR0X1pwZmNPa093NVZ5VkxibG5NYm9HajVQR2FtZFI3NF9tOEQ4MjZLV3N2NDNCQjBUTTFzUDhiRFk3dWU6RUF3SWlPRGd1amcwM1ZLeVowdmZWZFo5a1lqSnJmQWtJeFhtaWEtQ0I4cFc1ZFRHWWJOQnNWSzFET1AzSU51OUZRX3NqU3BwWjVRS2dYYmw=")
-//                .post("grant_type=client_credentials")
-//                .thenApply((WSResponse x) -> {
-//                    if (x.getStatus() == 200) {
-//                        JsonNode jsonNode = Json.parse(x.getBody());
-//                        accessToken = jsonNode.get("access_token").toString();
-//                        return ok("Access Token Success");
-//
-//                    } else {
-//                        return badRequest("Failed access token");
-//
-//                    }
-//                });
-//    }
-//
-//
-//    // Donate logic
-//    public CompletionStage<Result> donate()
-//    {
-//        Form<DonateForm> form = formFactory.form(DonateForm.class).bindFromRequest();
-//            DonateForm info = form.get();
-//            String cardnum = info.getCardNumber().replaceAll("\\s+", "");
-//            String expireMonth = info.getExpiryMonth();
-//            String expireYear = info.getExpiryYear();
-//            String cvv = info.getCvv();
-//            String amount = info.getAmount();
-//            String name = session().get("username");
-//            String requestBody = buildJSON(cardnum, name, expireMonth, expireYear, cvv, amount);
-//            String json = Json.toJson(requestBody).toString();
-//            accessToken = accessToken.replace("\"", "");
-//            String authorizationValue = "Bearer "+accessToken ;
-//            WSRequest request = ws.url(urlService.paypalPayment());
-//           return request
-//                    .addHeader("Content-Type", "application/json")
-//                    .addHeader("Authorization",authorizationValue )
-//                    .post(requestBody)
-//                    .thenApply((WSResponse r) -> {
-//                        if (r.getStatus() == 201) {
-//                             JsonNode jsonNode = Json.parse(r.getBody());
-//                            String paymentId = jsonNode.get("id").toString();
-//                            WSRequest backendRequest = ws.url(urlService.donateURL(paymentId));
-//                            return redirect(routes.DonationController.donationView("false",paymentId));
-//                        } else {
-//                            return redirect(routes.DonationController.donationView("true"," "));
-//                        }
-//                    });
-//
-//
-//        }
+
+    public CompletionStage<Result> getAccessToken()
+    {
+
+        WSRequest request = ws.url(urlService.paypalAccessToken());
+        return request
+                .addHeader("Accept-Language", "en_US")
+                .addHeader("Content-Type", "application/x-www-form-urlencoded")
+                .addHeader("Authorization", "Basic QVFTZkdoYmFZYWVzVFhzWG85ODR0X1pwZmNPa093NVZ5VkxibG5NYm9HajVQR2FtZFI3NF9tOEQ4MjZLV3N2NDNCQjBUTTFzUDhiRFk3dWU6RUF3SWlPRGd1amcwM1ZLeVowdmZWZFo5a1lqSnJmQWtJeFhtaWEtQ0I4cFc1ZFRHWWJOQnNWSzFET1AzSU51OUZRX3NqU3BwWjVRS2dYYmw=")
+                .post("grant_type=client_credentials")
+                .thenApply((WSResponse x) -> {
+                    if (x.getStatus() == 200) {
+                        JsonNode jsonNode = Json.parse(x.getBody());
+                        accessToken = jsonNode.get("access_token").toString();
+                        return ok("Access Token Success");
+
+                    } else {
+                        return badRequest("Failed access token");
+
+                    }
+                });
+    }
+
 }

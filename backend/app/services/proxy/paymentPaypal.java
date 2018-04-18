@@ -1,5 +1,7 @@
 package services.proxy;
 
+import DAO.DonationDAO;
+import models.Donation;
 import play.libs.Json;
 import play.libs.ws.*;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -17,10 +19,11 @@ import play.libs.Json;
 import play.libs.ws.*;
 import play.mvc.*;
 import play.mvc.Http.*;
-import play.libs.WS.WSRequest;
 import play.data.Form;
 import javax.inject.Inject;
 import java.util.concurrent.CompletionStage;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 
 import play.data.DynamicForm;
 
@@ -28,79 +31,48 @@ import play.data.DynamicForm;
 public class paymentPaypal implements paymentInterface, WSBodyReadables, WSBodyWritables {
 
     private final WSClient ws;
-    public String accessToken;
     public String paymentId;
 
+    private DonationDAO donationDAO = new DonationDAO();
     public final String url_paypal = "https://api.sandbox.paypal.com/v1/payments/payment";
-    public final String url_accessToken = "https://api.sandbox.paypal.com/v1/oauth2/token";
 
     @Inject
-    public paymentPaypal() {
-        System.out.println("insisde constructor");
+    public paymentPaypal(WSClient ws) {
 
-      // this.ws = ws;
-    }
-
-    @Override
-    public String payment(String username, String cardnum, String month, String year, String cvv,String amount){
-
-        System.out.println("test in class");
-       getAccessToken(url_accessToken);
-        System.out.println("accessToken"+accessToken);
-        submitPayment(username,cardnum,month,year,cvv,amount,accessToken);
-        System.out.println("paymentId:"+paymentId);
-      //  String payId = "payidtest";
-        return paymentId;
-
+        this.ws = ws;
 
     }
 
-    public CompletionStage<Result> submitPayment(String username, String cardnum, String month, String year, String cvv,String amount, String accessToken) {
+    public CompletionStage<Result> submitPayment(String username, String cardnum, String month, String year, String cvv,String amount, String accessToken)
+    {
 
             String requestBody = buildJSON(username,cardnum,month,year,cvv,amount);
             String json = Json.toJson(requestBody).toString();
+            WSRequest request = ws.url(url_paypal);
             accessToken = accessToken.replace("\"", "");
             String authorizationValue = "Bearer "+accessToken ;
 
-            WSRequest request = ws.url(url_paypal);
-           return request
-                    .addHeader("Content-Type", "application/json")
-                    .addHeader("Authorization",authorizationValue )
-                    .post(requestBody)
-                    .thenApply((WSResponse r) -> {
-                        if (r.getStatus() == 201) {
-                             JsonNode jsonNode = Json.parse(r.getBody());
-                            paymentId = jsonNode.get("id").toString();
-                            return Results.ok("Payment Successful"+paymentId);
-                        } else {
-                            return Results.badRequest("Failed Transaction");
-                        }
-                    });
-
-    }
-
-    public CompletionStage<Result> getAccessToken(String url_accessToken) {
-
-        System.out.println("url_accessToken:"+url_accessToken);
-        WSClient ws = new WSClient();
-        WSRequest request = ws.url(url_accessToken);
         return request
-                .addHeader("Accept-Language", "en_US")
-                .addHeader("Content-Type", "application/x-www-form-urlencoded")
-                .addHeader("Authorization", "Basic QVFTZkdoYmFZYWVzVFhzWG85ODR0X1pwZmNPa093NVZ5VkxibG5NYm9HajVQR2FtZFI3NF9tOEQ4MjZLV3N2NDNCQjBUTTFzUDhiRFk3dWU6RUF3SWlPRGd1amcwM1ZLeVowdmZWZFo5a1lqSnJmQWtJeFhtaWEtQ0I4cFc1ZFRHWWJOQnNWSzFET1AzSU51OUZRX3NqU3BwWjVRS2dYYmw=")
-                .post("grant_type=client_credentials")
-                .thenApply((WSResponse x) -> {
-                    if (x.getStatus() == 200) {
-                        JsonNode jsonNode = Json.parse(x.getBody());
-                        accessToken = jsonNode.get("access_token").toString();
-                        return Results.ok("Access Token Success");
-
+                .addHeader("Content-Type", "application/json")
+                .addHeader("Authorization", authorizationValue)
+                .post(requestBody)
+                .thenApply((WSResponse r) -> {
+                    if (r.getStatus() == 201) {
+                        JsonNode jsonNode = Json.parse(r.getBody());
+                        paymentId = jsonNode.get("id").toString();
+                        paymentId = paymentId.replace("\"", "");
+                        Donation donate = donationDAO.createInvoice(username, cardnum, month, year, cvv, amount, paymentId);
+                       // return CompletableFuture.completedFuture(paymentId);
+                        return Results.ok(paymentId);
                     } else {
-                        return Results.badRequest("Failed access token");
-
+                        return Results.badRequest("Error in processing transaction");
                     }
                 });
+
     }
+
+
+
 
 
     public String buildJSON(String username, String cardnum, String month, String year, String cvv, String amount) {
