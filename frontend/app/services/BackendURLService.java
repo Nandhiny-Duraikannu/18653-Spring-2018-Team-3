@@ -75,4 +75,8 @@ public class BackendURLService {
 
     public String approveApiURL () { return baseURL + "api/state"; }
 
+    //Topics
+    public String getTopicsURL (String username) { return baseURL + "topics?username="+username; }
+
+
 }
