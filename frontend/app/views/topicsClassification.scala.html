@@ -1,0 +1,26 @@
+@(username: String, userType: String)
+@main("Topics | Service Repository"){
+
+    @menu(username, userType)
+    <div class="container">
+        <div class="row">
+            <div class="col s12" id="resultArea">
+                <h4>Topics Classification</h4>
+                <table id="classificationTable">
+                    <thead>
+                        <tr>
+                            <th>Topic</th>
+                            <th>API</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <script src="@routes.Assets.versioned("javascripts/controllers/topics.js")" type="text/javascript"></script>
+}
