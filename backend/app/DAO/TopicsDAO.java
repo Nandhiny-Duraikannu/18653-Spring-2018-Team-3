@@ -58,14 +58,14 @@ public class TopicsDAO {
 
         //Run LDA
 
-        String LDACommand1 = "/Users/arihanth/Desktop/Assignments/18653-SAD/Team-Project/18653-Spring-2018-Team-3/backend/mallet-2.0.8/bin/mallet import-dir --input ./mallet-2.0.8/topics/ --output tutorial_new.mallet --keep-sequence --remove-stopwords";
-        String LDACommand2 = "/Users/arihanth/Desktop/Assignments/18653-SAD/Team-Project/18653-Spring-2018-Team-3/backend/mallet-2.0.8/bin/mallet train-topics  --input tutorial_new.mallet --num-topics 20 --optimize-interval 20 --output-state topic-state.gz --output-topic-keys tutorial_keys.txt --output-doc-topics tutorial_compostion.csv";
+        String LDACommand1 = "./mallet-2.0.8/bin/mallet import-dir --input ./mallet-2.0.8/topics/ --output ./mallet-2.0.8/tutorial_new.mallet --keep-sequence --remove-stopwords";
+        String LDACommand2 = "./mallet-2.0.8/bin/mallet train-topics  --input ./mallet-2.0.8/tutorial_new.mallet --num-topics 20 --optimize-interval 20 --output-state ./mallet-2.0.8/topic-state.gz --output-topic-keys ./mallet-2.0.8/tutorial_keys.txt --output-doc-topics ./mallet-2.0.8/tutorial_compostion.csv";
 
         try{
             Runtime rt = Runtime.getRuntime();
-            Process pr1 = rt.exec(LDACommand1);
+            Process pr1 = rt.exec("touch test.txt");
             Process pr2 = rt.exec(LDACommand2);
-            int exitVal = pr2.waitFor();
+            int exitVal = pr1.waitFor();
             System.out.println("Process exitValue: " + exitVal);
         } catch(Throwable t){
             t.printStackTrace();
@@ -94,17 +94,25 @@ public class TopicsDAO {
     }
 
     public void LoadComposition (int userId) {
-        String csvFile = "./mallet-2.0.8/apiLDAtutorial_compostion.csv";
+        String csvFile = "./mallet-2.0.8/tutorial_compostion.csv";
         BufferedReader br = null;
         String line = "";
         String cvsSplitBy = "\t";// use tab as separator
-        int c = 0;
         try {
-            
+
+              Topics topics = new Topics();
+              topics.deleteUser(userId);            
               br = new BufferedReader(new FileReader(csvFile));
               while ((line = br.readLine()) != null) {
                   String[] apiCombo = line.split(cvsSplitBy);
-                  c++;
+                  String apiName = apiCombo[1];
+                  int r1 = apiName.lastIndexOf( '/' );
+                  int r2 = apiName.lastIndexOf( '.' );
+                  String newApiName = apiName.substring(r1+1, r2-1);
+                  newApiName = newApiName.replace("%20", " ");
+                  newApiName = newApiName.replace("%22", "");
+                  newApiName = newApiName.replace("%2", "");
+                  System.out.println("API Names : "+newApiName);
                   //Get corresponding topic of each API
                   int topicNum = 0;
                   double probValFinal = Double.parseDouble(apiCombo[2]);
@@ -115,11 +123,13 @@ public class TopicsDAO {
                           probValFinal = probVal;
                       }
                   }
-                  String topicNumber = "Topic "+ topicNum;
+                String topicNumber = "Topic "+ topicNum;
                     //Inserting values into database table
-                Topics topic = new Topics();
-                topic.setParameters(userId, apiCombo[1], topicNumber);
-                topic.save();
+                if(newApiName.length()>0){
+                  Topics topic = new Topics();
+                  topic.setParameters(userId, newApiName, topicNumber);
+                  topic.save();
+                }
             }
             
          } catch (Exception e) {

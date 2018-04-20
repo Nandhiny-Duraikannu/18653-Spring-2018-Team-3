@@ -33,6 +33,7 @@ public class Topics extends Model {
 
     public static final Finder<Long, Topics> find = new Finder<>(Topics.class);
 
+
     // Getters and setters
 
     public int getUserID() {
@@ -79,6 +80,22 @@ public class Topics extends Model {
     //     json.append("\"notificationMethod\": \"").append(this.getNotificationMethod()).append("\"}");
     //     return json.toString();
     // }
+    public static String deleteUser(int id) {
+        System.out.println("User id : "+id);
+        SqlUpdate tangoDown = Ebean.createSqlUpdate("DELETE FROM topics WHERE id = id");
+        tangoDown.setParameter(":id", id);
+        tangoDown.execute();
+        return "Cleared 'topics' table";
+            // List<Topics> topics = Topics.find.query().where().eq("id",id).findList();
+            // if(topics.size() <= 0 ) {
+            //     return "No records exists";
+            // } else {
+            //     for(Topics topic : topics)
+            //         topic.delete();
+            //     return "Cleared 'topics' table";
+            // }
+    }
+
 
     public String toJSON() {
         StringBuffer json = new StringBuffer();
