@@ -20,6 +20,7 @@ import services.factories.ApiFactory;
 
 import models.*;
 import DAO.*;
+import services.LDAadapter.*;
 import services.factories.FactoryProducer;
 import services.submissions.SubmissionCache;
 
@@ -35,18 +36,21 @@ public class ClassificationController extends Controller {
     private final FormFactory formFactory;
 
     private TopicsDAO topicsDAO;
+    private categorize categorize;
+
 
     @Inject
     public ClassificationController(FormFactory formFactory) {
         this.formFactory = formFactory;
         this.topicsDAO = new TopicsDAO();
-    
+
     }
 
     public Result getTopics() {
         DynamicForm form = formFactory.form().bindFromRequest();
-        int userId = Integer.parseInt(form.get("userId"));
-        String topics = topicsDAO.getAllTopics(userId);
+       int userId = Integer.parseInt(form.get("userId"));
+        categorize categorize = new categorizeTopics();
+        String topics = categorize.adaptLDA(userId);
         return ok(topics);
     }
 
