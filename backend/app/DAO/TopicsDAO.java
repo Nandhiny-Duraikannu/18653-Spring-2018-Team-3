@@ -27,12 +27,12 @@ public class TopicsDAO {
 
     ApiDAO apiDAO = new ApiDAO();
 
-    public String getAllTopics (String username) {
+    public String getAllTopics (int userId) {
         
         String parent = "./mallet-2.0.8/topics/";//my-data folder containes all the text files of API's containing individual descriptions
         String extension = ".txt";
         int count = 1;
-        List<Api> apis = apiDAO.searchAPIs(2);
+        List<Api> apis = apiDAO.searchAPIs(userId);
         List<JsonNode> apisJson = new ArrayList<>();
         Iterator<Api> iterator = apis.iterator();
         while (iterator.hasNext()) {
@@ -73,10 +73,10 @@ public class TopicsDAO {
         
 
         //Load data into topics table
-        LoadComposition ();
+        LoadComposition (userId);
 
         Topics topicsDB = new Topics();
-        List<Topics> topics = Topics.find.query().where().eq("username", username).findList();
+        List<Topics> topics = Topics.find.query().where().eq("id", userId).findList();
         StringBuffer stringBuffer = new StringBuffer();
         stringBuffer.append("[");
 
@@ -93,7 +93,7 @@ public class TopicsDAO {
         return stringBuffer.toString();
     }
 
-    public void LoadComposition () {
+    public void LoadComposition (int userId) {
         String csvFile = "./mallet-2.0.8/apiLDAtutorial_compostion.csv";
         BufferedReader br = null;
         String line = "";
@@ -118,7 +118,7 @@ public class TopicsDAO {
                   String topicNumber = "Topic "+ topicNum;
                     //Inserting values into database table
                 Topics topic = new Topics();
-                topic.setParameters("siva", apiCombo[1], topicNumber);
+                topic.setParameters(userId, apiCombo[1], topicNumber);
                 topic.save();
             }
             

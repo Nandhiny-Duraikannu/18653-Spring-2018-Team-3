@@ -39,15 +39,14 @@ public class ClassificationController extends Controller {
     @Inject
     public ClassificationController(FormFactory formFactory) {
         this.formFactory = formFactory;
-
         this.topicsDAO = new TopicsDAO();
     
     }
 
     public Result getTopics() {
         DynamicForm form = formFactory.form().bindFromRequest();
-        String username = form.get("username");
-        String topics = topicsDAO.getAllTopics(username);
+        int userId = Integer.parseInt(form.get("userId"));
+        String topics = topicsDAO.getAllTopics(userId);
         return ok(topics);
     }
 

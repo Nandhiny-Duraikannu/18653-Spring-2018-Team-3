@@ -38,9 +38,9 @@ public class ClassificationController extends Controller implements WSBodyReadab
 
     public CompletionStage<Result> getTopics() {
         //DynamicForm form = formFactory.form().bindFromRequest();
-        String username = session().get("username");
+        int userId = Integer.parseInt(session().get("id"));
         //String userId = session().get("id");
-        WSRequest request = ws.url(urlService.getTopicsURL(username));  //Integer.parseInt
+        WSRequest request = ws.url(urlService.getTopicsURL(userId));  //Integer.parseInt
         return request.get()
         .thenApply((WSResponse r) -> {
             return ok(r.getBody());

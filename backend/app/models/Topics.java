@@ -17,9 +17,9 @@ import services.message.*;
 @Table(name="topics")
 public class Topics extends Model {
 
-    @Column(name = "username")
+    @Column(name = "id")
     @Constraints.Required
-    public String username;
+    public int id;
 
     @Column(name = "apiname")
     @Constraints.Required
@@ -35,12 +35,12 @@ public class Topics extends Model {
 
     // Getters and setters
 
-    public String getUsername() {
-        return username;
+    public int getUserID() {
+        return id;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserID(int id) {
+        this.id = id;
     }
 
 
@@ -62,8 +62,8 @@ public class Topics extends Model {
 
     
 
-    public void setParameters(String username, String apiname, String topicname) {
-        this.username = username;
+    public void setParameters(int id, String apiname, String topicname) {
+        this.id = id;
         this.apiname = apiname;
         this.topicname = topicname;
     }
@@ -84,7 +84,7 @@ public class Topics extends Model {
         StringBuffer json = new StringBuffer();
         json.append("{");
 
-        json.append("\"username\": \"").append(this.getUsername()).append("\", ");
+        json.append("\"id\": \"").append(this.getUserID()).append("\", ");
         json.append("\"topicname\": \"").append(this.getTopicname()).append("\", ");
         json.append("\"apiname\": \"").append(this.getApiname()).append("\"}");
         return json.toString();
