@@ -63,7 +63,7 @@ public class TopicsDAO {
 
         try{
             Runtime rt = Runtime.getRuntime();
-            Process pr1 = rt.exec("touch test.txt");
+            Process pr1 = rt.exec(LDACommand1);
             Process pr2 = rt.exec(LDACommand2);
             int exitVal = pr1.waitFor();
             System.out.println("Process exitValue: " + exitVal);
