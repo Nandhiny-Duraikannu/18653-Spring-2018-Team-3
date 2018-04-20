@@ -1,4 +1,5 @@
-@(username: String, userType: String, showError: String,payId: String)
+@(username: String, userType: String, showError: String)
+
 
 @main("Make A Donation | Service Repository") {
 
@@ -26,15 +27,15 @@
                     </div-->
 
                     <div class="input-field col s12">
-                        <input placeholder="Card Number" name="cardNumber" id="cardNumber" type="text" required>
+                        <input placeholder="Card Number" name="cardnum" id="cardnum" type="text" required>
                         <label for="cardNumber">Card Number</label>
                     </div>
                         <div class="input-field col s12">
-                            <input placeholder="MM" id="expiryMonth" type="text" name="expiryMonth" required>
+                            <input placeholder="MM" id="month" type="text" name="month" required>
                             <label for="expiryMonth">Expiry Month</label>
                         </div>
                     <div class="input-field col s12">
-                        <input placeholder="YYYY" id="expiryYear" type="text" name="expiryYear" required>
+                        <input placeholder="YYYY" id="year" type="text" name="year" required>
                         <label for="expiryYear">Expiry Year</label>
                     </div>
 
@@ -47,7 +48,7 @@
                                 <span class="new badge" id="invalid" data-badge-caption="Invalid Card Details"></span>
                             }
                         @if(showError=="false") {
-                            <span class="new badge" id="success" data-badge-caption="Successful PAYID= @payId"></span>
+                            <span class="new badge" id="success" data-badge-caption="Payment Successful"></span>
                         }
                         @if(showError=="noval") {
 
