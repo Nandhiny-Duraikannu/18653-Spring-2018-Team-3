@@ -31,7 +31,12 @@ public class TopicsDAO {
         
         String parent = "./mallet-2.0.8/topics/";//my-data folder containes all the text files of API's containing individual descriptions
         String extension = ".txt";
-        int count = 1;
+        try{
+            File file = new File(parent);
+            deleteFiles(file);  
+        }catch(IOException e){
+            e.printStackTrace();
+        }
         List<Api> apis = apiDAO.searchAPIs(userId);
         List<JsonNode> apisJson = new ArrayList<>();
         Iterator<Api> iterator = apis.iterator();
@@ -41,8 +46,10 @@ public class TopicsDAO {
             String content = api.get("description").toString();
             String apiName = api.get("name").toString();
             //Create .txt files
-            File newFile = new File(parent, apiName + extension);
+            File newFile = new File(parent + apiName + extension);
+             System.out.println(newFile + " file created in local!333!");
               if(!newFile.exists()) {
+                System.out.println(newFile + " file created in local!!");
                  try {
                   FileWriter fw = new FileWriter(newFile.getAbsoluteFile());
                   BufferedWriter bw = new BufferedWriter(fw);
@@ -91,6 +98,19 @@ public class TopicsDAO {
         }
         stringBuffer.append("]");
         return stringBuffer.toString();
+    }
+
+    public void deleteFiles(File file) throws IOException {
+      try{
+          if (file.isDirectory())
+              for (File f : file.listFiles())
+                deleteFiles(f);
+          else
+              file.delete();
+      } catch(IOException e){
+          e.printStackTrace();
+      }
+      
     }
 
     public void LoadComposition (int userId) {
