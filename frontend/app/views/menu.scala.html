@@ -1,34 +1,34 @@
 @(username: String, userType: String)
 
-<nav class="nav-extended">
-    <div class="container">
-        <div class="nav-wrapper">
-            <ul class="left">
-                <li class="tab">Hello @username
+    <nav class="nav-extended">
+        <div class="container">
+            <div class="nav-wrapper">
+                <ul class="left">
+                    <li class="tab"><a href="@routes.HomeController.homeView()"><i class="material-icons">home</i></a></li>
+                    @if(userType == "ADMIN_USER") {
+                        <li><a href="@routes.LogMessageController.logMessagesView()"><i class="material-icons left">list</i>Log</a></li>
+                        <li><a href="@routes.ApproveApiController.approveApiView()"><i class="material-icons left">check</i>API Check</a></li>
+                    }
+                </ul>
+                <ul id="navbar-dropdown" class="dropdown-content">
+                    <li><a href="@routes.FollowerController.myFollowersView()"><i class="material-icons left">people</i>My Followers</a></li>
+                    <li><a href="@routes.UserProfileController.getUserProfile()"><i class="material-icons left">settings</i>Profile</a></li>
+                    <li><a href="@routes.DonationController.donationView()"><i class="material-icons left">attach_money</i>Donate</a></li>
+                    <li class="divider"></li>
+                    <li><a href="@routes.LoginController.logout"><i class="material-icons left">exit_to_app</i>Log Off</a></li>
+                </ul>
+                <ul class="right">
+                    <li><a href="@routes.MessageController.showMessageView()"><i class="material-icons">mail_outline</i></a></li>
+                    <li><a href="@routes.MashupController.submitMashupView()"><i class="material-icons">chevron_left add chevron_right</i></a></li>
+                    <li><a href="@routes.SubmitApiController.searchApiView()"><i class="material-icons">search</i></a></li>
+                    <li><a class="dropdown-trigger" href="#!" data-target="navbar-dropdown"><i class="material-icons left">person</i>@username
                     @if(userType == "STANDARD_USER") {
                         (User)
                     } else {
                         (Admin)
                     }
-                </li>
-                <li class="tab"><a href="@routes.HomeController.homeView()"><i class="material-icons">home</i></a></li>
-                <li class="tab"><a href="@routes.FollowerController.myFollowersView()">My Followers</a></li>
-                <li class="tab"><a href="@routes.DonationController.donationView()">Donate</a></li>
-            </ul>
-            <ul class="right">
-                @if(userType == "ADMIN_USER") {
-                    <li><a href="@routes.LogMessageController.logMessagesView()"><i class="material-icons left">list</i>Activity Log</a></li>
-                    <li><a href="@routes.ApproveApiController.approveApiView()"><i class="material-icons">check code</i></a></li>
-                }
-                <li><a href="@routes.MessageController.showMessageView()"><i
-                class="material-icons">mail_outline</i></a></li>
-                <li><a href="@routes.MashupController.submitMashupView()"><i  class="material-icons">chevron_left add
-                    chevron_right </i></a></li>
-                <li><a href="@routes.SubmitApiController.searchApiView()"><i class="material-icons">search</i></a></li>
-                <li><a href="@routes.UserProfileController.getUserProfile()"><i class="material-icons">person</i></a></li>
-                <li><a href="@routes.LoginController.logout"><i class="material-icons">exit_to_app</i></a></li>
-            </ul>
+                    <i class="material-icons right">arrow_drop_down</i></a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
-
+    </nav>
