@@ -4,9 +4,8 @@ public class BackendURLService {
 
     public final String baseURL = "http://localhost:9000/";
 
-    public final String paypal = "https://api.sandbox.paypal.com/v1/payments/payment";
+    public final String url_accesstoken = "https://api.sandbox.paypal.com/v1/oauth2/token";
 
-    public final String accessToken = "https://api.sandbox.paypal.com/v1/oauth2/token";
 
     public BackendURLService () { }
 
@@ -50,15 +49,9 @@ public class BackendURLService {
 
 
 
-    public String donateURL (String payId) { return baseURL + "donate?payId="+payId; }
+    public String donateURL () { return baseURL + "donate";}
 
-    public String paypalPayment() {
-        return paypal;
-    }
-
-    public String paypalAccessToken() {
-        return accessToken;
-    }
+    public String paypalAccessToken() {return url_accesstoken; }
 
 
     public String getMessagesForUserURL (int userId) { return baseURL + "messages/" + userId; }

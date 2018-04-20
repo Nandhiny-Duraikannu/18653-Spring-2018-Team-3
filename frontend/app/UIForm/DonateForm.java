@@ -3,12 +3,11 @@ package UIForm;
 public class DonateForm {
 
     protected String amount;
-    protected String cardNumber;
-    protected String expiryYear;
-    protected String expiryMonth;
+    protected String cardnum;
+    protected String year;
+    protected String month;
     protected String cvv;
-    protected String cardType;
-    protected String invoiceID;
+
 
     public String getAmount() {
         return amount;
@@ -18,28 +17,28 @@ public class DonateForm {
         this.amount = amount;
     }
 
-    public String getCardNumber() {
-        return cardNumber;
+    public String getCardnum() {
+        return cardnum;
     }
 
-    public void setCardNumber(String cardNumber) {
-        this.cardNumber = cardNumber;
+    public void setCardnum(String cardnum) {
+        this.cardnum = cardnum;
     }
 
-    public String getExpiryYear() {
-        return expiryYear;
+    public String getYear() {
+        return year;
     }
 
-    public void setExpiryYear(String expiryYear) {
-        this.expiryYear = expiryYear;
+    public void setYear(String year) {
+        this.year = year;
     }
 
-    public String getExpiryMonth() {
-        return expiryMonth;
+    public String getMonth() {
+        return month;
     }
 
-    public void setExpiryMonth(String expiryMonth) {
-        this.expiryMonth = expiryMonth;
+    public void setMonth(String month) {
+        this.month = month;
     }
 
     public String getCvv() {
@@ -50,19 +49,4 @@ public class DonateForm {
         this.cvv = cvv;
     }
 
-    public String getCardType() {
-        return cardType;
-    }
-
-    public void setCardType(String cardType) {
-        this.cardType = cardType;
-    }
-
-    public String getInvoiceID() {
-        return invoiceID;
-    }
-
-    public void setInvoiceID(String invoiceID) {
-        this.invoiceID = invoiceID;
-    }
 }
