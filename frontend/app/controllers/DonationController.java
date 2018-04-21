@@ -22,6 +22,7 @@ import play.data.Form;
 import javax.inject.Inject;
 import java.util.concurrent.CompletionStage;
 import com.fasterxml.jackson.databind.JsonNode;
+import play.data.DynamicForm;
 
 
 
@@ -42,34 +43,44 @@ public class DonationController extends Controller implements WSBodyReadables, W
         this.urlService = new BackendURLService();
     }
 
-    public Result donationView(String showError, String payId) {
+    public Result donationView(String showError) {
         String username = session().get("username");
         String userType = session().get("type");
         getAccessToken();
-        return ok(views.html.makeDonation.render(username, userType, showError,payId));
+
+        return ok(views.html.makeDonation.render(username, userType, showError));
+
     }
 
+    public CompletionStage<Result> donate(){
+        DynamicForm form = formFactory.form().bindFromRequest();
+        String username = session().get("username");
+        String cardnum = form.get("cardnum");
+        String month = form.get("month");
+        String year = form.get("year");
+        String cvv = form.get("cvv");
+        String amount = form.get("amount");
 
-    public String buildJSON(String cardnum, String name, String expireMonth, String expireYear, String cvv, String amount) {
-        StringBuilder sb = new StringBuilder();
-
-        sb.append("{\"intent\": \"sale\",\"payer\": {\"payment_method\": \"credit_card\",\"funding_instruments\": [ {");
-        sb.append("\"credit_card\": {\"type\": \"visa\",\"number\": \"");
-        sb.append(cardnum);
-        sb.append("\",\"expire_month\": \"");
-        sb.append(expireMonth);
-        sb.append("\",\"expire_year\": \"");
-        sb.append(expireYear);
-        sb.append("\",\"cvv2\": \"");
-        sb.append(cvv);
-        sb.append("\",\"first_name\": \"");
-        sb.append(name);
-        sb.append("\",\"last_name\": \"shopper\" } }] },\"transactions\": [ {\"amount\": {");
-        sb.append("\"currency\": \"USD\", \"total\": \"");
-        sb.append(amount);
-        sb.append("\" },\"description\": \"Donation\" }] }");
-
-        return sb.toString();
+        // Post the json to create payment in the backend
+        String paymentJson = "{\"username\": \"" + username + "\",";
+        paymentJson += "\"cardnum\": \"" + cardnum + "\",";
+        paymentJson += "\"month\": \"" + month + "\",";
+        paymentJson += "\"year\": \"" + year + "\",";
+        paymentJson += "\"sec\": \"" + cvv + "\",";
+        paymentJson += "\"amount\": \"" + amount + "\",";
+        paymentJson += "\"accessToken\":" + accessToken + "}";
+        // Post the json to create the user in the backend
+        WSRequest request = ws.url(urlService.donateURL());
+        return request
+                .addHeader("Content-Type", "application/json")
+                .post(paymentJson)
+                .thenApply((WSResponse r) -> {
+            if (r.getStatus() == 200) {
+                        return redirect(routes.DonationController.donationView("false"));
+                     } else {
+                            return redirect(routes.DonationController.donationView("true"));
+                    }
+                });
     }
 
 
@@ -95,38 +106,4 @@ public class DonationController extends Controller implements WSBodyReadables, W
                 });
     }
 
-
-    // Donate logic
-    public CompletionStage<Result> donate()
-    {
-        Form<DonateForm> form = formFactory.form(DonateForm.class).bindFromRequest();
-            DonateForm info = form.get();
-            String cardnum = info.getCardNumber().replaceAll("\\s+", "");
-            String expireMonth = info.getExpiryMonth();
-            String expireYear = info.getExpiryYear();
-            String cvv = info.getCvv();
-            String amount = info.getAmount();
-            String name = session().get("username");
-            String requestBody = buildJSON(cardnum, name, expireMonth, expireYear, cvv, amount);
-            String json = Json.toJson(requestBody).toString();
-            accessToken = accessToken.replace("\"", "");
-            String authorizationValue = "Bearer "+accessToken ;
-            WSRequest request = ws.url(urlService.paypalPayment());
-           return request
-                    .addHeader("Content-Type", "application/json")
-                    .addHeader("Authorization",authorizationValue )
-                    .post(requestBody)
-                    .thenApply((WSResponse r) -> {
-                        if (r.getStatus() == 201) {
-                             JsonNode jsonNode = Json.parse(r.getBody());
-                            String paymentId = jsonNode.get("id").toString();
-                            WSRequest backendRequest = ws.url(urlService.donateURL(paymentId));
-                            return redirect(routes.DonationController.donationView("false",paymentId));
-                        } else {
-                            return redirect(routes.DonationController.donationView("true"," "));
-                        }
-                    });
-
-
-        }
 }

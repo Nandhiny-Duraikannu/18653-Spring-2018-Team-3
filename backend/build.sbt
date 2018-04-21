@@ -12,5 +12,7 @@ libraryDependencies += jdbc
 libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.41"
 libraryDependencies += "org.avaje" % "ebean" % "2.7.3"
 libraryDependencies += "javax.persistence" % "persistence-api" % "1.0.2"
+libraryDependencies += ws
+
 
 PlayKeys.devSettings := Seq("play.server.http.port" -> "9000")

@@ -37,7 +37,12 @@ create table api_comments (
 
 create table donations (
   username                      varchar(255),
-  invoiceid                     varchar(255)
+  cardnum                       varchar(255),
+  month                         varchar(255),
+  year                          varchar(255),
+  cvv                           varchar(255),
+  amount                        varchar(255),
+  payid                         varchar(255)
 );
 
 create table log_message (
