@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import models.*;
 import play.libs.Json;
+import services.apiStates.ApiStates;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,8 @@ public class JsonVisitor {
             followersList.add(follower.toFollowerJson());
         }
 
+        boolean status = api.getState() == ApiStates.APPROVED ? true : false;
+
         ObjectNode result = Json.newObject()
                 .put("id", api.getId())
                 .put("type", "api")
@@ -29,6 +32,7 @@ public class JsonVisitor {
                 .put("version", api.getVersion())
                 .put("scope", api.getScope())
                 .put("description", api.getDescription())
+                .put("approved", status)
                 .put("user", username);
         result.put("followers", Json.toJson(followersList));
         return result;

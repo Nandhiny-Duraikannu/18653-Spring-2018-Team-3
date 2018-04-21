@@ -10,7 +10,7 @@ GET     /resetPassword              controllers.LoginController.resetPasswordVie
 
 GET     /logout                     controllers.LoginController.logout()
 GET     /home                       controllers.HomeController.homeView()
-GET     /myfollowers                controllers.FollowerController.myFollowersView()
+GET     /submissions                controllers.FollowerController.myFollowersView()
 
 POST    /login                      controllers.LoginController.login()
 POST    /signup                     controllers.LoginController.signup()

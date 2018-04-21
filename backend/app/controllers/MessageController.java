@@ -13,6 +13,7 @@ import javax.inject.Inject;
 import DAO.*;
 import models.*;
 import services.message.ChatRoom;
+import services.message.MessageChatRoom;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,7 @@ public class MessageController extends Controller {
 
     public Result getReceivedMessages(int userId) {
         User receiver = userDAO.getUserByUserId(userId);
-        ChatRoom chatRoom = new ChatRoom();
+        MessageChatRoom chatRoom = new MessageChatRoom();
         if (receiver == null) {
             return notFound("User Not Found.");
         } else {
@@ -42,7 +43,7 @@ public class MessageController extends Controller {
 
     @BodyParser.Of(BodyParser.Json.class)
     public Result sendMessage() {
-        ChatRoom chatRoom = new ChatRoom();
+        MessageChatRoom chatRoom = new MessageChatRoom();
 
         JsonNode messageJson = request().body().asJson();
         int senderId = messageJson.findPath("sender_id").asInt();
