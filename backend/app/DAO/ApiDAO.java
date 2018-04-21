@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import services.apiStates.ApiState;
+import services.apiStates.ApiStates;
 import services.apiStates.ApprovedApi;
 
 import java.util.List;
@@ -90,7 +91,10 @@ public class ApiDAO {
     }
 
     public List<Api> searchAPIs (String searchParam, String type) {
-        List<Api> apis = Api.find.query().where().like("name", "%" + searchParam + "%").eq("apitype",type).findList();
+        List<Api> apis = Api.find.query().where()
+                .like("name", "%" + searchParam + "%")
+                .eq("apitype",type)
+                .eq("state", ApiStates.APPROVED).findList();
         return getLastVersionsOfApis(apis);
     }
 

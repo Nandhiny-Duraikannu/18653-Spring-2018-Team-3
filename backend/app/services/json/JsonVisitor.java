@@ -11,7 +11,8 @@ import java.util.List;
 
 public class JsonVisitor {
     private ObjectNode getJson(Api api) {
-        String username = api.getUser().getUsername();
+        User user = api.getUser();
+        String username = (user == null) ? "" : user.getUsername();
         if (username == null) username = "";
 
         List<JsonNode> followersList = new ArrayList<>();

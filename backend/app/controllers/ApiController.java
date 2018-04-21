@@ -78,9 +78,9 @@ public class ApiController extends Controller {
         Api api = apiFactory.getApi(apiType, name, homepage, endpoint, version, scope, description, email, apiIds);
         ApiState apiState = new PendingApi();
         apiState.updateApiState(api);
-      
-        user.addApi(api);
-        user.save();
+
+        api.setUser(user);
+        api.insert();
 
         logMessageDAO.writeSubmitApiLogMessage(user.getUsername(), name);
 
