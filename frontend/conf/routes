@@ -67,3 +67,8 @@ GET     /search                     controllers.SubmitApiController.searchApis()
 GET     /messages                   controllers.MessageController.showMessageView()
 GET     /messages/user              controllers.MessageController.getMessagesForUser()
 POST    /messages                   controllers.MessageController.sendMessage()
+
+#LDA Classification
+GET     /classification             controllers.ClassificationController.classficationView()
+GET     /topics                     controllers.ClassificationController.getTopics()
+
