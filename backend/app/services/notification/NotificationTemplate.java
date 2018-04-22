@@ -1,5 +1,7 @@
 package services.notification;
 
+import enums.*;
+
 public abstract class NotificationTemplate {
     protected String subject;
     protected String title;
@@ -8,14 +10,14 @@ public abstract class NotificationTemplate {
     abstract void initialize();
     abstract void addSubject(String apiName);
     abstract void addTitle(String apiName);
-    abstract void addContent(String activity);
+    abstract void addContent(NotificationType notificationType);
     abstract String sendNotification(String destination);
 
-    public final String send(String apiName, String destination, String activity) {
+    public final String send(String apiName, String destination, NotificationType notificationType) {
         initialize();
         addSubject(apiName);
         addTitle(apiName);
-        addContent(activity);
+        addContent(notificationType);
         return sendNotification(destination);
     }
 }

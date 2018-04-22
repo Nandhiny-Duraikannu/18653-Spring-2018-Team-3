@@ -45,6 +45,13 @@ create table donations (
   payid                         varchar(255)
 );
 
+create table log_message (
+  id                            bigint auto_increment not null,
+  date                          datetime(6),
+  message                       varchar(255),
+  constraint pk_log_message primary key (id)
+);
+
 create table messages (
   id                            bigint auto_increment not null,
   title                         varchar(255),
@@ -53,6 +60,14 @@ create table messages (
   receiver_id                   bigint,
   date                          datetime(6),
   constraint pk_messages primary key (id)
+);
+
+create table task (
+  id                            bigint auto_increment not null,
+  name                          varchar(255),
+  done                          tinyint(1) default 0 not null,
+  due_date                      datetime(6),
+  constraint pk_task primary key (id)
 );
 
 create table users (
@@ -135,7 +150,11 @@ drop table if exists api_comments;
 
 drop table if exists donations;
 
+drop table if exists log_message;
+
 drop table if exists messages;
+
+drop table if exists task;
 
 drop table if exists users;
 

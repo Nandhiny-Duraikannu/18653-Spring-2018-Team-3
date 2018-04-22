@@ -1,14 +1,20 @@
 package services.notification;
 
+import enums.NotificationType;
+import models.Message;
 import models.User;
 import services.message.ChatRoom;
 
-public class SendPhoneNotification implements SendNotificationAPI {
+public class SendPhoneNotification extends SendNotificationAPI {
+
+    public SendPhoneNotification(String apiName, String destination, NotificationType notificationType) {
+        super(apiName, destination, notificationType);
+    }
+
     @Override
-    public void sendNotification(User sender, User receiver, String apiTitle, String destination, String activity) {
-        ChatRoom chatRoom = new ChatRoom();
+    public Message send(User sender, User receiver, String title, String message) {
         PhoneNotification notification = new PhoneNotification();
-        String notificationText = notification.send(apiTitle, destination, activity);
-        chatRoom.sendMessage(sender, receiver, "Notification", notificationText);
+        String notificationText = notification.send(apiName, destination, notificationType);
+        return chatRoom.send(sender, receiver, "Notification", notificationText);
     }
 }

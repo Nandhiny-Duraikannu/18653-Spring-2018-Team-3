@@ -10,7 +10,7 @@ GET     /resetPassword              controllers.LoginController.resetPasswordVie
 
 GET     /logout                     controllers.LoginController.logout()
 GET     /home                       controllers.HomeController.homeView()
-GET     /myfollowers                controllers.FollowerController.myFollowersView()
+GET     /submissions                controllers.FollowerController.myFollowersView()
 
 POST    /login                      controllers.LoginController.login()
 POST    /signup                     controllers.LoginController.signup()
@@ -68,7 +68,10 @@ GET     /messages                   controllers.MessageController.showMessageVie
 GET     /messages/user              controllers.MessageController.getMessagesForUser()
 POST    /messages                   controllers.MessageController.sendMessage()
 
+# Activity Log for Admin
+GET     /log                        controllers.LogMessageController.logMessagesView()
+GET     /log/messages               controllers.LogMessageController.getLogMessages()
+
 #LDA Classification
 GET     /classification             controllers.ClassificationController.classficationView()
 GET     /topics                     controllers.ClassificationController.getTopics()
-

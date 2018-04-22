@@ -1,5 +1,7 @@
 package services.notification;
 
+import enums.NotificationType;
+
 public class EmailNotification extends NotificationTemplate {
 
     @Override
@@ -18,11 +20,11 @@ public class EmailNotification extends NotificationTemplate {
     }
 
     @Override
-    void addContent(String activity) {
+    void addContent(NotificationType notificationType) {
         content = "You received this email because ";
-        if (activity.equalsIgnoreCase("follow"))
+        if (notificationType == NotificationType.FOLLOW_NOTIFICATION)
             content += "someone followed this API. ";
-        else if (activity.equalsIgnoreCase("approve"))
+        else if (notificationType == NotificationType.APPROVE_NOTIFICATION)
             content += "an admin approved this API. ";
         else
             content += "an activity happened to this API. ";
