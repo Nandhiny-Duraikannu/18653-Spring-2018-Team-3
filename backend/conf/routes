@@ -20,7 +20,7 @@ GET     /apis/state                   controllers.ApiController.getApisPerState(
 
 #Follower API
 POST    /follow                       controllers.ApiController.followApi()
-GET     /followers                    controllers.ApiController.getAllFollowers()
+GET     /followers                    controllers.ApiController.getAllFollowers() 
 
 # User profile
 GET     /users/:userId                controllers.UserController.getUserProfile(userId: Int)
@@ -48,3 +48,6 @@ GET     /log                          controllers.LogController.getLogMessages()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file                 controllers.Assets.versioned(path="/public", file: Asset)
+
+#Topics
+GET     /topics                       controllers.ClassificationController.getTopics()

@@ -99,6 +99,7 @@ public class ApiDAO {
     }
 
     public List<Api> searchAPIs (int userId) {
+        System.out.println("UserID CHECK : "+userId);
         List<Api> apis = Api.find.query().where().eq("user_id", userId).findList();
         return getLastVersionsOfApis(apis);
     }

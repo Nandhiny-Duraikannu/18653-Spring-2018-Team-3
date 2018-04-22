@@ -71,3 +71,7 @@ POST    /messages                   controllers.MessageController.sendMessage()
 # Activity Log for Admin
 GET     /log                        controllers.LogMessageController.logMessagesView()
 GET     /log/messages               controllers.LogMessageController.getLogMessages()
+
+#LDA Classification
+GET     /classification             controllers.ClassificationController.classficationView()
+GET     /topics                     controllers.ClassificationController.getTopics()
