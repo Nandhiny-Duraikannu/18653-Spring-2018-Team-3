@@ -177,11 +177,10 @@ public class ApiController extends Controller {
         String type = form.get("type");
 
         User user = userDAO.getUserByUserId(Integer.valueOf(userId));
-        if (user == null)
+        if (user == null) {
             return notFound("User Not Found.");
-
+        }
         List<Api> apis = apiDAO.searchAPIs(searchParam, type);
-
         List<JsonNode> apisJson = new ArrayList<>();
         Iterator<Api> apiIterator = apis.iterator();
 
@@ -194,7 +193,6 @@ public class ApiController extends Controller {
         }
 
         logMessageDAO.writeSearchApiLogMessage(user.getUsername(), searchParam);
-
         return ok(Json.toJson(apisJson));
     }
 
