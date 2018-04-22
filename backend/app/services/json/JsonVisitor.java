@@ -7,7 +7,13 @@ import models.*;
 import play.libs.Json;
 import services.apiStates.ApiStates;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class JsonVisitor {
@@ -23,6 +29,10 @@ public class JsonVisitor {
 
         boolean status = api.getState() == ApiStates.APPROVED ? true : false;
 
+        Date date = api.getUpdatedAt();
+        DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+        String apiDate = df.format(date);
+
         ObjectNode result = Json.newObject()
                 .put("id", api.getId())
                 .put("type", "api")
@@ -33,6 +43,7 @@ public class JsonVisitor {
                 .put("scope", api.getScope())
                 .put("description", api.getDescription())
                 .put("approved", status)
+                .put("date", apiDate)
                 .put("user", username);
         result.put("followers", Json.toJson(followersList));
         return result;

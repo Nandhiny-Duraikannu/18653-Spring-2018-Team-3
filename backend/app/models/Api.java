@@ -57,6 +57,9 @@ public class Api extends Model implements Cloneable {
     @Column(name = "state", columnDefinition = "varchar(255) default ''")
     public ApiStates state;
 
+    @Column(name="date")
+    public Date updatedAt;
+
     @ManyToOne
     public User user;
 
@@ -223,6 +226,7 @@ public class Api extends Model implements Cloneable {
         this.scope = scope;
         this.description = description;
         this.email = email;
+        this.updatedAt = new Date();
     }
 
     public int getSubmissionVersion() {
@@ -252,6 +256,7 @@ public class Api extends Model implements Cloneable {
         sb.append("\"user\": \"").append(this.getUser()).append("\",");
         sb.append("\"comments\": ").append(commentsJson).append("\",");
         sb.append("\"state\": ").append(this.getState()).append("\"");
+        sb.append("\"date\": ").append(this.getUpdatedAt()).append("\"");
         sb.append("}");
         return sb.toString();
     }
@@ -263,6 +268,14 @@ public class Api extends Model implements Cloneable {
         for (User follower: followers) {
             follower.sendNotification(this, notificationType);
         }
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     @Override

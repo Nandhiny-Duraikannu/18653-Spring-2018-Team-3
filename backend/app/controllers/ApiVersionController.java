@@ -14,6 +14,7 @@ import services.factories.*;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class ApiVersionController extends Controller {
     public Result updateApi() {
         Form<Api> apiForm = formFactory.form(Api.class).bindFromRequest();
         Api api = apiForm.get();
-
+        api.setUpdatedAt(new Date());
         ApiMementoOriginator originator = new ApiMementoOriginator();
         originator.setState(api);
         ApiVersionCareTaker careTaker = new ApiVersionCareTaker();

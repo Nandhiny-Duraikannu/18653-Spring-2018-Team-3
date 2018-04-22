@@ -16,6 +16,7 @@ create table apis (
   email                         varchar(255) default '',
   submissionversion             varchar(255) default '' not null,
   state                         varchar(255) default '',
+  date                          datetime(6),
   user_id                       bigint,
   constraint ck_apis_state check ( state in (0,1)),
   constraint pk_apis primary key (id)
