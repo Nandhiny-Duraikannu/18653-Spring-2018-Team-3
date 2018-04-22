@@ -1,7 +1,9 @@
-@import UIForm.ApiForm
-@import UIForm.Mashup
+@import com.fasterxml.jackson.databind.JsonNode
 
-@(username: String, userType: String, apis: List [ApiForm], mashups: List [Mashup])
+@(apisJson: JsonNode)
+
+@username = @{session.get("username")}
+@userType = @{session.get("type")}
 
 @main("Search | Service Repository"){
 
@@ -18,18 +20,6 @@
                             <i class="material-icons prefix">search</i>
                             <input id="searchParam" type="text" name="searchParam">
                         </div>
-                        @*<div class="col s1">*@
-                            @*<label>*@
-                                @*<input class="with-gap" name="type" type="radio" value="api" checked />*@
-                                @*<span>API</span>*@
-                            @*</label>*@
-                        @*</div>*@
-                        @*<div class="col s1">*@
-                            @*<label>*@
-                                @*<input class="with-gap" name="type" type="radio" value="mashup" />*@
-                                @*<span>Mashup</span>*@
-                            @*</label>*@
-                        @*</div>*@
                         <div class="input-field col s2">
                             <select name="type">
                                 <option value="api">API</option>
@@ -59,40 +49,26 @@
                     </thead>
 
                     <tbody>
-                    @apis.map { api =>
-                        <tr>
-                            <td><a href="@routes.SubmitApiController.displayApiView(api.getId())">@api.getName()</a></td>
-                            <td> @api.getDescription() </td>
-                            @if(api.getStatus()=="YES"){
-                                 <td><button class="btn left" type="submit" name="unfollow" >Following
-                                    <i class="material-icons right">star</i>
-                                 </button> </td>
-                            } else{
-                               <td> <button data-id="@api.getId()" class="btn left submitFollowButton" type="submit" name="follow">Follow
-                                    <i class="material-icons right">star_border</i>
-                                </button> </td>
+                        @if(apisJson != null) {
+                            @for(api <- apisJson.elements()) {
+                                <tr>
+                                    <td><a href="@routes.SubmitApiController.displayApiView(api.findPath("id").intValue())">@api.findPath("name").textValue()</a></td>
+                                    <td> @api.findPath("description").textValue() </td>
+                                    @if(api.findPath("following").textValue().equals("YES")) {
+                                        <td><button class="btn left" type="submit" name="unfollow" >Following
+                                            <i class="material-icons right">star</i>
+                                        </button> </td>
+                                    } else {
+                                        <td> <button data-id="@api.findPath("id").textValue()" class="btn left submitFollowButton" type="submit" name="follow">
+                                            Follow
+                                            <i class="material-icons right">star_border</i>
+                                        </button> </td>
 
+                                    }
+
+                                </tr>
                             }
-                           
-                        </tr>
-                    }
-                        @mashups.map { mashup =>
-                            <tr>
-                                <td><a href="@routes.SubmitApiController.displayApiView(mashup.getId())"> @mashup.getName()</a></td>
-                                <td> @mashup.getDescription() </td>
-                                @if(mashup.getStatus()=="YES"){
-                                     <td><button class="btn left" type="submit" name="unfollow">Following
-                                        <i class="material-icons right">following</i>
-                                     </button> </td>
-                                } else{
-                                   <td> <button data-id="@mashup.getId()" class="btn left submitFollowButton" type="submit" name="follow">Follow
-                                        <i class="material-icons right">follow</i>
-                                    </button> </td>
-
-                                }
-                            </tr>
                         }
-
                     </tbody>
                 </table>
             </div>

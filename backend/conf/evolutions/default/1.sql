@@ -63,6 +63,14 @@ create table messages (
   constraint pk_messages primary key (id)
 );
 
+create table task (
+  id                            bigint auto_increment not null,
+  name                          varchar(255),
+  done                          tinyint(1) default 0 not null,
+  due_date                      datetime(6),
+  constraint pk_task primary key (id)
+);
+
 create table topics (
   id                            integer not null,
   apiname                       varchar(255),
@@ -152,6 +160,8 @@ drop table if exists donations;
 drop table if exists log_message;
 
 drop table if exists messages;
+
+drop table if exists task;
 
 drop table if exists topics;
 

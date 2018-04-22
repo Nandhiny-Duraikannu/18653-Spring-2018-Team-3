@@ -1,6 +1,9 @@
-@import UIForm.ApiForm
+@import com.fasterxml.jackson.databind.JsonNode
 
-@(username: String, userType: String, apis: List[ApiForm])
+@(apis: JsonNode)
+
+@username = @{session.get("username")}
+@userType = @{session.get("type")}
 
 @main("Submit a Mashup") {
 
@@ -29,20 +32,43 @@
                 </div>
                 <div>
                     <div class="input-field col s12">
-                        <input placeholder="Name" id="name" name="name" type="text" required autofocus>
+                        <input id="name" name="name" type="text" required autofocus>
                         <label for="name">Name</label>
                     </div>
                    <!--div class="input-field col s12">
                         <input id="type" name="type" type="hidden" value="mashup">
                     </div-->
                     <div class="input-field col s12">
-                        <textarea placeholder="Description" id="description" name="description" class="materialize-textarea"></textarea>
+                        <textarea id="description" name="description" class="materialize-textarea"></textarea>
                         <label for="description">Description</label>
                     </div>
-                    <!--div class="input-field col s12">
+
+                    <div class="input-field col s12">
+                        <input id="homepage" type="text" name="homepage">
+                        <label for="homepage">API Provider's Home Page</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="endpoint" type="text" name="endpoint">
+                        <label for="endpoint">API Endpoint</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="version" type="text" name="version">
+                        <label for="version">Version</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <select id="scope" name="scope">
+                            <option value="" disabled selected></option>
+                            <option value="meta">Metaservice API</option>
+                            <option value="micro">Microservice API</option>
+                            <option value="single">Single Purpose API</option>
+                        </select>
+                        <label>Scope</label>
+                    </div>
+                    <div class="input-field col s12">
                         <input id="email" type="email" name="email">
                         <label for="email">Support Email Address</label>
-                    </div-->
+                    </div>
+
                     <div id = "mashupSpecific">
                         <div class="row">
                             <div id="mashupapis">
@@ -50,8 +76,10 @@
                                     @*<input  id="apiIds" name="apiIds[]" type="text" multiple>*@
                                      <select name="apiIds[]" multiple>
                                          <option value="" disabled selected>Choose your option</option>
-                                         @apis.map { api =>
-                                             <option value="@api.getId">@api.getName</option>
+                                         @if(apis != null) {
+                                             @for(api <- apis.elements()) {
+                                                 <option value="@api.findPath("id").intValue()">@api.findPath("name").textValue()</option>
+                                             }
                                          }
                                      </select>
                                      <label>Select APIs</label>

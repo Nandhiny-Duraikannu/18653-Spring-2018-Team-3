@@ -8,6 +8,11 @@ public class Mashup {
     private String user_id;
     private String type;
     private String status;
+    private String homepage;
+    private String endpoint;
+    private String email;
+    private String scope;
+    private String version;
 
     private String[] apiIds;
 
@@ -66,6 +71,46 @@ public class Mashup {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getHomepage() {
+        return homepage;
+    }
+
+    public void setHomepage(String homepage) {
+        this.homepage = homepage;
+    }
+
+    public String getEndpoint() {
+        return endpoint;
+    }
+
+    public void setEndpoint(String endpoint) {
+        this.endpoint = endpoint;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getScope() {
+        return scope;
+    }
+
+    public void setScope(String scope) {
+        this.scope = scope;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
     }
 
     @Override

@@ -7,6 +7,7 @@ import play.data.DynamicForm;
 import play.data.Form;
 import play.data.FormFactory;
 import play.libs.Json;
+import play.libs.concurrent.HttpExecutionContext;
 import play.libs.ws.*;
 import play.mvc.*;
 import scala.util.parsing.json.JSONObject;
@@ -29,16 +30,18 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
     private final FormFactory formFactory;
     private final WSClient ws;
     private final BackendURLService urlService;
+    private final HttpExecutionContext httpExecutionContext;
     private List<ApiForm> apiForm = new ArrayList<>();
     private List<Mashup> mashForm =new ArrayList<>();
 
 
 
     @Inject
-    public SubmitApiController(WSClient ws, FormFactory formFactory) {
+    public SubmitApiController(WSClient ws, FormFactory formFactory, HttpExecutionContext ec) {
         this.ws = ws;
         this.formFactory = formFactory;
         this.urlService = new BackendURLService();
+        this.httpExecutionContext = ec;
     }
 
     public Result apiFormView () {
@@ -48,9 +51,7 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
     }
 
     public Result searchApiView () {
-        String username = session().get("username");
-        String userType = session().get("type");
-        return ok(views.html.searchApiMashup.render(username, userType, apiForm, mashForm));
+        return ok(views.html.searchApiMashup.render(null));
     }
 
     public CompletionStage<Result> displayApiView (int id) {
@@ -97,13 +98,11 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
         Form<ApiForm> apiForm = formFactory.form(ApiForm.class).bindFromRequest();
         ApiForm apiData = apiForm.get();
         apiData.setUser_id(session().get("id"));
-        String apiJson = Json.toJson(apiData).toString();
 
         // Post the json to create the user in the backend
         WSRequest request = ws.url(urlService.submitApiURL());
         return request
-        .addHeader("Content-Type", "application/json")
-        .post(apiJson)
+        .post(Json.toJson(apiData))
         .thenApply((WSResponse r) -> {
             if (r.getStatus() == 200) {
                 return redirect(routes.HomeController.homeView());
@@ -114,8 +113,6 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
     }
 
     public CompletionStage<Result> searchApis () {
-        String username = session().get("username");
-        String userType = session().get("type");
         DynamicForm form = formFactory.form().bindFromRequest();
         String url = urlService.searchURL() + "?searchParam=" + form.get("searchParam")+"&type="+form.get("type")+"&userId="+session().get("id");
 
@@ -124,17 +121,15 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
         return request
         .addHeader("Content-Type", "application/json")
         .get()
-        .thenApply((WSResponse r) -> {
+        .thenApplyAsync((WSResponse r) -> {
             if (r.getStatus() == 200) {
 
                 if(form.get("type").equals("api")) {
-                    List<ApiForm> res = generateApiFromJson(r);
-                    return ok(views.html.searchApiMashup.render(username, userType, res, mashForm));
+                    return ok(views.html.searchApiMashup.render(r.asJson()));
                 }
                 else if (form.get("type").equals("mashup"))
                 {
-                    List<Mashup> res = generateMashupFromJson(r);
-                    return ok(views.html.searchApiMashup.render(username, userType, apiForm, res));
+                    return ok(views.html.searchApiMashup.render(r.asJson()));
                 }
                 else{
                     return badRequest("Error searching object type");
@@ -142,37 +137,7 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
             } else {
                 return badRequest("Error while searching ");
             }
-        });
-    }
-
-    private List<ApiForm> generateApiFromJson (WSResponse r) {
-        JsonNode jsonNode = Json.parse(r.getBody());
-        List<ApiForm> apis = new ArrayList<>();
-        for (JsonNode api : jsonNode) {
-            ApiForm newApi = new ApiForm();
-            newApi.setId(api.get("id").asInt());
-            newApi.setName(api.get("name").asText());
-            newApi.setDescription(api.get("description").asText());
-            newApi.setStatus(api.get("following").asText());
-
-            apis.add(newApi);
-        }
-        return apis;
-    }
-
-    private List<Mashup> generateMashupFromJson (WSResponse r) {
-        JsonNode jsonNode = Json.parse(r.getBody());
-        List<Mashup> mashups = new ArrayList<Mashup>();
-        for (JsonNode mashup : jsonNode) {
-            Mashup newMashup = new Mashup();
-            newMashup.setId(mashup.get("id").asInt());
-
-            newMashup.setName(mashup.get("name").asText());
-            newMashup.setDescription(mashup.get("description").asText());
-            newMashup.setStatus(mashup.get("following").asText());
-            mashups.add(newMashup);
-        }
-        return mashups;
+        }, httpExecutionContext.current());
     }
 
     public Result addComment (int id) {

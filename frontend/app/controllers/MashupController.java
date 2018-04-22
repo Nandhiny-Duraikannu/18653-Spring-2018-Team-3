@@ -5,6 +5,7 @@ import UIForm.Mashup;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.data.FormFactory;
+import play.libs.concurrent.HttpExecutionContext;
 import play.libs.ws.*;
 import com.fasterxml.jackson.databind.JsonNode;
 import play.libs.Json;
@@ -21,42 +22,28 @@ public class MashupController extends Controller implements WSBodyReadables, WSB
     private final FormFactory formFactory;
     private final WSClient ws;
     private final BackendURLService urlService;
+    private final HttpExecutionContext httpExecutionContext;
     private List<String> apiIds;
     private Form<Mashup> mashupForm;
     private String[] blankApiIds = {"0"};
 
 
     @Inject
-    public MashupController(WSClient ws, FormFactory formFactory) {
+    public MashupController(WSClient ws, FormFactory formFactory, HttpExecutionContext ec) {
         this.ws = ws;
         this.formFactory = formFactory;
         this.urlService = new BackendURLService();
+        this.httpExecutionContext = ec;
     }
 
     public CompletionStage<Result> submitMashupView () {
-        WSRequest request = ws.url(urlService.getAllApisURL());
-        String username = session().get("username");
-        String userType = session().get("type");
+        WSRequest request = ws.url(urlService.getApiPerState());
         return request.get()
-                .thenApply((WSResponse r) -> {
-                    List<ApiForm> apis = generateApiFromJson(r);
-                    return ok(views.html.mashupForm.render(username, userType,  apis));
-                });
-    }
-
-    // TODO: remove later
-    private List<ApiForm> generateApiFromJson (WSResponse r) {
-        JsonNode jsonNode = Json.parse(r.getBody());
-        List<ApiForm> apis = new ArrayList<>();
-        for (JsonNode api : jsonNode) {
-            ApiForm newApi = new ApiForm();
-            newApi.setId(api.get("id").asInt());
-            newApi.setName(api.get("name").asText());
-            newApi.setDescription(api.get("description").asText());
-
-            apis.add(newApi);
-        }
-        return apis;
+                .thenApplyAsync((WSResponse r) -> {
+                    JsonNode approvedApis = r.asJson().findPath("approvedApis");
+                    System.out.println(approvedApis.toString());
+                    return ok(views.html.mashupForm.render(approvedApis));
+                }, httpExecutionContext.current());
     }
 
     private List<Mashup> generateMashupFromJson (WSResponse x) {
@@ -69,8 +56,6 @@ public class MashupController extends Controller implements WSBodyReadables, WSB
             mashups.add(newMashup);
         }
         return mashups;
-
-
     }
 
     public CompletionStage<Result> mashupListView () {
@@ -109,13 +94,12 @@ public class MashupController extends Controller implements WSBodyReadables, WSB
             mashup.setApiIds(blankApiIds);
         }
 
-        String mashupJson = Json.toJson(mashup).toString();
+        System.out.println(Json.toJson(mashup));
 
         // Post the json to create the user in the backend
         WSRequest request = ws.url(urlService.submitMashupURL());
         return request
-        .addHeader("Content-Type", "application/json")
-        .post(mashupJson)
+        .post(Json.toJson(mashup))
         .thenApply((WSResponse r) -> {
             if (r.getStatus() == 200) {
                 return redirect(routes.HomeController.homeView());
@@ -124,6 +108,4 @@ public class MashupController extends Controller implements WSBodyReadables, WSB
             }
         });
     }
-
-
 }
