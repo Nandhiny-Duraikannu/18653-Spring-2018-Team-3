@@ -26,32 +26,24 @@ import java.util.concurrent.CompletionStage;
  * This controller contains an action to handle HTTP requests
  * to the application's home page.
  */
-public class SubmitApiController extends Controller implements WSBodyReadables, WSBodyWritables {
+public class ApiController extends Controller implements WSBodyReadables, WSBodyWritables {
     private final FormFactory formFactory;
     private final WSClient ws;
     private final BackendURLService urlService;
     private final HttpExecutionContext httpExecutionContext;
-    private List<ApiForm> apiForm = new ArrayList<>();
-    private List<Mashup> mashForm =new ArrayList<>();
 
-
+    private String[] blankApiIds = {"0"};
 
     @Inject
-    public SubmitApiController(WSClient ws, FormFactory formFactory, HttpExecutionContext ec) {
+    public ApiController(WSClient ws, FormFactory formFactory, HttpExecutionContext ec) {
         this.ws = ws;
         this.formFactory = formFactory;
         this.urlService = new BackendURLService();
         this.httpExecutionContext = ec;
     }
 
-    public Result apiFormView () {
-        String username = session().get("username");
-        String userType = session().get("type");
-        return ok(views.html.submitApi.render(username, userType));
-    }
-
     public Result searchApiView () {
-        return ok(views.html.searchApiMashup.render(null));
+        return ok(views.html.search.render(null));
     }
 
     public CompletionStage<Result> displayApiView (int id) {
@@ -94,22 +86,36 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
         });
     }
 
+    public CompletionStage<Result> submitView () {
+        WSRequest request = ws.url(urlService.getApiPerState());
+        return request.get()
+                .thenApplyAsync((WSResponse r) -> {
+                    JsonNode approvedApis = r.asJson().findPath("approvedApis");
+                    return ok(views.html.submitForm.render(approvedApis));
+                }, httpExecutionContext.current());
+    }
+
     public CompletionStage<Result> submitApi () {
-        Form<ApiForm> apiForm = formFactory.form(ApiForm.class).bindFromRequest();
-        ApiForm apiData = apiForm.get();
-        apiData.setUser_id(session().get("id"));
+        Form<Mashup> mashupForm = formFactory.form(Mashup.class).bindFromRequest();
+        Mashup mashup = mashupForm.get();
+        mashup.setUser_id(session().get("id"));
+        String typeCheck = mashup.getType();
+
+        if(typeCheck.equals("api")) {
+            mashup.setApiIds(blankApiIds);
+        }
 
         // Post the json to create the user in the backend
-        WSRequest request = ws.url(urlService.submitApiURL());
+        WSRequest request = ws.url(urlService.submitMashupURL());
         return request
-        .post(Json.toJson(apiData))
-        .thenApply((WSResponse r) -> {
-            if (r.getStatus() == 200) {
-                return redirect(routes.HomeController.homeView());
-            } else {
-                return badRequest("Error while submitting API");
-            }
-        });
+                .post(Json.toJson(mashup))
+                .thenApply((WSResponse r) -> {
+                    if (r.getStatus() == 200) {
+                        return redirect(routes.HomeController.homeView());
+                    } else {
+                        return badRequest("Error while trying to submit mashup");
+                    }
+                });
     }
 
     public CompletionStage<Result> searchApis () {
@@ -123,17 +129,7 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
         .get()
         .thenApplyAsync((WSResponse r) -> {
             if (r.getStatus() == 200) {
-
-                if(form.get("type").equals("api")) {
-                    return ok(views.html.searchApiMashup.render(r.asJson()));
-                }
-                else if (form.get("type").equals("mashup"))
-                {
-                    return ok(views.html.searchApiMashup.render(r.asJson()));
-                }
-                else{
-                    return badRequest("Error searching object type");
-                }
+                return ok(views.html.search.render(r.asJson()));
             } else {
                 return badRequest("Error while searching ");
             }

@@ -6,7 +6,7 @@ $(document).ready(function() {
 
   let getPendingApiHtml = function (api) {
     let result = "<tr>" +
-      "<td><a href=\"/apis/" + api.id + "\">" + api.name + "</a></td>" +
+      "<td><a href=\"/api/" + api.id + "\">" + api.name + "</a></td>" +
       "<td>" + api.description + "</td>" +
       "<td><span class=\"new badge blue\" data-badge-caption=\"\">Pending</span></td>" +
       "<td>" +
@@ -20,7 +20,7 @@ $(document).ready(function() {
 
   let getApprovedApiHtml = function (api) {
     let result = "<tr>" +
-      "<td><a href=\"/apis/" + api.id + "\">" + api.name + "</a></td>" +
+      "<td><a href=\"/api/" + api.id + "\">" + api.name + "</a></td>" +
       "<td>" + api.description + "</td>" +
       "<td><span class=\"new badge green\" data-badge-caption=\"\">Approved</span></td>"
       "</tr>";
@@ -44,7 +44,7 @@ $(document).ready(function() {
 
   let approveApi = function (apiId) {
     $.ajax({
-      url: "/apis/approve",
+      url: "/api/approve",
       data: { apiId: apiId },
       type: "POST",
       success: () => {

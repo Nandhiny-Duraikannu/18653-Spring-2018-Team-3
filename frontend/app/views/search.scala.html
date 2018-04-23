@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col s12">
                 <h3>Search for API/Mashup</h3>
-                @helper.form(action = routes.SubmitApiController.searchApis()) {
+                @helper.form(action = routes.ApiController.searchApis()) {
 
                     <div class="row">
                         <div class="input-field col s8">
@@ -52,7 +52,7 @@
                         @if(apisJson != null) {
                             @for(api <- apisJson.elements()) {
                                 <tr>
-                                    <td><a href="@routes.SubmitApiController.displayApiView(api.findPath("id").intValue())">@api.findPath("name").textValue()</a></td>
+                                    <td><a href="@routes.ApiController.displayApiView(api.findPath("id").intValue())">@api.findPath("name").textValue()</a></td>
                                     <td> @api.findPath("description").textValue() </td>
                                     @if(api.findPath("following").textValue().equals("YES")) {
                                         <td><button class="btn left" type="submit" name="unfollow" >Following

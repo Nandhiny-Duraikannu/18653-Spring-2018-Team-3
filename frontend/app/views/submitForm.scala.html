@@ -12,7 +12,7 @@
     <div class="container">
 
         <div class="row">
-            @helper.form(routes.MashupController.submitMashup()) {
+            @helper.form(routes.ApiController.submitApi()) {
                 <h2>Submit an API/Mashup</h2>
                 <div class="row">
                     <div class="col s12">
@@ -35,9 +35,6 @@
                         <input id="name" name="name" type="text" required autofocus>
                         <label for="name">Name</label>
                     </div>
-                   <!--div class="input-field col s12">
-                        <input id="type" name="type" type="hidden" value="mashup">
-                    </div-->
                     <div class="input-field col s12">
                         <textarea id="description" name="description" class="materialize-textarea"></textarea>
                         <label for="description">Description</label>
