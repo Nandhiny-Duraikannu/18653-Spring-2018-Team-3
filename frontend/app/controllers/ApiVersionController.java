@@ -43,7 +43,7 @@ public class ApiVersionController extends Controller {
         .addHeader("Content-Type", "application/json")
         .post(Json.toJson(api))
         .thenApply((WSResponse r) -> {
-            return redirect(routes.SubmitApiController.displayApiView(api.getId()));
+            return redirect(routes.ApiController.displayApiView(api.getId()));
         });
     }
 

@@ -1,0 +1,80 @@
+@import com.fasterxml.jackson.databind.JsonNode
+
+@(apisJson: JsonNode)
+
+@username = @{session.get("username")}
+@userType = @{session.get("type")}
+
+@main("Search | Service Repository"){
+
+    @menu(username, userType)
+
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h3>Search for API/Mashup</h3>
+                @helper.form(action = routes.ApiController.searchApis()) {
+
+                    <div class="row">
+                        <div class="input-field col s8">
+                            <i class="material-icons prefix">search</i>
+                            <input id="searchParam" type="text" name="searchParam">
+                        </div>
+                        <div class="input-field col s2">
+                            <select name="type">
+                                <option value="api">API</option>
+                                <option value="mashup">Mashup</option>
+                            </select>
+                            <label>API Type</label>
+                        </div>
+                        <div class="input-field col s2">
+                            <button id="submitSearchButton" class="btn left" type="submit" name="search">Search
+                                <i class="material-icons right">search</i>
+                            </button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12" id="resultArea">
+                <h4>Search Results</h4>
+                <table id="apiTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Follow</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @if(apisJson != null) {
+                            @for(api <- apisJson.elements()) {
+                                <tr>
+                                    <td><a href="@routes.ApiController.displayApiView(api.findPath("id").intValue())">@api.findPath("name").textValue()</a></td>
+                                    <td> @api.findPath("description").textValue() </td>
+                                    @if(api.findPath("following").textValue().equals("YES")) {
+                                        <td><button class="btn left" type="submit" name="unfollow" >Following
+                                            <i class="material-icons right">star</i>
+                                        </button> </td>
+                                    } else {
+                                        <td> <button data-id="@api.findPath("id").textValue()" class="btn left submitFollowButton" type="submit" name="follow">
+                                            Follow
+                                            <i class="material-icons right">star_border</i>
+                                        </button> </td>
+
+                                    }
+
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <script src="@routes.Assets.versioned("javascripts/controllers/followApi.js")" type="text/javascript"></script>
+}
+

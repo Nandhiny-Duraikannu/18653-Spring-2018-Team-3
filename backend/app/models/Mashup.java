@@ -6,12 +6,16 @@ import javax.persistence.*;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import services.json.JsonVisitor;
 
+import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 
 @Entity
 @DiscriminatorValue("mashup")
 public class Mashup extends Api {
+
+    @Column(name="date")
+    public Date updatedAt;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "mashup_apis",
