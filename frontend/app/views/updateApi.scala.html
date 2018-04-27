@@ -10,6 +10,9 @@
         <div class="row">
             <h5>@api.getType().toUpperCase() info</h5>
             @helper.form(action = routes.ApiVersionController.updateApi(api.getId)) {
+                <div class="input-field col s12" id="submissionType">
+                    <input type="text" name="type" value="@api.getType()">
+                </div>
                 <div class="input-field col s12">
                     <input id="name" type="text" name="name" value="@api.getName()" autofocus>
                     <label for="name">API Name</label>
@@ -31,11 +34,13 @@
                     <label for="description">API Description</label>
                 </div>
                 <div class="col s12">
-                    <button class="btn right" type="submit">Update API
+                    <button class="btn right" type="submit">Update @api.getType()
                         <i class="material-icons right">update</i>
                     </button>
                 </div>
             }
         </div>
     </div>
+
+    <script src="@routes.Assets.versioned("javascripts/controllers/updateApi.js")" type="text/javascript"></script>
 }

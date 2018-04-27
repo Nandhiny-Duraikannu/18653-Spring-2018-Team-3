@@ -33,16 +33,32 @@ public class ApiVersionController extends Controller {
 
     @BodyParser.Of(BodyParser.Json.class)
     public Result updateApi() {
-        Form<Api> apiForm = formFactory.form(Api.class).bindFromRequest();
-        Api api = apiForm.get();
-        api.setUpdatedAt(new Date());
-        ApiMementoOriginator originator = new ApiMementoOriginator();
-        originator.setState(api);
-        ApiVersionCareTaker careTaker = new ApiVersionCareTaker();
-        careTaker.loadVersions(Integer.parseInt(api.getId().toString()));
-        careTaker.add(originator.save(api));
-        careTaker.saveVersions();
-        return ok(api.toJson());
+        DynamicForm form = formFactory.form().bindFromRequest();
+        String type = form.get("type");
+
+        if (type.equalsIgnoreCase("api")) {
+            Form<Api> apiForm = formFactory.form(Api.class).bindFromRequest();
+            Api api = apiForm.get();
+            api.setUpdatedAt(new Date());
+            ApiMementoOriginator originator = new ApiMementoOriginator();
+            originator.setState(api);
+            ApiVersionCareTaker careTaker = new ApiVersionCareTaker();
+            careTaker.loadVersions(Integer.parseInt(api.getId().toString()));
+            careTaker.add(originator.save(api));
+            careTaker.saveVersions();
+            return ok(api.toJson());
+        } else {
+            Form<Mashup> mashupForm = formFactory.form(Mashup.class).bindFromRequest();
+            Mashup mashup = mashupForm.get();
+            mashup.setUpdatedAt(new Date());
+            ApiMementoOriginator originator = new ApiMementoOriginator();
+            originator.setState(mashup);
+            ApiVersionCareTaker careTaker = new ApiVersionCareTaker();
+            careTaker.loadVersions(Integer.parseInt(mashup.getId().toString()));
+            careTaker.add(originator.save(mashup));
+            careTaker.saveVersions();
+            return ok(mashup.toJson());
+        }
     }
 
     public Result getVersionsForApi(int apiId) {
