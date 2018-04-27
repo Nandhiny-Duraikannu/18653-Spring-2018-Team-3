@@ -8,14 +8,14 @@
     @menu(username, userType)
 
     <div class="container">
-        <h2>You are currently updating @api.getType() @api.getName()</h2>
+        <h2>You are currently updating @api.getType() <i>"@api.getName()"</i></h2>
 
         <div class="row">
             <div class="col s3">
                 <h5>@api.getType() info</h5>
                 <p>Published by: @api.getUser_id</p>
-                <p>Endpoint: @api.getEndpoint()</p>
-                <p>Homepage: @api.getHomepage()</p>
+                <p>Homepage: <a href="@api.getHomepage()">@api.getHomepage()</a></p>
+                <p>Endpoint: <a href="@api.getEndpoint()">@api.getEndpoint()</a></p>
                 <p>Version: @api.getVersion()</p>
                 <p>Scope: @api.getScope()</p>
                 <p>Description: @api.getDescription()</p>
@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col s12">
                     <a class="btn-flat right" href="@routes.ApiVersionController.updateApiView(api.getId())">
-                        <span style="margin-right: 10px; display: block; float: left;">Update this API</span>
+                        <span style="margin-right: 10px; display: block; float: left;">Update this @api.getType()</span>
                         <i class="material-icons">update</i>
                     </a>
                     <a class="btn-flat right" href="@routes.ApiVersionController.allVersionsForApiView(api.getId())">
