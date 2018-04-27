@@ -16,7 +16,9 @@ public class ApiBuilder {
     }
 
     public Api buildApi (Long apiId) {
-        Api api = apiDAO.getApiById(Integer.valueOf(apiId.toString()));
+//        Api api = apiDAO.getApiById(Integer.valueOf(apiId.toString()));
+        // TODO:
+        Api api = Api.find.query().fetch("user").where().eq("id", apiId).findOne();
         Long userId = api.getUser().getId();
         User user = userDAO.getUserByUserId(Integer.valueOf(userId.toString()));
         api.setUser(user);

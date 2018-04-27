@@ -112,7 +112,7 @@ public class ApiDAO implements DAOInterface{
 
     public Api getApiById(int id) {
         List<Api> apis = Api.find.query().fetch("user").where().eq("apiId", id).order("submissionVersion").findList();
-        return apis.get(apis.size() - 1);
+        return apis.size() > 0 ? apis.get(apis.size() - 1) : null;
     }
 
     public String getCommentsForApi (int id) {

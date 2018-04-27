@@ -194,15 +194,15 @@ public class ApiController extends Controller {
             apisJson.add(apiJson);
         }
 
-        logMessageDAO.writeSearchApiLogMessage(user.getUsername(), searchParam);
+        logMessageDAO.writeSearchApiLogMessage(user.getUsername(), "\""+searchParam+"\"");
         return ok(Json.toJson(apisJson));
     }
 
     public Result getApiById (int id) {
         Api api = apiDAO.getApiById(id);
 
-        if (api != null)
-            logMessageDAO.writeViewApiLogMessage("someone", api.getName());
+//        if (api != null)
+//            logMessageDAO.writeViewApiLogMessage("someone", api.getName());
 
         return ok(api.toJson());
     }
