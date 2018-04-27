@@ -3,11 +3,11 @@ package models;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import enums.NotificationType;
 import io.ebean.*;
+import play.data.format.Formats;
 import play.data.validation.*;
 
-import play.libs.Json;
-import services.apiStates.ApiState;
 import services.apiStates.ApiStates;
 
 import java.util.*;
@@ -56,6 +56,9 @@ public class Api extends Model implements Cloneable {
 
     @Column(name = "state", columnDefinition = "varchar(255) default ''")
     public ApiStates state;
+
+    @Column(name="date")
+    public Date updatedAt;
 
     @ManyToOne
     public User user;
@@ -223,6 +226,7 @@ public class Api extends Model implements Cloneable {
         this.scope = scope;
         this.description = description;
         this.email = email;
+        this.updatedAt = new Date();
     }
 
     public int getSubmissionVersion() {
@@ -252,17 +256,26 @@ public class Api extends Model implements Cloneable {
         sb.append("\"user\": \"").append(this.getUser()).append("\",");
         sb.append("\"comments\": ").append(commentsJson).append("\",");
         sb.append("\"state\": ").append(this.getState()).append("\"");
+        sb.append("\"date\": ").append(this.getUpdatedAt()).append("\"");
         sb.append("}");
         return sb.toString();
     }
 
-    public void notifyAllFollowers(String activity) {
-        if (activity.equals("approve")) {
-            user.sendNotification(this, activity);
+    public void notifyAllFollowers(NotificationType notificationType) {
+        if (notificationType == NotificationType.APPROVE_NOTIFICATION) {
+            user.sendNotification(this, notificationType);
         }
         for (User follower: followers) {
-            follower.sendNotification(this, activity);
+            follower.sendNotification(this, notificationType);
         }
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     @Override

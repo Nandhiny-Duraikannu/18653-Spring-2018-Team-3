@@ -1,12 +1,15 @@
 package DAO;
 
+import enums.NotificationType;
 import models.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import services.apiBuilder.ApiBuilder;
 import services.apiStates.ApiState;
+import services.apiStates.ApiStates;
 import services.apiStates.ApprovedApi;
 
 import java.util.List;
@@ -46,13 +49,19 @@ public class ApiDAO {
         return latestVersion;
     }
 
+    private Long getIdOfLatestVersionOfApi (List <Api> apis) {
+        return getLatestVersionOfApi(apis).getDBId();
+    }
+
     private List<Api> getLastVersionsOfApis (List<Api> apis) {
         HashMap<Long, List<Api>> apisHashMap = categorizeApis(apis);
-
+        ApiBuilder apiBuilder = new ApiBuilder();
         List<Api> result = new ArrayList<>();
         for (Long key : apisHashMap.keySet()) {
             List<Api> apisByKey = apisHashMap.get(key);
-            result.add(getLatestVersionOfApi(apisByKey));
+            Long apiId = getIdOfLatestVersionOfApi(apisByKey);
+            Api builtApi = apiBuilder.buildApi(apiId);
+            result.add(builtApi);
         }
         return result;
     }
@@ -89,12 +98,14 @@ public class ApiDAO {
     }
 
     public List<Api> searchAPIs (String searchParam, String type) {
-        List<Api> apis = Api.find.query().where().like("name", "%" + searchParam + "%").eq("apitype",type).findList();
+        List<Api> apis = Api.find.query().where()
+                .like("name", "%" + searchParam + "%")
+                .eq("apitype",type)
+                .eq("state", ApiStates.APPROVED).findList();
         return getLastVersionsOfApis(apis);
     }
 
     public List<Api> searchAPIs (int userId) {
-        System.out.println("UserID CHECK : "+userId);
         List<Api> apis = Api.find.query().where().eq("user_id", userId).findList();
         return getLastVersionsOfApis(apis);
     }
@@ -114,6 +125,6 @@ public class ApiDAO {
         ApiState state = new ApprovedApi();
         state.updateApiState(api);
         api.save();
-        api.notifyAllFollowers("approve");
+        api.notifyAllFollowers(NotificationType.APPROVE_NOTIFICATION);
     }
 }

@@ -1,6 +1,7 @@
 package services.factories;
 
 import DAO.ApiDAO;
+import enums.UserType;
 import models.*;
 import services.submissions.SubmissionCache;
 

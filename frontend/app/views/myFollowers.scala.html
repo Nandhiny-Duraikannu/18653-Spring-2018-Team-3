@@ -1,26 +1,14 @@
 @(username: String, userType: String)
-@main("My Followers | Service Repository"){
+@main("My Submissions | Service Repository"){
 
     @menu(username, userType)
     <div class="container">
         <div class="row">
-            <div class="col s12" id="resultArea">
-                <h4>List of Followers</h4>
-                <table id="followerTable">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>API</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-
-                    </tbody>
-                </table>
-            </div>
-
+            <h4>My Submissions</h4>
         </div>
+
+        <ul id="api-collection" class="row collapsible">
+        </ul>
     </div>
     <script src="@routes.Assets.versioned("javascripts/controllers/followers.js")" type="text/javascript"></script>
 }

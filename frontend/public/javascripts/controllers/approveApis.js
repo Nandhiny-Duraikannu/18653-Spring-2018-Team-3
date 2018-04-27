@@ -6,9 +6,9 @@ $(document).ready(function() {
 
   let getPendingApiHtml = function (api) {
     let result = "<tr>" +
-      "<td><a href=\"apis/" + api.id + "\">" + api.name + "</a></td>" +
+      "<td><a href=\"/api/" + api.id + "\">" + api.name + "</a></td>" +
       "<td>" + api.description + "</td>" +
-      "<td>Pending...</td>" +
+      "<td><span class=\"new badge blue\" data-badge-caption=\"\">Pending</span></td>" +
       "<td>" +
       "<button class=\"btn left approveApiButton\" type=\"button\" data-id=\"" + api.id + "\">Approve" +
       "<i class=\"material-icons right\">check</i>" +
@@ -20,16 +20,15 @@ $(document).ready(function() {
 
   let getApprovedApiHtml = function (api) {
     let result = "<tr>" +
-      "<td><a href=\"apis/" + api.id + "\">" + api.name + "</a></td>" +
+      "<td><a href=\"/api/" + api.id + "\">" + api.name + "</a></td>" +
       "<td>" + api.description + "</td>" +
-      "<td>Approved!</td>"
+      "<td><span class=\"new badge green\" data-badge-caption=\"\">Approved</span></td>"
       "</tr>";
     return result;
   }
 
   let displayApis = function (apis) {
     apis = JSON.parse(apis);
-    console.log("apis", apis);
     let pendingApisHTML = "";
     let approvedApisHTML = "";
     for (let i = 0; i < apis.approvedApis.length; i++) {
@@ -45,7 +44,7 @@ $(document).ready(function() {
 
   let approveApi = function (apiId) {
     $.ajax({
-      url: "/apis/approve",
+      url: "/api/approve",
       data: { apiId: apiId },
       type: "POST",
       success: () => {

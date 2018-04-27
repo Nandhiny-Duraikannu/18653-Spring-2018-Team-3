@@ -6,27 +6,8 @@ import DAO.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChatRoom {
-    private static MessageDAO messageDAO = new MessageDAO();
+public interface ChatRoom {
+    MessageDAO messageDAO = new MessageDAO();
 
-    public Message sendMessage(User sender, User receiver, String title, String message) {
-        return messageDAO.create(sender, receiver, title, message);
-    }
-
-    public List<JsonNode> getReceivedMessagesForUser (User user) {
-        List<Message> messages = messageDAO.getReceivedMessages(user);
-        List<JsonNode> messagesJson = new ArrayList<>();
-        for (Message message: messages) {
-            messagesJson.add(message.toJson());
-        }
-        return messagesJson;
-    }
-
-    public void sendMessageToFollowers (User sender, String title, String content) {
-        List<Api> apis = sender.getApis();
-        for (Api api: apis) {
-            for (User follower: api.getFollowers())
-                this.sendMessage(sender, follower, title, content);
-        }
-    }
+    Message send(User sender, User receiver, String title, String message);
 }

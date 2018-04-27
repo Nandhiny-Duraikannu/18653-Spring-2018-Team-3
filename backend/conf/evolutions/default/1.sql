@@ -16,6 +16,7 @@ create table apis (
   email                         varchar(255) default '',
   submissionversion             varchar(255) default '' not null,
   state                         varchar(255) default '',
+  date                          datetime(6),
   user_id                       bigint,
   constraint ck_apis_state check ( state in (0,1)),
   constraint pk_apis primary key (id)
@@ -45,6 +46,13 @@ create table donations (
   payid                         varchar(255)
 );
 
+create table log_message (
+  id                            bigint auto_increment not null,
+  date                          datetime(6),
+  message                       varchar(255),
+  constraint pk_log_message primary key (id)
+);
+
 create table messages (
   id                            bigint auto_increment not null,
   title                         varchar(255),
@@ -53,6 +61,20 @@ create table messages (
   receiver_id                   bigint,
   date                          datetime(6),
   constraint pk_messages primary key (id)
+);
+
+create table task (
+  id                            bigint auto_increment not null,
+  name                          varchar(255),
+  done                          tinyint(1) default 0 not null,
+  due_date                      datetime(6),
+  constraint pk_task primary key (id)
+);
+
+create table topics (
+  id                            integer not null,
+  apiname                       varchar(255),
+  topicname                     varchar(255)
 );
 
 create table users (
@@ -135,7 +157,13 @@ drop table if exists api_comments;
 
 drop table if exists donations;
 
+drop table if exists log_message;
+
 drop table if exists messages;
+
+drop table if exists task;
+
+drop table if exists topics;
 
 drop table if exists users;
 

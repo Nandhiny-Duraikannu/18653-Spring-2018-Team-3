@@ -9,7 +9,8 @@ $(document).ready(function(){
       "<p>Endpoint: " + api.endpoint + "</p>" +
       "<p>Homepage: " + api.homepage + "</p>" +
       "<p>Scope: " + api.scope + "</p>" +
-      "<p>Version:" + api.version + "</p>" +
+      "<p>Version: " + api.version + "</p>" +
+      "<p>Submission date: " + api.date + "</p>" +
       "</div>" +
       "</div>" +
       "</div>";

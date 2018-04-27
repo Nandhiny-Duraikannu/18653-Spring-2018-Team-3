@@ -5,19 +5,33 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import models.*;
 import play.libs.Json;
+import services.apiStates.ApiStates;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class JsonVisitor {
     private ObjectNode getJson(Api api) {
-        String username = api.getUser().getUsername();
+        User user = api.getUser();
+        String username = (user == null) ? "" : user.getUsername();
         if (username == null) username = "";
 
         List<JsonNode> followersList = new ArrayList<>();
         for (User follower: api.getFollowers()) {
             followersList.add(follower.toFollowerJson());
         }
+
+        boolean status = api.getState() == ApiStates.APPROVED ? true : false;
+
+        Date date = api.getUpdatedAt();
+        DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+        String apiDate = df.format(date);
 
         ObjectNode result = Json.newObject()
                 .put("id", api.getId())
@@ -28,6 +42,8 @@ public class JsonVisitor {
                 .put("version", api.getVersion())
                 .put("scope", api.getScope())
                 .put("description", api.getDescription())
+                .put("approved", status)
+                .put("date", apiDate)
                 .put("user", username);
         result.put("followers", Json.toJson(followersList));
         return result;

@@ -7,6 +7,7 @@ import play.data.DynamicForm;
 import play.data.Form;
 import play.data.FormFactory;
 import play.libs.Json;
+import play.libs.concurrent.HttpExecutionContext;
 import play.libs.ws.*;
 import play.mvc.*;
 import scala.util.parsing.json.JSONObject;
@@ -25,32 +26,24 @@ import java.util.concurrent.CompletionStage;
  * This controller contains an action to handle HTTP requests
  * to the application's home page.
  */
-public class SubmitApiController extends Controller implements WSBodyReadables, WSBodyWritables {
+public class ApiController extends Controller implements WSBodyReadables, WSBodyWritables {
     private final FormFactory formFactory;
     private final WSClient ws;
     private final BackendURLService urlService;
-    private List<ApiForm> apiForm = new ArrayList<>();
-    private List<Mashup> mashForm =new ArrayList<>();
+    private final HttpExecutionContext httpExecutionContext;
 
-
+    private String[] blankApiIds = {"0"};
 
     @Inject
-    public SubmitApiController(WSClient ws, FormFactory formFactory) {
+    public ApiController(WSClient ws, FormFactory formFactory, HttpExecutionContext ec) {
         this.ws = ws;
         this.formFactory = formFactory;
         this.urlService = new BackendURLService();
-    }
-
-    public Result apiFormView () {
-        String username = session().get("username");
-        String userType = session().get("type");
-        return ok(views.html.submitApi.render(username, userType));
+        this.httpExecutionContext = ec;
     }
 
     public Result searchApiView () {
-        String username = session().get("username");
-        String userType = session().get("type");
-        return ok(views.html.searchApiMashup.render(username, userType, apiForm, mashForm));
+        return ok(views.html.search.render(null));
     }
 
     public CompletionStage<Result> displayApiView (int id) {
@@ -93,29 +86,39 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
         });
     }
 
+    public CompletionStage<Result> submitView () {
+        WSRequest request = ws.url(urlService.getApiPerState());
+        return request.get()
+                .thenApplyAsync((WSResponse r) -> {
+                    JsonNode approvedApis = r.asJson().findPath("approvedApis");
+                    return ok(views.html.submitForm.render(approvedApis));
+                }, httpExecutionContext.current());
+    }
+
     public CompletionStage<Result> submitApi () {
-        Form<ApiForm> apiForm = formFactory.form(ApiForm.class).bindFromRequest();
-        ApiForm apiData = apiForm.get();
-        apiData.setUser_id(session().get("id"));
-        String apiJson = Json.toJson(apiData).toString();
+        Form<Mashup> mashupForm = formFactory.form(Mashup.class).bindFromRequest();
+        Mashup mashup = mashupForm.get();
+        mashup.setUser_id(session().get("id"));
+        String typeCheck = mashup.getType();
+
+        if(typeCheck.equals("api")) {
+            mashup.setApiIds(blankApiIds);
+        }
 
         // Post the json to create the user in the backend
-        WSRequest request = ws.url(urlService.submitApiURL());
+        WSRequest request = ws.url(urlService.submitMashupURL());
         return request
-        .addHeader("Content-Type", "application/json")
-        .post(apiJson)
-        .thenApply((WSResponse r) -> {
-            if (r.getStatus() == 200) {
-                return redirect(routes.HomeController.homeView());
-            } else {
-                return badRequest("Error while submitting API");
-            }
-        });
+                .post(Json.toJson(mashup))
+                .thenApply((WSResponse r) -> {
+                    if (r.getStatus() == 200) {
+                        return redirect(routes.HomeController.homeView());
+                    } else {
+                        return badRequest("Error while trying to submit mashup");
+                    }
+                });
     }
 
     public CompletionStage<Result> searchApis () {
-        String username = session().get("username");
-        String userType = session().get("type");
         DynamicForm form = formFactory.form().bindFromRequest();
         String url = urlService.searchURL() + "?searchParam=" + form.get("searchParam")+"&type="+form.get("type")+"&userId="+session().get("id");
 
@@ -124,55 +127,13 @@ public class SubmitApiController extends Controller implements WSBodyReadables, 
         return request
         .addHeader("Content-Type", "application/json")
         .get()
-        .thenApply((WSResponse r) -> {
+        .thenApplyAsync((WSResponse r) -> {
             if (r.getStatus() == 200) {
-
-                if(form.get("type").equals("api")) {
-                    List<ApiForm> res = generateApiFromJson(r);
-                    return ok(views.html.searchApiMashup.render(username, userType, res, mashForm));
-                }
-                else if (form.get("type").equals("mashup"))
-                {
-                    List<Mashup> res = generateMashupFromJson(r);
-                    return ok(views.html.searchApiMashup.render(username, userType, apiForm, res));
-                }
-                else{
-                    return badRequest("Error searching object type");
-                }
+                return ok(views.html.search.render(r.asJson()));
             } else {
                 return badRequest("Error while searching ");
             }
-        });
-    }
-
-    private List<ApiForm> generateApiFromJson (WSResponse r) {
-        JsonNode jsonNode = Json.parse(r.getBody());
-        List<ApiForm> apis = new ArrayList<>();
-        for (JsonNode api : jsonNode) {
-            ApiForm newApi = new ApiForm();
-            newApi.setId(api.get("id").asInt());
-            newApi.setName(api.get("name").asText());
-            newApi.setDescription(api.get("description").asText());
-            newApi.setStatus(api.get("following").asText());
-
-            apis.add(newApi);
-        }
-        return apis;
-    }
-
-    private List<Mashup> generateMashupFromJson (WSResponse r) {
-        JsonNode jsonNode = Json.parse(r.getBody());
-        List<Mashup> mashups = new ArrayList<Mashup>();
-        for (JsonNode mashup : jsonNode) {
-            Mashup newMashup = new Mashup();
-            newMashup.setId(mashup.get("id").asInt());
-
-            newMashup.setName(mashup.get("name").asText());
-            newMashup.setDescription(mashup.get("description").asText());
-            newMashup.setStatus(mashup.get("following").asText());
-            mashups.add(newMashup);
-        }
-        return mashups;
+        }, httpExecutionContext.current());
     }
 
     public Result addComment (int id) {

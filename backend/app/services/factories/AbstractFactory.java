@@ -1,5 +1,6 @@
 package services.factories;
 
+import enums.UserType;
 import models.*;
 
 import java.util.List;
