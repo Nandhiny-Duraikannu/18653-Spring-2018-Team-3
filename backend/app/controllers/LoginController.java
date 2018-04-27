@@ -1,6 +1,6 @@
 package controllers;
 
-import DAO.UserDAO;
+import DAO.*;
 import forms.LoginForm;
 import forms.ResetPasswordForm;
 import models.User;
@@ -9,17 +9,19 @@ import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.*;
 
+import services.command.*;
 import javax.inject.Inject;
 
 public class LoginController extends Controller {
     private final FormFactory formFactory;
 
-    private UserDAO userDAO;
+    //private UserDAO userDAO;
+    private DAOInterface userDAO;
 
     @Inject
     public LoginController(FormFactory formFactory) {
         this.formFactory = formFactory;
-        this.userDAO = new UserDAO();
+        this.userDAO = new RequestBroker().create("USERDAO");
         this.userDAO.ensureOneAdmin();
     }
 

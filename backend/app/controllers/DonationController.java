@@ -1,6 +1,6 @@
 package controllers;
 
-import DAO.DonationDAO;
+import DAO.*;
 import models.Donation;
 import play.data.DynamicForm;
 import play.data.FormFactory;
@@ -14,13 +14,17 @@ import java.time.Year;
 import play.mvc.Results;
 import javax.inject.Inject;
 import java.time.Month;
+import services.command.*;
+
+
 
 
 public class DonationController extends Controller {
 
     private final FormFactory formFactory;
     private final WSClient ws;
-    private DonationDAO donationDAO = new DonationDAO();
+    //private DonationDAO donationDAO = new DonationDAO();
+    private DAOInterface donationDAO = new RequestBroker().create("DONATIONDAO");
 
     @Inject
     public DonationController(WSClient ws, FormFactory formFactory) {
