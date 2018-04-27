@@ -19,7 +19,6 @@ $(document).ready(function(){
   let displayCards = function (data) {
     let result = "";
     for (let i = 0; i < data.length; i++) {
-      console.log(data[i]);
       result += getApiCardHtml(data[i]);
     }
     apiContainer.html(result);
@@ -29,7 +28,7 @@ $(document).ready(function(){
     let apiId = $("#hiddenId").html();
 
     $.ajax({
-      url: "/apis/" + apiId + "/versions",
+      url: "/api/" + apiId + "/versions",
       type: "GET",
       headers: {
         "Content-Type": "application/json"

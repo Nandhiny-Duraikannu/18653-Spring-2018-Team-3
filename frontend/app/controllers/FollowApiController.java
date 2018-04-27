@@ -33,13 +33,15 @@ public class FollowApiController extends Controller implements WSBodyReadables, 
     }
 
     public CompletionStage<Result> followApi () {
-        
         DynamicForm form = formFactory.form().bindFromRequest();
         String apiId = form.get("apiId");
         String userId = session().get("id");
+
+
         // Post the json to create the user in the backend
         String followJson = "{\"api_id\": \"" + apiId + "\",";
         followJson += "\"user_id\": \"" + userId + "\"}";
+
         // Post the json to create the user in the backend
         WSRequest request = ws.url(urlService.followApiURL());
         return request
