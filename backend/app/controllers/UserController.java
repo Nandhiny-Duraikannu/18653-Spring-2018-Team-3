@@ -1,10 +1,11 @@
 package controllers;
 
-import DAO.UserDAO;
+import DAO.*;
 import models.User;
 import play.data.DynamicForm;
 import play.data.FormFactory;
 import play.mvc.*;
+import services.command.*;
 
 import javax.inject.Inject;
 
@@ -12,7 +13,9 @@ public class UserController extends Controller {
 
     private final FormFactory formFactory;
 
-    private UserDAO userDAO = new UserDAO();
+    // private UserDAO userDAO = new UserDAO();
+    // DAOInterface object = new UserDAO();
+    private DAOInterface userDAO = new RequestBroker().create("USERDAO");
 
     @Inject
     public UserController(FormFactory formFactory) {

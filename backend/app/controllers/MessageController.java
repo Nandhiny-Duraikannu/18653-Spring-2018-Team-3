@@ -12,6 +12,7 @@ import javax.inject.Inject;
 
 import DAO.*;
 import models.*;
+import services.command.*;
 import services.message.ChatRoom;
 import services.message.MessageChatRoom;
 
@@ -20,9 +21,13 @@ import java.util.List;
 
 public class MessageController extends Controller {
     private final FormFactory formFactory;
-    private ApiDAO apiDAO = new ApiDAO();
-    private UserDAO userDAO = new UserDAO();
-    private MessageDAO messageDAO = new MessageDAO();
+    // private ApiDAO apiDAO = new ApiDAO();
+    // private UserDAO userDAO = new UserDAO();
+    // private MessageDAO messageDAO = new MessageDAO();
+
+    private DAOInterface apiDAO = new RequestBroker().create("APIDAO");
+    private DAOInterface userDAO = new RequestBroker().create("USERDAO");
+    private DAOInterface messageDAO = new RequestBroker().create("MESSAGEDAO");
 
 
     @Inject
