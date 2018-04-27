@@ -19,6 +19,8 @@ import services.apiStates.PendingApi;
 import services.factories.AbstractFactory;
 import services.factories.ApiFactory;
 
+import services.command.*;
+
 import models.*;
 import DAO.*;
 import services.factories.FactoryProducer;
@@ -35,10 +37,10 @@ import java.util.*;
 public class ApiController extends Controller {
     private final FormFactory formFactory;
 
-    private MashupDAO mashupDAO;
-    private ApiDAO apiDAO;
-    private UserDAO userDAO;
-    private LogMessageDAO logMessageDAO;
+    private DAOInterface mashupDAO;
+    private DAOInterface apiDAO;
+    private DAOInterface userDAO;
+    private DAOInterface logMessageDAO;
 
     private AbstractFactory apiFactory;
 
@@ -46,10 +48,10 @@ public class ApiController extends Controller {
     public ApiController(FormFactory formFactory) {
         this.formFactory = formFactory;
 
-        this.mashupDAO = new MashupDAO();
-        this.apiDAO = new ApiDAO();
-        this.userDAO = new UserDAO();
-        this.logMessageDAO = new LogMessageDAO();
+        this.mashupDAO = new RequestBroker().create("MASHUPDAO");
+        this.apiDAO = new RequestBroker().create("APIDAO");
+        this.userDAO = new RequestBroker().create("USERDAO");
+        this.logMessageDAO = new RequestBroker().create("LOGMESSAGEDAO");
 
         this.apiFactory = FactoryProducer.getFactory("api");
     }

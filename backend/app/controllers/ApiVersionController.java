@@ -11,6 +11,7 @@ import scala.concurrent.java8.FuturesConvertersImpl;
 import services.apiMemento.ApiMementoOriginator;
 import services.apiMemento.ApiVersionCareTaker;
 import services.factories.*;
+import services.command.*;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
@@ -21,12 +22,13 @@ import java.util.List;
 public class ApiVersionController extends Controller {
 
     private final FormFactory formFactory;
-    private final ApiDAO apiDAO;
+    //private final ApiDAO apiDAO;
+    private DAOInterface apiDAO;
 
     @Inject
     public ApiVersionController(FormFactory formFactory) {
         this.formFactory = formFactory;
-        this.apiDAO = new ApiDAO();
+        this.apiDAO = new RequestBroker().create("APIDAO");
     }
 
     @BodyParser.Of(BodyParser.Json.class)
