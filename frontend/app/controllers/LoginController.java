@@ -112,7 +112,9 @@ public class LoginController extends Controller implements WSBodyReadables, WSBo
         .thenApply((WSResponse r) -> {
             if (r.getStatus() == 200) {
                 boolean reset = r.asJson().get("reset").asBoolean();
+                String username = r.asJson().get("username").asText();
                 ctx.session().clear();
+                ctx.session().put("username", username);
                 if (reset) {
                     return redirect(routes.LoginController.resetPasswordView());
                 } else {

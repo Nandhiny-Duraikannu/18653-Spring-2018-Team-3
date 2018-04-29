@@ -7,6 +7,7 @@
 POST    /login                        controllers.LoginController.login()
 POST    /signup                       controllers.LoginController.signup()
 POST    /forgotpassword               controllers.LoginController.forgotPwd()
+POST    /confirmReset                 controllers.LoginController.confirmReset()
 
 GET     /                             controllers.UserController.getAllUsers()
 GET     /users                        controllers.UserController.getAllUsers()
