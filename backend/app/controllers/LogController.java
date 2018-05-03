@@ -10,8 +10,7 @@ import services.command.*;
 import java.util.List;
 
 public class LogController extends Controller {
-    //private LogMessageDAO logMessageDAO = new LogMessageDAO();
-    private DAOInterface logMessageDAO = new RequestBroker().create("LOGMESSAGEDAO");
+    private LogMessageDAO logMessageDAO = new LogMessageDAO();
 
     public Result getLogMessages() {
         List<LogMessage> logMessages = logMessageDAO.getAllLogMessages();

@@ -15,13 +15,12 @@ import javax.inject.Inject;
 public class LoginController extends Controller {
     private final FormFactory formFactory;
 
-    //private UserDAO userDAO;
-    private DAOInterface userDAO;
+    private UserDAO userDAO;
 
     @Inject
     public LoginController(FormFactory formFactory) {
         this.formFactory = formFactory;
-        this.userDAO = new RequestBroker().create("USERDAO");
+        this.userDAO = new UserDAO();
         this.userDAO.ensureOneAdmin();
     }
 

@@ -24,7 +24,7 @@ public class DonationController extends Controller {
     private final FormFactory formFactory;
     private final WSClient ws;
     //private DonationDAO donationDAO = new DonationDAO();
-    private DAOInterface donationDAO = new RequestBroker().create("DONATIONDAO");
+    private DonationDAO donationDAO = new DonationDAO();
 
     @Inject
     public DonationController(WSClient ws, FormFactory formFactory) {

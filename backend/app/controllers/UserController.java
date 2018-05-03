@@ -13,9 +13,10 @@ public class UserController extends Controller {
 
     private final FormFactory formFactory;
 
-    // private UserDAO userDAO = new UserDAO();
-    // DAOInterface object = new UserDAO();
-    private DAOInterface userDAO = new RequestBroker().create("USERDAO");
+    GetUserByUserId getUserByUserIdCommand = new GetUserByUserId();
+    GetAllUsers getAllUsersCommand = new GetAllUsers();
+    UpdateUserProfile updateUserProfileCommand = new UpdateUserProfile(); 
+    RequestBroker rb = new RequestBroker();
 
     @Inject
     public UserController(FormFactory formFactory) {
@@ -23,12 +24,18 @@ public class UserController extends Controller {
     }
 
     public Result getAllUsers () {
-        String allUsers = userDAO.getAllUsers();
+        rb.setCommand(getAllUsersCommand);
+        rb.executeCommand();
+        String allUsers = getAllUsersCommand.getAllUsers();
         return ok(allUsers);
     }
 
     public Result getUserProfile (int userId) {
-        User userProfile = userDAO.getUserByUserId(userId);
+        rb.setCommand(getUserByUserIdCommand);
+        getUserByUserIdCommand.setUserByUserIdParams(userId);
+        rb.executeCommand();
+
+        User userProfile = getUserByUserIdCommand.getUserByUserId();
         return ok(userProfile.profileToJson());
     }
 
@@ -38,8 +45,11 @@ public class UserController extends Controller {
         String email = form.get("email");
         String phoneNumber = form.get("phoneNumber");
         String notificationMethod = form.get("notificationMethod");
+        rb.setCommand(updateUserProfileCommand);
+        updateUserProfileCommand.setUpdateUserProfileParams(userId, name, email, phoneNumber, notificationMethod);
+        rb.executeCommand();
 
-        User user = userDAO.updateUserProfile(userId, name, email, phoneNumber, notificationMethod);
+        User user = updateUserProfileCommand.getUpdateUser();
 
         if (user == null) {
             return badRequest("Error while updating user profile");

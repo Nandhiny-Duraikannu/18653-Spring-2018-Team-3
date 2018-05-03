@@ -36,14 +36,14 @@ import java.util.*;
 public class ClassificationController extends Controller {
     private final FormFactory formFactory;
 
-    private DAOInterface topicsDAO;
+    private TopicsDAO topicsDAO;
     private categorize categorize;
 
 
     @Inject
     public ClassificationController(FormFactory formFactory) {
         this.formFactory = formFactory;
-        this.topicsDAO = new RequestBroker().create("TOPICSDAO");;
+        this.topicsDAO = new TopicsDAO();
 
     }
 
