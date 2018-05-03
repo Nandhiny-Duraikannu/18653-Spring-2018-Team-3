@@ -15,7 +15,7 @@ import services.apiStates.ApprovedApi;
 import java.util.List;
 import play.libs.Json;
 
-public class ApiDAO implements DAOInterface{
+public class ApiDAO{
 
     private HashMap<Long, List<Api>> categorizeApis (List<Api> apis) {
         HashMap<Long, List<Api>> apisHashMap = new HashMap<>();
@@ -127,39 +127,4 @@ public class ApiDAO implements DAOInterface{
         api.save();
         api.notifyAllFollowers(NotificationType.APPROVE_NOTIFICATION);
     }
-
-  //USER DAO
-  public String getAllUsers(){
-    return null;
-  }
-
-  public User getUserByUserId(int userId){
-    return null;
-  }
-  public User updateUserProfile(int userId, String name, String email, String phoneNumber, String notificationMethod){
-    return null;
-  }
-  public User getUserByUsername(String username){
-    return null;
-  }
-  public void ensureOneAdmin(){
-  }
-
-  //Log Message DAO
-  public void writeSubmitApiLogMessage(String username, String name){
-  }
-  public List<LogMessage> getAllLogMessages(){
-    return null;
-  }
-  public User createNewUser(String username, String password, String securityQuestion, String answer){
-    return null;
-  }
-  public void writeSearchApiLogMessage(String username, String searchParam){
-  }
-  public void writeViewApiLogMessage(String username, String apiname){
-    
-  }
-  public List<Mashup> getAllMashups(){
-    return null;
-  }
 }

@@ -7,7 +7,7 @@ import services.factories.*;
 import java.util.Iterator;
 import java.util.List;
 
-public class UserDAO implements DAOInterface {
+public class UserDAO  {
     private AbstractFactory userFactory = FactoryProducer.getFactory("user");
 
     public User createNewUser(String username, String password, String securityQuestion, String answer) {
@@ -104,41 +104,4 @@ public class UserDAO implements DAOInterface {
             return null;
         }
     }
-    //API DAO 
-  public List<Api> getVersionsForApi(int apiId){
-    return null;
-  }
-  public void approveApi(int apiId){
-  }
-  public Api getById(int apiID){
-    return null;
-  }
-  public List<Api> getAll(){
-    return null;
-  }
-  public List<Api> searchAPIs(int userId){
-    return null;
-  }
-  public List<Api> searchAPIs(String searchParam, String type){
-    return null;
-  }
-  public Api getApiById(int id){
-    return null;
-  }
-
-  //Log Message DAO
-  public void writeSubmitApiLogMessage(String username, String name){
-  }
-  public List<LogMessage> getAllLogMessages(){
-    return null;
-  }
-  public void writeSearchApiLogMessage(String username, String searchParam){
-
-    }
-  public void writeViewApiLogMessage(String username, String apiname){
-
-    }
-public List<Mashup> getAllMashups(){
-    return null;
-  }
 }

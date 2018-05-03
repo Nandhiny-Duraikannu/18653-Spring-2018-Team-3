@@ -8,28 +8,16 @@ import java.util.ArrayList;
 
 public class RequestBroker {
 
+    DAOInterface command;
+
     public RequestBroker () { }
 
-    public DAOInterface create (String daoCommand) {
-         switch(daoCommand) {
-         case "APIDAO" :
-            return new ApiDAO();
-         case "DONATIONDAO" :
-            return new DonationDAO();
-         case "LOGMESSAGEDAO" :
-            return new LogMessageDAO();
-         case "MASHUPDAO" :
-            return new MashupDAO();
-         case "MESSAGEDAO" :
-            return new MessageDAO();
-         case "TOPICSDAO" :
-            return new TopicsDAO();
-         case "USERDAO" :
-            return new UserDAO();
-         default :
-            return null;
-         //  System.out.println("Invalid DAO Command");
-      }
+    public void setCommand (DAOInterface command) {
+        this.command = command;      
+    }
+
+    public void executeCommand () {
+        command.execute();         
     }
 
 }

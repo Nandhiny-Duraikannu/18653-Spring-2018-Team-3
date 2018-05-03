@@ -23,12 +23,12 @@ public class ApiVersionController extends Controller {
 
     private final FormFactory formFactory;
     //private final ApiDAO apiDAO;
-    private DAOInterface apiDAO;
+    private ApiDAO apiDAO;
 
     @Inject
     public ApiVersionController(FormFactory formFactory) {
         this.formFactory = formFactory;
-        this.apiDAO = new RequestBroker().create("APIDAO");
+        this.apiDAO = new ApiDAO();
     }
 
     @BodyParser.Of(BodyParser.Json.class)
